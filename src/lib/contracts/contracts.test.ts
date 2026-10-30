@@ -4,6 +4,10 @@ import { buildServiceEnvelope, type EnvelopeBuildInput } from "../catalog/envelo
 import { CATALOG_SCHEMA_VERSION, type AgencyRecord } from "../catalog/types";
 import type { CoverageDomain } from "../inventory/domain";
 import { CLASSIFIER_RULES_VERSION, type ArticleClassification } from "../inventory/classify";
+import { loadCatalogBundle } from "../resolver/catalog-source";
+import { createResolver } from "../resolver/resolver";
+import { CROSSWALK_RULES_VERSION } from "../resolver/rules";
+import { EMBEDDING_MODEL_VERSION } from "../resolver/retrieval";
 
 import agencySeeds from "../../../data/catalog/seed/agencies.json";
 import hicSeed from "../../../data/catalog/seed/services/svc-dcwp-home-improvement-contractor-license.json";
@@ -21,7 +25,17 @@ import {
   ApiErrorEnvelopeSchema,
   ApiResponseSchema,
   ResolveServicesRequestSchema,
+  ResolveServicesResultSchema,
+  ResponseVersionsSchema,
 } from "./api";
+import {
+  CatalogSnapshotVersionSchema,
+  EmbeddingModelVersionSchema,
+  RealSnapshotRefSchema,
+  SemverVersionSchema,
+  Sha256Schema,
+  VersionStampsSchema,
+} from "./primitives";
 import { GovernmentServiceSchema } from "./government-service";
 import { GoalResolutionSchema } from "./resolution";
 import { RequiredDocumentSchema } from "./required-document";
@@ -29,13 +43,15 @@ import { ServiceSummarySchema } from "./service-summary";
 import { StepInstructionSchema } from "./step-instruction";
 import { FIXTURE_VERSIONS, SERVICE_FIXTURES } from "./__fixtures__/services";
 
-/** Response versions for envelope tests — semver-stamped, fixture-marked. */
+/** Response versions for envelope tests — each stamp matches its producer
+ * kind (panel N1), fixture-marked and unmistakably fake. */
 const RESPONSE_VERSIONS = {
   app: "0.0.0-fixture",
   schema: CATALOG_SCHEMA_VERSION,
-  catalog: "0.0.0-fixture",
+  catalog: "0000-01-01.0",
   crosswalk: "0.0.0-fixture",
   embeddingModel: "0.0.0-fixture",
+  catalogBundleSha256: "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
 };
 
 /** Parse → JSON round-trip → parse must yield the same value. */
@@ -85,14 +101,43 @@ describe("contracts", () => {
 
     it("pins FIXTURE_VERSIONS so a refactor to real-looking versions fails the suite", () => {
       expect(FIXTURE_VERSIONS).toEqual({
-        catalogVersion: "0.0.0-fixture",
+        catalogVersion: "0000-01-01.0",
         crosswalkVersion: "0.0.0-fixture",
         embeddingModelVersion: "0.0.0-fixture",
+        catalogBundleSha256: "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
       });
     });
   });
 
   describe("schema rejections", () => {
+    it("rejects malformed bundle sha pins on both version-stamp schemas", () => {
+      const badShas = [
+        "NOT-A-HASH",
+        "F6E11C77802131C3BFC82FA7461DF971F4ABBA18476DCD144B920B166FA7943A", // uppercase
+        "f6e11c77", // 12-hex snapshot prefix, not a bundle sha
+        "f6e11c77802131c3bfc82fa7461df971f4abba18476dcd144b920b166fa7943", // 63 chars
+      ];
+      for (const sha of badShas) {
+        expect(Sha256Schema.safeParse(sha).success).toBe(false);
+        const labels = {
+          catalogVersion: "2026-10-30.1",
+          crosswalkVersion: "1.0.0",
+          embeddingModelVersion: "lexical-hash-v1",
+        };
+        expect(VersionStampsSchema.safeParse({ ...labels, catalogBundleSha256: sha }).success).toBe(false);
+        expect(
+          ResponseVersionsSchema.safeParse({
+            app: "0.1.0",
+            schema: "0.1.0",
+            catalog: "2026-10-30.1",
+            crosswalk: "1.0.0",
+            embeddingModel: "lexical-hash-v1",
+            catalogBundleSha256: sha,
+          }).success,
+        ).toBe(false);
+      }
+    });
+
     it("throws with a path when a required field is missing", () => {
       const rest: Record<string, unknown> = { ...hic.summary };
       delete rest.title;
@@ -196,6 +241,10 @@ describe("contracts", () => {
 
   describe("classifier boundary (panel S3-F1/S3-F2)", () => {
     it("parses a real classifier output through ServiceSummarySchema", () => {
+      const evidence: ArticleClassification["evidence"] = {
+        kind: "index-text",
+        span: "Apply for a Home Improvement Contractor License",
+      };
       const classification: ArticleClassification = {
         id: "home-improvement-contractor-license",
         ka: "KA-01808",
@@ -204,11 +253,13 @@ describe("contracts", () => {
         serviceSubtype: "apply",
         reason: "action:apply",
         ruleId: "R006-service-action",
-        evidence: { kind: "index-text", span: "Apply for a Home Improvement Contractor License" },
+        evidence,
         rulesVersion: CLASSIFIER_RULES_VERSION,
       };
       // Boundary mapping — classifier field names → contract field names.
-      // rulesVersion → classifierRulesVersion.
+      // rulesVersion → classifierRulesVersion; the classifier's kinded
+      // evidence ({ kind, span } — PR #8, landed) passes through unchanged:
+      // the contract's ClassifierEvidenceSchema mirrors that exact shape.
       const result = ServiceSummarySchema.safeParse({
         id: "svc:dcwp:home-improvement-contractor-license",
         title: classification.title,
@@ -253,7 +304,7 @@ describe("contracts", () => {
       const result = GoalResolutionSchema.safeParse({
         serviceIds: [],
         resolutionLayer: "alias-rules",
-        versions: { catalogVersion: "0.0.0-fixture", crosswalkVersion: "0.0.0-fixture" },
+        versions: { catalogVersion: "0000-01-01.0", crosswalkVersion: "0.0.0-fixture" },
       });
       expect(result.success).toBe(false);
       expect(result.error?.issues[0].path).toContain("embeddingModelVersion");
@@ -324,12 +375,19 @@ describe("contracts", () => {
       expect(parsed.capturedAt).toBeUndefined();
     });
 
-    it("rejects non-http(s) schemes on source URLs", () => {
+    it("rejects non-https schemes on source URLs", () => {
       const evil = {
         ...hic.estimate,
         tiers: [{ ...hic.estimate.tiers[0], sourceUrl: "javascript:void(0)" }],
       };
       expect(EstimateBlockSchema.safeParse(evil).success).toBe(false);
+      // PR #11 shakedown repro: /^https?$/ parsed plain http clean while the
+      // schema name promised https.
+      const insecure = {
+        ...hic.estimate,
+        tiers: [{ ...hic.estimate.tiers[0], sourceUrl: "http://insecure.example/article" }],
+      };
+      expect(EstimateBlockSchema.safeParse(insecure).success).toBe(false);
     });
   });
 
@@ -592,7 +650,7 @@ describe("contracts", () => {
           ApiErrorEnvelopeSchema.safeParse({
             ok: false,
             tool: "resolve_services",
-            versions: { app: "0.1.0", schema: CATALOG_SCHEMA_VERSION, catalog: "0.0.0-fixture", crosswalk: "0.0.0-fixture" },
+            versions: { app: "0.1.0", schema: CATALOG_SCHEMA_VERSION, catalog: "0000-01-01.0", crosswalk: "0.0.0-fixture" },
             error: { code: "internal", message: "x" },
           }),
       ],
@@ -613,10 +671,161 @@ describe("contracts", () => {
           }),
       ],
     ];
+
     for (const [name, parse] of rejects) {
       it(`rejects: ${name}`, () => {
         expect(parse().success).toBe(false);
       });
+    }
+  });
+});
+
+// -----------------------------------------------------------------------------
+// Real-producer conformance (panel N1/S3-M): the schemas must accept what the
+// merged pipelines ACTUALLY emit — D5's GoalResolution, the catalog bundle's
+// envelopes and steps, real snapshot refs, and tool envelopes carrying real
+// stamps. Synthetic fixtures alone went blind once; these tests cannot.
+// -----------------------------------------------------------------------------
+describe("real producer conformance (panel N1/S3-M)", () => {
+  const bundle = loadCatalogBundle();
+
+  it("parses a real GoalResolution from D5's pipeline", async () => {
+    const resolver = createResolver(bundle);
+    const real = await resolver.resolve("open a restaurant");
+    const parsed = GoalResolutionSchema.parse(real);
+    expect(parsed.serviceIds).toEqual(real.serviceIds);
+    expect(parsed.versions).toEqual({
+      catalogVersion: bundle.catalogVersion,
+      crosswalkVersion: CROSSWALK_RULES_VERSION,
+      embeddingModelVersion: EMBEDDING_MODEL_VERSION,
+    });
+    // S1-High-1 pinned per-path: these two producer stamps are exactly the
+    // paths whose 90/90 real-output failures started the per-kind split —
+    // each real value must pass its own kind's validator, not just the
+    // aggregate schema.
+    expect(CatalogSnapshotVersionSchema.safeParse(bundle.catalogVersion).success).toBe(true);
+    expect(SemverVersionSchema.safeParse(CROSSWALK_RULES_VERSION).success).toBe(true);
+    expect(EmbeddingModelVersionSchema.safeParse(EMBEDDING_MODEL_VERSION).success).toBe(true);
+  });
+
+  it("separates bundles the label stamps cannot — the S1-High-2/S3-M3 content pin", () => {
+    // PR #13's regen changed bundle bytes (f6e11c77… → 323ad0e4…) under the
+    // same catalogVersion. The labels alone are not a replay pin; the bundle
+    // sha is. Two stamp sets sharing every label but the sha must both parse
+    // and must not be equal.
+    const labels = {
+      catalogVersion: bundle.catalogVersion,
+      crosswalkVersion: CROSSWALK_RULES_VERSION,
+      embeddingModelVersion: EMBEDDING_MODEL_VERSION,
+    };
+    const shaA = "f6e11c77802131c3bfc82fa7461df971f4abba18476dcd144b920b166fa7943a";
+    const shaB = "323ad0e442cb9697e64b226ee57af1d07ffc382e841b3122f88839cf6089e48a";
+    const stampedA = VersionStampsSchema.parse({ ...labels, catalogBundleSha256: shaA });
+    const stampedB = VersionStampsSchema.parse({ ...labels, catalogBundleSha256: shaB });
+    expect(stampedA).not.toEqual(stampedB);
+    // The labels-only form still parses (producers do not emit the sha yet)
+    // but is exactly the ambiguity this field closes.
+    expect(VersionStampsSchema.parse(labels).catalogBundleSha256).toBeUndefined();
+  });
+
+  it("parses every real built catalog record — envelopes, steps, snapshot refs", () => {
+    // The BUILT bundle (data/catalog/catalog.json) is what D4 ships and D5/D6
+    // consume — the real producer output, not hand-modeled seed inputs.
+    expect(bundle.services.length).toBeGreaterThan(0);
+    for (const record of bundle.services) {
+      const label = record.meta?.catalogId ?? "record";
+      const env = GovernmentServiceSchema.safeParse(record.envelope);
+      const envIssues = env.success
+        ? []
+        : env.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`);
+      expect(env.success, `${label} envelope: ${envIssues.join("; ")}`).toBe(true);
+      for (const step of record.steps) {
+        const parsed = StepInstructionSchema.safeParse(step);
+        const issues = parsed.success
+          ? []
+          : parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`);
+        expect(parsed.success, `${label} step ${step.id}: ${issues.join("; ")}`).toBe(true);
+      }
+      for (const step of record.steps) {
+        for (const ref of step.sourceRefs) {
+          expect(RealSnapshotRefSchema.safeParse(ref).success, `${label} ref ${ref}`).toBe(true);
+        }
+      }
+    }
+  });
+
+  it("wraps a real resolution in a tool envelope carrying real stamps", async () => {
+    const resolver = createResolver(bundle);
+    const real = await resolver.resolve("dog license");
+    const parsed = ResolveServicesResultSchema.safeParse({
+      ok: true,
+      tool: "resolve_services",
+      versions: {
+        app: "0.0.0-fixture",
+        schema: CATALOG_SCHEMA_VERSION,
+        catalog: bundle.catalogVersion,
+        crosswalk: CROSSWALK_RULES_VERSION,
+        embeddingModel: EMBEDDING_MODEL_VERSION,
+      },
+      data: { resolution: real, services: [] },
+    });
+    expect(parsed.success).toBe(true);
+  });
+
+  it("keeps the three stamp kinds distinct (panel N1)", () => {
+    const stamps = (versions: Record<string, string>) =>
+      GoalResolutionSchema.safeParse({
+        serviceIds: [],
+        resolutionLayer: "exact-id",
+        versions,
+      });
+    // catalog is the bundle's date-stamp, crosswalk is semver, the retriever
+    // stamp is a lowercase token — a value valid for one kind must not
+    // validate another.
+    expect(
+      stamps({ catalogVersion: "1.0.0", crosswalkVersion: "1.0.0", embeddingModelVersion: "lexical-hash-v1" }).success,
+    ).toBe(false);
+    expect(
+      stamps({ catalogVersion: "2026-10-30.1", crosswalkVersion: "2026-10-30.1", embeddingModelVersion: "lexical-hash-v1" }).success,
+    ).toBe(false);
+    expect(
+      stamps({ catalogVersion: "2026-10-30.1", crosswalkVersion: "1.0.0", embeddingModelVersion: "Lexical Hash v1" }).success,
+    ).toBe(false);
+  });
+
+  it("caps and sanitizes error-envelope text (panel S4)", () => {
+    const parse = (message: string, detail?: string) =>
+      ApiErrorEnvelopeSchema.safeParse({
+        ok: false,
+        tool: "get_service_estimate",
+        versions: RESPONSE_VERSIONS,
+        error: { code: "internal", message, ...(detail === undefined ? {} : { detail }) },
+      });
+    const ansi = parse("[31mboom[0m");
+    expect(ansi.success).toBe(true);
+    if (ansi.success) expect(ansi.data.error.message).toBe("boom");
+    expect(parse("x".repeat(2001)).success).toBe(false);
+    expect(parse("[0m").success).toBe(false); // strips to empty → invalid
+    expect(parse("ok", "x".repeat(4001)).success).toBe(false);
+    expect(parse("ok", "x".repeat(4000)).success).toBe(true);
+  });
+
+  it("rejects an upload spec on a non-document_upload step (panel S4, reverse coupling)", () => {
+    const [hicFixture] = SERVICE_FIXTURES;
+    const step = hicFixture.steps[0];
+    const result = StepInstructionSchema.safeParse({
+      ...step,
+      fulfillmentMethod: "in_person_appearance",
+      upload: {
+        portalId: "portal:dep:paris",
+        acceptedFormats: ["pdf"],
+        maxSizeBytes: null,
+        sizeLimitVerified: false,
+      },
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(result.error.issues.some((i) => i.path.includes("upload"))).toBe(true);
     }
   });
 });

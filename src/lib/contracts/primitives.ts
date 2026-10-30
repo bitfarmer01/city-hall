@@ -36,11 +36,13 @@ export const ServiceIdSchema = z
 export type ServiceId = z.infer<typeof ServiceIdSchema>;
 
 /**
- * Consumer-facing http(s) URL. `javascript:`/`data:`/`file:` and friends are
- * rejected (panel S4-H1, empirically probed on zod 4.6.7 — the protocol
- * regex matches without the colon).
+ * https-only URL. `http:` is rejected along with `javascript:`/`data:`/`file:`
+ * and friends — the name promises https, so the protocol regex must too
+ * (panel S4-H1, regex empirically probed on zod 4.6.7 — it matches without
+ * the colon; `?` dropped per the PR #11 shakedown, which reproduced plain
+ * http parsing clean under /^https?$/).
  */
-export const HttpsUrlSchema = z.url({ protocol: /^https?$/ });
+export const HttpsUrlSchema = z.url({ protocol: /^https$/ });
 
 /**
  * SourceSnapshot reference. The catalog's `SNAPSHOT_ID_PATTERN` (`snap:` +
@@ -51,10 +53,37 @@ export const SnapshotRefSchema = z
   .string()
   .regex(/^snap:[a-z0-9][a-z0-9-]*$/i, "snapshot ref must match snap:{id}");
 
-/** Semver version stamp (`0.1.0`, `0.0.0-fixture`). */
+/**
+ * REAL-capture snapshot ref — the catalog's strict `snap:` + 12-hex form,
+ * exported for conformance tests over real records (panel S4). Fixtures use
+ * `SnapshotRefSchema` (which admits `snap:fixture-*`); a fixture ref must
+ * never pass this one.
+ */
+export const RealSnapshotRefSchema = z
+  .string()
+  .regex(/^snap:[a-f0-9]{12}$/, "real snapshot ref must be snap: + 12 hex chars");
+
+/** Semver version stamp (`0.1.0`, `1.0.0`, `0.0.0-fixture`). */
 export const SemverVersionSchema = z
   .string()
   .regex(/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/, "version must be semver (major.minor.patch[-prerelease])");
+
+/**
+ * Catalog snapshot version — the catalog bundle's own date-stamp format
+ * (panel N1): `meta.json` emits `2026-10-30.1`, not semver. Mirrors the
+ * producer instead of forcing one shape across all three stamps.
+ */
+export const CatalogSnapshotVersionSchema = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}(?:\.\d+)?$/, "catalog version must match YYYY-MM-DD[.N] (the catalog bundle's date-stamp)");
+
+/**
+ * Embedding/retriever model version — the retrieval pipeline's lowercase
+ * token format (panel N1): `EMBEDDING_MODEL_VERSION` emits `lexical-hash-v1`.
+ */
+export const EmbeddingModelVersionSchema = z
+  .string()
+  .regex(/^[a-z0-9][a-z0-9.-]*$/, "embedding model version must be a lowercase dot/hyphen token (e.g. lexical-hash-v1)");
 
 /**
  * Coverage domains — locked decision #12: permits, 311 service requests,
@@ -127,13 +156,42 @@ void _subtypesCoversAll;
 export const ServiceSubtypeSchema = z.enum(SERVICE_SUBTYPES);
 
 /**
+ * Bundle content pin — lowercase 64-hex sha256, the exact format of the
+ * build pipeline's own `data/catalog/catalog.sha256` (PR #10 integrity
+ * chain). Carried on VersionStamps/ResponseVersions so a response
+ * self-identifies its content address (S1-High-2 / S3-M3).
+ */
+export const Sha256Schema = z
+  .string()
+  .regex(/^[a-f0-9]{64}$/, "catalog bundle sha must be lowercase hex sha256 (64 chars)");
+
+export type Sha256 = z.infer<typeof Sha256Schema>;
+
+/**
  * The three data-version stamps every deterministic answer carries (spec D5:
- * `catalog_version`, `crosswalk_version`, `embedding_model_version`) — catalog
- * snapshot, ruleset, and model/retriever versions. Semver-pinned (panel S4-S2).
+ * `catalog_version`, `crosswalk_version`, `embedding_model_version`). Each
+ * stamp validates against its OWN producer's format (panel N1 — one semver
+ * shape rejected two of the three real producers):
+ *
+ * - `catalogVersion` — the bundle's date-stamp (`2026-10-30.1`, meta.json)
+ * - `crosswalkVersion` — ruleset semver (`1.0.0`, CROSSWALK_RULES_VERSION)
+ * - `embeddingModelVersion` — retriever token (`lexical-hash-v1`,
+ *   EMBEDDING_MODEL_VERSION)
  */
 export const VersionStampsSchema = z.strictObject({
-  catalogVersion: SemverVersionSchema,
+  catalogVersion: CatalogSnapshotVersionSchema,
   crosswalkVersion: SemverVersionSchema,
-  embeddingModelVersion: SemverVersionSchema,
+  embeddingModelVersion: EmbeddingModelVersionSchema,
+  /**
+   * Bundle content pin — the build pipeline's own `catalog.sha256` (PR #10
+   * integrity chain). S1-High-2 / S3-M3: `catalogVersion` is a human release
+   * label and did not rotate across PR #13's content change (sha f6e11c77… →
+   * 323ad0e4… under the same `2026-10-30.1`), so label stamps alone cannot
+   * distinguish two bundles and the replay-pin guarantee weakens. The hash
+   * makes a response self-identify its content address. Optional until
+   * producers emit it (tracked D5 follow-up: catalog-source reads the
+   * sibling sha file); required-in-practice once that lands.
+   */
+  catalogBundleSha256: Sha256Schema.optional(),
 });
 export type VersionStamps = z.infer<typeof VersionStampsSchema>;

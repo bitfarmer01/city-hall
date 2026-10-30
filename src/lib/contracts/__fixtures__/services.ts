@@ -22,11 +22,15 @@ import type {
   VersionStamps,
 } from "../index";
 
-/** Stamp fixtures carry so they can never masquerade as a real catalog. */
+/** Stamp fixtures carry so they can never masquerade as a real catalog.
+ * Each stamp matches its producer-kind schema (panel N1) while remaining
+ * unmistakably fake — year 0000, `0.0.0-fixture` prerelease, `deadbeef`×8
+ * sha. */
 export const FIXTURE_VERSIONS: VersionStamps = {
-  catalogVersion: "0.0.0-fixture",
+  catalogVersion: "0000-01-01.0",
   crosswalkVersion: "0.0.0-fixture",
   embeddingModelVersion: "0.0.0-fixture",
+  catalogBundleSha256: "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
 };
 
 /** Provenance stamps fixtures carry — semver-shaped, unmistakably fake. */
@@ -144,6 +148,7 @@ const hicFixture: ServiceFixture = {
   steps: [
     {
       id: "stp:svc:dcwp:home-improvement-contractor-license:010",
+      serviceId: "svc:dcwp:home-improvement-contractor-license",
       sequence: 1,
       requirement: "Apply online through the DCWP Licensing Portal",
       responsibleAgency: { id: "nyc-dcwp", name: "Department of Consumer and Worker Protection" },
@@ -163,6 +168,7 @@ const hicFixture: ServiceFixture = {
     },
     {
       id: "stp:svc:dcwp:home-improvement-contractor-license:020",
+      serviceId: "svc:dcwp:home-improvement-contractor-license",
       sequence: 2,
       requirement: "Hardship in-person appointment at 42 Broadway, if online filing is impossible",
       responsibleAgency: { id: "nyc-dcwp", name: "Department of Consumer and Worker Protection" },
@@ -252,6 +258,7 @@ const depFixture: ServiceFixture = {
   steps: [
     {
       id: "stp:svc:dep:water-tap-permit:010",
+      serviceId: "svc:dep:water-tap-permit",
       sequence: 1,
       requirement: "Application filed by a licensed master plumber",
       responsibleAgency: { id: "nyc-dep", name: "Department of Environmental Protection" },
@@ -261,6 +268,7 @@ const depFixture: ServiceFixture = {
     },
     {
       id: "stp:svc:dep:water-tap-permit:020",
+      serviceId: "svc:dep:water-tap-permit",
       sequence: 2,
       requirement: "DOB-approved site plan, plumbing riser diagram, Schedule B",
       responsibleAgency: { id: "nyc-dep", name: "Department of Environmental Protection" },
@@ -278,6 +286,7 @@ const depFixture: ServiceFixture = {
     },
     {
       id: "stp:svc:dep:water-tap-permit:030",
+      serviceId: "svc:dep:water-tap-permit",
       sequence: 3,
       requirement: "Notarized affidavit from the property owner (plugging a tap)",
       responsibleAgency: { id: "nyc-dep", name: "Department of Environmental Protection" },
