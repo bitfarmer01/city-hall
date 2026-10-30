@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import { MAX_FIELD_OPTIONS, parseFieldDump } from "./formdump";
+import { EXTRACT_FIELDS_SCRIPT } from "./extract-script";
+import { MAX_FIELD_OPTIONS, parseDumpBody, parseFieldDump } from "./formdump";
 import { CAPTURE_SCHEMA_VERSION, PUBLIC_BOUNDARY_NOTE } from "./types";
 
 const FIELD = {
@@ -68,5 +69,19 @@ describe("parseFieldDump", () => {
     // pin the record schema it trusts.
     expect(CAPTURE_SCHEMA_VERSION).toMatch(/^\d+\.\d+\.\d+$/);
     expect(PUBLIC_BOUNDARY_NOTE).toMatch(/no credentials used/);
+  });
+
+  it("rejects a structurally invalid dump body, not just a full record", () => {
+    expect(() => parseDumpBody({ fields: [] })).toThrow(/submitButtons/);
+    const body = parseDumpBody({ fields: [], submitButtons: ["Go"] });
+    expect(body.fields).toEqual([]);
+    expect(body.submitButtons).toEqual(["Go"]);
+  });
+
+  it("ships the in-page extractor as syntactically valid plain JS", () => {
+    // new Function compiles without executing — no DOM needed here. Actual
+    // execution is covered by the driver tests, which run it in real
+    // chromium on every suite run.
+    expect(() => new Function(EXTRACT_FIELDS_SCRIPT)).not.toThrow();
   });
 });

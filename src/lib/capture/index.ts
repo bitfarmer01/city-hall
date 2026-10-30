@@ -4,7 +4,9 @@ export { classifyBoundary } from "./boundary";
 export type { BoundaryInput, BoundaryVerdict } from "./boundary";
 export { capturePage } from "./driver";
 export type { CapturePageOptions, CapturePageResult } from "./driver";
-export { extractFieldsInPage, parseFieldDump, MAX_FIELD_OPTIONS } from "./formdump";
+export { EXTRACT_FIELDS_SCRIPT } from "./extract-script";
+export { MAX_FIELD_OPTIONS, parseDumpBody, parseFieldDump } from "./formdump";
+export type { DumpBody } from "./formdump";
 export { bundleSha256, sha256Hex, snapshotDirName, snapshotId, snapshotIdFromDirName } from "./hash";
 export {
   diffLiveMinusCatalog,

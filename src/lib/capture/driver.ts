@@ -1,7 +1,8 @@
 import type { Page } from "playwright";
 
 import { classifyBoundary } from "./boundary";
-import { extractFieldsInPage, parseDumpBody } from "./formdump";
+import { EXTRACT_FIELDS_SCRIPT } from "./extract-script";
+import { parseDumpBody } from "./formdump";
 import { buildSourceSnapshot } from "./store";
 import type { FormFieldDump, SourceSnapshot } from "./types";
 import { PUBLIC_BOUNDARY_NOTE } from "./types";
@@ -81,7 +82,7 @@ export async function capturePage(
   // Evidence of the boundary itself is kept even when stopped — but nothing
   // on the page is ever operated.
   const screenshot = await page.screenshot({ fullPage: true });
-  const rawDump = await page.evaluate(extractFieldsInPage);
+  const rawDump = await page.evaluate(EXTRACT_FIELDS_SCRIPT);
   const dump: FormFieldDump = { ...parseDumpBody(rawDump), url, capturedAt };
 
   return buildSourceSnapshot(

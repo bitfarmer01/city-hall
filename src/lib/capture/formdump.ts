@@ -3,99 +3,15 @@ import type { CapturedField, FormFieldDump } from "./types";
 /** Cap on per-field option lists; the total is always recorded alongside. */
 export const MAX_FIELD_OPTIONS = 100;
 
+/** A validated dump body: fields + submit buttons, without capture provenance. */
+export type DumpBody = Omit<FormFieldDump, "url" | "capturedAt">;
+
 /**
- * Runs inside the browser via page.evaluate — must stay self-contained:
- * no imports, no closure references. Returns attribute data only; it never
- * reads or sets input values, focuses anything, or dispatches events.
+ * The in-page extraction itself lives in extract-script.ts as a plain-JS
+ * script string: page.evaluate serializes the extractor into the browser,
+ * where no Node bundler exists to supply transform helpers, so the source
+ * must be plain JS. This module owns what happens on each side of the wire.
  */
-export function extractFieldsInPage(): { fields: unknown[]; submitButtons: string[] } {
-  const MAX = 100;
-
-  function text(s: unknown): string {
-    return typeof s === "string" ? s.trim() : "";
-  }
-
-  function labelFor(el: Element): string {
-    const input = el as HTMLInputElement;
-    if (input.id) {
-      const lab = document.querySelector(`label[for="${CSS.escape(input.id)}"]`);
-      if (lab && lab.textContent) return lab.textContent.trim();
-    }
-    const ariaLabel = input.getAttribute("aria-label");
-    if (ariaLabel) return ariaLabel.trim();
-    const labelledBy = input.getAttribute("aria-labelledby");
-    if (labelledBy) {
-      const parts = labelledBy
-        .split(/\s+/)
-        .map((ref) => document.getElementById(ref)?.textContent?.trim() ?? "")
-        .filter((t) => t.length > 0);
-      if (parts.length > 0) return parts.join(" ");
-    }
-    const wrap = input.closest("label");
-    if (wrap && wrap.textContent) return wrap.textContent.trim();
-    const placeholder = input.getAttribute("placeholder");
-    if (placeholder) return placeholder.trim();
-    return input.getAttribute("title")?.trim() ?? "";
-  }
-
-  function field(el: Element, tag: "input" | "textarea" | "select"): Record<string, unknown> {
-    const input = el as HTMLInputElement;
-    const label = labelFor(el);
-    const type = tag === "input" ? (input.getAttribute("type") ?? "text").toLowerCase() : tag === "select" ? "select-one" : "textarea";
-    const options: string[] = [];
-    let optionsTotal = 0;
-    if (tag === "select") {
-      for (const opt of (el as HTMLSelectElement).options) {
-        optionsTotal += 1;
-        if (options.length < MAX) options.push(opt.text.trim());
-      }
-    } else if (type === "radio" || type === "checkbox") {
-      optionsTotal = 1;
-      const value = input.getAttribute("value");
-      if (value) options.push(value.trim());
-    }
-    return {
-      tag,
-      type,
-      name: input.getAttribute("name") ?? "",
-      id: input.id ?? "",
-      label,
-      required: input.hasAttribute("required") || input.getAttribute("aria-required") === "true",
-      requiredMarker: label.includes("*") || (input.getAttribute("placeholder") ?? "").includes("*"),
-      options,
-      optionsTotal,
-      accept: input.getAttribute("accept"),
-      multiple: input.hasAttribute("multiple"),
-    };
-  }
-
-  const fields: unknown[] = [];
-  for (const el of document.querySelectorAll("input")) {
-    const type = (el.getAttribute("type") ?? "text").toLowerCase();
-    // Attribute-only inventory: buttons and hidden inputs are not form fields
-    // an applicant fills; submit buttons are recorded separately below.
-    if (type === "submit" || type === "button" || type === "image" || type === "hidden" || type === "reset") {
-      continue;
-    }
-    fields.push(field(el, "input"));
-  }
-  for (const el of document.querySelectorAll("textarea")) {
-    fields.push(field(el, "textarea"));
-  }
-  for (const el of document.querySelectorAll("select")) {
-    fields.push(field(el, "select"));
-  }
-
-  const submitButtons: string[] = [];
-  for (const el of document.querySelectorAll("button, input[type=submit]")) {
-    const label =
-      el instanceof HTMLInputElement ? (el.value ?? "") : ((el as HTMLElement).innerText ?? "");
-    const trimmed = text(label).replace(/\s+/g, " ");
-    if (trimmed) submitButtons.push(trimmed);
-  }
-
-  return { fields, submitButtons };
-}
 
 /**
  * Validates and normalizes the dump body — the part the in-page extractor
@@ -103,7 +19,7 @@ export function extractFieldsInPage(): { fields: unknown[]; submitButtons: strin
  * when reading a stored fields.json; throws on structural garbage, because a
  * malformed dump is evidence corruption, never silently defaulted.
  */
-export function parseDumpBody(raw: unknown): Omit<FormFieldDump, "url" | "capturedAt"> {
+export function parseDumpBody(raw: unknown): DumpBody {
   if (typeof raw !== "object" || raw === null) {
     throw new Error(`field dump must be an object, got ${typeof raw}`);
   }
