@@ -55,4 +55,35 @@ describe("canonicalize", () => {
     expect(result.text).toBe("i need a copy of my birth certificate");
     expect(result.tokens).toEqual(["copy", "birth", "certificate"]);
   });
+
+  // Non-ASCII canonicalization — PINNED behavior, not desired behavior
+  // (S3 finding M2): canonicalize strips every non-ASCII code unit without
+  // Unicode normalization. Today's output is deterministic and fail-closed
+  // (no throw, no invented match); a future sanitizer change (NFKC folding,
+  // diacritic folding) must land as a reviewed diff to these pins.
+  describe("non-ASCII canonicalization (pinned, S3 finding M2)", () => {
+    it("strips the accent from é, mangling the token", () => {
+      expect(canonicalize("café permit")).toEqual({ text: "caf permit", tokens: ["caf", "permit"] });
+      expect(canonicalize("CAFÉ")).toEqual({ text: "caf", tokens: ["caf"] });
+    });
+
+    it("canonicalizes full-width input to nothing (silent no-match)", () => {
+      expect(canonicalize("ｄｏｇ ｌｉｃｅｎｓｅ")).toEqual({ text: "", tokens: [] });
+    });
+
+    it("strips combining marks while keeping the base character", () => {
+      expect(canonicalize("dog\u0301 license")).toEqual({ text: "dog license", tokens: ["dog", "license"] });
+    });
+
+    it("keeps accent-split fragments in their original positions", () => {
+      // "dóg" is d + ó + g: the stripped ó becomes a separator, and the
+      // fragments stay ordered — today this mis-ranks retrieval (the "d g"
+      // bag is junk), which is why the behavior is pinned.
+      expect(canonicalize("dóg license")).toEqual({ text: "d g license", tokens: ["d", "g", "license"] });
+    });
+
+    it("strips underscore and î, splitting the token", () => {
+      expect(canonicalize("_permît")).toEqual({ text: "perm t", tokens: ["perm", "t"] });
+    });
+  });
 });

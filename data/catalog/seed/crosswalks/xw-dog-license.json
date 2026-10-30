@@ -11,6 +11,7 @@
   "testCases": [
     { "utterance": "I want to license my dog", "expectedServiceIds": ["svc:dohmh:dog-license"] },
     { "utterance": "dog license", "expectedServiceIds": ["svc:dohmh:dog-license"] },
-    { "utterance": "renew my dog's license", "expectedServiceIds": ["svc:dohmh:dog-license"] }
+    { "utterance": "renew my dog's license", "expectedServiceIds": ["svc:dohmh:dog-license"] },
+    { "utterance": "KA-01890", "expectedServiceIds": ["svc:dohmh:dog-license"] }
   ]
 }

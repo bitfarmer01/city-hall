@@ -176,4 +176,37 @@ describe("llm_assist isolation", () => {
     await resolver.resolve(NO_MATCH);
     expect(injected.all()).toHaveLength(1);
   });
+
+  // S4 finding F1/H2, end to end: a malformed model response must degrade
+  // to a logged no-match inside resolve(), never throw out of it.
+  it.each([
+    ["serviceIds is a number", async () => ({ serviceIds: 42 as unknown as string[] })],
+    ["serviceIds is null", async () => ({ serviceIds: null as unknown as string[] })],
+    ["result is a truthy non-object", (async () => "garbage") as unknown as LlmAssistFn],
+    ["result is an empty string", (async () => "") as unknown as LlmAssistFn],
+  ])("malformed fallback output (%s) resolves as a logged no-match, never a throw", async (_label, fallback) => {
+    const resolver = makeResolver({ llmAssist: fallback });
+
+    const result = await resolver.resolve(NO_MATCH);
+
+    expect(result.serviceIds).toEqual([]);
+    expect(result.resolutionLayer).toBe("llm_assist");
+    const entry = resolver.llmLog()[0];
+    expect(entry?.acceptedServiceIds).toEqual([]);
+    expect(entry?.error).toMatch(/^malformed llm_assist result shape:/);
+  });
+});
+
+describe("search idf robustness (S4 finding F2/H3)", () => {
+  it("a corpus-absent junk token cannot no-match an otherwise-resolvable query", async () => {
+    const resolver = makeResolver();
+
+    const clean = await resolver.resolve("from renew");
+    expect(clean.resolutionLayer).toBe("search-fallback");
+    expect(clean.serviceIds).toHaveLength(4);
+
+    const withJunk = await resolver.resolve("from renew zqvwk");
+    expect(withJunk.resolutionLayer).toBe(clean.resolutionLayer);
+    expect(withJunk.serviceIds).toEqual(clean.serviceIds);
+  });
 });

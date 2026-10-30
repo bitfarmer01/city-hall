@@ -13,6 +13,7 @@
   "testCases": [
     { "utterance": "get a sewer pipe map", "expectedServiceIds": ["svc:dep:water-tap-permit"] },
     { "utterance": "water tap permit", "expectedServiceIds": ["svc:dep:water-tap-permit"] },
-    { "utterance": "permit to plug a water tap", "expectedServiceIds": ["svc:dep:water-tap-permit"] }
+    { "utterance": "permit to plug a water tap", "expectedServiceIds": ["svc:dep:water-tap-permit"] },
+    { "utterance": "tap water", "expectedServiceIds": ["svc:dep:water-tap-permit"] }
   ]
 }

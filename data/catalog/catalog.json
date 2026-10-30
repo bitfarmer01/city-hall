@@ -162,6 +162,12 @@
             "svc:dohmh:dog-license"
           ],
           "utterance": "renew my dog's license"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dohmh:dog-license"
+          ],
+          "utterance": "KA-01890"
         }
       ],
       "utterances": [
@@ -195,6 +201,12 @@
             "svc:buildings:elevator-escalator-inspection"
           ],
           "utterance": "escalator inspector appointment"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:buildings:elevator-escalator-inspection"
+          ],
+          "utterance": "appointment"
         }
       ],
       "utterances": [
@@ -375,6 +387,12 @@
             "svc:dep:water-tap-permit"
           ],
           "utterance": "permit to plug a water tap"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dep:water-tap-permit"
+          ],
+          "utterance": "tap water"
         }
       ],
       "utterances": [

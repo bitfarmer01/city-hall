@@ -11,6 +11,7 @@
   "testCases": [
     { "utterance": "get my building's elevator inspected", "expectedServiceIds": ["svc:buildings:elevator-escalator-inspection"] },
     { "utterance": "elevator inspection", "expectedServiceIds": ["svc:buildings:elevator-escalator-inspection"] },
-    { "utterance": "escalator inspector appointment", "expectedServiceIds": ["svc:buildings:elevator-escalator-inspection"] }
+    { "utterance": "escalator inspector appointment", "expectedServiceIds": ["svc:buildings:elevator-escalator-inspection"] },
+    { "utterance": "appointment", "expectedServiceIds": ["svc:buildings:elevator-escalator-inspection"] }
   ]
 }
