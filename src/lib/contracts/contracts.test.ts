@@ -337,12 +337,19 @@ describe("contracts", () => {
       expect(parsed.capturedAt).toBeUndefined();
     });
 
-    it("rejects non-http(s) schemes on source URLs", () => {
+    it("rejects non-https schemes on source URLs", () => {
       const evil = {
         ...hic.estimate,
         tiers: [{ ...hic.estimate.tiers[0], sourceUrl: "javascript:void(0)" }],
       };
       expect(EstimateBlockSchema.safeParse(evil).success).toBe(false);
+      // PR #11 shakedown repro: /^https?$/ parsed plain http clean while the
+      // schema name promised https.
+      const insecure = {
+        ...hic.estimate,
+        tiers: [{ ...hic.estimate.tiers[0], sourceUrl: "http://insecure.example/article" }],
+      };
+      expect(EstimateBlockSchema.safeParse(insecure).success).toBe(false);
     });
   });
 

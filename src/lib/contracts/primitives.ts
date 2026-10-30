@@ -36,11 +36,13 @@ export const ServiceIdSchema = z
 export type ServiceId = z.infer<typeof ServiceIdSchema>;
 
 /**
- * Consumer-facing http(s) URL. `javascript:`/`data:`/`file:` and friends are
- * rejected (panel S4-H1, empirically probed on zod 4.6.7 — the protocol
- * regex matches without the colon).
+ * https-only URL. `http:` is rejected along with `javascript:`/`data:`/`file:`
+ * and friends — the name promises https, so the protocol regex must too
+ * (panel S4-H1, regex empirically probed on zod 4.6.7 — it matches without
+ * the colon; `?` dropped per the PR #11 shakedown, which reproduced plain
+ * http parsing clean under /^https?$/).
  */
-export const HttpsUrlSchema = z.url({ protocol: /^https?$/ });
+export const HttpsUrlSchema = z.url({ protocol: /^https$/ });
 
 /**
  * SourceSnapshot reference. The catalog's `SNAPSHOT_ID_PATTERN` (`snap:` +
