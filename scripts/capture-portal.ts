@@ -2,7 +2,7 @@
 /**
  * Capture one public portal page as a hashed SourceSnapshot.
  *
- *   npx tsx scripts/capture-portal.ts <url> [--root fixtures/portal]
+ *   npx tsx scripts/capture-portal.ts <url> [--root fixtures/snapshots]
  *
  * Public-boundary policy (locked decision 10): login walls, NYC.ID prompts,
  * and anti-bot signals stop the capture — they are never bypassed. A stopped
@@ -13,7 +13,7 @@
 import { chromium } from "playwright";
 
 import { capturePage } from "../src/lib/capture/driver";
-import { writeSnapshot } from "../src/lib/capture/store";
+import { DEFAULT_SNAPSHOT_ROOT, writeSnapshot } from "../src/lib/capture/store";
 
 interface CliArgs {
   url: string;
@@ -22,17 +22,25 @@ interface CliArgs {
 
 function parseArgs(argv: string[]): CliArgs {
   const positional: string[] = [];
-  let root = "fixtures/portal";
+  let root: string | undefined = DEFAULT_SNAPSHOT_ROOT;
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === "--root") {
-      root = argv[++i] ?? root;
+      const value = argv[++i];
+      // A valueless --root must error, not silently keep the default: the
+      // operator asked for a specific root, and capture/replay must agree
+      // on where evidence lands (M11).
+      if (value === undefined || value.startsWith("--")) {
+        console.error("error: --root requires a value, e.g. --root fixtures/snapshots");
+        process.exit(2);
+      }
+      root = value;
     } else {
       positional.push(argv[i]);
     }
   }
   const url = positional[0];
   if (!url) {
-    console.error("usage: npx tsx scripts/capture-portal.ts <url> [--root fixtures/portal]");
+    console.error(`usage: npx tsx scripts/capture-portal.ts <url> [--root ${DEFAULT_SNAPSHOT_ROOT}]`);
     process.exit(2);
   }
   return { url, root };

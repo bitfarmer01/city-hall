@@ -78,11 +78,27 @@ export interface SnapshotArtifact {
 }
 
 /** Canonical artifact filenames of a snapshot bundle. */
-export type ArtifactName = "page.html" | "screenshot.png" | "fields.json" | "network.json";
+export type ArtifactName = "fields.json" | "meta-bound.json" | "network.json" | "page.html" | "screenshot.png";
+
+/** Every artifact filename a snapshot may contain — anything else is rejected at parse and build time. */
+export const ARTIFACT_NAMES: readonly ArtifactName[] = [
+  "fields.json",
+  "meta-bound.json",
+  "network.json",
+  "page.html",
+  "screenshot.png",
+];
 
 /**
  * SourceSnapshot record (build spec data model): every displayed claim in the
  * catalog traces to one of these. The id is content-derived — see hash.ts.
+ *
+ * Threat-model note: a content address binds bytes→id, not id→reality. A
+ * full rewrite of a snapshot (artifacts + meta + meta-bound record, all
+ * consistent) produces a DIFFERENT id, not an undetectable forgery; and
+ * swapping the committed corpus for a rewritten bundle surfaces as a
+ * reviewable diff via the pinned CAPTURE_FIXTURE_ID literal in
+ * scripts/build-catalog.ts.
  */
 export interface SourceSnapshot {
   /** `snap:{sha256-12}` — bundle content hash, first 12 hex chars. */
@@ -103,11 +119,42 @@ export interface SourceSnapshot {
   boundarySignals: string[];
   /** Fixed attestation for public-boundary captures. */
   notes: string | null;
+  /** Capture schema version this snapshot was written under; the verifier
+   * refuses snapshots from other schema eras (S4 M-3). */
+  captureSchema: string;
   artifacts: SnapshotArtifact[];
 }
 
-/** Semantic version of this capture-harness record schema (meta.json + fields.json). */
-export const CAPTURE_SCHEMA_VERSION = "0.1.0";
+/**
+ * Semantic version of this capture-harness record schema (meta.json + fields.json).
+ * 0.2.0: governance fields are bound into the integrity chain — every snapshot
+ * carries a hashed governance.json artifact and the bundle id covers it
+ * (schema 0.1.0 snapshots predate the binding and fail verification closed).
+ * 0.3.0: meta-bound.json replaces governance.json — the canonical record now
+ * covers EVERY meta field except artifacts (self-hashing) and id (derived
+ * from the bundle itself, bound by the bundle↔id check), so provenance
+ * fields like capturedAt/httpStatus/notes are tamper-evident too.
+ */
+export const CAPTURE_SCHEMA_VERSION = "0.3.0";
+
+/** The artifact holding the canonical serialization of every meta field except id and artifacts. */
+export const META_BOUND_ARTIFACT_NAME = "meta-bound.json";
+
+/** Closed vocabulary of capture methods. */
+export const CAPTURE_METHODS: readonly CaptureMethod[] = ["headless"];
+
+/** Closed vocabulary of capture modes. */
+export const CAPTURE_MODES: readonly CaptureMode[] = ["public_reachable", "authenticated_unreachable"];
+
+/** Closed vocabulary of boundary kinds. */
+export const BOUNDARY_KINDS: readonly BoundaryKind[] = [
+  "none",
+  "login_wall",
+  "nyc_id",
+  "anti_bot",
+  "rate_limited",
+  "error",
+];
 
 /** Fixed attestation stored on every snapshot this harness produces. */
 export const PUBLIC_BOUNDARY_NOTE =

@@ -38,7 +38,7 @@ const SURCHARGE_FIXTURE = [
   {
     stepId: "stp:svc:dcwp:home-improvement-contractor-license:010",
     note: "Card payments carry a 2% convenience fee; eCheck is free.",
-    sourceRefs: ["snap:a59b2828c958"],
+    sourceRefs: ["snap:a777dc9a2500"],
   },
 ];
 

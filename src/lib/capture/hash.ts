@@ -28,16 +28,20 @@ export function snapshotId(bundleHash: string): string {
   return `snap:${bundleHash.slice(0, 12)}`;
 }
 
+/** Snapshot ids and directory names are always 12 hex chars of bundle hash. */
+export const SNAPSHOT_ID_PATTERN = /^snap:[0-9a-f]{12}$/;
+export const SNAPSHOT_DIR_PATTERN = /^snap_[0-9a-f]{12}$/;
+
 /** ":" is not filesystem-safe; snapshots live in `snap_<hex12>` directories. */
 export function snapshotDirName(id: string): string {
   const rest = parseId(id);
   return `snap_${rest}`;
 }
 
-/** Inverse of snapshotDirName. */
+/** Inverse of snapshotDirName — rejects anything but the exact directory shape. */
 export function snapshotIdFromDirName(dirName: string): string {
-  if (!dirName.startsWith("snap_")) {
-    throw new Error(`not a snapshot directory name: ${dirName}`);
+  if (!SNAPSHOT_DIR_PATTERN.test(dirName)) {
+    throw new Error(`not a snapshot directory name (expected snap_<12 hex>): ${dirName}`);
   }
   return `snap:${dirName.slice("snap_".length)}`;
 }

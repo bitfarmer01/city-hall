@@ -1,0 +1,5 @@
+# Snapshot artifacts are hash-verified evidence: git must never rewrite their
+# bytes (e.g. CRLF conversion on Windows checkouts), or every integrity check
+# fails for files nobody touched.
+fixtures/snapshots/** -text
+data/snapshots/** -text

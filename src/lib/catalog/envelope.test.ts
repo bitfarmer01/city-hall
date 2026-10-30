@@ -6,7 +6,7 @@ import type { AgencyRecord } from "./types";
 
 // Real values: DCWP verified in the research session (art_mcM1Ssao §5.1,
 // [N2]/[N3]); the $200 two-year HIC fee is quoted on the captured KA-01808
-// page (fixtures/snapshots/snap_a59b2828c958 — the real bundle id).
+// page (fixtures/snapshots/snap_a777dc9a2500 — the real bundle id).
 const DCWP: AgencyRecord = {
   id: "nyc-dcwp",
   name: "Department of Consumer and Worker Protection",
@@ -43,7 +43,7 @@ function hicInput(): EnvelopeBuildInput {
         identifier: feeId("dcwp", "home-improvement-contractor-license", "two-year-term"),
         price: 200,
         description: "Two-year license term. Source: NYC311 KA-01808, captured 2026-10-30.",
-        sourceRefs: ["snap:a59b2828c958"],
+        sourceRefs: ["snap:a777dc9a2500"],
         capturedAt: "2026-10-30",
       },
     ],
@@ -95,7 +95,7 @@ describe("buildServiceEnvelope", () => {
         price: 200,
         priceCurrency: "USD",
         description: "Two-year license term. Source: NYC311 KA-01808, captured 2026-10-30.",
-        "x:sourceRefs": ["snap:a59b2828c958"],
+        "x:sourceRefs": ["snap:a777dc9a2500"],
         "x:capturedAt": "2026-10-30",
       },
     ]);
