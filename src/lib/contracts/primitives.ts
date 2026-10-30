@@ -53,6 +53,18 @@ export const COVERAGE_DOMAINS_COVER_ALL = _domainsCoversAll;
 export const CoverageDomainSchema = z.enum(COVERAGE_DOMAINS);
 export type ContractsCoverageDomain = z.infer<typeof CoverageDomainSchema>;
 
+/**
+ * How a service's domain tag was assigned (PR #6 panel follow-up):
+ * `keyword` — a domain rule matched the article text; `fallback` — no
+ * pattern matched and the tag is the `other` catch-all. Without the source,
+ * "no pattern matched" is indistinguishable from "genuinely outside the five
+ * domains". Defined locally until the classifier's own field lands on main
+ * (fix/classifier-fidelity, PR #8) — then swap to a type-import lockstep.
+ */
+export const DOMAIN_SOURCES = ["keyword", "fallback"] as const;
+export type DomainSource = (typeof DOMAIN_SOURCES)[number];
+export const DomainSourceSchema = z.enum(DOMAIN_SOURCES);
+
 /** Classifier dispositions (D2b) — same lockstep guarantee as domains. */
 export const DISPOSITIONS = [
   "service",

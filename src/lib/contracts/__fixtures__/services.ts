@@ -79,12 +79,15 @@ const hicFixture: ServiceFixture = {
     title: "Home Improvement Contractor License",
     agency: { id: "nyc-dcwp", name: "Department of Consumer and Worker Protection" },
     domain: "licensing",
+    domainSource: "keyword",
+    domainAppliesToCatalog: true,
     disposition: {
       disposition: "service",
       subtype: "apply",
       reason: "action:apply",
       ruleId: "verb-apply",
       classifierVersion: "fixture",
+      evidence: { kind: "index-text", span: "Home Improvement Contractor License" },
     },
   },
   estimate: {
@@ -176,12 +179,15 @@ const depFixture: ServiceFixture = {
     title: "Water Tap Plug or Disconnect",
     agency: { id: "nyc-dep", name: "Department of Environmental Protection" },
     domain: "permits",
+    domainSource: "keyword",
+    domainAppliesToCatalog: true,
     disposition: {
       disposition: "service",
       subtype: "apply",
       reason: "action:apply",
       ruleId: "verb-apply",
       classifierVersion: "fixture",
+      evidence: { kind: "page-accordion", span: "Plug or cap a water tap" },
     },
   },
   estimate: {

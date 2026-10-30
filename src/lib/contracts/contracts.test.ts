@@ -138,6 +138,39 @@ describe("schema rejections", () => {
     ).toBe("State-run service");
   });
 
+  it("rejects the conflated evidence string the classifier used to emit", () => {
+    const result = ServiceSummarySchema.safeParse({
+      ...hic.summary,
+      disposition: { ...hic.summary.disposition, evidence: "verb-apply: Home Improvement Contractor License" },
+    });
+    expect(result.error?.issues[0].path).toContain("evidence");
+  });
+
+  it("rejects an unknown evidence kind", () => {
+    const result = ServiceSummarySchema.safeParse({
+      ...hic.summary,
+      disposition: { ...hic.summary.disposition, evidence: { kind: "vibes", span: "x" } },
+    });
+    expect(result.error?.issues[0].path).toContain("evidence");
+  });
+
+  it("rejects an unknown domain source", () => {
+    const result = ServiceSummarySchema.safeParse({ ...hic.summary, domainSource: "vibes" });
+    expect(result.error?.issues[0].path).toContain("domainSource");
+  });
+
+  it("couples domain applicability to the service disposition", () => {
+    const informational = {
+      ...hic.summary,
+      domainAppliesToCatalog: true,
+      disposition: { ...hic.summary.disposition, disposition: "informational" },
+    };
+    const rejected = ServiceSummarySchema.safeParse(informational);
+    expect(rejected.error?.issues[0].message).toMatch(/coverage-meaningful only for services/);
+    const accepted = ServiceSummarySchema.safeParse({ ...informational, domainAppliesToCatalog: false });
+    expect(accepted.success).toBe(true);
+  });
+
   it("rejects a tier-1 fee without a captured-at date", () => {
     const [fee] = hic.estimate.tiers;
     const result = EstimateBlockSchema.safeParse({ ...hic.estimate, tiers: [{ ...fee, capturedAt: undefined }] });
