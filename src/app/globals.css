@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
+/*
+ * Semantic design tokens (web-design skill, adapted to Tailwind v4).
+ * Components reference roles — surfaces, ink, lines, shadows — never raw
+ * hues, so the visual language changes in one file. Dark mode flips the
+ * same roles under the media query; no component carries dark: variants.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f7f8;
+  --foreground: #18181b;
+
+  /* Surfaces */
+  --surface-page: #f7f7f8;
+  --surface-card: #ffffff;
+  --surface-sunken: #f1f1f3;
+  --surface-hover: #fafafa;
+
+  /* Ink (text roles) */
+  --ink: #18181b;
+  --ink-secondary: #3f3f46;
+  --ink-muted: #71717a;
+  --ink-faint: #a1a1aa;
+  --ink-inverse: #ffffff;
+
+  /* Lines */
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+
+  /* Accent — civic near-black, not SaaS blue */
+  --accent: #18181b;
+  --accent-hover: #27272a;
+  --accent-fg: #ffffff;
+  --link: #1d4ed8;
+
+  /* Focus */
+  --ring: #0284c7;
+
+  /* Dependency levels — distinct, muted, colorblind-safe on light bg */
+  --tag-nyc-bg: #e4e4e7;      --tag-nyc-fg: #3f3f46;
+  --tag-nys-bg: #e0f2fe;      --tag-nys-fg: #075985;
+  --tag-federal-bg: #fef3c7;  --tag-federal-fg: #92400e;
+  --tag-utility-bg: #ccfbf1;  --tag-utility-fg: #115e59;
+  --tag-external-bg: #fde68a; --tag-external-fg: #78350f;
+  --tag-heuristic-bg: #ffedd5; --tag-heuristic-fg: #9a3412;
+
+  /* Shadows — lifted cards, not 1px borders alone */
+  --shadow-card: 0 1px 2px rgb(24 24 27 / 0.05), 0 2px 8px rgb(24 24 27 / 0.05);
+  --shadow-lifted: 0 2px 4px rgb(24 24 27 / 0.06), 0 12px 32px rgb(24 24 27 / 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #09090b;
+    --foreground: #f4f4f5;
+
+    --surface-page: #09090b;
+    --surface-card: #18181b;
+    --surface-sunken: #27272a;
+    --surface-hover: #202024;
+
+    --ink: #f4f4f5;
+    --ink-secondary: #d4d4d8;
+    --ink-muted: #a1a1aa;
+    --ink-faint: #71717a;
+    --ink-inverse: #18181b;
+
+    --line: #27272a;
+    --line-strong: #3f3f46;
+
+    --accent: #f4f4f5;
+    --accent-hover: #e4e4e7;
+    --accent-fg: #18181b;
+    --link: #93c5fd;
+
+    --ring: #38bdf8;
+
+    --tag-nyc-bg: #27272a;      --tag-nyc-fg: #d4d4d8;
+    --tag-nys-bg: #0c3a5c;      --tag-nys-fg: #bae6fd;
+    --tag-federal-bg: #453012;  --tag-federal-fg: #fde68a;
+    --tag-utility-bg: #0d3d38;  --tag-utility-fg: #99f6e4;
+    --tag-external-bg: #453012; --tag-external-fg: #fde68a;
+    --tag-heuristic-bg: #4a230c; --tag-heuristic-fg: #fdba74;
+
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 2px 8px rgb(0 0 0 / 0.4);
+    --shadow-lifted: 0 2px 4px rgb(0 0 0 / 0.5), 0 12px 32px rgb(0 0 0 / 0.5);
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-surface-page: var(--surface-page);
+  --color-surface-card: var(--surface-card);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-hover: var(--surface-hover);
+
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-ink-inverse: var(--ink-inverse);
+
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-link: var(--link);
+  --color-ring: var(--ring);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-lifted: var(--shadow-lifted);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: var(--surface-page);
+  color: var(--ink);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+ * Visible focus for keyboard users (a11y smoke pins this): a 2px ring with
+ * offset on every interactive element.
+ */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
