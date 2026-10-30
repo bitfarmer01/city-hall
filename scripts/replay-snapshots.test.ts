@@ -1,4 +1,4 @@
-import { mkdir, mkdtemp, writeFile } from "node:fs/promises";
+import { chmod, mkdir, mkdtemp, readdir, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
@@ -98,5 +98,70 @@ describe("replay CLI (spawned, exit codes per M14)", () => {
   it("exits non-zero when the root does not exist", () => {
     const result = runReplay(["--root", "/nonexistent/snapshot-root-xyz"]);
     expect(result.status).not.toBe(0);
+  });
+});
+
+describe("replay CLI (spawned, one tampered row per failure mode, M5)", () => {
+  // Each case builds a fully valid governed root, corrupts exactly one thing,
+  // and asserts the real CLI exits non-zero with the designed complaint. Five
+  // cheap spawns, no browser — the CLI is the gate CI actually runs.
+  const modes: Array<{
+    name: string;
+    mutate: (root: string) => Promise<void>;
+    expectError: RegExp;
+  }> = [
+    {
+      name: "hash mismatch (captured artifact byte flipped)",
+      mutate: async (root) => {
+        const snapDir = path.join(root, (await readdir(root)).find((d) => d.startsWith("snap_"))!);
+        await writeFile(path.join(snapDir, "page.html"), Buffer.from("<html>tampered</html>"));
+      },
+      expectError: /failed integrity/,
+    },
+    {
+      name: "strip-governance (meta.json provenance flipped, meta-bound stale)",
+      mutate: async (root) => {
+        const snapDir = path.join(root, (await readdir(root)).find((d) => d.startsWith("snap_"))!);
+        const metaPath = path.join(snapDir, "meta.json");
+        // Keep the pair internally consistent so the PARSER accepts it — the
+        // stale meta-bound.json binding is what must catch this tamper.
+        const meta = JSON.parse(await readFile(metaPath, "utf8")) as { captureMode: string; stoppedAt: string };
+        meta.captureMode = "authenticated_unreachable";
+        meta.stoppedAt = "login_wall";
+        await writeFile(metaPath, JSON.stringify(meta, null, 2) + "\n");
+      },
+      expectError: /meta does not match/,
+    },
+    {
+      name: "unreadable evidence (artifact chmod 000)",
+      mutate: async (root) => {
+        const snapDir = path.join(root, (await readdir(root)).find((d) => d.startsWith("snap_"))!);
+        await chmod(path.join(snapDir, "page.html"), 0o000);
+      },
+      expectError: /EACCES|permission denied/i,
+    },
+    {
+      name: "malformed governance (meta-bound.json replaced with junk bytes)",
+      mutate: async (root) => {
+        const snapDir = path.join(root, (await readdir(root)).find((d) => d.startsWith("snap_"))!);
+        await writeFile(path.join(snapDir, "meta-bound.json"), Buffer.from("{}"));
+      },
+      expectError: /failed integrity/,
+    },
+    {
+      name: "expectations-EACCES (expectations dir unreadable)",
+      mutate: async (root) => {
+        await chmod(path.join(root, "expectations"), 0o000);
+      },
+      expectError: /EACCES|permission denied/i,
+    },
+  ];
+
+  it.each(modes)("exits non-zero when $name", async ({ mutate, expectError }) => {
+    const root = await governedRootWith("Example service", ["Applicant full name"]);
+    await mutate(root);
+    const result = runReplay(["--root", root]);
+    expect(result.status).not.toBe(0);
+    expect(`${result.stderr}${result.stdout}`).toMatch(expectError);
   });
 });
