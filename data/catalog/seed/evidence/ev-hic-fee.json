@@ -1,0 +1,8 @@
+{
+  "id": "ev-hic-fee",
+  "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01808",
+  "quote": "The fee for the full two-year license term is $200.",
+  "capturedAt": "2026-10-30",
+  "capturedBy": "Committed fixture src/lib/inventory/__fixtures__/nyc311/article-ka-01808.html (snapshot snap:19f5de5b4340) and D3b capture snap:a59b2828c958 of the same page",
+  "note": "Quoted from the article's fee section; both committed copies of the page carry this sentence."
+}

@@ -1,0 +1,26 @@
+{
+  "catalogId": "svc:dohmh:birth-certificate-order",
+  "ka": "KA-01012",
+  "domain": "public-records",
+  "serviceType": "Records",
+  "alternateNames": [],
+  "serviceOutputName": "Certified copy of a birth certificate",
+  "channels": [
+    { "@type": "ServiceChannel", "name": "Mail" }
+  ],
+  "fees": [],
+  "formIds": ["form:dohmh:unnumbered-be955853", "form:dohmh:unnumbered-e515d15e"],
+  "steps": [
+    {
+      "id": "stp:svc:dohmh:birth-certificate-order:010",
+      "serviceId": "svc:dohmh:birth-certificate-order",
+      "sequence": 1,
+      "phase": "application",
+      "requirement": "Submit a completed birth certificate application",
+      "fulfillmentMethod": "mail_in",
+      "responsibleAgency": { "id": "nyc-dohmh", "name": "Department of Health and Mental Hygiene" },
+      "notes": "Committed application forms: 'Application to Request an NYC Birth Certificate' (form:dohmh:unnumbered-be955853) and 'Premium Mail Service Birth Certificate Application' (form:dohmh:unnumbered-e515d15e); the premium form states Mail Service. Both extracted field-by-field.",
+      "sourceRefs": ["snap:be95585389a7", "snap:e515d15e176e", "snap:63aff11a928c"]
+    }
+  ]
+}

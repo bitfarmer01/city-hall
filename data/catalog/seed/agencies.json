@@ -1,0 +1,42 @@
+[
+  {
+    "id": "nyc-311",
+    "name": "NYC311",
+    "abbreviation": "311",
+    "level": "nyc",
+    "urls": ["https://portal.311.nyc.gov/all-articles/"],
+    "schemaOrg": { "@type": "GovernmentOrganization", "name": "NYC311", "identifier": "nyc-311" }
+  },
+  {
+    "id": "nyc-buildings",
+    "name": "Department of Buildings",
+    "abbreviation": "DOB",
+    "level": "nyc",
+    "urls": ["https://www.nyc.gov/site/buildings/dob/use-dob-now.page"],
+    "schemaOrg": { "@type": "GovernmentOrganization", "name": "Department of Buildings", "identifier": "nyc-buildings" }
+  },
+  {
+    "id": "nyc-dcwp",
+    "name": "Department of Consumer and Worker Protection",
+    "abbreviation": "DCWP",
+    "level": "nyc",
+    "urls": ["https://www.nyc.gov/site/dca/businesses/licenses-apply.page"],
+    "schemaOrg": { "@type": "GovernmentOrganization", "name": "Department of Consumer and Worker Protection", "identifier": "nyc-dcwp" }
+  },
+  {
+    "id": "nyc-dep",
+    "name": "Department of Environmental Protection",
+    "abbreviation": "DEP",
+    "level": "nyc",
+    "urls": ["https://www.nyc.gov/site/dep/about/water-service-connections-private-water-mains.page"],
+    "schemaOrg": { "@type": "GovernmentOrganization", "name": "Department of Environmental Protection", "identifier": "nyc-dep" }
+  },
+  {
+    "id": "nyc-dohmh",
+    "name": "Department of Health and Mental Hygiene",
+    "abbreviation": "DOHMH",
+    "level": "nyc",
+    "urls": [],
+    "schemaOrg": { "@type": "GovernmentOrganization", "name": "Department of Health and Mental Hygiene", "identifier": "nyc-dohmh" }
+  }
+]

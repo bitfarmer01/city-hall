@@ -1,0 +1,967 @@
+{
+  "schemaVersion": "d3a.1",
+  "generatedAt": "2026-10-30T17:46:16Z",
+  "form": {
+    "id": "form:dohmh:unnumbered-e515d15e",
+    "agency": "dohmh",
+    "formNumber": null,
+    "title": "Premium Mail Service Application To Request an NYC Birth Certificate",
+    "sourceUrl": "https://www.nyc.gov/assets/doh/downloads/pdf/vr/premium-birth-certificate-app.pdf",
+    "sha256": "e515d15e176e1c15ccecef07159e76b4d0b5f3832d3ec9477e71185fb18e10ce",
+    "pages": 5,
+    "fillableClass": "acroform",
+    "snapshotId": "snap:e515d15e176e"
+  },
+  "fields": [
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:cc6180cc",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 Name of hospital, birthing center or, if at home, street address, city, state, ZIP code",
+      "visibleLabel": "NAME OF HOSPITAL, BIRTHING CENTER, OR, IF AT HOME, STREET ADDRESS, CITY, STATE, ZIP CODE",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 23.76,
+        "y": 116.24,
+        "w": 564.55,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:12dbfce1",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S4Total",
+      "visibleLabel": "Plus premium mail service processing fee: $7.50",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 472.6,
+        "y": 123.68,
+        "w": 74.16,
+        "h": 14.12
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:d8ea49c5",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 Father/parent first name",
+      "visibleLabel": "FIRST NAME LAST NAME",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 23.88,
+        "y": 161.16,
+        "w": 276.0,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:79d9cc54",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 Father/parent last name",
+      "visibleLabel": "FIRST NAME LAST NAME",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 311.76,
+        "y": 161.16,
+        "w": 276.55,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:78dd1204",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S4YearsSearched",
+      "visibleLabel": "Multiplied by $15 for each birth certificate equals: $",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 397.96,
+        "y": 162.0,
+        "w": 18.92,
+        "h": 14.12
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:4e5aa798",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S4FeeYearsSearched",
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 472.6,
+        "y": 163.0,
+        "w": 74.16,
+        "h": 14.12
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:a8c0c32d",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S4FeeBirthCertNumber",
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 472.6,
+        "y": 182.16,
+        "w": 74.16,
+        "h": 14.12
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:6ca1da80",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S4NoBirthCert",
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 472.6,
+        "y": 201.32,
+        "w": 74.16,
+        "h": 14.12
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:e4730b84",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 Mother/parent first name",
+      "visibleLabel": "FIRST NAME MAIDEN LAST NAME",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 23.88,
+        "y": 206.48,
+        "w": 276.0,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:a13d367f",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 Mother/parent maiden last name",
+      "visibleLabel": "FIRST NAME MAIDEN LAST NAME",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 311.76,
+        "y": 206.48,
+        "w": 276.55,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:89831b8e",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "Borough where born (leave blank if unknown)",
+      "visibleLabel": "    ",
+      "fieldType": "radio",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 19.94,
+        "y": 257.9,
+        "w": 7.64,
+        "h": 7.64
+      },
+      "options": [
+        "/0",
+        "/1",
+        "/2",
+        "/3",
+        "/4"
+      ]
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:88bd3498",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S3 How many birth certificates",
+      "visibleLabel": "How many birth certificates will you need (maximum of three)? O ne Two Three",
+      "fieldType": "radio",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 354.02,
+        "y": 266.9,
+        "w": 7.64,
+        "h": 7.64
+      },
+      "options": [
+        "/0",
+        "/1",
+        "/2"
+      ]
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:313c9a18",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 Sex on birth certificate",
+      "visibleLabel": "Sex on the birth certificate: Male Female X*",
+      "fieldType": "radio",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 168.62,
+        "y": 302.9,
+        "w": 7.64,
+        "h": 7.64
+      },
+      "options": [
+        "/0",
+        "/1",
+        "/2"
+      ]
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:d70def6b",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 End date for search",
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 361.78,
+        "y": 322.2,
+        "w": 176.92,
+        "h": 20.88
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:e245c923",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 Start date for search",
+      "visibleLabel": "information about search fees):",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 77.15,
+        "y": 322.2,
+        "w": 176.27,
+        "h": 20.88
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:66013eca",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 Birth date listed",
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 336.58,
+        "y": 378.12,
+        "w": 177.7,
+        "h": 21.12
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:0c1f11e8",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 First name",
+      "visibleLabel": "FIRST NAME MIDDLE NAME LAST NAME",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 23.88,
+        "y": 403.75,
+        "w": 183.6,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:c23628c7",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 Last name",
+      "visibleLabel": "FIRST NAME MIDDLE NAME LAST NAME",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 408.96,
+        "y": 403.75,
+        "w": 179.35,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:653eaf30",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S2 Middle name",
+      "visibleLabel": "FIRST NAME MIDDLE NAME LAST NAME",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 215.82,
+        "y": 403.75,
+        "w": 182.45,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:4b8e58a9",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S3 Why you are requesting a birth certificate",
+      "visibleLabel": "",
+      "fieldType": "radio",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 24.12,
+        "y": 500.76,
+        "w": 7.64,
+        "h": 7.64
+      },
+      "options": [
+        "/Choice 1",
+        "/Choice 15",
+        "/Choice 6",
+        "/Choice 11",
+        "/Choice 2",
+        "/Choice 16",
+        "/Choice 7",
+        "/Choice 12",
+        "/Choice 3",
+        "/Choice 17",
+        "/Choice 18",
+        "/Choice 22",
+        "/Choice 19",
+        "/Choice 20",
+        "/Choice 21",
+        "/Choice 8",
+        "/Choice 13",
+        "/Choice 4",
+        "/Choice 5",
+        "/Choice 9",
+        "/Choice 14",
+        "/Choice 10"
+      ]
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:10aa1126",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 Relationship to person named on birth cert",
+      "visibleLabel": "",
+      "fieldType": "radio",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 19.94,
+        "y": 535.46,
+        "w": 7.64,
+        "h": 7.64
+      },
+      "options": [
+        "/0",
+        "/1",
+        "/2"
+      ]
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:d99a3771",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 Email address",
+      "visibleLabel": "EMAIL ADDRESS",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 23.76,
+        "y": 571.88,
+        "w": 565.92,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:e6470fa5",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 Alternate phone number (if applicable)",
+      "visibleLabel": "PRIMARY PHONE NUMBER ALTERNATE PHONE NUMBER (IF APPLICABLE)",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 312.48,
+        "y": 598.74,
+        "w": 277.2,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:df949196",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 Primary phone number",
+      "visibleLabel": "PRIMARY PHONE NUMBER ALTERNATE PHONE NUMBER (IF APPLICABLE)",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 23.76,
+        "y": 598.74,
+        "w": 277.2,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:05816b5f",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 City",
+      "visibleLabel": "CITY STATE ZIP CODE",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 23.76,
+        "y": 625.6,
+        "w": 183.6,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:4ac58aa0",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 State",
+      "visibleLabel": "CITY STATE ZIP CODE",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 214.59,
+        "y": 625.6,
+        "w": 182.85,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:a6fecf92",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 Zip code",
+      "visibleLabel": "CITY STATE ZIP CODE",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 406.82,
+        "y": 625.6,
+        "w": 182.85,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:b54e0179",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 Apartment Number",
+      "visibleLabel": "MAILING ADDRESS APARTMENT NUMBER",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 454.32,
+        "y": 652.46,
+        "w": 135.36,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:6745045a",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 Mailing address",
+      "visibleLabel": "MAILING ADDRESS APARTMENT NUMBER",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 23.76,
+        "y": 652.46,
+        "w": 423.36,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:1bcc9a2a",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 First name",
+      "visibleLabel": "FIRST NAME MIDDLE NAME LAST NAME",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 23.76,
+        "y": 678.82,
+        "w": 183.6,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:ece68960",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 Last name",
+      "visibleLabel": "FIRST NAME MIDDLE NAME LAST NAME",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 406.82,
+        "y": 678.82,
+        "w": 182.85,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:68dd1a3f",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S1 Middle name",
+      "visibleLabel": "FIRST NAME MIDDLE NAME LAST NAME",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 214.59,
+        "y": 678.82,
+        "w": 182.85,
+        "h": 14.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-e515d15e:c12ed7b6",
+      "formId": "form:dohmh:unnumbered-e515d15e",
+      "nativeName": "S4 Date",
+      "visibleLabel": "SIGNATURE OF APPLICANT DATE (MONTH/DAY/YEAR)",
+      "fieldType": "text",
+      "requiredStatus": "not_marked_required",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "acroform",
+        "tool": "pypdf==6.21.4",
+        "confidence": 1.0
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "pdf-user-space-bottom-left",
+        "x": 382.5,
+        "y": 687.6,
+        "w": 177.32,
+        "h": 20.88
+      }
+    }
+  ],
+  "snapshot": {
+    "id": "snap:e515d15e176e",
+    "url": "https://www.nyc.gov/assets/doh/downloads/pdf/vr/premium-birth-certificate-app.pdf",
+    "capturedAt": "2026-10-30",
+    "method": "http_fetch",
+    "sha256": "e515d15e176e1c15ccecef07159e76b4d0b5f3832d3ec9477e71185fb18e10ce",
+    "httpStatus": 200,
+    "storagePath": "python/tests/fixtures/pdfs/premium-birth.pdf",
+    "notes": "public-boundary capture; no authentication"
+  }
+}
