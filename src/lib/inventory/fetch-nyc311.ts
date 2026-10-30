@@ -10,8 +10,13 @@ export const ALL_ARTICLES_URL = `${NYC311_PORTAL_BASE}/all-articles/`;
 export const INVENTORY_USER_AGENT =
   "city-hall-inventory/0.1 (+https://github.com/bitfarmer01/city-hall)";
 
-export async function fetchPage(url: string): Promise<string> {
-  const response = await fetch(url, { headers: { "user-agent": INVENTORY_USER_AGENT } });
+export async function fetchPage(url: string, timeoutMs?: number): Promise<string> {
+  const response = await fetch(url, {
+    headers: { "user-agent": INVENTORY_USER_AGENT },
+    // A hung fetch must time out, not hang the CI job; per-request callers
+    // opt in (Check A), existing callers keep no-timeout behavior.
+    ...(timeoutMs !== undefined ? { signal: AbortSignal.timeout(timeoutMs) } : {}),
+  });
   if (!response.ok) {
     throw new Error(`GET ${url} returned HTTP ${response.status}`);
   }
@@ -20,8 +25,8 @@ export async function fetchPage(url: string): Promise<string> {
 
 export const fetchIndexPage = (): Promise<string> => fetchPage(ALL_ARTICLES_URL);
 
-export const fetchArticlePage = (ka: KaNumber): Promise<string> =>
-  fetchPage(articleUrlFor(ka));
+export const fetchArticlePage = (ka: KaNumber, timeoutMs?: number): Promise<string> =>
+  fetchPage(articleUrlFor(ka), timeoutMs);
 
 export const fetchSearchPage = (query: string): Promise<string> =>
   fetchPage(`${NYC311_PORTAL_BASE}/search/?q=${encodeURIComponent(query)}`);
