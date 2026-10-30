@@ -1,206 +1,624 @@
 import { describe, expect, it } from "vitest";
-import { z } from "zod";
+
+import { buildServiceEnvelope, type EnvelopeBuildInput } from "../catalog/envelope";
+import { CATALOG_SCHEMA_VERSION, type AgencyRecord } from "../catalog/types";
+import type { CoverageDomain } from "../inventory/domain";
+import { CLASSIFIER_RULES_VERSION, type ArticleClassification } from "../inventory/classify";
+
+import agencySeeds from "../../../data/catalog/seed/agencies.json";
+import hicSeed from "../../../data/catalog/seed/services/svc-dcwp-home-improvement-contractor-license.json";
+import depSeed from "../../../data/catalog/seed/services/svc-dep-water-tap-permit.json";
 
 import {
+  EstimateBlockSchema,
+  TimelineEstimateSchema,
+} from "./estimate";
+import {
+  GetRequiredDocumentsRequestSchema,
+  GetServiceEstimateRequestSchema,
+  GetServiceEstimateResultSchema,
+  GetStepInstructionsRequestSchema,
   ApiErrorEnvelopeSchema,
   ApiResponseSchema,
-  EstimateBlockSchema,
-  GetServiceEstimateResultSchema,
-  GovernmentServiceSchema,
-  ResolveServicesResultSchema,
-  RequiredDocumentSchema,
-  ServiceSummarySchema,
-  StepInstructionSchema,
-} from "./index";
+  ResolveServicesRequestSchema,
+} from "./api";
+import { GovernmentServiceSchema } from "./government-service";
+import { GoalResolutionSchema } from "./resolution";
+import { RequiredDocumentSchema } from "./required-document";
+import { ServiceSummarySchema } from "./service-summary";
+import { StepInstructionSchema } from "./step-instruction";
 import { FIXTURE_VERSIONS, SERVICE_FIXTURES } from "./__fixtures__/services";
 
-const [hic, dep] = SERVICE_FIXTURES;
-
-/** One success envelope per tool, assembled from fixture data. */
-const resolveResult = {
-  ok: true,
-  tool: "resolve_services",
-  versions: { app: "0.1.0", schema: "0.1.0", catalog: "0.0.0-fixture", crosswalk: "0.0.0-fixture", embeddingModel: "0.0.0-fixture" },
-  data: {
-    resolution: {
-      serviceIds: [dep.service.identifier],
-      resolutionLayer: "alias-rules",
-      versions: FIXTURE_VERSIONS,
-    },
-    services: [dep.summary],
-  },
+/** Response versions for envelope tests — semver-stamped, fixture-marked. */
+const RESPONSE_VERSIONS = {
+  app: "0.0.0-fixture",
+  schema: CATALOG_SCHEMA_VERSION,
+  catalog: "0.0.0-fixture",
+  crosswalk: "0.0.0-fixture",
+  embeddingModel: "0.0.0-fixture",
 };
 
-const estimateResult = {
-  ok: true,
-  tool: "get_service_estimate",
-  versions: resolveResult.versions,
-  data: { serviceId: hic.service.identifier, estimate: hic.estimate },
+/** Parse → JSON round-trip → parse must yield the same value. */
+const roundTrips = <S extends { parse: (v: unknown) => unknown }>(schema: S, value: unknown): boolean => {
+  const first = schema.parse(value);
+  const second = schema.parse(JSON.parse(JSON.stringify(first)));
+  return JSON.stringify(first) === JSON.stringify(second);
 };
 
-const stepResult = {
-  ok: true,
-  tool: "get_step_instructions",
-  versions: resolveResult.versions,
-  data: { serviceId: dep.service.identifier, steps: dep.steps },
+// The catalog's linker supplies title/description/agency from the snapshot;
+// the seeds carry the domain-specific inputs verbatim.
+const agencyRecord = (id: string): AgencyRecord => {
+  const found = agencySeeds.find((agency) => agency.id === id);
+  if (!found) throw new Error(`agency ${id} missing from seed agencies`);
+  return found as AgencyRecord;
 };
 
-const documentsResult = {
-  ok: true,
-  tool: "get_required_documents",
-  versions: resolveResult.versions,
-  data: { serviceId: dep.service.identifier, documents: dep.documents },
-};
+describe("contracts", () => {
+  const [hic, dep] = SERVICE_FIXTURES;
 
-/** parse → JSON serialize → parse; the second parse must equal the first. */
-function roundTrips(schema: z.ZodType, value: unknown): boolean {
-  const once = schema.parse(value);
-  return JSON.stringify(schema.parse(JSON.parse(JSON.stringify(once)))) === JSON.stringify(once);
-}
-
-describe("contract fixtures", () => {
-  it("parse against every record schema", () => {
+  describe("fixtures parse and round-trip", () => {
     for (const fixture of SERVICE_FIXTURES) {
-      expect(() => GovernmentServiceSchema.parse(fixture.service)).not.toThrow();
-      expect(() => ServiceSummarySchema.parse(fixture.summary)).not.toThrow();
-      expect(() => EstimateBlockSchema.parse(fixture.estimate)).not.toThrow();
-      expect(() => z.array(StepInstructionSchema).parse(fixture.steps)).not.toThrow();
-      expect(() => z.array(RequiredDocumentSchema).parse(fixture.documents)).not.toThrow();
+      it(`parses the ${fixture.summary.id} fixture at full record depth`, () => {
+        expect(() => GovernmentServiceSchema.parse(fixture.service)).not.toThrow();
+        expect(() => ServiceSummarySchema.parse(fixture.summary)).not.toThrow();
+        expect(() => EstimateBlockSchema.parse(fixture.estimate)).not.toThrow();
+        for (const step of fixture.steps) {
+          expect(() => StepInstructionSchema.parse(step)).not.toThrow();
+        }
+        for (const document of fixture.documents) {
+          expect(() => RequiredDocumentSchema.parse(document)).not.toThrow();
+        }
+      });
+
+      it(`round-trips the ${fixture.summary.id} fixture stably`, () => {
+        expect(roundTrips(GovernmentServiceSchema, fixture.service)).toBe(true);
+        expect(roundTrips(ServiceSummarySchema, fixture.summary)).toBe(true);
+        expect(roundTrips(EstimateBlockSchema, fixture.estimate)).toBe(true);
+        for (const step of fixture.steps) {
+          expect(roundTrips(StepInstructionSchema, step)).toBe(true);
+        }
+        for (const document of fixture.documents) {
+          expect(roundTrips(RequiredDocumentSchema, document)).toBe(true);
+        }
+      });
     }
-  });
 
-  it("round-trip stable: parse → serialize → parse", () => {
-    for (const fixture of SERVICE_FIXTURES) {
-      expect(roundTrips(GovernmentServiceSchema, fixture.service)).toBe(true);
-      expect(roundTrips(ServiceSummarySchema, fixture.summary)).toBe(true);
-      expect(roundTrips(EstimateBlockSchema, fixture.estimate)).toBe(true);
-      expect(roundTrips(z.array(StepInstructionSchema), fixture.steps)).toBe(true);
-      expect(roundTrips(z.array(RequiredDocumentSchema), fixture.documents)).toBe(true);
-    }
-  });
-});
-
-describe("GoalResolution", () => {
-  it("accepts the explicit no-match state (empty ids)", () => {
-    const result = ResolveServicesResultSchema.parse({
-      ...resolveResult,
-      data: { resolution: { serviceIds: [], resolutionLayer: "llm_assist", versions: FIXTURE_VERSIONS }, services: [] },
+    it("pins FIXTURE_VERSIONS so a refactor to real-looking versions fails the suite", () => {
+      expect(FIXTURE_VERSIONS).toEqual({
+        catalogVersion: "0.0.0-fixture",
+        crosswalkVersion: "0.0.0-fixture",
+        embeddingModelVersion: "0.0.0-fixture",
+      });
     });
-    expect(result.data.resolution.serviceIds).toEqual([]);
   });
 
-  it("requires all three version stamps", () => {
-    const resolution = { serviceIds: [hic.service.identifier], resolutionLayer: "exact-id", versions: { catalogVersion: "c" } };
-    const result = ResolveServicesResultSchema.safeParse({ ...resolveResult, data: { resolution, services: [] } });
-    expect(result.error?.issues[0].path).toContain("crosswalkVersion");
-  });
-});
-
-describe("schema rejections", () => {
-  it("throws with a path when a required field is missing", () => {
-    const rest: Record<string, unknown> = { ...hic.summary };
-    delete rest.title;
-    const result = ServiceSummarySchema.safeParse(rest);
-    expect(result.error?.issues[0].path).toContain("title");
-  });
-
-  it("throws on unrecognized extra fields", () => {
-    const result = ServiceSummarySchema.safeParse({ ...hic.summary, bogus: true });
-    expect(result.error?.issues[0].message).toMatch(/[Uu]nrecognized key/);
-  });
-
-  it("rejects malformed service and step ids", () => {
-    expect(GovernmentServiceSchema.safeParse({ ...hic.service, identifier: "KA-01808" }).success).toBe(false);
-    expect(
-      StepInstructionSchema.safeParse({ ...hic.steps[0], id: "step-one" }).success,
-    ).toBe(false);
-  });
-
-  it("couples upload specs to the document_upload method", () => {
-    const [uploadStep] = hic.steps;
-    const withoutUpload = { ...uploadStep, upload: undefined };
-    const result = StepInstructionSchema.safeParse(withoutUpload);
-    expect(result.error?.issues[0].message).toMatch(/document_upload steps require an upload spec/);
-  });
-
-  it("rejects an upload spec on a non-upload step", () => {
-    const inPerson = { ...hic.steps[1], upload: hic.steps[0].upload };
-    const result = StepInstructionSchema.safeParse(inPerson);
-    expect(result.error?.issues[0].message).toMatch(/only valid on document_upload steps/);
-  });
-
-  it("requires a dependency note on non-NYC steps", () => {
-    const stateStep = { ...hic.steps[1], responsibleJurisdiction: "nys" };
-    const result = StepInstructionSchema.safeParse(stateStep);
-    expect(result.error?.issues[0].message).toMatch(/dependencyNote/);
-    expect(
-      StepInstructionSchema.parse({ ...stateStep, dependencyNote: "State-run service" }).dependencyNote,
-    ).toBe("State-run service");
-  });
-
-  it("rejects the conflated evidence string the classifier used to emit", () => {
-    const result = ServiceSummarySchema.safeParse({
-      ...hic.summary,
-      disposition: { ...hic.summary.disposition, evidence: "verb-apply: Home Improvement Contractor License" },
+  describe("schema rejections", () => {
+    it("throws with a path when a required field is missing", () => {
+      const rest: Record<string, unknown> = { ...hic.summary };
+      delete rest.title;
+      const result = ServiceSummarySchema.safeParse(rest);
+      expect(result.error?.issues[0].path).toContain("title");
     });
-    expect(result.error?.issues[0].path).toContain("evidence");
-  });
 
-  it("rejects an unknown evidence kind", () => {
-    const result = ServiceSummarySchema.safeParse({
-      ...hic.summary,
-      disposition: { ...hic.summary.disposition, evidence: { kind: "vibes", span: "x" } },
+    it("throws on unrecognized extra fields", () => {
+      const result = ServiceSummarySchema.safeParse({ ...hic.summary, bogus: true });
+      expect(result.error?.issues[0].message).toMatch(/[Uu]nrecognized key/);
     });
-    expect(result.error?.issues[0].path).toContain("evidence");
+
+    it("rejects malformed step ids", () => {
+      expect(StepInstructionSchema.safeParse({ ...hic.steps[0], id: "step-one" }).success).toBe(false);
+    });
+
+    it("rejects the conflated evidence string the classifier used to emit", () => {
+      const result = ServiceSummarySchema.safeParse({
+        ...hic.summary,
+        disposition: { ...hic.summary.disposition, evidence: "R006-service-action: Apply for a license" },
+      });
+      expect(result.error?.issues[0].path).toContain("evidence");
+    });
+
+    it("rejects an unknown evidence kind", () => {
+      const result = ServiceSummarySchema.safeParse({
+        ...hic.summary,
+        disposition: { ...hic.summary.disposition, evidence: { kind: "vibes", span: "x" } },
+      });
+      expect(result.error?.issues[0].path).toContain("evidence");
+    });
+
+    it("rejects an unknown domain source", () => {
+      const result = ServiceSummarySchema.safeParse({ ...hic.summary, domainSource: "vibes" });
+      expect(result.error?.issues[0].path).toContain("domainSource");
+    });
   });
 
-  it("rejects an unknown domain source", () => {
-    const result = ServiceSummarySchema.safeParse({ ...hic.summary, domainSource: "vibes" });
-    expect(result.error?.issues[0].path).toContain("domainSource");
-  });
-
-  it("couples domain applicability to the service disposition", () => {
-    const informational = {
-      ...hic.summary,
-      domainAppliesToCatalog: true,
-      disposition: { ...hic.summary.disposition, disposition: "informational" },
+  describe("canonical envelope conformance (panel B1/S1-M6)", () => {
+    const hicInput: EnvelopeBuildInput = {
+      catalogId: hicSeed.catalogId,
+      nyc311ArticleId: `nyc311-${hicSeed.ka}`,
+      nyc311ArticleUrl: `https://portal.311.nyc.gov/article/?kanumber=${hicSeed.ka}`,
+      // The linker joins these two from the inventory snapshot; the seed
+      // input carries the domain-specific fields verbatim.
+      title: "Home Improvement Contractor License",
+      description: "FIXTURE conformance description",
+      serviceType: hicSeed.serviceType,
+      alternateNames: hicSeed.alternateNames,
+      domain: hicSeed.domain as CoverageDomain,
+      agency: agencyRecord("nyc-dcwp"),
+      channels: hicSeed.channels,
+      fees: hicSeed.fees,
+      serviceOutputName: hicSeed.serviceOutputName,
     };
-    const rejected = ServiceSummarySchema.safeParse(informational);
-    expect(rejected.error?.issues[0].message).toMatch(/coverage-meaningful only for services/);
-    const accepted = ServiceSummarySchema.safeParse({ ...informational, domainAppliesToCatalog: false });
-    expect(accepted.success).toBe(true);
+
+    it("parses an envelope built by D4's own builder from the HIC seed record", () => {
+      const parsed = GovernmentServiceSchema.parse(buildServiceEnvelope(hicInput));
+      expect(parsed.identifier).toEqual([
+        "svc:dcwp:home-improvement-contractor-license",
+        "nyc311-KA-01808",
+      ]);
+      expect(parsed["x:coverageDomain"]).toBe("licensing");
+      expect(parsed.offers[0].identifier).toBe(hicSeed.fees[0].identifier);
+      expect(parsed.offers[0]["x:capturedAt"]).toBe("2026-10-30");
+    });
+
+    it("parses the DEP seed record, exercising an empty offers list", () => {
+      const depInput: EnvelopeBuildInput = {
+        catalogId: depSeed.catalogId,
+        nyc311ArticleId: `nyc311-${depSeed.ka}`,
+        nyc311ArticleUrl: `https://portal.311.nyc.gov/article/?kanumber=${depSeed.ka}`,
+        title: "Water Tap Permit",
+        description: "FIXTURE conformance description",
+        serviceType: depSeed.serviceType,
+        alternateNames: depSeed.alternateNames,
+        domain: depSeed.domain as CoverageDomain,
+        agency: agencyRecord("nyc-dep"),
+        channels: depSeed.channels,
+        fees: depSeed.fees,
+        serviceOutputName: depSeed.serviceOutputName,
+      };
+      const parsed = GovernmentServiceSchema.parse(buildServiceEnvelope(depInput));
+      expect(parsed.offers).toEqual([]);
+      expect(parsed["x:coverageDomain"]).toBe("permits");
+    });
+
+    it("rejects an envelope whose schemaVersion mismatches the pinned catalog version", () => {
+      const mismatched = { ...hic.service, schemaVersion: "9.9.9" };
+      const result = GovernmentServiceSchema.safeParse(mismatched);
+      expect(result.error?.issues[0].path).toContain("schemaVersion");
+    });
+
+    it("rejects tuple identifiers that violate either half of the pair", () => {
+      expect(
+        GovernmentServiceSchema.safeParse({ ...hic.service, identifier: ["svc:dcwp:x", "BAD-1"] }).success,
+      ).toBe(false);
+      expect(GovernmentServiceSchema.safeParse({ ...hic.service, identifier: "KA-01808" }).success).toBe(false);
+    });
   });
 
-  it("rejects a tier-1 fee without a captured-at date", () => {
-    const [fee] = hic.estimate.tiers;
-    const result = EstimateBlockSchema.safeParse({ ...hic.estimate, tiers: [{ ...fee, capturedAt: undefined }] });
-    expect(result.error?.issues[0].path).toContain("capturedAt");
-    const badDate = EstimateBlockSchema.safeParse({ ...hic.estimate, tiers: [{ ...fee, capturedAt: "recently" }] });
-    expect(badDate.error?.issues[0].message).toMatch(/ISO date/);
-  });
-});
+  describe("classifier boundary (panel S3-F1/S3-F2)", () => {
+    it("parses a real classifier output through ServiceSummarySchema", () => {
+      const classification: ArticleClassification = {
+        id: "home-improvement-contractor-license",
+        ka: "KA-01808",
+        title: "Home Improvement Contractor License",
+        disposition: "service",
+        serviceSubtype: "apply",
+        reason: "action:apply",
+        ruleId: "R006-service-action",
+        evidence: "Apply for a Home Improvement Contractor License",
+        rulesVersion: CLASSIFIER_RULES_VERSION,
+      };
+      // Boundary mapping — classifier field names → contract field names.
+      // rulesVersion → classifierRulesVersion; the classifier's conflated
+      // evidence string is split into { kind, span } per the PR #8 direction
+      // — update this mapper when PR #8 lands and the string disappears.
+      const result = ServiceSummarySchema.safeParse({
+        id: "svc:dcwp:home-improvement-contractor-license",
+        title: classification.title,
+        agency: { id: "nyc-dcwp", name: "Department of Consumer and Worker Protection" },
+        domain: "licensing",
+        domainSource: "keyword",
+        domainAppliesToCatalog: true,
+        disposition: {
+          disposition: classification.disposition,
+          serviceSubtype: classification.serviceSubtype,
+          reason: classification.reason,
+          ruleId: classification.ruleId,
+          classifierRulesVersion: classification.rulesVersion,
+          evidence: { kind: "index-text", span: classification.evidence },
+        },
+      });
+      expect(result.success).toBe(true);
+    });
 
-describe("API envelopes", () => {
-  it("dispatches each tool result through the discriminated union", () => {
-    expect(ApiResponseSchema.parse(resolveResult)).toMatchObject({ tool: "resolve_services" });
-    expect(ApiResponseSchema.parse(estimateResult)).toMatchObject({ tool: "get_service_estimate" });
-    expect(ApiResponseSchema.parse(stepResult)).toMatchObject({ tool: "get_step_instructions" });
-    expect(ApiResponseSchema.parse(documentsResult)).toMatchObject({ tool: "get_required_documents" });
+    it("boundary-tests the matchedBy → domainSource mapping", () => {
+      // The contract-side mapping documented on DOMAIN_SOURCES in
+      // primitives.ts: 'title'/'description' → 'keyword' (a rule matched),
+      // 'none' → 'fallback' (the other catch-all).
+      const matchedByToDomainSource: Record<string, string> = {
+        title: "keyword",
+        description: "keyword",
+        none: "fallback",
+      };
+      for (const [matchedBy, domainSource] of Object.entries(matchedByToDomainSource)) {
+        const result = ServiceSummarySchema.safeParse({
+          ...hic.summary,
+          domainSource,
+          ...(domainSource === "fallback" ? { domain: "other" } : {}),
+        });
+        expect(result.success, `matchedBy ${matchedBy} → ${domainSource}`).toBe(true);
+      }
+    });
   });
 
-  it("rejects a success envelope whose data does not match its tool", () => {
-    const mismatched = { ...estimateResult, tool: "get_step_instructions" };
-    expect(GetServiceEstimateResultSchema.safeParse(mismatched).success).toBe(false);
-    expect(ApiResponseSchema.safeParse(mismatched).success).toBe(false);
+  describe("goal resolution", () => {
+    it("requires all three version stamps with a clear path", () => {
+      const result = GoalResolutionSchema.safeParse({
+        serviceIds: [],
+        resolutionLayer: "alias-rules",
+        versions: { catalogVersion: "0.0.0-fixture", crosswalkVersion: "0.0.0-fixture" },
+      });
+      expect(result.success).toBe(false);
+      expect(result.error?.issues[0].path).toContain("embeddingModelVersion");
+    });
+
+    it("rejects an invalid resolution layer", () => {
+      const result = GoalResolutionSchema.safeParse({
+        serviceIds: [],
+        resolutionLayer: "magic",
+        versions: FIXTURE_VERSIONS,
+      });
+      expect(result.success).toBe(false);
+      expect(result.error?.issues[0].path).toContain("resolutionLayer");
+    });
+
+    it("accepts every layer the spec defines", () => {
+      for (const layer of [
+        "exact-id",
+        "alias-rules",
+        "semantic-retrieval",
+        "search-fallback",
+        "llm_assist",
+      ]) {
+        const result = GoalResolutionSchema.safeParse({
+          serviceIds: [],
+          resolutionLayer: layer,
+          versions: FIXTURE_VERSIONS,
+        });
+        expect(result.success, `layer ${layer}`).toBe(true);
+      }
+    });
   });
 
-  it("accepts the error envelope shape", () => {
-    const error = {
+  describe("estimates", () => {
+    it("rejects a tier-1 fee without its source citation", () => {
+      const fee = { ...hic.estimate.tiers[0], sourceCitation: undefined };
+      const result = EstimateBlockSchema.safeParse({ ...hic.estimate, tiers: [fee] });
+      expect(result.error?.issues[0].path).toContain("sourceCitation");
+    });
+
+    it("rejects a tier-1 fee without its source URL", () => {
+      const fee = { ...hic.estimate.tiers[0], sourceUrl: undefined };
+      const result = EstimateBlockSchema.safeParse({ ...hic.estimate, tiers: [fee] });
+      expect(result.error?.issues[0].path).toContain("sourceUrl");
+    });
+
+    it("rejects a tier-1 fee without a captured-at date", () => {
+      const [fee] = hic.estimate.tiers;
+      const result = EstimateBlockSchema.safeParse({ ...hic.estimate, tiers: [{ ...fee, capturedAt: undefined }] });
+      expect(result.error?.issues[0].path).toContain("capturedAt");
+      const badDate = EstimateBlockSchema.safeParse({ ...hic.estimate, tiers: [{ ...fee, capturedAt: "recently" }] });
+      expect(badDate.error?.issues[0].message).toMatch(/ISO date/);
+    });
+
+    it("rejects a tier-2 timeline without its dataset provenance", () => {
+      const timeline = hic.estimate.tiers.find((tier) => tier.tier === 2);
+      const result = EstimateBlockSchema.safeParse({
+        ...hic.estimate,
+        tiers: [{ ...timeline, dataset: undefined }],
+      });
+      expect(result.error?.issues[0].path).toContain("dataset");
+    });
+
+    it("pins tier-2 capturedAt as optional", () => {
+      const timeline = hic.estimate.tiers.find((tier) => tier.tier === 2);
+      expect(timeline?.tier).toBe(2);
+      const parsed = TimelineEstimateSchema.parse(timeline);
+      expect(parsed.capturedAt).toBeUndefined();
+    });
+
+    it("rejects non-http(s) schemes on source URLs", () => {
+      const evil = {
+        ...hic.estimate,
+        tiers: [{ ...hic.estimate.tiers[0], sourceUrl: "javascript:void(0)" }],
+      };
+      expect(EstimateBlockSchema.safeParse(evil).success).toBe(false);
+    });
+  });
+
+  describe("steps", () => {
+    it("requires an upload spec exactly on document_upload steps", () => {
+      const uploadStep = hic.steps.find((step) => step.fulfillmentMethod === "document_upload");
+      const plain = { ...hic.steps[0], upload: undefined };
+      expect(StepInstructionSchema.safeParse(plain).error?.issues[0].path).toContain("upload");
+      expect(
+        StepInstructionSchema.safeParse({ ...plain, fulfillmentMethod: "document_upload" }).error?.issues[0].path,
+      ).toContain("upload");
+      expect(StepInstructionSchema.safeParse(uploadStep).success).toBe(true);
+    });
+
+    it("accepts the producer fulfillment values the original enum rejected", () => {
+      const base = hic.steps.find((step) => step.fulfillmentMethod === "in_person_appearance");
+      for (const fulfillmentMethod of ["online_submission", "mail_in"]) {
+        const result = StepInstructionSchema.safeParse({ ...base, fulfillmentMethod });
+        expect(result.success, fulfillmentMethod).toBe(true);
+      }
+    });
+
+    it("requires a note when fulfillment is the other escape hatch", () => {
+      // Base on the upload-free step so the upload coupling doesn't mask the note check.
+      const other = { ...hic.steps[1], fulfillmentMethod: "other" };
+      expect(StepInstructionSchema.safeParse(other).error?.issues[0].path).toContain("fulfillmentNote");
+      const noted = { ...other, fulfillmentNote: "Delivered by the borough commissioner's office" };
+      expect(StepInstructionSchema.parse(noted).fulfillmentNote).toBeDefined();
+    });
+
+    it("rejects a verified-true size limit with a null value", () => {
+      const uploadStep = hic.steps.find((step) => step.upload);
+      const bad = {
+        ...uploadStep,
+        upload: { ...uploadStep?.upload, maxSizeBytes: null, sizeLimitVerified: true },
+      };
+      expect(StepInstructionSchema.safeParse(bad).error?.issues[0].path).toContain("sizeLimitVerified");
+    });
+
+    it("accepts an upload spec with only a portal URL (no portal id)", () => {
+      const uploadStep = hic.steps.find((step) => step.upload);
+      const urlOnly = { ...uploadStep, upload: { ...uploadStep?.upload, portalId: undefined } };
+      expect(StepInstructionSchema.safeParse(urlOnly).success).toBe(true);
+    });
+
+    it("rejects a malformed feeRef", () => {
+      expect(StepInstructionSchema.safeParse({ ...hic.steps[0], feeRef: "200 dollars" }).success).toBe(false);
+    });
+
+    it("lets structured dependencies satisfy the non-NYC labeling", () => {
+      const base = hic.steps.find((step) => step.fulfillmentMethod === "in_person_appearance");
+      const withDependencies = {
+        ...base,
+        responsibleJurisdiction: "nys",
+        dependencies: [{ agencyId: "nys-dos", label: "Secretary of State entity filing" }],
+      };
+      expect(StepInstructionSchema.safeParse(withDependencies).success).toBe(true);
+      const bare = { ...base, responsibleJurisdiction: "nys" };
+      expect(StepInstructionSchema.safeParse(bare).success).toBe(false);
+      expect(StepInstructionSchema.safeParse(bare).error?.issues[0].path).toContain("dependencyNote");
+    });
+
+    it("pins absence of responsibleJurisdiction as explicit NYC policy", () => {
+      const base = hic.steps.find((step) => step.fulfillmentMethod === "in_person_appearance");
+      const withoutJurisdiction: Record<string, unknown> = { ...base };
+      delete withoutJurisdiction.responsibleJurisdiction;
+      expect(StepInstructionSchema.parse(withoutJurisdiction).responsibleJurisdiction).toBe("nyc");
+    });
+  });
+
+  describe("required documents", () => {
+    it("rejects a document without a name", () => {
+      const result = RequiredDocumentSchema.safeParse({ ...hic.documents[0], name: undefined });
+      expect(result.error?.issues[0].path).toContain("name");
+    });
+
+    it("rejects a document with empty sourceRefs", () => {
+      const result = RequiredDocumentSchema.safeParse({ ...hic.documents[0], sourceRefs: [] });
+      expect(result.error?.issues[0].path).toContain("sourceRefs");
+    });
+
+    it("rejects a document with a malformed service id", () => {
+      const result = RequiredDocumentSchema.safeParse({ ...hic.documents[0], serviceId: "svc-dcwp" });
+      expect(result.error?.issues[0].path).toContain("serviceId");
+    });
+  });
+
+  describe("api envelopes", () => {
+    const resolveResult = {
+      ok: true,
+      tool: "resolve_services",
+      versions: RESPONSE_VERSIONS,
+      data: {
+        resolution: {
+          serviceIds: [dep.summary.id],
+          resolutionLayer: "alias-rules",
+          versions: FIXTURE_VERSIONS,
+        },
+        services: [dep.summary],
+      },
+    };
+    const errorEnvelope = {
       ok: false,
       tool: "resolve_services",
+      versions: RESPONSE_VERSIONS,
       error: { code: "unsupported_goal", message: "No services match the goal" },
     };
-    expect(ApiErrorEnvelopeSchema.parse(error)).toMatchObject({ ok: false });
-    expect(ApiResponseSchema.safeParse(error).success).toBe(true);
+
+    it("accepts the success and error envelope shapes", () => {
+      expect(() => ApiResponseSchema.parse(resolveResult)).not.toThrow();
+      expect(() => ApiErrorEnvelopeSchema.parse(errorEnvelope)).not.toThrow();
+    });
+
+    it("accepts the explicit no-match state (empty ids)", () => {
+      const result = ApiResponseSchema.parse({
+        ...resolveResult,
+        data: {
+          resolution: { serviceIds: [], resolutionLayer: "llm_assist", versions: FIXTURE_VERSIONS },
+          services: [],
+        },
+      });
+      if (!result.ok) throw new Error("expected a success envelope");
+      if (result.tool !== "resolve_services") throw new Error("dispatch failed");
+      expect(result.data.resolution.serviceIds).toEqual([]);
+    });
+
+    it("carries version stamps on the error envelope", () => {
+      expect(ApiResponseSchema.safeParse(errorEnvelope).success).toBe(true);
+      const withoutVersions = {
+        ok: false,
+        tool: "resolve_services",
+        error: { code: "unsupported_goal", message: "No services match the goal" },
+      };
+      expect(ApiErrorEnvelopeSchema.safeParse(withoutVersions).success).toBe(false);
+    });
+
+    it("dispatches each tool result through the discriminated union", () => {
+      const estimateResult = {
+        ok: true,
+        tool: "get_service_estimate",
+        versions: RESPONSE_VERSIONS,
+        data: { serviceId: hic.summary.id, estimate: hic.estimate },
+      };
+      const stepResult = {
+        ok: true,
+        tool: "get_step_instructions",
+        versions: RESPONSE_VERSIONS,
+        data: { serviceId: dep.summary.id, steps: dep.steps },
+      };
+      const documentsResult = {
+        ok: true,
+        tool: "get_required_documents",
+        versions: RESPONSE_VERSIONS,
+        data: { serviceId: dep.summary.id, documents: dep.documents },
+      };
+      expect(ApiResponseSchema.parse(resolveResult)).toMatchObject({ tool: "resolve_services" });
+      expect(ApiResponseSchema.parse(estimateResult)).toMatchObject({ tool: "get_service_estimate" });
+      expect(ApiResponseSchema.parse(stepResult)).toMatchObject({ tool: "get_step_instructions" });
+      expect(ApiResponseSchema.parse(documentsResult)).toMatchObject({ tool: "get_required_documents" });
+    });
+
+    it("rejects a success envelope whose data does not match its tool", () => {
+      const mismatched = {
+        ok: true,
+        tool: "get_step_instructions",
+        versions: RESPONSE_VERSIONS,
+        data: { serviceId: hic.summary.id, estimate: hic.estimate },
+      };
+      expect(GetServiceEstimateResultSchema.safeParse(mismatched).success).toBe(false);
+      expect(ApiResponseSchema.safeParse(mismatched).success).toBe(false);
+    });
+
+    it("round-trips both envelopes stably", () => {
+      expect(roundTrips(ApiResponseSchema, resolveResult)).toBe(true);
+      expect(roundTrips(ApiErrorEnvelopeSchema, errorEnvelope)).toBe(true);
+    });
+
+    it("rejects malformed service and step ids in results", () => {
+      const result = ApiResponseSchema.safeParse({
+        ...resolveResult,
+        data: { ...resolveResult.data, services: [{ ...dep.summary, id: "KA-01808" }] },
+      });
+      expect(result.success).toBe(false);
+      const steps = {
+        ok: true,
+        tool: "get_step_instructions",
+        versions: RESPONSE_VERSIONS,
+        data: {
+          serviceId: dep.summary.id,
+          steps: [{ ...dep.steps[0], id: "stp:something:abc" }],
+        },
+      };
+      expect(ApiResponseSchema.safeParse(steps).success).toBe(false);
+    });
+  });
+
+  describe("tool request schemas (panel H2)", () => {
+    it("validates the goal for resolve_services", () => {
+      expect(ResolveServicesRequestSchema.parse({ goal: "open a restaurant" }).goal).toBe(
+        "open a restaurant",
+      );
+      expect(ResolveServicesRequestSchema.safeParse({ goal: "" }).success).toBe(false);
+      expect(ResolveServicesRequestSchema.safeParse({ goal: "x".repeat(2001) }).success).toBe(false);
+    });
+
+    it("validates the service id for the three id-taking tools", () => {
+      for (const schema of [
+        GetServiceEstimateRequestSchema,
+        GetStepInstructionsRequestSchema,
+        GetRequiredDocumentsRequestSchema,
+      ]) {
+        expect(
+          schema.safeParse({ serviceId: "svc:dcwp:home-improvement-contractor-license" }).success,
+        ).toBe(true);
+        expect(schema.safeParse({ serviceId: "not-a-service-id" }).success).toBe(false);
+      }
+    });
+  });
+
+  describe("table-driven rejections (panel S3-F5)", () => {
+    const rejects: [string, () => { success: boolean }][] = [
+      [
+        "invalid enum value for fulfillmentMethod",
+        () => StepInstructionSchema.safeParse({ ...hic.steps[0], fulfillmentMethod: "teleport" }),
+      ],
+      [
+        "invalid enum value for resolutionLayer",
+        () =>
+          GoalResolutionSchema.safeParse({
+            serviceIds: [],
+            resolutionLayer: "magic",
+            versions: FIXTURE_VERSIONS,
+          }),
+      ],
+      [
+        "invalid enum value for domain",
+        () => ServiceSummarySchema.safeParse({ ...hic.summary, domain: "international" }),
+      ],
+      [
+        "invalid enum value for disposition",
+        () =>
+          ServiceSummarySchema.safeParse({
+            ...hic.summary,
+            disposition: { ...hic.summary.disposition, disposition: "unknown" },
+          }),
+      ],
+      [
+        "invalid enum value for error code",
+        () =>
+          ApiErrorEnvelopeSchema.safeParse({
+            ok: false,
+            tool: "resolve_services",
+            versions: RESPONSE_VERSIONS,
+            error: { code: "exploded", message: "x" },
+          }),
+      ],
+      [
+        "response versions missing a stamp",
+        () =>
+          ApiErrorEnvelopeSchema.safeParse({
+            ok: false,
+            tool: "resolve_services",
+            versions: { app: "0.1.0", schema: CATALOG_SCHEMA_VERSION, catalog: "0.0.0-fixture", crosswalk: "0.0.0-fixture" },
+            error: { code: "internal", message: "x" },
+          }),
+      ],
+      [
+        "service disposition with domainAppliesToCatalog false",
+        () => ServiceSummarySchema.safeParse({ ...hic.summary, domainAppliesToCatalog: false }),
+      ],
+      [
+        "fallback domainSource with a non-other domain",
+        () => ServiceSummarySchema.safeParse({ ...hic.summary, domainSource: "fallback" }),
+      ],
+      [
+        "non-service disposition carrying a subtype",
+        () =>
+          ServiceSummarySchema.safeParse({
+            ...hic.summary,
+            disposition: { ...hic.summary.disposition, disposition: "informational" },
+          }),
+      ],
+    ];
+    for (const [name, parse] of rejects) {
+      it(`rejects: ${name}`, () => {
+        expect(parse().success).toBe(false);
+      });
+    }
   });
 });
