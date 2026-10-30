@@ -23595,6 +23595,22 @@
             "snap:e515d15e176e",
             "snap:63aff11a928c"
           ]
+        },
+        {
+          "fulfillmentMethod": "in_person_appearance",
+          "id": "stp:svc:dohmh:birth-certificate-order:020",
+          "notes": "KA-01012: orders can be made online, by mail, or in person; all in-person orders require an appointment and same-day pickup is possible in some cases. Eligibility limits apply (record list, birth year 1920 or later).",
+          "phase": "application",
+          "requirement": "Order in person at the Office of Vital Records (appointment required)",
+          "responsibleAgency": {
+            "id": "nyc-dohmh",
+            "name": "Department of Health and Mental Hygiene"
+          },
+          "sequence": 2,
+          "serviceId": "svc:dohmh:birth-certificate-order",
+          "sourceRefs": [
+            "snap:56249040885f"
+          ]
         }
       ]
     },
@@ -23774,6 +23790,26 @@
             "snap:a44adbe526f1",
             "snap:983e1e1cbf5e"
           ]
+        },
+        {
+          "administeredBy": {
+            "id": "nyc-dcwp",
+            "name": "Department of Consumer and Worker Protection"
+          },
+          "fulfillmentMethod": "in_person_appearance",
+          "id": "stp:svc:dohmh:food-service-establishment-permit:020",
+          "notes": "KA-01878: in-person visits are available only in hardship cases (physical disabilities or other impairments); appointments are scheduled through DCWP's Licensing Appointment Line (email LicensingAppointments@dcwp.nyc.gov or by phone).",
+          "phase": "application",
+          "requirement": "Apply or renew in person — hardship appointments only",
+          "responsibleAgency": {
+            "id": "nyc-dohmh",
+            "name": "Department of Health and Mental Hygiene"
+          },
+          "sequence": 2,
+          "serviceId": "svc:dohmh:food-service-establishment-permit",
+          "sourceRefs": [
+            "snap:a66d389be6ef"
+          ]
         }
       ]
     }
@@ -23834,6 +23870,15 @@
       "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01878"
     },
     {
+      "capturedAt": "2026-10-30",
+      "id": "snap:56249040885f",
+      "method": "manual",
+      "notes": "Evidence record for a research-session capture (Check B golden-set seeder, Playwright public-boundary capture of KA-01012 (fixtures/snapshots/snap_196916029a8e)). sha256 hashes this committed evidence record's bytes; the live page was not re-fetched.",
+      "sha256": "56249040885fbf684505c1e82768668f0dc3f0d5e91d2a80170354f677e5d683",
+      "storagePath": "data/catalog/seed/evidence/ev-dohmh-birth-inperson.json",
+      "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01012"
+    },
+    {
       "capturedAt": "2026-10-30T17:11:43.820Z",
       "id": "snap:63aff11a928c",
       "method": "http_fetch",
@@ -23876,6 +23921,15 @@
       "notes": "Evidence record for a research-session capture (Research - Data model and form extraction (art_mcM1Ssao §5.1, [N1] fetched 2026-10-30)). sha256 hashes this committed evidence record's bytes; the live page was not re-fetched.",
       "sha256": "a44adbe526f19541c02b2af3a0e6e82dabae83f1e3bcaf8d0b018ca327fbcb8f",
       "storagePath": "data/catalog/seed/evidence/ev-fse-required.json",
+      "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01878"
+    },
+    {
+      "capturedAt": "2026-10-30",
+      "id": "snap:a66d389be6ef",
+      "method": "manual",
+      "notes": "Evidence record for a research-session capture (Check B golden-set seeder, Playwright public-boundary capture of KA-01878 (fixtures/snapshots/snap_51905f23af5a)). sha256 hashes this committed evidence record's bytes; the live page was not re-fetched.",
+      "sha256": "a66d389be6efdb46b68a9326ec1a5a7abde7b665a25d7e2e8bcf67e1cdd3d829",
+      "storagePath": "data/catalog/seed/evidence/ev-dohmh-fse-inperson.json",
       "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01878"
     },
     {

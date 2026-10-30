@@ -1,0 +1,42 @@
+{
+  "id": "snap:0286c150b774",
+  "url": "https://www.nyc.gov/site/buildings/dob/use-dob-now.page",
+  "resolvedUrl": "https://www.nyc.gov/site/buildings/dob/use-dob-now.page",
+  "capturedAt": "2026-10-30T19:01:15.201Z",
+  "method": "headless",
+  "httpStatus": 403,
+  "captureMode": "authenticated_unreachable",
+  "stoppedAt": "anti_bot",
+  "boundarySignals": [
+    "challenge_title"
+  ],
+  "notes": "Public-boundary capture: no credentials used, no form values entered, no challenge solved.",
+  "captureSchema": "0.3.0",
+  "artifacts": [
+    {
+      "name": "page.html",
+      "sha256": "4fa5a6c4c3a96a1c99cb0b792eef0feee182a44aba27bce5469d80414d9f84e6",
+      "bytes": 322
+    },
+    {
+      "name": "screenshot.png",
+      "sha256": "3fdde48462d912ba0fcfcaed5f3c901a9a846cbebd57901178ddf8b5cfdb6ab0",
+      "bytes": 23613
+    },
+    {
+      "name": "fields.json",
+      "sha256": "f06a4049dd7b4096bd74003ea4c18832fbf1a6de50c555846946a01e913bc644",
+      "bytes": 154
+    },
+    {
+      "name": "network.json",
+      "sha256": "97413f669ecb8a8c3bd7c3276b3eb8b7b60b21bfc511f020dba73edff01fa0de",
+      "bytes": 206
+    },
+    {
+      "name": "meta-bound.json",
+      "sha256": "4b5498bb9b6699f3529ef1000bb25b51f4e53b2ce998d29c692584004cdcddc0",
+      "bytes": 492
+    }
+  ]
+}

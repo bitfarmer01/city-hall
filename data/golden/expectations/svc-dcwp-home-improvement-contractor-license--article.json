@@ -1,0 +1,107 @@
+{
+  "serviceId": "svc:dcwp:home-improvement-contractor-license",
+  "label": "Home Improvement Contractor License — article",
+  "sourceUrl": "https://portal.311.nyc.gov/article/?kanumber=KA-01808",
+  "expectedFields": [
+    {
+      "label": "Search",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Search",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Search NYC311",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Service Request Form",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "To search on partial text, use the asterisk (*) wildcard character.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Content Action",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "To search on partial text, use the asterisk (*) wildcard character.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Portal - Knowledge Article",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "To search on partial text, use the asterisk (*) wildcard character.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Leave this field blank",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "How can we improve this page?",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "label": "",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "label": "Language Translate Widget",
+      "type": "select-one",
+      "required": false
+    }
+  ],
+  "expectedDocuments": [],
+  "inPersonSteps": [
+    "must act in person",
+    "in-person appointment"
+  ]
+}

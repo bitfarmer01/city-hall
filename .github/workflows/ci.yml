@@ -62,6 +62,13 @@ jobs:
           # build re-runs the linker's full validation on every PR.
           npm run catalog:build
 
+      - name: Golden set offline gate (Check B)
+        run: |
+          # Zero-miss gate over the committed 20-service golden set: captured
+          # evidence vs baselines vs catalog claims, all offline. The weekly
+          # live leg (golden-live.yml) re-captures real pages on a schedule.
+          npm run golden:check
+
       - name: Lint
         run: npm run lint
 

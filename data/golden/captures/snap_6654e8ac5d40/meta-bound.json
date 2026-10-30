@@ -1,0 +1,12 @@
+{
+  "boundarySignals": [],
+  "captureMode": "public_reachable",
+  "captureSchema": "0.3.0",
+  "capturedAt": "2026-10-30T19:01:37.768Z",
+  "httpStatus": 200,
+  "method": "headless",
+  "notes": "Public-boundary capture: no credentials used, no form values entered, no challenge solved.",
+  "resolvedUrl": "https://portal.311.nyc.gov/article/?kanumber=KA-01833",
+  "stoppedAt": "none",
+  "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01833"
+}

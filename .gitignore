@@ -45,3 +45,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Check B weekly live captures (scratch — committed evidence lives in fixtures/snapshots)
+fixtures/golden-live/
+data/golden/weekly-report.md

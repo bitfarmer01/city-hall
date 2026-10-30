@@ -1,0 +1,11 @@
+{
+  "entries": [
+    {
+      "method": "GET",
+      "url": "https://www.nyc.gov/site/dca/businesses/licenses-apply.page",
+      "status": 403,
+      "resourceType": "document"
+    }
+  ],
+  "truncated": false
+}

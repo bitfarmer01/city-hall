@@ -1,0 +1,11 @@
+{
+  "entries": [
+    {
+      "method": "GET",
+      "url": "https://www.nyc.gov/site/dep/about/permit-and-review-information-system.page",
+      "status": 403,
+      "resourceType": "document"
+    }
+  ],
+  "truncated": false
+}

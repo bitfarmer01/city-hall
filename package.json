@@ -14,7 +14,10 @@
     "catalog:build": "tsx scripts/build-catalog.ts",
     "catalog:load": "tsx scripts/load-catalog.ts",
     "capture": "tsx scripts/capture-portal.ts",
-    "replay": "tsx scripts/replay-snapshots.ts"
+    "replay": "tsx scripts/replay-snapshots.ts",
+    "golden:seed": "tsx scripts/seed-golden-set.ts",
+    "golden:check": "tsx scripts/golden-check.ts",
+    "golden:live": "tsx scripts/golden-live.ts"
   },
   "engines": {
     "node": ">=20"

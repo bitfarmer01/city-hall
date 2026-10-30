@@ -1,0 +1,8 @@
+{
+  "serviceId": "svc:buildings:building-construction-alteration-permit",
+  "label": "Building Construction or Alteration Permit — portal-dob-now",
+  "sourceUrl": "https://www.nyc.gov/site/buildings/dob/use-dob-now.page",
+  "expectedFields": [],
+  "expectedDocuments": [],
+  "inPersonSteps": []
+}

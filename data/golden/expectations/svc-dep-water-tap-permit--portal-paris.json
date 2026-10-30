@@ -1,0 +1,8 @@
+{
+  "serviceId": "svc:dep:water-tap-permit",
+  "label": "Water Tap Permit or Sewer Pipe Map — portal-paris",
+  "sourceUrl": "https://www.nyc.gov/site/dep/about/permit-and-review-information-system.page",
+  "expectedFields": [],
+  "expectedDocuments": [],
+  "inPersonSteps": []
+}

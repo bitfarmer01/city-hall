@@ -1,0 +1,119 @@
+{
+  "serviceId": "svc:dohmh:birth-certificate-order",
+  "label": "Birth Certificate Order — pdf-birth1",
+  "sourceUrl": "https://www.nyc.gov/assets/doh/downloads/pdf/vr/birth1.pdf",
+  "expectedFields": [
+    {
+      "label": "NAME OF HOSPITAL, BIRTHING CENTER, OR, IF AT HOME, STREET ADDRESS, CITY, STATE, ZIP CODE",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "FIRST NAME LAST NAME",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "S5Total",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "FIRST NAME MAIDEN LAST NAME",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "S5FeeYearsSearched",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Multiplied by $15 for each birth certificate equals: $",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "S5FeeBirthCertNumber",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "S5NoBirthCert",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "    ",
+      "type": "radio",
+      "required": false
+    },
+    {
+      "label": "  ",
+      "type": "radio",
+      "required": false
+    },
+    {
+      "label": "S2 End date for search",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "information about search fees):",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "How many birth certificates will you need (maximum of three)? One Two Three",
+      "type": "radio",
+      "required": false
+    },
+    {
+      "label": "S2 Birth date listed",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "FIRST NAME MIDDLE NAME LAST NAME",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "I am part of a human services organization associated with a minor child or a developmentally disabled",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "",
+      "type": "radio",
+      "required": false
+    },
+    {
+      "label": "EMAIL ADDRESS",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "PRIMARY PHONE NUMBER ALTERNATE PHONE NUMBER (IF APPLICABLE)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "CITY STATE ZIP CODE",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "MAILING ADDRESS APARTMENT NUMBER",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "SIGNATURE OF APPLICANT DATE (MONTH/DAY/YEAR)",
+      "type": "text",
+      "required": false
+    }
+  ],
+  "expectedDocuments": [],
+  "inPersonSteps": []
+}

@@ -1,0 +1,539 @@
+{
+  "entries": [
+    {
+      "method": "POST",
+      "url": "https://us-mobile.events.data.microsoft.com/OneCollector/1.0/?cors=true&content-type=application/x-json-stream&client-id=NO_AUTH&client-version=1DS-Web-JS-3.2.8&apikey=197418c5cb8c4426b201f9db2e87b914-87887378-2790-49b0-9295-51f43b6204b1-7172&upload-time=1793386920715&time-delta-to-apply-millis=use-collector-delta&w=2&NoResponseBody=true",
+      "status": 204,
+      "resourceType": "ping"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01665",
+      "status": 200,
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/_portal/d78574f9-20c3-4dcc-8d8d-85cf5b7ac141/Resources/ResourceManager?lang=en-US",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/bootstrap.min.css?1560906719000",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/font-awesome.bundle-3d8a58a48f.css",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/preform.bundle-5c3163ff0f.css",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/v4-shims.min.css?1682007276000",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/311header-and-footer-v2.css?1682007274000",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/about-311.css?1674759502000",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/jquery-ui.min-custom.css?1560906718000",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/jquery-ui.css?1560906719000",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/theme.css?1664478696000",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/site.min.css?1614288238000",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/module.css?1560906717000",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/nyc311headerfooter.css?1560906712000",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/pwa-style.bundle-55718a4c0d.css",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/pcf-style.bundle-373a0f4982.css",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/img/web.png",
+      "status": 200,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/img/close.png",
+      "status": 200,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/v4-shims.min.css",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/client-telemetry.bundle-d490766e4f.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/client-telemetry-wrapper.bundle-633e70f51b.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/preform.moment_2_29_4.bundle-b78b47dd25.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/pcf-dependency.bundle-805a1661b7.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/pcf.bundle-60440c37cb.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/pcf-extended.bundle-b0e01b5622.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZDM2TUX-gR0nKHd7VwC1c7vhIAGULxpAkS_Apb-_SfU-8yXwkekfv5RaIhOjwxowsw2&t=639256397503738887",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/ScriptResource.axd?d=nv7asgRUU0tRmHNR2D6t1ElkchmFmOdOEImT1hQ04hgrEsbLhihLqTx7Ek6EyExKXeTvDtiZfhD9BQRBCdJCSW3fqMKuexyQlh8GbQyd1aDaHxyCvvWOOwF2uwocfgQnP_msodLCcT6SnAz9SBiV3w2&t=2ddfb07d",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/ScriptResource.axd?d=NJmAwtEo3Ipnlaxl6CMhvoCzuc6wiLZSGEziF95o7aLZ9xva1pFsi6-Hmjcsm6aUUTmjE5n8xtWvO1bVSG660VHm_RLT8CGCDjsnMUrQNi-jWOXO6pi3CFY1DlP5DA69JK_sxyy8EEh6rl3oLADGFI-4H6XOUXnOOg7pi0kSpa01&t=ffffffffa1bf0f7b",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/ScriptResource.axd?d=dwY9oWetJoJoVpgL6Zq8OKQE7h47wsQvC06YNPg0lL-kbvsmNQvjWKwxc1ahZ16BqJpaxJlOwz5uuWFRF692JtBiNK9K5EzQkz4yJzKzug7ji1nrzi8MCc8DN4iE6FJBYx2w4qap_qGiNeKyo4-ddhBjXa4M0fhqIkMp5i8WnMs1&t=ffffffffa1bf0f7b",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/js/jquery.blockUI.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/xrm-adx/js/webform.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/xrm-adx/js/radcaptcha.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/xrm-adx/js/crmentityformview.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.google.com/recaptcha/enterprise.js?render=6Le_5u4tAAAAAN7sdvSn0j32slCebaTPU-du_MbR",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/pcf-loader.bundle-f4a0e619b8.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/host/main.beaea55bb6.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/nyc311-logo.png",
+      "status": 200,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/bootstrap.bundle-105a4995b8.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/postpreform.bundle-4687dda8df.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/app.bundle-6a4b9a2a34.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/dist/default-1033.moment_2_29_4.bundle-eda4e638fd.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://www1.nyc.gov/assets/home/css/pages/311/311header-and-footer-v2.css",
+      "status": 301,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://www1.nyc.gov/assets/home/images/global/nyc_white@x2.png",
+      "status": 301,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://www1.nyc.gov/assets/home/js/libs/modernizr-2.6.2.min.js",
+      "status": 301,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://www1.nyc.gov/assets/home/js/utils.js",
+      "status": 301,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://www1.nyc.gov/assets/home/js/libs/class.js",
+      "status": 301,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://www1.nyc.gov/assets/home/js/pages/311/header-footer/classes/NYC.MainNav.js",
+      "status": 301,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://www1.nyc.gov/assets/home/js/pages/311/header-footer/classes/NYC.311-portal.js",
+      "status": 301,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/fonts/glyphicons-halflings-regular.woff2",
+      "status": 200,
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/bg-nav.png",
+      "status": 200,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/webfonts/fa-brands-400.woff2",
+      "status": 200,
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/webfonts/fa-solid-900.woff2",
+      "status": 200,
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/nyc_transparent.png",
+      "status": 200,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://portal.311.nyc.gov/nav_search.png",
+      "status": 200,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://www1.nyc.gov/assets/home/images/global/nav/bg-nav.png",
+      "status": 301,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://www1.nyc.gov/assets/home/images/global/nav/nav-sprite.png",
+      "status": 301,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.gstatic.com/_/translate_http/_/ss/k=translate_http.tr.zZZZhVqDDCw.L.W.O/am=AACAAQ/d=0/rs=AN8SPfoThpppAXpRoF1hV9gBo6v0GkdBdw/m=el_main_css",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://translate.googleapis.com/_/translate_http/_/js/k=translate_http.tr.en_US.0ahz44OpzzI.O/am=AACAAQ/d=1/ed=1/rs=AN8SPfpaOdkNiOpgIQXAgClE-3n5UGhDSg/m=el_main",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://az416426.vo.msecnd.net/scripts/a/ai.0.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/host/209.aa23a8e592.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/host/898.1e35c5b3fd.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/host/874.d64d28bc67.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/host/867.8acaaa9eca.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/host/500.fd9ae7ba2c.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/host/558.0348c6b1f3.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/host/443.7b32a6351e.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/host/170.c36cf0438f.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/host/618.2976de0294.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.gstatic.com/recaptcha/releases/NhfdZHzre166o-vFZrWsq3yu/recaptcha__en.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/i/productlogos/translate/v14/24px.svg",
+      "status": 200,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_42x16dp.png",
+      "status": 200,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.gstatic.com/images/branding/product/2x/translate_24dp.png",
+      "status": 200,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://translate-pa.googleapis.com/v1/supportedLanguages?client=te&display_language=en-US&key=AIzaSyBWDj0QJvVIx8XOhRegXX5_SrRWxhT5Hs4&callback=callback",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/mf_shared/remoteEntry.b7a938c6b0.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/mf_shared/998.b21e0e66d8.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/mf_shared/900.69de891097.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://content.powerapps.com/resource/powerappsportal/controls/mf_shared/913.c59e302e64.chunk.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6Le_5u4tAAAAAN7sdvSn0j32slCebaTPU-du_MbR&co=aHR0cHM6Ly9wb3J0YWwuMzExLm55Yy5nb3Y6NDQz&hl=en&v=NhfdZHzre166o-vFZrWsq3yu&size=invisible&anchor-ms=20000&execute-ms=30000&ovv=CADq00gF&cb=ez4hxq97ntep",
+      "status": 200,
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.gstatic.com/recaptcha/releases/NhfdZHzre166o-vFZrWsq3yu/styles__ltr.css",
+      "status": 200,
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.gstatic.com/recaptcha/releases/NhfdZHzre166o-vFZrWsq3yu/recaptcha__en.js",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2",
+      "status": 200,
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.gstatic.com/recaptcha/api2/logo_48.png",
+      "status": 200,
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.google.com/recaptcha/enterprise/webworker.js?hl=en&v=NhfdZHzre166o-vFZrWsq3yu",
+      "status": 200,
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "url": "https://www.gstatic.com/recaptcha/releases/NhfdZHzre166o-vFZrWsq3yu/recaptcha__en.js",
+      "status": 200,
+      "resourceType": "other"
+    },
+    {
+      "method": "POST",
+      "url": "https://dc.services.visualstudio.com/v2/track",
+      "status": 200,
+      "resourceType": "xhr"
+    }
+  ],
+  "truncated": false
+}
