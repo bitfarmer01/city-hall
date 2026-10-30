@@ -1,0 +1,508 @@
+{
+  "seed": 20261030,
+  "sampleSize": 100,
+  "snapshotPath": "data/snapshots/nyc311-index/2026-10-30.json",
+  "snapshotSha256": "63aff11a928c09993690f8410a6c27507b3856666802e05199b51345c52b003a",
+  "articles": [
+    {
+      "id": "nyc311-KA-01012",
+      "ka": "KA-01012",
+      "title": "Birth Certificate Order"
+    },
+    {
+      "id": "nyc311-KA-01030",
+      "ka": "KA-01030",
+      "title": "Marriage Record"
+    },
+    {
+      "id": "nyc311-KA-01035",
+      "ka": "KA-01035",
+      "title": "Fire Hydrant Request"
+    },
+    {
+      "id": "nyc311-KA-01087",
+      "ka": "KA-01087",
+      "title": "Noise from Dog or Other Animal"
+    },
+    {
+      "id": "nyc311-KA-01091",
+      "ka": "KA-01091",
+      "title": "Noise from Construction"
+    },
+    {
+      "id": "nyc311-KA-01134",
+      "ka": "KA-01134",
+      "title": "Nursing Jobs"
+    },
+    {
+      "id": "nyc311-KA-01146",
+      "ka": "KA-01146",
+      "title": "Cigarette Wholesaler License"
+    },
+    {
+      "id": "nyc311-KA-01158",
+      "ka": "KA-01158",
+      "title": "City Vehicle Complaint"
+    },
+    {
+      "id": "nyc311-KA-01325",
+      "ka": "KA-01325",
+      "title": "Mental Health Patient Not Following Treatment Plan"
+    },
+    {
+      "id": "nyc311-KA-01347",
+      "ka": "KA-01347",
+      "title": "Public Recycling"
+    },
+    {
+      "id": "nyc311-KA-01396",
+      "ka": "KA-01396",
+      "title": "Working Horse Rules"
+    },
+    {
+      "id": "nyc311-KA-01430",
+      "ka": "KA-01430",
+      "title": "Drying Oven Permit"
+    },
+    {
+      "id": "nyc311-KA-01434",
+      "ka": "KA-01434",
+      "title": "Elderly Pharmaceutical Insurance Coverage (EPIC) Program"
+    },
+    {
+      "id": "nyc311-KA-01440",
+      "ka": "KA-01440",
+      "title": "Emerging Business Enterprise Program"
+    },
+    {
+      "id": "nyc311-KA-01454",
+      "ka": "KA-01454",
+      "title": "FDNY Ambulance Billing"
+    },
+    {
+      "id": "nyc311-KA-01499",
+      "ka": "KA-01499",
+      "title": "Service Dogs"
+    },
+    {
+      "id": "nyc311-KA-01501",
+      "ka": "KA-01501",
+      "title": "Traveling Abroad"
+    },
+    {
+      "id": "nyc311-KA-01517",
+      "ka": "KA-01517",
+      "title": "Building Demolition Rat Extermination Certificate"
+    },
+    {
+      "id": "nyc311-KA-01546",
+      "ka": "KA-01546",
+      "title": "Foster Child Assistance"
+    },
+    {
+      "id": "nyc311-KA-01570",
+      "ka": "KA-01570",
+      "title": "Independent Living Centers"
+    },
+    {
+      "id": "nyc311-KA-01592",
+      "ka": "KA-01592",
+      "title": "New York City Tourism + Conventions Business Membership"
+    },
+    {
+      "id": "nyc311-KA-01597",
+      "ka": "KA-01597",
+      "title": "Pesticide Application Without Notice"
+    },
+    {
+      "id": "nyc311-KA-01614",
+      "ka": "KA-01614",
+      "title": "Radioactive Materials License"
+    },
+    {
+      "id": "nyc311-KA-01615",
+      "ka": "KA-01615",
+      "title": "Reckless Driving"
+    },
+    {
+      "id": "nyc311-KA-01620",
+      "ka": "KA-01620",
+      "title": "Play Sure Kit"
+    },
+    {
+      "id": "nyc311-KA-01652",
+      "ka": "KA-01652",
+      "title": "Volunteer Screening for Non-Profits"
+    },
+    {
+      "id": "nyc311-KA-01680",
+      "ka": "KA-01680",
+      "title": "Property Tax Bill Assistance"
+    },
+    {
+      "id": "nyc311-KA-01685",
+      "ka": "KA-01685",
+      "title": "Volunteer with Older Adults"
+    },
+    {
+      "id": "nyc311-KA-01726",
+      "ka": "KA-01726",
+      "title": "Made In New York Production Assistant Program"
+    },
+    {
+      "id": "nyc311-KA-01727",
+      "ka": "KA-01727",
+      "title": "Material and Equipment Acceptance Application"
+    },
+    {
+      "id": "nyc311-KA-01735",
+      "ka": "KA-01735",
+      "title": "Nursing Home Complaint"
+    },
+    {
+      "id": "nyc311-KA-01754",
+      "ka": "KA-01754",
+      "title": "Site Safety Manager Complaint"
+    },
+    {
+      "id": "nyc311-KA-01755",
+      "ka": "KA-01755",
+      "title": "Small Business Compliance Consultation"
+    },
+    {
+      "id": "nyc311-KA-01810",
+      "ka": "KA-01810",
+      "title": "Secondhand Dealer Auto License"
+    },
+    {
+      "id": "nyc311-KA-01814",
+      "ka": "KA-01814",
+      "title": "Horse Drawn Cab License"
+    },
+    {
+      "id": "nyc311-KA-01815",
+      "ka": "KA-01815",
+      "title": "Catering Establishment License"
+    },
+    {
+      "id": "nyc311-KA-01825",
+      "ka": "KA-01825",
+      "title": "Temporary Food Service Establishment Permit"
+    },
+    {
+      "id": "nyc311-KA-01839",
+      "ka": "KA-01839",
+      "title": "Horse Drawn Cab Driver License"
+    },
+    {
+      "id": "nyc311-KA-01869",
+      "ka": "KA-01869",
+      "title": "Ticket Seller Business License"
+    },
+    {
+      "id": "nyc311-KA-01871",
+      "ka": "KA-01871",
+      "title": "Sightseeing Bus License"
+    },
+    {
+      "id": "nyc311-KA-01908",
+      "ka": "KA-01908",
+      "title": "Air Conditioner in Danger of Falling"
+    },
+    {
+      "id": "nyc311-KA-01913",
+      "ka": "KA-01913",
+      "title": "Gas Piping or Hookup Complaint"
+    },
+    {
+      "id": "nyc311-KA-01944",
+      "ka": "KA-01944",
+      "title": "Tattoo Parlor Complaint"
+    },
+    {
+      "id": "nyc311-KA-02002",
+      "ka": "KA-02002",
+      "title": "Incarcerated Person Visit"
+    },
+    {
+      "id": "nyc311-KA-02043",
+      "ka": "KA-02043",
+      "title": "Landmark Building Alteration Permit"
+    },
+    {
+      "id": "nyc311-KA-02053",
+      "ka": "KA-02053",
+      "title": "Crane or Derrick Complaint"
+    },
+    {
+      "id": "nyc311-KA-02064",
+      "ka": "KA-02064",
+      "title": "Nurses for Pregnant People and Teens"
+    },
+    {
+      "id": "nyc311-KA-02077",
+      "ka": "KA-02077",
+      "title": "Watershed Recreation and Access Permit"
+    },
+    {
+      "id": "nyc311-KA-02084",
+      "ka": "KA-02084",
+      "title": "Family Justice Centers"
+    },
+    {
+      "id": "nyc311-KA-02088",
+      "ka": "KA-02088",
+      "title": "Marriage Registration"
+    },
+    {
+      "id": "nyc311-KA-02171",
+      "ka": "KA-02171",
+      "title": "Hotel Complaint"
+    },
+    {
+      "id": "nyc311-KA-02195",
+      "ka": "KA-02195",
+      "title": "Games of Chance Complaint"
+    },
+    {
+      "id": "nyc311-KA-02217",
+      "ka": "KA-02217",
+      "title": "NYC Parks Stewardship Program"
+    },
+    {
+      "id": "nyc311-KA-02225",
+      "ka": "KA-02225",
+      "title": "Animal Facility Complaint"
+    },
+    {
+      "id": "nyc311-KA-02232",
+      "ka": "KA-02232",
+      "title": "Biking, Rollerblading, or Skating Complaint"
+    },
+    {
+      "id": "nyc311-KA-02245",
+      "ka": "KA-02245",
+      "title": "Dead Animal on Public Property"
+    },
+    {
+      "id": "nyc311-KA-02246",
+      "ka": "KA-02246",
+      "title": "Agency Charges Collected by the Department of Finance"
+    },
+    {
+      "id": "nyc311-KA-02270",
+      "ka": "KA-02270",
+      "title": "Oil Spill"
+    },
+    {
+      "id": "nyc311-KA-02276",
+      "ka": "KA-02276",
+      "title": "Pedestrian Ramp Complaint"
+    },
+    {
+      "id": "nyc311-KA-02298",
+      "ka": "KA-02298",
+      "title": "Standing Water"
+    },
+    {
+      "id": "nyc311-KA-02325",
+      "ka": "KA-02325",
+      "title": "Bus Lane and MTA Bus Cameras"
+    },
+    {
+      "id": "nyc311-KA-02343",
+      "ka": "KA-02343",
+      "title": "Red Light Camera Complaint"
+    },
+    {
+      "id": "nyc311-KA-02355",
+      "ka": "KA-02355",
+      "title": "Sheltered Bike Parking"
+    },
+    {
+      "id": "nyc311-KA-02520",
+      "ka": "KA-02520",
+      "title": "CityPay"
+    },
+    {
+      "id": "nyc311-KA-02531",
+      "ka": "KA-02531",
+      "title": "Police Stops"
+    },
+    {
+      "id": "nyc311-KA-02560",
+      "ka": "KA-02560",
+      "title": "Anti-Smoking Advertising Complaint"
+    },
+    {
+      "id": "nyc311-KA-02567",
+      "ka": "KA-02567",
+      "title": "Beacon Community Centers"
+    },
+    {
+      "id": "nyc311-KA-02573",
+      "ka": "KA-02573",
+      "title": "Benchmarking and Energy Grading Requirements"
+    },
+    {
+      "id": "nyc311-KA-02575",
+      "ka": "KA-02575",
+      "title": "Bike Map"
+    },
+    {
+      "id": "nyc311-KA-02639",
+      "ka": "KA-02639",
+      "title": "City Flag Status"
+    },
+    {
+      "id": "nyc311-KA-02640",
+      "ka": "KA-02640",
+      "title": "City Health Information (CHI) for Health Care Providers"
+    },
+    {
+      "id": "nyc311-KA-02658",
+      "ka": "KA-02658",
+      "title": "Construction Site Safety"
+    },
+    {
+      "id": "nyc311-KA-02683",
+      "ka": "KA-02683",
+      "title": "Department of Consumer and Worker Protection Violation Business Assistance"
+    },
+    {
+      "id": "nyc311-KA-02726",
+      "ka": "KA-02726",
+      "title": "Fingerprinting"
+    },
+    {
+      "id": "nyc311-KA-02728",
+      "ka": "KA-02728",
+      "title": "Fire or Ambulance Report"
+    },
+    {
+      "id": "nyc311-KA-02731",
+      "ka": "KA-02731",
+      "title": "Fire Safety Director On-Site Test"
+    },
+    {
+      "id": "nyc311-KA-02785",
+      "ka": "KA-02785",
+      "title": "Home Instruction and Schooling"
+    },
+    {
+      "id": "nyc311-KA-02820",
+      "ka": "KA-02820",
+      "title": "Incarcerated Person Jail Release Services"
+    },
+    {
+      "id": "nyc311-KA-02824",
+      "ka": "KA-02824",
+      "title": "International Affairs Community Assistance"
+    },
+    {
+      "id": "nyc311-KA-02843",
+      "ka": "KA-02843",
+      "title": "Lead Safety for Landlords and Construction Professionals"
+    },
+    {
+      "id": "nyc311-KA-02859",
+      "ka": "KA-02859",
+      "title": "Mechanical Sprinkler or Standpipe Inspection"
+    },
+    {
+      "id": "nyc311-KA-02898",
+      "ka": "KA-02898",
+      "title": "NYC Business Solutions Center"
+    },
+    {
+      "id": "nyc311-KA-02908",
+      "ka": "KA-02908",
+      "title": "Paid Care Worker or Employer Assistance"
+    },
+    {
+      "id": "nyc311-KA-02921",
+      "ka": "KA-02921",
+      "title": "Pet Health and Welfare Resources"
+    },
+    {
+      "id": "nyc311-KA-02947",
+      "ka": "KA-02947",
+      "title": "Pet Vaccination"
+    },
+    {
+      "id": "nyc311-KA-02953",
+      "ka": "KA-02953",
+      "title": "Refund Policy Rules"
+    },
+    {
+      "id": "nyc311-KA-03005",
+      "ka": "KA-03005",
+      "title": "Sign Hanger Complaint"
+    },
+    {
+      "id": "nyc311-KA-03029",
+      "ka": "KA-03029",
+      "title": "Student Educational Support"
+    },
+    {
+      "id": "nyc311-KA-03076",
+      "ka": "KA-03076",
+      "title": "Telephone Pole or Wire Complaint"
+    },
+    {
+      "id": "nyc311-KA-03139",
+      "ka": "KA-03139",
+      "title": "Property or Vacant Land Description Update"
+    },
+    {
+      "id": "nyc311-KA-03167",
+      "ka": "KA-03167",
+      "title": "Health Insurance Application Assistance"
+    },
+    {
+      "id": "nyc311-KA-03218",
+      "ka": "KA-03218",
+      "title": "Immigration and Customs Enforcement (ICE) Raids"
+    },
+    {
+      "id": "nyc311-KA-03264",
+      "ka": "KA-03264",
+      "title": "Coat Drive"
+    },
+    {
+      "id": "nyc311-KA-03317",
+      "ka": "KA-03317",
+      "title": "NYC Care"
+    },
+    {
+      "id": "nyc311-KA-03379",
+      "ka": "KA-03379",
+      "title": "Marijuana Use by a Minor"
+    },
+    {
+      "id": "nyc311-KA-03480",
+      "ka": "KA-03480",
+      "title": "Scattering Ashes and Cremated Remains in Parks"
+    },
+    {
+      "id": "nyc311-KA-03574",
+      "ka": "KA-03574",
+      "title": "Bed Bug Annual Report"
+    },
+    {
+      "id": "nyc311-KA-03623",
+      "ka": "KA-03623",
+      "title": "Pedestrian Plazas"
+    },
+    {
+      "id": "nyc311-KA-03747",
+      "ka": "KA-03747",
+      "title": "New York State POWER Check"
+    },
+    {
+      "id": "nyc311-KA-03749",
+      "ka": "KA-03749",
+      "title": "Metropolitan Opera Ticket Lottery"
+    }
+  ]
+}

@@ -14,7 +14,8 @@
     "catalog:build": "tsx scripts/build-catalog.ts",
     "catalog:load": "tsx scripts/load-catalog.ts",
     "capture": "tsx scripts/capture-portal.ts",
-    "replay": "tsx scripts/replay-snapshots.ts"
+    "replay": "tsx scripts/replay-snapshots.ts",
+    "check:a": "tsx scripts/run-check-a.ts"
   },
   "engines": {
     "node": ">=20"

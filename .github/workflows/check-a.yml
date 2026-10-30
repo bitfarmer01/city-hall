@@ -1,0 +1,52 @@
+# Check A — live catalog-coverage sample (build spec D10, art_RVpFZFo1).
+# The scheduled arm of the first definition-of-done check: draw the committed
+# 100-article sample from the stored snapshot, fetch each live NYC311 page,
+# classify, resolve through the crosswalk, and gate at >=95% resolved with
+# zero validity breaches. Pull-request CI runs the harness tests plus the
+# committed-sample coherence check (workflows/ci.yml); this workflow is the
+# one that touches the live portal — weekly, with the capture policy's
+# courtesy delay and stop conditions (locked decision #10).
+
+name: Check A (live sample)
+
+on:
+  schedule:
+    # Mondays 06:00 UTC — after the weekend, before EU/US working hours.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-a:
+    name: Live 100-article coverage sample
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Check A against the live portal
+        # The runner enforces the gate itself: exit 1 unless >=95% resolved
+        # AND zero validity breaches. One attempt per article — fetch errors
+        # burn the 5% slack or fail the run; nothing is retried past a stop
+        # condition.
+        run: npm run check:a
+
+      - name: Upload run reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: check-a-report
+          path: |
+            data/reports/check-a/latest.json
+            data/reports/check-a/latest.md
+          if-no-files-found: error
