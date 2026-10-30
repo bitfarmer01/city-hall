@@ -56,6 +56,12 @@ jobs:
             -c "SELECT extname, extversion FROM pg_extension WHERE extname = 'vector';" \
             -c "SELECT '[1,2,3]'::vector;"
 
+      - name: Catalog drift check
+        run: |
+          # Rebuilding the committed catalog must be byte-identical — the
+          # build re-runs the linker's full validation on every PR.
+          npm run catalog:build
+
       - name: Lint
         run: npm run lint
 
