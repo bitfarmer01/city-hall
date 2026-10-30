@@ -1,0 +1,35 @@
+{
+  "id": "snap:7be3e990ed05",
+  "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01739",
+  "resolvedUrl": "https://portal.311.nyc.gov/article/?kanumber=KA-01739",
+  "capturedAt": "2026-10-30T18:38:02.980Z",
+  "method": "headless",
+  "httpStatus": 200,
+  "captureMode": "public_reachable",
+  "stoppedAt": "none",
+  "boundarySignals": [],
+  "notes": "Public-boundary capture: no credentials used, no form values entered, no challenge solved.",
+  "artifacts": [
+    {
+      "name": "page.html",
+      "sha256": "c61cd4f1b7dfd24ea50b4bbce66d84f47a81699dfa95ac12df749206657f982d",
+      "bytes": 210499
+    },
+    {
+      "name": "screenshot.png",
+      "sha256": "082e4706735b07bc5f220410f0055ea2d55106da6472fb70f8c90ec61019159f",
+      "bytes": 151579
+    },
+    {
+      "name": "fields.json",
+      "sha256": "1dcbe1535044585397f5bbd515fe08225407ac1f31fb28104f684a3afe0ca38a",
+      "bytes": 8984
+    },
+    {
+      "name": "network.json",
+      "sha256": "6dee7f555917f5480c64f1ef83f1a1c113896dfc9c4457b1fdfe20f39d55da85",
+      "bytes": 17380
+    }
+  ],
+  "captureSchema": "0.1.0"
+}

@@ -1,0 +1,465 @@
+{
+  "schemaVersion": "1.0.0",
+  "seededAt": "2026-10-30T18:38:45.760Z",
+  "inventorySnapshot": {
+    "path": "data/snapshots/nyc311-index/2026-10-30.json",
+    "sha256": "74fa20d420094f73ff4b31654a39f9119468dd0561807d7abbe77a15198356aa",
+    "articleCount": 2093
+  },
+  "selectionRules": [
+    "20 services, four per coverage domain (permits, licensing, inspections, public-records, service-requests)",
+    "catalog-backed services from catalog 2026-10-30.1 first (8 of 20); remaining services catalog-pending",
+    "agency spread: DOB, DOT, DOHMH, DCWP, DEP, HPD, DSNY, DOF, citywide FOIL",
+    "public reachability first; auth-walled filing portals stop at their public boundary and fall back to the committed PDF checklist",
+    "PDF checklist targets reuse committed D3a fixtures (PW1, birth1, premium-birth, dog license) with hash-verified extraction records"
+  ],
+  "services": [
+    {
+      "serviceId": "svc:buildings:building-construction-alteration-permit",
+      "title": "Building Construction or Alteration Permit",
+      "nyc311ArticleId": "KA-02104",
+      "domain": "permits",
+      "agencyHint": "DOB",
+      "inCatalog": true,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-02104",
+          "snapshotId": "snap:11a8f0183281",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-buildings-building-construction-alteration-permit--article.json"
+        },
+        {
+          "id": "portal-dob-now",
+          "kind": "portal_form",
+          "url": "https://www.nyc.gov/site/buildings/dob/use-dob-now.page",
+          "snapshotId": "snap:f1695fab24c3",
+          "captureMode": "authenticated_unreachable",
+          "boundary": "anti_bot",
+          "expectationFile": "data/golden/expectations/svc-buildings-building-construction-alteration-permit--portal-dob-now.json"
+        },
+        {
+          "id": "pdf-pw1",
+          "kind": "pdf_checklist",
+          "url": "https://www.nyc.gov/assets/buildings/pdf/pw1.pdf",
+          "pdfPath": "python/tests/fixtures/pdfs/pw1.pdf",
+          "extractionPath": "data/catalog/forms/pw1.catalog.json",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-buildings-building-construction-alteration-permit--pdf-pw1.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "svc:dep:water-tap-permit",
+      "title": "Water Tap Permit or Sewer Pipe Map",
+      "nyc311ArticleId": "KA-02076",
+      "domain": "permits",
+      "agencyHint": "DEP",
+      "inCatalog": true,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-02076",
+          "snapshotId": "snap:85db9269381e",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-dep-water-tap-permit--article.json"
+        },
+        {
+          "id": "portal-paris",
+          "kind": "portal_form",
+          "url": "https://www.nyc.gov/site/dep/about/permit-and-review-information-system.page",
+          "snapshotId": "snap:093a465f1c4b",
+          "captureMode": "authenticated_unreachable",
+          "boundary": "anti_bot",
+          "expectationFile": "data/golden/expectations/svc-dep-water-tap-permit--portal-paris.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "svc:dohmh:food-service-establishment-permit",
+      "title": "Food Establishment Permit",
+      "nyc311ArticleId": "KA-01878",
+      "domain": "permits",
+      "agencyHint": "DOHMH",
+      "inCatalog": true,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01878",
+          "snapshotId": "snap:c1b58ca09a4c",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-dohmh-food-service-establishment-permit--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-01786",
+      "title": "Sidewalk Construction Permit",
+      "nyc311ArticleId": "KA-01786",
+      "domain": "permits",
+      "agencyHint": "DOT",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01786",
+          "snapshotId": "snap:63f030806f3b",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-01786--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "svc:dcwp:home-improvement-contractor-license",
+      "title": "Home Improvement Contractor License",
+      "nyc311ArticleId": "KA-01808",
+      "domain": "licensing",
+      "agencyHint": "DCWP",
+      "inCatalog": true,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01808",
+          "snapshotId": "snap:9fcf35848764",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-dcwp-home-improvement-contractor-license--article.json"
+        },
+        {
+          "id": "portal-dcwp-apply",
+          "kind": "portal_form",
+          "url": "https://www.nyc.gov/site/dca/businesses/licenses-apply.page",
+          "snapshotId": "snap:fa7f0c1b94c0",
+          "captureMode": "authenticated_unreachable",
+          "boundary": "anti_bot",
+          "expectationFile": "data/golden/expectations/svc-dcwp-home-improvement-contractor-license--portal-dcwp-apply.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "svc:dohmh:dog-license",
+      "title": "Dog License",
+      "nyc311ArticleId": "KA-01890",
+      "domain": "licensing",
+      "agencyHint": "DOHMH",
+      "inCatalog": true,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01890",
+          "snapshotId": "snap:99aab5506c6b",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-dohmh-dog-license--article.json"
+        },
+        {
+          "id": "pdf-dog-license",
+          "kind": "pdf_checklist",
+          "url": "https://www.nyc.gov/assets/doh/downloads/pdf/vet/vet-doglicense-form.pdf",
+          "pdfPath": "python/tests/fixtures/pdfs/dog-license.pdf",
+          "extractionPath": "data/catalog/forms/dog-license.catalog.json",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-dohmh-dog-license--pdf-dog-license.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-01739",
+      "title": "Plumber License",
+      "nyc311ArticleId": "KA-01739",
+      "domain": "licensing",
+      "agencyHint": "DOB",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01739",
+          "snapshotId": "snap:7be3e990ed05",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-01739--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-01833",
+      "title": "General Vendor License",
+      "nyc311ArticleId": "KA-01833",
+      "domain": "licensing",
+      "agencyHint": "DCWP",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01833",
+          "snapshotId": "snap:3abf57f9412f",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-01833--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "svc:buildings:elevator-escalator-inspection",
+      "title": "Elevator or Escalator Inspection",
+      "nyc311ArticleId": "KA-02012",
+      "domain": "inspections",
+      "agencyHint": "DOB",
+      "inCatalog": true,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-02012",
+          "snapshotId": "snap:2eed6dcbe965",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-buildings-elevator-escalator-inspection--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-01782",
+      "title": "Boiler Inspection",
+      "nyc311ArticleId": "KA-01782",
+      "domain": "inspections",
+      "agencyHint": "DOB",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01782",
+          "snapshotId": "snap:e363475211ad",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-01782--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-02591",
+      "title": "Building Facade Inspection",
+      "nyc311ArticleId": "KA-02591",
+      "domain": "inspections",
+      "agencyHint": "DOB",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-02591",
+          "snapshotId": "snap:08ad10bf81df",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-02591--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-02955",
+      "title": "Restaurant Inspection",
+      "nyc311ArticleId": "KA-02955",
+      "domain": "inspections",
+      "agencyHint": "DOHMH",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-02955",
+          "snapshotId": "snap:3a193639c280",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-02955--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "svc:dohmh:birth-certificate-order",
+      "title": "Birth Certificate Order",
+      "nyc311ArticleId": "KA-01012",
+      "domain": "public-records",
+      "agencyHint": "DOHMH",
+      "inCatalog": true,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01012",
+          "snapshotId": "snap:f875266e9a89",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-dohmh-birth-certificate-order--article.json"
+        },
+        {
+          "id": "pdf-birth1",
+          "kind": "pdf_checklist",
+          "url": "https://www.nyc.gov/assets/doh/downloads/pdf/vr/birth1.pdf",
+          "pdfPath": "python/tests/fixtures/pdfs/birth1.pdf",
+          "extractionPath": "data/catalog/forms/birth1.catalog.json",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-dohmh-birth-certificate-order--pdf-birth1.json"
+        },
+        {
+          "id": "pdf-premium-birth",
+          "kind": "pdf_checklist",
+          "url": "https://www.nyc.gov/assets/doh/downloads/pdf/vr/premium-birth-certificate-app.pdf",
+          "pdfPath": "python/tests/fixtures/pdfs/premium-birth.pdf",
+          "extractionPath": "data/catalog/forms/premium-birth.catalog.json",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-dohmh-birth-certificate-order--pdf-premium-birth.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-01028",
+      "title": "Death Certificate Order",
+      "nyc311ArticleId": "KA-01028",
+      "domain": "public-records",
+      "agencyHint": "DOHMH",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01028",
+          "snapshotId": "snap:356f3dee01b1",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-01028--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-01021",
+      "title": "City Agency Record or FOIL Request",
+      "nyc311ArticleId": "KA-01021",
+      "domain": "public-records",
+      "agencyHint": "Citywide",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01021",
+          "snapshotId": "snap:0833f9a4582b",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-01021--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-01665",
+      "title": "Property Deed or Record",
+      "nyc311ArticleId": "KA-01665",
+      "domain": "public-records",
+      "agencyHint": "DOF",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01665",
+          "snapshotId": "snap:7cbc5d4abe80",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-01665--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "svc:311:noise-from-neighbor",
+      "title": "Noise from Neighbor",
+      "nyc311ArticleId": "KA-01017",
+      "domain": "service-requests",
+      "agencyHint": "NYC311",
+      "inCatalog": true,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01017",
+          "snapshotId": "snap:049d8c649bc2",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/svc-311-noise-from-neighbor--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-01107",
+      "title": "Rat or Mouse Complaint",
+      "nyc311ArticleId": "KA-01107",
+      "domain": "service-requests",
+      "agencyHint": "DSNY",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01107",
+          "snapshotId": "snap:d19cf2f283b9",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-01107--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-01036",
+      "title": "Heat or Hot Water Complaint in a Residential Building",
+      "nyc311ArticleId": "KA-01036",
+      "domain": "service-requests",
+      "agencyHint": "HPD",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01036",
+          "snapshotId": "snap:8e45a94b167c",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-01036--article.json"
+        }
+      ]
+    },
+    {
+      "serviceId": "nyc311-KA-01095",
+      "title": "Street Repair Complaint",
+      "nyc311ArticleId": "KA-01095",
+      "domain": "service-requests",
+      "agencyHint": "DOT",
+      "inCatalog": false,
+      "targets": [
+        {
+          "id": "article",
+          "kind": "article_page",
+          "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01095",
+          "snapshotId": "snap:6a38b1fb87ec",
+          "captureMode": "public_reachable",
+          "boundary": "none",
+          "expectationFile": "data/golden/expectations/nyc311-ka-01095--article.json"
+        }
+      ]
+    }
+  ]
+}

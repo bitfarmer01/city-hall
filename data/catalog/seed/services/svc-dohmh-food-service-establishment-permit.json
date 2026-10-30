@@ -51,6 +51,18 @@
       ],
       "notes": "The DOHMH permit application is accepted through DCWP's Licensing Center; hardship-only in-person appointments are scheduled through DCWP's Licensing Appointment Line.",
       "sourceRefs": ["snap:7ae07aecc970", "snap:ca66ce0f2869", "snap:a44adbe526f1", "snap:983e1e1cbf5e"]
+    },
+    {
+      "id": "stp:svc:dohmh:food-service-establishment-permit:020",
+      "serviceId": "svc:dohmh:food-service-establishment-permit",
+      "sequence": 2,
+      "phase": "application",
+      "requirement": "Apply or renew in person — hardship appointments only",
+      "fulfillmentMethod": "in_person_appearance",
+      "responsibleAgency": { "id": "nyc-dohmh", "name": "Department of Health and Mental Hygiene" },
+      "administeredBy": { "id": "nyc-dcwp", "name": "Department of Consumer and Worker Protection" },
+      "notes": "KA-01878: in-person visits are available only in hardship cases (physical disabilities or other impairments); appointments are scheduled through DCWP's Licensing Appointment Line (email LicensingAppointments@dcwp.nyc.gov or by phone).",
+      "sourceRefs": ["snap:a66d389be6ef"]
     }
   ]
 }

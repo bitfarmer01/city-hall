@@ -1,0 +1,254 @@
+{
+  "serviceId": "svc:dohmh:dog-license",
+  "label": "Dog License — pdf-dog-license",
+  "sourceUrl": "https://www.nyc.gov/assets/doh/downloads/pdf/vet/vet-doglicense-form.pdf",
+  "expectedFields": [
+    {
+      "label": "License and Other Fees",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Spayed or Neutered, Any Age Per year, up to 5 years",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Non-Spayed or Neutered, Over 4 Months Old Per year, up to 5 years",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Non-Spayed or Neutered, Under 4 Months Old First year only",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Late Fee (Expired Licenses) For each year license was not renewed",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Replacement Tag",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "PO Box 22136",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Yes No Only fill out if your dog’s rabies vaccine information has changed.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Zip Code",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Health Code §161.04 requires that dogs have a license tag attached to the collar when out in public.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "New Renewal Replacement Tag",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Did your dog receive rabies vaccine?",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Date of Vaccine ❑1 ❑3",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Veterinarian’s Name",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Address",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "City State",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Type of Application",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Dog’s information",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Tag #",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "E-mail",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Dog Owner’s information",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "First Name",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Last Name",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Address 1",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Address 2",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Borough Zip Code –",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Phone #",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Dog’s Name Month and Year of Birth",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Primary Breed",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Primary Color",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Secondary Color",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Third Color",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Gender",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "❑ Yes ❑ No",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "is your dog spayed or neutered?",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Date of Surgery",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "City",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "and the late fee and/or replacement tag, if applicable.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "– Phone #",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "me to civil and criminal fines and penalties, and invalidation of any license issued.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Over 4 Months",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Under 4 Months Old",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Only fill out if you have not provided proof of surgery to the Health Department in the past.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Not Applicable",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "$",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "$ 1.00",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "$ 2.00 x Each Year Not Renewed = $ ____________",
+      "type": "text",
+      "required": false
+    }
+  ],
+  "expectedDocuments": [],
+  "inPersonSteps": []
+}

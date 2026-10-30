@@ -1,0 +1,1309 @@
+{
+  "serviceId": "svc:buildings:building-construction-alteration-permit",
+  "label": "Building Construction or Alteration Permit — pdf-pw1",
+  "sourceUrl": "https://www.nyc.gov/assets/buildings/pdf/pw1.pdf",
+  "expectedFields": [
+    {
+      "label": "topmostSubform.Page1.RadioButtonList",
+      "type": "radio",
+      "required": false
+    },
+    {
+      "label": "P.E",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "R.A",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Sign Hanger",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "R.L.A",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Other",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Initial Filing 5, 7, 11, 12A, 25-26",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Prior to Approval Actions 25-26",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Reinstatement  24-26",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Amend Existing Filing  4A",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Withdrawal  26",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Subsequent Filing  6-7, 8A (Alt-2 only), 11",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Specified in 4A and 6",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Post Approval Amendment (PAA) 4A, 6, 24-25",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Entire Job",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Standard Plan Examination or Review",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Professional Certification  PC1, POC1",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Professional Certification of Objections  AI1",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Will PAA affect filing fees",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "New (Superseding) Applicant  4A, 25-26",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Alteration Type 1 or Alteration Type 1 required",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Alteration Type 2 5A, 6A-D, 8A-B, 9-10, 13C-E",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Full Demolition 6B, 8D, 9A",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Alteration Type 3 5A, 6B-F, 8C, 9-10, 13C-E, 20, 22",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Subdivision 9A, 9D, 12A-B",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "New Building 6A-E, 8F-G, 9A, 9C-K, 10, 12",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Alteration Type 1, OT: “No Work” 8C, 9-10",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Condominium",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Improved  17",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Sign  5A, 6B-D, 9A, 9D, 22-23",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Yes",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "No",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "BL - Boiler  PW1C",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "FA - Fire Alarm",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "FB - Fuel Burning  PW1C",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "FS - Fuel Storage PW1C",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "PL - Plumbing  PW1B",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "undefined",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "FP - Fire Suppression",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "MH - Mechanical",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "SD - Standpipe PW1B",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "SP - Sprinkler  PW1B",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "6D OT -Other, describe:",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "OT/ANT - Antenna",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "OT/BPP - Builders Pavement Plan 8D",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "OT/FPP - Fire Protection Plan",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.TextField1",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.TextField12",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.TextField11",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.PhoneNum",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.TextField10",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.TextField2",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.TextField9",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.email",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.TextField8",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.TextField7",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.TextField6",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.CheckBox1",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page1.CheckBox2",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page2.RadioButtonList",
+      "type": "radio",
+      "required": false
+    },
+    {
+      "label": "Are plans being submitted with this PW1",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "FO — Foundation",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "EN — Energy Analysis",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "No enlargement is proposed",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Yes 12, PD1",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "8C Estimated Job Cost  $",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "_Row_1",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Cost_Row_1",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "_Row_2",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Cost_Row_2",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "_Row_3",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Cost_Row_3",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "Horizontal",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Vertical",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Cost_Row_4",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "Yes No",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Alteration required to meet New Building",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Alteration is a major change to exits",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Change in number of dwelling units",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Change in occupancy / use",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Change is inconsistent with current certificate of occupancy",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Change in number of stories",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Adult Establishment If yes, plot diagram (except DM",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Compensated Development (Inclusionary Housing",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Low Income Housing (Inclusionary Housing",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Single Room Occupancy (SRO) Multiple Dwelling",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Filing includes Lot Merger / Reapportionment  If yes, 17",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Infill Zoning",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Loft Board",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Quality Housing",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Site Safety Job/Project",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Included in LMCCC",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "9D",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Landmark",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Little “E” or RD Site",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Unmapped/CCO Street",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Requesting legalization of work where no work",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "CRFN(s)  Restrictive Declaration / Easement (max. 4",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Filing to address violations",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Filing to comply with Local",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "9D Landmark Filing to address violations",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "9D Landmark Filing to address violations_Row_1",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Adult Establishment If yes, plot diagram (except DM) Infill Zoning Compensated Development (Inclusionary Housing) Loft Board Low Income Housing (Inclusionary Housing) Quality Housing Single Room Occupancy (SRO) Multiple Dwelling Site Safety Job/Project Filing includes Lot Merger / Reapportionment  If yes, 17 Included in LMCCC_Row_2",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "9D Landmark Filing to address violations_Row_2",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Other (please specify on line provided below",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "LL Number_Row_1",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "LL Number_Row_2",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "CRFN(s) Zoning Exhibit (I, II, III, etc. - max. 4):",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "9E BSA Calendar Numbers (max. 5):",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "9F CPC Calendar Numbers (max. 5):",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "9G",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Work includes lighting fixture and/or controls, installation or replacement. [ECC §404 and §505",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "9H",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Work includes modular construction under New York State jurisdiction",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Work includes modular construction under New York City jurisdiction",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "9I High Rise Team tracking #:",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "9J Structural peer review required per BC 16.  If yes, provide NYS P.E. license number:",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "9K",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Work includes permanent removal of standpipe, sprinkler or fire suppression related systems",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "9L",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Work includes partial demolition as defined in AC §28-101.5, or the raising/moving of a building  If yes, 21B",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page2.RadioButtonList",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page2.RadioButtonList._2022_0",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "1968",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "2008",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "2014",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "9A Review is requested under which building code",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "11B Primary application job no.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "12B Street legal width",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Overlay(s)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page3.RadioButtonList",
+      "type": "radio",
+      "required": false
+    },
+    {
+      "label": "Private",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Public",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Special Dist.(s)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Map Number",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "tax lots, list all tax lots here",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_1",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "District_sq. ft.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "FAR_sq. ft.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Corner",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Interior",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Through",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "or",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_2",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_3",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_4",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_5",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_6",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "If yes, no. of parking spaces",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "1, 2, or 3 Family",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Existing_Structural Occupancy/Risk Cat.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Proposed_2014 Code Designations?",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Existing_Seismic Design Cat.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Existing_13C Occupancy Classification*",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Proposed_Yes No",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Existing_Construction Classification",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "ft._Building Stories",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "Existing_Multiple Dwelling Classification",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Proposed_Multiple Dwelling Classification",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "ft._Dwelling Units",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "Not Applicable",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "On-Site",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Off-Site",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Under 300 cubic yards",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Chute",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Sidewalk Shed",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Construction Material",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Fence",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "BSA/MEA Approval No",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Supported Scaffold",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Other",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "to street",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page3.TextField2",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page3.TextField13",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page3.TextField14",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page3.TextField15",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page3.TextField18",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page3.TextField19",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page3.TextField20",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_6",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_5",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_4",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_3",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_2",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "Use*_Row_1",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "to street",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page3.RadioButtonList",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "To the best of my knowledge, belief and professional judgment, all work under this application is in compliance with the NYCECC",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "NYCECC",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "ASHRAE",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Tabular Analysis",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "REScheck",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "COMcheck",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Energy Modeling (EN1",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "To the best of my knowledge, belief and professional judgment, all work under this application is exempt from the NYCECC* in accordance with",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "The work is an alteration of a State or National historic building",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "The scope of the work is entirely in a “low-energy building” and is limited to the building envelope",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "The entire scope of work involves a temporary structure and/or one or more of the following work types",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page3.RadioButtonList._2022",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Prior to 1968",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page3.RadioButtonList._2002_1",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Existing",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "sq. ft._Parking Spaces",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "sq. ft._Loading Berths",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page4.RadioButtonList",
+      "type": "radio",
+      "required": false
+    },
+    {
+      "label": "Coastal Erosion Hazard Area",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Demo. filing is for a secondary structure? If yes, specify structure being demolished",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Mechanical means* from out of building",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Mechanical means* from within building",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "entire structure",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "part of structure",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "The scope of work requires related asbestos abatement as defined in the regulations of the NYC Department of Environmental Protection (DEP",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "The scope of the work is not an asbestos project as defined in the regulations of the NYC DEP",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "The scope of work is exempt from the asbestos requirement as defined in the regulations promulgated by the NYC DEP (15 RCNY 1-23(b",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Indirect",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Flashing",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Direct",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Non-Illuminated",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Illuminated  23A",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Advertising",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Non-Advertising",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "ft",
+      "type": "numeric",
+      "required": false
+    },
+    {
+      "label": "If sign projects beyond building line, is owner",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Ground",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Roof 23B",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Wall",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "23B",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Is roof sign tight, closed or solid",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Is sign inside building line",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Designed for changeable copy?  If no, 23C",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Does an OAC have an interest in this sign or location?  If yes, 23G",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Within 900’ and within view of an arterial highway? If yes, 23D",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Within 200’ and within view of a park 1/2 acre or more?  If yes, 23E",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "23C Sign wording.  If extensive, provide only key wording.",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "23F OAC Sign Number:",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "23G OAC Registration Number:",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page4.TextField2",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page4.TextField3",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page4.TextField4",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "Fire Suppression",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Sprinkler",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Standpipe",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "applicable laws and rules",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page5.RadioButtonList",
+      "type": "radio",
+      "required": false
+    },
+    {
+      "label": "Code only: does this building qualify for high-rise designation",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Occupancy as there is no change in use, exits, or occupancy",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Fee Exemption Request (Non-Profit Owned and Operated",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Is the deed holder a non-profit organization",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Fee Exemption Request (NYCHA/HHC, NYC Agency, or Other",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Owner’s Certifications Regarding Occupied Housing",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "The owner is not required to notify the New York State Homes and",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "The owner has notified the New York State Homes and Community",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "Provide date NYSHCR notified",
+      "type": "date",
+      "required": false
+    },
+    {
+      "label": "Owner’s Certification for Directive 14 Applications (if applicable",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page5.TextField2",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page5.TextField1",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page5.PhoneNum",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page5.email",
+      "type": "text",
+      "required": false
+    },
+    {
+      "label": "topmostSubform.Page5.RadioButtonList",
+      "type": "checkbox",
+      "required": false
+    }
+  ],
+  "expectedDocuments": [],
+  "inPersonSteps": []
+}

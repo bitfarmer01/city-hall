@@ -1,0 +1,8 @@
+{
+  "serviceId": "svc:dcwp:home-improvement-contractor-license",
+  "label": "Home Improvement Contractor License — portal-dcwp-apply",
+  "sourceUrl": "https://www.nyc.gov/site/dca/businesses/licenses-apply.page",
+  "expectedFields": [],
+  "expectedDocuments": [],
+  "inPersonSteps": []
+}
