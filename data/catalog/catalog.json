@@ -23110,7 +23110,7 @@
       "meta": {
         "catalogId": "svc:311:noise-from-neighbor",
         "classifiedDisposition": "service",
-        "classifierRulesVersion": "1.0.0",
+        "classifierRulesVersion": "2.0.0",
         "domain": "service-requests",
         "domainTaxonomyVersion": "1.0.0",
         "nyc311ArticleId": "nyc311-KA-01017",
@@ -23183,7 +23183,7 @@
       "meta": {
         "catalogId": "svc:buildings:building-construction-alteration-permit",
         "classifiedDisposition": "service",
-        "classifierRulesVersion": "1.0.0",
+        "classifierRulesVersion": "2.0.0",
         "domain": "permits",
         "domainTaxonomyVersion": "1.0.0",
         "nyc311ArticleId": "nyc311-KA-02104",
@@ -23261,7 +23261,7 @@
       "meta": {
         "catalogId": "svc:buildings:elevator-escalator-inspection",
         "classifiedDisposition": "service",
-        "classifierRulesVersion": "1.0.0",
+        "classifierRulesVersion": "2.0.0",
         "domain": "inspections",
         "domainTaxonomyVersion": "1.0.0",
         "nyc311ArticleId": "nyc311-KA-02012",
@@ -23357,7 +23357,7 @@
       "meta": {
         "catalogId": "svc:dcwp:home-improvement-contractor-license",
         "classifiedDisposition": "service",
-        "classifierRulesVersion": "1.0.0",
+        "classifierRulesVersion": "2.0.0",
         "domain": "licensing",
         "domainTaxonomyVersion": "1.0.0",
         "nyc311ArticleId": "nyc311-KA-01808",
@@ -23448,7 +23448,7 @@
       "meta": {
         "catalogId": "svc:dep:water-tap-permit",
         "classifiedDisposition": "service",
-        "classifierRulesVersion": "1.0.0",
+        "classifierRulesVersion": "2.0.0",
         "domain": "permits",
         "domainTaxonomyVersion": "1.0.0",
         "nyc311ArticleId": "nyc311-KA-02076",
@@ -23570,7 +23570,7 @@
       "meta": {
         "catalogId": "svc:dohmh:birth-certificate-order",
         "classifiedDisposition": "service",
-        "classifierRulesVersion": "1.0.0",
+        "classifierRulesVersion": "2.0.0",
         "domain": "public-records",
         "domainTaxonomyVersion": "1.0.0",
         "nyc311ArticleId": "nyc311-KA-01012",
@@ -23644,7 +23644,7 @@
       "meta": {
         "catalogId": "svc:dohmh:dog-license",
         "classifiedDisposition": "service",
-        "classifierRulesVersion": "1.0.0",
+        "classifierRulesVersion": "2.0.0",
         "domain": "licensing",
         "domainTaxonomyVersion": "1.0.0",
         "nyc311ArticleId": "nyc311-KA-01890",
@@ -23733,7 +23733,7 @@
       "meta": {
         "catalogId": "svc:dohmh:food-service-establishment-permit",
         "classifiedDisposition": "service",
-        "classifierRulesVersion": "1.0.0",
+        "classifierRulesVersion": "2.0.0",
         "domain": "permits",
         "domainTaxonomyVersion": "1.0.0",
         "nyc311ArticleId": "nyc311-KA-01878",
