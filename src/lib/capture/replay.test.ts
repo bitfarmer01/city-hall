@@ -188,6 +188,36 @@ describe("fail-closed evidence (tamper, governance, junk dirs)", () => {
     expect(report.snapshotCount).toBe(1);
     expect(report.rows.some((r) => r.status === "ungoverned")).toBe(true);
   });
+
+  it("surfaces a snap_-prefixed FILE as an error row, not silence", async () => {
+    const root = await freshRoot();
+    await snapshotWith(root, { url: "https://example.nyc.gov/form", fields: [TEXT_FIELD] });
+    // Even one wearing a well-formed id: a file cannot hold a snapshot, and
+    // silence would make a dropped-evidence bug invisible.
+    await writeFile(path.join(root, "snap_0123456789ab"), Buffer.from("stray bytes"));
+
+    const report = await replayRoot(root);
+    expect(report.errorCount).toBe(1);
+    const errorRow = report.rows.find((r) => r.status === "error");
+    expect(errorRow?.snapshotId).toBe("snap_0123456789ab");
+    expect(errorRow?.error).toMatch(/file/i);
+    // The real snapshot around it still replays.
+    expect(report.snapshotCount).toBe(1);
+  });
+
+  it("escapes control characters in a malformed snapshot name on the error row", async () => {
+    const root = await freshRoot();
+    // ANSI escape + newline: a forged second log line if printed raw.
+    await mkdir(path.join(root, "snap_evil\u001b[31m\nINJECTED"), { recursive: true });
+
+    const report = await replayRoot(root);
+    expect(report.errorCount).toBe(1);
+    const row = report.rows[0];
+    expect(row.status).toBe("error");
+    expect(row.snapshotId).not.toMatch(/[\u0000-\u001f]/);
+    expect(row.snapshotId).toContain("\\u001b");
+    expect(row.snapshotId).toContain("\\u000a");
+  });
 });
 
 describe("committed fixture replay (real capture, zero network)", () => {

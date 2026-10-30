@@ -1,4 +1,5 @@
 import type { FormFieldDump } from "./types";
+import { sanitizeForLog } from "./sanitize";
 
 /**
  * Golden-diff, pure: compare a live (or replayed) form-field dump against the
@@ -109,14 +110,14 @@ export function diffLiveMinusCatalog(
         kind: "field",
         reason: "live_only_required",
         key,
-        detail: `live form has required field "${liveField.label}" absent from catalog`,
+        detail: `live form has required field "${sanitizeForLog(liveField.label)}" absent from catalog`,
       });
     } else {
       warnings.push({
         kind: "field",
         reason: "live_only_optional",
         key,
-        detail: `live form has optional field "${liveField.label}" absent from catalog`,
+        detail: `live form has optional field "${sanitizeForLog(liveField.label)}" absent from catalog`,
       });
     }
   }
@@ -126,7 +127,7 @@ export function diffLiveMinusCatalog(
       kind: "field",
       reason: "catalog_only",
       key,
-      detail: `catalog expects ${expectedField.required ? "required" : "optional"} field "${expectedField.label}" not found in live dump`,
+      detail: `catalog expects ${expectedField.required ? "required" : "optional"} field "${sanitizeForLog(expectedField.label)}" not found in live dump`,
     });
   }
 
@@ -141,7 +142,7 @@ export function diffLiveMinusCatalog(
         kind: "document",
         reason: "catalog_only",
         key: normalizeKey(doc),
-        detail: `catalog requires document "${doc}" with no matching live upload slot`,
+        detail: `catalog requires document "${sanitizeForLog(doc)}" with no matching live upload slot`,
       });
     }
   }

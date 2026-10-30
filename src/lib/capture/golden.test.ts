@@ -42,6 +42,24 @@ describe("diffLiveMinusCatalog", () => {
     expect(diff.failures[0].key).toBe(fieldKey({ label: "Borough", type: "select-one" }));
   });
 
+  it("escapes control characters from labels inside finding details (log-injection hardening)", () => {
+    // A hostile page can plant ANSI escapes / newlines in a form label; the
+    // dump records them faithfully and the finding detail quotes the label —
+    // the detail must not become a forged log line.
+    const evil = dump([
+      { tag: "input", type: "text", name: "evil", id: "evil", label: "Name\u001b[31m\nINJECTED", required: true, requiredMarker: false, options: [], optionsTotal: 0, accept: null, multiple: false },
+    ]);
+    const diff = diffLiveMinusCatalog(evil, { ...EXPECTED, expectedFields: [] });
+
+    expect(diff.failures).toHaveLength(1);
+    expect(diff.failures[0].detail).toContain("\\u001b");
+    expect(diff.failures[0].detail).toContain("\\u000a");
+    expect(diff.failures[0].detail).not.toMatch(/[\u0000-\u001f]/);
+    // Matching keys are display-untouched: normalization still collapses
+    // whitespace for the key, only the printed detail is escaped.
+    expect(diff.failures[0].key).toBe(fieldKey({ label: "Name\u001b[31m\nINJECTED", type: "text" }));
+  });
+
   it("warns (not fails) on optional live-only fields", () => {
     const withOptional = dump([
       ...LIVE.fields,

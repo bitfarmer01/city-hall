@@ -165,3 +165,22 @@ describe("replay CLI (spawned, one tampered row per failure mode, M5)", () => {
     expect(`${result.stderr}${result.stdout}`).toMatch(expectError);
   });
 });
+
+describe("replay CLI (spawned, log-injection hardening + snap-file rows)", () => {
+  it("escapes control characters and surfaces snap_-prefixed files as error rows", async () => {
+    const root = await governedRootWith("Example service", ["Applicant full name"]);
+    await mkdir(path.join(root, "snap_evil\u001b[31m\nINJECTED"), { recursive: true });
+    await writeFile(path.join(root, "snap_0123456789ab"), Buffer.from("stray bytes"));
+
+    const result = runReplay(["--root", root]);
+    expect(result.status).toBe(1); // error rows fail closed
+    const out = `${result.stdout}${result.stderr}`;
+    // Control characters escaped, never raw — no forged lines in the gate log.
+    expect(out).toContain("\\u001b");
+    expect(out).not.toMatch(/\u001b/);
+    expect(out).not.toMatch(/\nINJECTED/);
+    // The snap_-prefixed file surfaces as an error row, not silence.
+    expect(out).toContain("snap_0123456789ab");
+    expect(out).toMatch(/file/i);
+  });
+});

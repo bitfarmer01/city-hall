@@ -18,11 +18,14 @@ import { DEFAULT_SNAPSHOT_ROOT, writeSnapshot } from "../src/lib/capture/store";
 interface CliArgs {
   url: string;
   root: string;
+  /** false when --root was passed explicitly; true when the default corpus root kicked in. */
+  rootDefaulted: boolean;
 }
 
 function parseArgs(argv: string[]): CliArgs {
   const positional: string[] = [];
   let root: string | undefined = DEFAULT_SNAPSHOT_ROOT;
+  let rootDefaulted = true;
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === "--root") {
       const value = argv[++i];
@@ -34,6 +37,7 @@ function parseArgs(argv: string[]): CliArgs {
         process.exit(2);
       }
       root = value;
+      rootDefaulted = false;
     } else {
       positional.push(argv[i]);
     }
@@ -43,11 +47,22 @@ function parseArgs(argv: string[]): CliArgs {
     console.error(`usage: npx tsx scripts/capture-portal.ts <url> [--root ${DEFAULT_SNAPSHOT_ROOT}]`);
     process.exit(2);
   }
-  return { url, root };
+  return { url, root, rootDefaulted };
 }
 
 async function main(): Promise<void> {
-  const { url, root } = parseArgs(process.argv.slice(2));
+  const { url, root, rootDefaulted } = parseArgs(process.argv.slice(2));
+
+  // Loud, not silent: the default root IS the committed evidence corpus — a
+  // scratch capture without --root lands in the reviewed fixtures where the
+  // replay gate and the catalog pipeline read it (S2 follow-up). stderr,
+  // so the stdout JSON record stays pipeable.
+  if (rootDefaulted) {
+    console.error(
+      `WARNING: no --root given — defaulting to the committed evidence corpus (${DEFAULT_SNAPSHOT_ROOT}). ` +
+        "Every capture lands in the reviewed fixture set; pass --root to write scratch captures elsewhere.",
+    );
+  }
 
   const browser = await chromium.launch();
   try {
