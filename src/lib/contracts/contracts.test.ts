@@ -204,13 +204,11 @@ describe("contracts", () => {
         serviceSubtype: "apply",
         reason: "action:apply",
         ruleId: "R006-service-action",
-        evidence: "Apply for a Home Improvement Contractor License",
+        evidence: { kind: "index-text", span: "Apply for a Home Improvement Contractor License" },
         rulesVersion: CLASSIFIER_RULES_VERSION,
       };
       // Boundary mapping — classifier field names → contract field names.
-      // rulesVersion → classifierRulesVersion; the classifier's conflated
-      // evidence string is split into { kind, span } per the PR #8 direction
-      // — update this mapper when PR #8 lands and the string disappears.
+      // rulesVersion → classifierRulesVersion.
       const result = ServiceSummarySchema.safeParse({
         id: "svc:dcwp:home-improvement-contractor-license",
         title: classification.title,
@@ -224,7 +222,7 @@ describe("contracts", () => {
           reason: classification.reason,
           ruleId: classification.ruleId,
           classifierRulesVersion: classification.rulesVersion,
-          evidence: { kind: "index-text", span: classification.evidence },
+          evidence: classification.evidence,
         },
       });
       expect(result.success).toBe(true);
