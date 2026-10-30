@@ -1,0 +1,16 @@
+{
+  "id": "xw:elevator-escalator-inspection",
+  "utterances": [
+    "elevator or escalator inspection",
+    "elevator inspection appointment",
+    "escalator inspection",
+    "request an elevator inspector appointment"
+  ],
+  "serviceIds": ["svc:buildings:elevator-escalator-inspection"],
+  "excludedServiceIds": [],
+  "testCases": [
+    { "utterance": "get my building's elevator inspected", "expectedServiceIds": ["svc:buildings:elevator-escalator-inspection"] },
+    { "utterance": "elevator inspection", "expectedServiceIds": ["svc:buildings:elevator-escalator-inspection"] },
+    { "utterance": "escalator inspector appointment", "expectedServiceIds": ["svc:buildings:elevator-escalator-inspection"] }
+  ]
+}

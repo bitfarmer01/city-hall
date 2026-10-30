@@ -1,0 +1,22 @@
+{
+  "id": "xw:home-improvement-contractor-license",
+  "utterances": [
+    "home improvement contractor license",
+    "hic license",
+    "home improvement contractor registration",
+    "license to do construction or repair work at residences"
+  ],
+  "serviceIds": ["svc:dcwp:home-improvement-contractor-license"],
+  "excludedServiceIds": [
+    {
+      "serviceId": "svc:buildings:building-construction-alteration-permit",
+      "reason": "A frequently conflated but distinct filing: the contractor's DCWP license is a credential, while a buildings permit is pulled per job. License goals resolve here; per-job permits resolve to the buildings service."
+    }
+  ],
+  "testCases": [
+    { "utterance": "I want to get a HIC license", "expectedServiceIds": ["svc:dcwp:home-improvement-contractor-license"] },
+    { "utterance": "home improvement contractor registration", "expectedServiceIds": ["svc:dcwp:home-improvement-contractor-license"] },
+    { "utterance": "license for residential construction work", "expectedServiceIds": ["svc:dcwp:home-improvement-contractor-license"] },
+    { "utterance": "renew my home improvement contractor license", "expectedServiceIds": ["svc:dcwp:home-improvement-contractor-license"] }
+  ]
+}

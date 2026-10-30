@@ -1,0 +1,19 @@
+{
+  "id": "xw:home-renovation",
+  "utterances": [
+    "renovate my apartment",
+    "home renovation",
+    "remodel my home",
+    "renovate a residence"
+  ],
+  "serviceIds": [
+    "svc:dcwp:home-improvement-contractor-license",
+    "svc:buildings:building-construction-alteration-permit"
+  ],
+  "excludedServiceIds": [],
+  "testCases": [
+    { "utterance": "renovate my apartment", "expectedServiceIds": ["svc:dcwp:home-improvement-contractor-license", "svc:buildings:building-construction-alteration-permit"] },
+    { "utterance": "I want to renovate my home", "expectedServiceIds": ["svc:dcwp:home-improvement-contractor-license", "svc:buildings:building-construction-alteration-permit"] },
+    { "utterance": "remodel my storefront", "expectedServiceIds": ["svc:dcwp:home-improvement-contractor-license", "svc:buildings:building-construction-alteration-permit"] }
+  ]
+}

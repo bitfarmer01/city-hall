@@ -1,0 +1,16 @@
+{
+  "id": "xw:birth-certificate-order",
+  "utterances": [
+    "order a birth certificate",
+    "birth certificate copy",
+    "get a copy of a birth certificate",
+    "replace a lost birth certificate"
+  ],
+  "serviceIds": ["svc:dohmh:birth-certificate-order"],
+  "excludedServiceIds": [],
+  "testCases": [
+    { "utterance": "I need a copy of my birth certificate", "expectedServiceIds": ["svc:dohmh:birth-certificate-order"] },
+    { "utterance": "order birth certificate", "expectedServiceIds": ["svc:dohmh:birth-certificate-order"] },
+    { "utterance": "replace a lost birth certificate", "expectedServiceIds": ["svc:dohmh:birth-certificate-order"] }
+  ]
+}

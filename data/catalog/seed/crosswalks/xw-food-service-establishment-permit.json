@@ -1,0 +1,16 @@
+{
+  "id": "xw:food-service-establishment-permit",
+  "utterances": [
+    "food service establishment permit",
+    "food establishment permit",
+    "permit to run a restaurant",
+    "open a restaurant"
+  ],
+  "serviceIds": ["svc:dohmh:food-service-establishment-permit"],
+  "excludedServiceIds": [],
+  "testCases": [
+    { "utterance": "I want to open a restaurant", "expectedServiceIds": ["svc:dohmh:food-service-establishment-permit"] },
+    { "utterance": "food establishment permit", "expectedServiceIds": ["svc:dohmh:food-service-establishment-permit"] },
+    { "utterance": "permit to run an eatery", "expectedServiceIds": ["svc:dohmh:food-service-establishment-permit"] }
+  ]
+}
