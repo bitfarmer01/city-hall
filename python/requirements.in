@@ -1,0 +1,6 @@
+# Top-level dependencies for the PDF extraction toolchain. The full pinned
+# graph lives in requirements.txt (pip-compile output — regenerate, never
+# hand-edit). Runtime split per the build spec: Python owns extraction only.
+pypdf
+pdfplumber
+pytest
