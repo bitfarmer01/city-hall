@@ -1,9 +1,17 @@
-// Required-documents rendering. Each document lists the form, its filling
-// method, and — when fields were extracted — the requiredStatus
-// distribution over all four enum values, so the page is honest about
-// what the extraction actually knows.
+// Required-documents rendering. Each document lists the form, its
+// fillable class and page count, and — when fields were extracted — the
+// requiredStatus distribution over all four enum values, so the page is
+// honest about what the extraction actually knows.
 
 import type { DocumentView } from "@/lib/web/views";
+
+const FILLABLE_CLASS_LABELS: Record<string, string> = {
+  acroform: "fillable PDF (AcroForm)",
+  xfa: "fillable PDF (XFA)",
+  hybrid: "fillable PDF (hybrid)",
+  flattened: "flat PDF",
+  scanned: "scanned PDF",
+};
 
 export function DocumentsView({ documents }: { documents: DocumentView[] }) {
   if (documents.length === 0) {
@@ -13,19 +21,15 @@ export function DocumentsView({ documents }: { documents: DocumentView[] }) {
   return (
     <ul className="space-y-3">
       {documents.map((doc) => (
-        <li key={doc.formId} className="rounded-xl border border-line bg-surface-card p-4 shadow-card">
+        <li key={doc.id} className="rounded-xl bg-surface-card p-4 shadow-card">
           <p className="font-medium text-ink">
-            {doc.url !== undefined ? (
-              <a href={doc.url} className="text-link underline underline-offset-2" rel="noopener noreferrer" target="_blank">
-                {doc.title}
-              </a>
-            ) : (
-              doc.title
-            )}
+            <a href={doc.sourceUrl} className="text-link underline underline-offset-2" rel="noopener noreferrer" target="_blank">
+              {doc.title}
+            </a>
           </p>
           <p className="mt-0.5 text-xs text-ink-muted">
-            {doc.agencyName} · {doc.fillMethod}
-            {doc.formNumber !== undefined && <span> · Form {doc.formNumber}</span>}
+            {doc.formNumber !== null && <span>Form {doc.formNumber} · </span>}
+            {FILLABLE_CLASS_LABELS[doc.fillableClass] ?? doc.fillableClass} · {doc.pages} {doc.pages === 1 ? "page" : "pages"}
           </p>
           {doc.fieldCounts !== undefined && (
             <p className="mt-1.5 text-xs text-ink-muted" data-testid="field-counts">
@@ -34,7 +38,6 @@ export function DocumentsView({ documents }: { documents: DocumentView[] }) {
               {doc.fieldCounts.byStatus.inferred_required} inferred, {doc.fieldCounts.byStatus.unknown} unknown
             </p>
           )}
-          {doc.notes !== undefined && <p className="mt-1.5 text-sm text-ink-secondary">{doc.notes}</p>}
         </li>
       ))}
     </ul>

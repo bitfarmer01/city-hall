@@ -2,6 +2,8 @@
 // that matches nothing, and an empty catalog. Neither is an afterthought —
 // both name the state, own it, and hand the user a way out.
 
+import Link from "next/link";
+
 export function NoMatchState({
   query,
   domain,
@@ -33,9 +35,9 @@ export function NoMatchState({
           : "The service catalog has not been loaded yet. Once a catalog build runs, matched services appear here."}
       </p>
       <p className="mt-4 text-sm">
-        <a href="/browse" className="text-link underline underline-offset-2">
+        <Link href="/browse" className="text-link underline underline-offset-2">
           Clear filters and browse everything
-        </a>
+        </Link>
       </p>
     </div>
   );

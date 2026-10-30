@@ -40,7 +40,7 @@ export function StepsView({ steps }: { steps: StepView[] }) {
             {step.administeredByName !== undefined && <span> · administered by {step.administeredByName}</span>}
           </p>
 
-          {step.detail !== undefined && <p className="mt-2 pl-8 text-sm text-ink-secondary">{step.detail}</p>}
+          {step.notes !== undefined && <p className="mt-2 pl-8 text-sm text-ink-secondary">{step.notes}</p>}
 
           {step.feeNotes.length > 0 && (
             <div className="mt-2 ml-8 rounded-lg bg-surface-sunken px-3 py-2 text-xs text-ink-secondary">
@@ -75,7 +75,7 @@ export function StepsView({ steps }: { steps: StepView[] }) {
               <ul className="mt-1 flex flex-wrap gap-1.5">
                 {step.dependencies.map((dep, index) => (
                   <li key={index}>
-                    <DependencyTag levelLabel={dep.levelLabel} text={`${dep.levelLabel}: ${dep.text}`} />
+                    <DependencyTag levelLabel={dep.levelLabel} text={`${dep.levelLabel} — ${dep.label}`} />
                   </li>
                 ))}
               </ul>
