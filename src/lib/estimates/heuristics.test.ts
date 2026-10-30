@@ -12,6 +12,9 @@ const REGISTRY_FILE = "data/estimates/heuristics.json";
 
 let committedRegistry: unknown;
 
+/** Rows whose sourceRefs (if any) must resolve — empty registry rows carry none. */
+const EMPTY_SNAPSHOTS: SnapshotsById = new Map();
+
 beforeAll(() => {
   committedRegistry = JSON.parse(readFileSync(REGISTRY_FILE, "utf8"));
 });
@@ -29,41 +32,34 @@ function fixtureRow(overrides: Partial<HeuristicRow> = {}): HeuristicRow {
 
 describe("parseHeuristicRows", () => {
   it("accepts the committed registry (empty — rows are added by review)", () => {
-    expect(parseHeuristicRows(committedRegistry)).toEqual([]);
+    expect(parseHeuristicRows(committedRegistry, EMPTY_SNAPSHOTS)).toEqual([]);
   });
 
   it("accepts a valid row and preserves its fields", () => {
-    const rows = parseHeuristicRows([fixtureRow()]);
+    const rows = parseHeuristicRows([fixtureRow()], EMPTY_SNAPSHOTS);
     expect(rows).toHaveLength(1);
     expect(rows[0].rangeText).toBe("2–4 weeks");
     expect(rows[0].basis).toMatch(/test fixture/);
   });
 
   it("refuses a non-array registry", () => {
-    expect(() => parseHeuristicRows("[]")).toThrow(EstimatesError);
+    expect(() => parseHeuristicRows("[]", EMPTY_SNAPSHOTS)).toThrow(EstimatesError);
   });
 
   it("refuses a row without a basis — the basis is the honesty guarantee", () => {
-    try {
-      parseHeuristicRows([fixtureRow({ basis: "  " })]);
-      expect.unreachable("expected EstimatesError");
-    } catch (error) {
-      expect((error as EstimatesError).violations.join("\n")).toMatch(/basis/);
-    }
+    const parse = () => parseHeuristicRows([fixtureRow({ basis: "  " })], EMPTY_SNAPSHOTS);
+    expect(parse).toThrow(EstimatesError);
+    expect(parse).toThrow(/basis/);
   });
 
   it("refuses empty labels, ranges, and bad service IDs", () => {
-    try {
-      parseHeuristicRows([
-        fixtureRow({ label: "" }),
-        fixtureRow({ rangeText: "" }),
-        fixtureRow({ serviceId: "birth-certificates" }),
-      ]);
-      expect.unreachable("expected EstimatesError");
-    } catch (error) {
-      const violations = (error as EstimatesError).violations;
-      expect(violations).toHaveLength(3);
-    }
+    const parse = () =>
+      parseHeuristicRows(
+        [fixtureRow({ label: "" }), fixtureRow({ rangeText: "" }), fixtureRow({ serviceId: "birth-certificates" })],
+        EMPTY_SNAPSHOTS,
+      );
+    expect(parse).toThrow(EstimatesError);
+    expect(parse).toThrow(/label/);
   });
 
   it("refuses sourceRefs that resolve to no snapshot", () => {

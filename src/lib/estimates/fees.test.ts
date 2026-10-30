@@ -59,6 +59,15 @@ function testOffer(overrides: Partial<ServiceOffer> = {}): ServiceOffer {
   };
 }
 
+/**
+ * The numeric gate's threat model is a producer that bypasses the envelope
+ * builder — a tampered catalog or an unchecked runtime load (shakedown
+ * S4-F1). These fixtures forge past the static types exactly that way.
+ */
+function forgedOffer(patch: Record<string, unknown>): ServiceOffer {
+  return { ...testOffer(), ...patch } as unknown as ServiceOffer;
+}
+
 const ARTICLE_SNAP: SourceSnapshotRecord = {
   id: "snap:19f5de5b4340",
   url: "https://portal.311.nyc.gov/article/?kanumber=KA-01808",
@@ -236,5 +245,74 @@ describe("buildFeeEstimates — refusals", () => {
     expect(buildFeeEstimates(hic.envelope, snapshotsById(bundle.snapshots))).toEqual(
       buildFeeEstimates(hic.envelope, snapshotsById(bundle.snapshots)),
     );
+  });
+});
+
+describe("buildFeeEstimates — numeric/currency honesty gate (shakedown S4-F1)", () => {
+  it("A1: refuses a NaN price — $NaN must not render with a citation", () => {
+    const build = () =>
+      buildFeeEstimates(hicEnvelopeWith([forgedOffer({ price: NaN })]), snapshotsById([ARTICLE_SNAP]));
+    expect(build).toThrow(EstimatesError);
+    expect(build).toThrow(/is not finite/);
+  });
+
+  it("A2: refuses a negative price — a negative fee must not display", () => {
+    const build = () =>
+      buildFeeEstimates(hicEnvelopeWith([testOffer({ price: -50 })]), snapshotsById([ARTICLE_SNAP]));
+    expect(build).toThrow(EstimatesError);
+    expect(build).toThrow(/is negative/);
+  });
+
+  it("A3: refuses an Infinite price", () => {
+    const build = () =>
+      buildFeeEstimates(hicEnvelopeWith([forgedOffer({ price: Infinity })]), snapshotsById([ARTICLE_SNAP]));
+    expect(build).toThrow(EstimatesError);
+    expect(build).toThrow(/is not finite/);
+  });
+
+  it("A4: accepts a huge-but-finite price — the gate refuses non-finite, not large (no magnitude bound)", () => {
+    const fees = buildFeeEstimates(
+      hicEnvelopeWith([testOffer({ price: 1e21 })]),
+      snapshotsById([ARTICLE_SNAP]),
+    );
+    expect(fees[0].amountText).toBe("$1,000,000,000,000,000,000,000.00");
+    expect(fees[0].amountValue).toBe(1e21);
+  });
+
+  it("A5: refuses a string price — Intl would coerce it and amountValue would carry it", () => {
+    const build = () =>
+      buildFeeEstimates(hicEnvelopeWith([forgedOffer({ price: "200" })]), snapshotsById([ARTICLE_SNAP]));
+    expect(build).toThrow(EstimatesError);
+    expect(build).toThrow(/is not a number/);
+  });
+
+  it("A6: refuses a non-USD currency — formatUsd renders USD only", () => {
+    const build = () =>
+      buildFeeEstimates(hicEnvelopeWith([forgedOffer({ priceCurrency: "EUR" })]), snapshotsById([ARTICLE_SNAP]));
+    expect(build).toThrow(EstimatesError);
+    expect(build).toThrow(/is not USD/);
+  });
+});
+
+describe("buildFeeEstimates — every sourceRef is validated (shakedown S1-F9)", () => {
+  it("extracts the real 3-ref HIC offer and cites the primary capture", () => {
+    const refs = hic.envelope.offers[0]["x:sourceRefs"];
+    // The multi-ref case is real, not synthetic: the live HIC offer
+    // carries three corroborating captures.
+    expect(refs.length).toBeGreaterThanOrEqual(3);
+    const fees = buildFeeEstimates(hic.envelope, snapshotsById(bundle.snapshots));
+    expect(fees).toHaveLength(1);
+    expect(fees[0].sourceCitation).toContain("(captured 2026-10-30)");
+  });
+
+  it("refuses a dangling secondary ref — corroboration must resolve too", () => {
+    const refs = hic.envelope.offers[0]["x:sourceRefs"];
+    const build = () =>
+      buildFeeEstimates(
+        hicEnvelopeWith([testOffer({ "x:sourceRefs": [refs[0], "snap:ffffffffffff"] })]),
+        snapshotsById(bundle.snapshots),
+      );
+    expect(build).toThrow(EstimatesError);
+    expect(build).toThrow(/resolves to no snapshot/);
   });
 });

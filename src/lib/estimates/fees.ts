@@ -4,7 +4,8 @@
 // The extractor resolves those refs to SourceSnapshot records and composes
 // the display citation from structured snapshot data — it never parses a
 // fee amount out of prose, and it refuses an offer whose provenance is
-// missing, dangling, or date-inconsistent with its snapshot.
+// missing, dangling, or date-inconsistent with its snapshot, whose price
+// is not a finite non-negative number, or whose currency is not USD.
 
 import { SNAPSHOT_ID_PATTERN } from "@/lib/catalog/ids";
 import type { ServiceEnvelope, SourceSnapshotRecord } from "@/lib/catalog/types";
@@ -39,13 +40,17 @@ export function capturedAtDatesAgree(a: string, b: string): boolean {
 
 export type SnapshotsById = ReadonlyMap<string, SourceSnapshotRecord>;
 
+/** ISO 4217 code shape; the extractor additionally pins the code to USD. */
+const CURRENCY_PATTERN = /^[A-Z]{3}$/;
+
 export function snapshotsById(snapshots: readonly SourceSnapshotRecord[]): SnapshotsById {
   return new Map(snapshots.map((snapshot) => [snapshot.id, snapshot]));
 }
 
 /**
  * Map every envelope offer to a tier-1 FeeEstimate. Refuses the whole
- * batch when any offer would render without source + as-of — the D6
+ * batch when any offer would render without source + as-of, with a
+ * non-finite/negative price, or with a non-USD currency — the D6
  * assertion ("every displayed fee carries source + as-of") holds by
  * construction, not by renderer discipline.
  */
@@ -63,21 +68,41 @@ export function buildFeeEstimates(envelope: ServiceEnvelope, snapshots: Snapshot
       violations.push(`fee ${offer.identifier} capturedAt ${JSON.stringify(capturedAt)} is not an ISO yyyy-mm-dd date`);
     }
 
-    const primary = refs[0];
-    if (primary !== undefined) {
-      if (!SNAPSHOT_ID_PATTERN.test(primary)) {
-        violations.push(`fee ${offer.identifier} sourceRef ${JSON.stringify(primary)} is not a snap:{sha256-12} id`);
+    // Honesty gate on the number itself: this extractor is the render
+    // boundary, and a fee that would display "$NaN" or "-$50.00" is
+    // dishonest output no matter how perfect its provenance (shakedown
+    // S4-F1). The envelope builder refuses these upstream; the boundary
+    // re-checks, because runtime catalog loads are not builder-validated.
+    const price = offer.price;
+    if (typeof price !== "number") {
+      violations.push(`fee ${offer.identifier} price ${JSON.stringify(price)} is not a number`);
+    } else if (!Number.isFinite(price)) {
+      violations.push(`fee ${offer.identifier} price ${price} is not finite`);
+    } else if (price < 0) {
+      violations.push(`fee ${offer.identifier} price ${price} is negative — a negative fee must not display`);
+    }
+    if (!CURRENCY_PATTERN.test(offer.priceCurrency) || offer.priceCurrency !== "USD") {
+      violations.push(
+        `fee ${offer.identifier} priceCurrency ${JSON.stringify(offer.priceCurrency)} is not USD — formatUsd renders USD only`,
+      );
+    }
+
+    // Every ref is validated, not just the primary (the heuristics
+    // precedent): a dangling corroborating ref is still a dishonest claim.
+    for (const ref of refs) {
+      if (!SNAPSHOT_ID_PATTERN.test(ref)) {
+        violations.push(`fee ${offer.identifier} sourceRef ${JSON.stringify(ref)} is not a snap:{sha256-12} id`);
       } else {
-        const snapshot = snapshots.get(primary);
+        const snapshot = snapshots.get(ref);
         if (snapshot === undefined) {
-          violations.push(`fee ${offer.identifier} sourceRef ${primary} resolves to no snapshot in this bundle`);
+          violations.push(`fee ${offer.identifier} sourceRef ${ref} resolves to no snapshot in this bundle`);
         } else {
           if (!snapshot.url.startsWith("https://")) {
-            violations.push(`fee ${offer.identifier} snapshot ${primary} url is not https:// — ${snapshot.url}`);
+            violations.push(`fee ${offer.identifier} snapshot ${ref} url is not https:// — ${snapshot.url}`);
           }
           if (!capturedAtDatesAgree(capturedAt, snapshot.capturedAt)) {
             violations.push(
-              `fee ${offer.identifier} capturedAt ${capturedAt} disagrees with snapshot ${primary} capturedAt ${snapshot.capturedAt}`,
+              `fee ${offer.identifier} capturedAt ${capturedAt} disagrees with snapshot ${ref} capturedAt ${snapshot.capturedAt}`,
             );
           }
         }
@@ -89,6 +114,9 @@ export function buildFeeEstimates(envelope: ServiceEnvelope, snapshots: Snapshot
       violations.push(`fee ${offer.identifier} has an empty description — no display label`);
     }
 
+    // The display cites the primary capture; the remaining refs were
+    // validated above as corroboration.
+    const primary = refs[0];
     const fee: FeeEstimate = {
       tier: 1,
       label,

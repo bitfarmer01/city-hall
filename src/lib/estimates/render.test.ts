@@ -34,13 +34,19 @@ function surchargelessSnapshots() {
 }
 
 /** Fixture surcharge rows use real catalog step/snapshot IDs so refs resolve. */
-const SURCHARGE_FIXTURE = [
-  {
-    stepId: "stp:svc:dcwp:home-improvement-contractor-license:010",
-    note: "Card payments carry a 2% convenience fee; eCheck is free.",
-    sourceRefs: ["snap:a777dc9a2500"],
-  },
-];
+function surchargeFixtureRows() {
+  return [
+    {
+      stepId: "stp:svc:dcwp:home-improvement-contractor-license:010",
+      note: "Card payments carry a 2% convenience fee; eCheck is free.",
+      // Derived from the loaded bundle, not hardcoded — snapshot IDs re-hash
+      // on every catalog re-capture and a pinned ref re-breaks this suite
+      // (shakedown S2-M2). The note rides on HIC step 010, so its ref is
+      // that step's own committed evidence.
+      sourceRefs: [hicStep010().sourceRefs[0]],
+    },
+  ];
+}
 
 function hicStep010(): BlueprintStepRecord {
   return bundle.services
@@ -89,14 +95,17 @@ describe("tier-3 labeling guarantee (spec D6)", () => {
   it("never renders a tier-3 item without the estimate label — catalog and fixtures alike", () => {
     const blocks = blockForAllServices();
     // Fixture block exercising all three tiers at once.
-    const heuristicRows: HeuristicRow[] = parseHeuristicRows([
-      {
-        serviceId: "svc:dohmh:birth-certificate-order",
-        label: "Typical mail-order turnaround",
-        rangeText: "2–4 weeks",
-        basis: "test fixture demonstrating the gap-filler shape; no production heuristic exists",
-      },
-    ]);
+    const heuristicRows: HeuristicRow[] = parseHeuristicRows(
+      [
+        {
+          serviceId: "svc:dohmh:birth-certificate-order",
+          label: "Typical mail-order turnaround",
+          rangeText: "2–4 weeks",
+          basis: "test fixture demonstrating the gap-filler shape; no production heuristic exists",
+        },
+      ],
+      surchargelessSnapshots(),
+    );
     blocks.push(
       buildEstimateBlock(
         bundle.services.find((s) => s.meta.catalogId === "svc:dohmh:birth-certificate-order")!,
@@ -131,7 +140,7 @@ describe("tier-3 labeling guarantee (spec D6)", () => {
 
 describe("surcharges render in step feeNotes, never the headline", () => {
   it("attaches a curated surcharge note to its step only", () => {
-    const rows = parseSurchargeRows(SURCHARGE_FIXTURE, surchargelessSnapshots());
+    const rows = parseSurchargeRows(surchargeFixtureRows(), surchargelessSnapshots());
     const notesByStepId = surchargeNotesByStepId(rows);
     const step = hicStep010();
 
@@ -141,7 +150,7 @@ describe("surcharges render in step feeNotes, never the headline", () => {
   });
 
   it("keeps the headline block free of surcharge text", () => {
-    const rows = parseSurchargeRows(SURCHARGE_FIXTURE, surchargelessSnapshots());
+    const rows = parseSurchargeRows(surchargeFixtureRows(), surchargelessSnapshots());
     const notesByStepId = surchargeNotesByStepId(rows);
     const step = hicStep010();
     expect(renderStepFeeNotes(step, notesByStepId).length).toBeGreaterThan(0);
@@ -156,7 +165,7 @@ describe("surcharges render in step feeNotes, never the headline", () => {
   });
 
   it("renders no notes for steps without curated rows", () => {
-    const rows = parseSurchargeRows(SURCHARGE_FIXTURE, surchargelessSnapshots());
+    const rows = parseSurchargeRows(surchargeFixtureRows(), surchargelessSnapshots());
     const notesByStepId = surchargeNotesByStepId(rows);
     const step020 = bundle.services
       .find((s) => s.meta.catalogId === "svc:dcwp:home-improvement-contractor-license")!
@@ -167,6 +176,27 @@ describe("surcharges render in step feeNotes, never the headline", () => {
   it("validates the committed registry is empty and clean", () => {
     const raw = JSON.parse(readFileSync(SURCHARGE_REGISTRY, "utf8"));
     expect(parseSurchargeRows(raw, surchargelessSnapshots())).toEqual([]);
+  });
+});
+
+describe("tier-2 render-line provenance (shakedown S3-H1)", () => {
+  it("renders tier-2 lines with their dataset + query provenance", () => {
+    // The HIC block is the catalog's one tier-2 carrier (online P21D) —
+    // the assertion exercised a real tier-2 item, not an empty loop.
+    const hic = bundle.services.find(
+      (s) => s.meta.catalogId === "svc:dcwp:home-improvement-contractor-license",
+    )!;
+    const block = buildEstimateBlock(hic, context);
+    expect(block.tiers.some((tier) => tier.tier === 2)).toBe(true);
+
+    const lines = renderEstimateHeadline(block);
+    block.tiers.forEach((tier, index) => {
+      if (tier.tier !== 2) return;
+      // The line template must carry the provenance pair, mirroring the
+      // tier-1 source regex — a template regression that strips it must
+      // fail here, not silently (revert gap R11).
+      expect(lines[index]).toMatch(/— dataset: .+; query: .+/);
+    });
   });
 });
 
