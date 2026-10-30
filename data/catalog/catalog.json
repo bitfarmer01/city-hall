@@ -23328,9 +23328,9 @@
             "priceCurrency": "USD",
             "x:capturedAt": "2026-10-30",
             "x:sourceRefs": [
-              "snap:f29b96c047dd",
+              "snap:131a5bcd2c18",
               "snap:19f5de5b4340",
-              "snap:a59b2828c958"
+              "snap:a777dc9a2500"
             ]
           }
         ],
@@ -23380,9 +23380,9 @@
           "serviceId": "svc:dcwp:home-improvement-contractor-license",
           "sourceRefs": [
             "snap:f51cd03e49ee",
-            "snap:f29b96c047dd",
+            "snap:131a5bcd2c18",
             "snap:19f5de5b4340",
-            "snap:a59b2828c958"
+            "snap:a777dc9a2500"
           ]
         },
         {
@@ -23781,6 +23781,15 @@
   "snapshots": [
     {
       "capturedAt": "2026-10-30",
+      "id": "snap:131a5bcd2c18",
+      "method": "manual",
+      "notes": "Evidence record for a research-session capture (Committed fixture src/lib/inventory/__fixtures__/nyc311/article-ka-01808.html (snapshot snap:19f5de5b4340) and D3b capture snap:a777dc9a2500 of the same page). sha256 hashes this committed evidence record's bytes; the live page was not re-fetched.",
+      "sha256": "131a5bcd2c186c47dc7b4725466c415ea2eb283aaf8607a494d0efc08895e072",
+      "storagePath": "data/catalog/seed/evidence/ev-hic-fee.json",
+      "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01808"
+    },
+    {
+      "capturedAt": "2026-10-30",
       "id": "snap:16714397d300",
       "method": "manual",
       "notes": "Evidence record for a research-session capture (Research - Data model and form extraction (art_mcM1Ssao §5.2, [N8] fetched 2026-10-30)). sha256 hashes this committed evidence record's bytes; the live page was not re-fetched.",
@@ -23870,6 +23879,25 @@
       "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01878"
     },
     {
+      "capturedAt": "2026-10-30",
+      "httpStatus": 200,
+      "id": "snap:a68fd0c754fe",
+      "method": "http_fetch",
+      "notes": "public-boundary capture; no authentication",
+      "sha256": "a68fd0c754fef1f4e473e0d694f961e5be31f5d611e43005b25c4ccb487cdb99",
+      "storagePath": "python/tests/fixtures/pdfs/pw1.pdf",
+      "url": "https://www.nyc.gov/assets/buildings/pdf/pw1.pdf"
+    },
+    {
+      "capturedAt": "2026-10-30",
+      "id": "snap:a6ebac73fe97",
+      "method": "manual",
+      "notes": "Evidence record for a research-session capture (city-hall build spec (art_RVpFZFo1) representative GovernmentService record, research-verified 2026-10-30). sha256 hashes this committed evidence record's bytes; the live page was not re-fetched.",
+      "sha256": "a6ebac73fe975bb879e326d8b5bbada0399a35567aa4fa27abccec3a19fde73e",
+      "storagePath": "data/catalog/seed/evidence/ev-hic-hardship.json",
+      "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01808"
+    },
+    {
       "artifacts": [
         {
           "bytes": 238345,
@@ -23890,36 +23918,22 @@
           "bytes": 18109,
           "name": "network.json",
           "sha256": "56b535c78e4defb1bce18128f74231053d473866a3aee8ebb9a498d24dd4dd83"
+        },
+        {
+          "bytes": 450,
+          "name": "meta-bound.json",
+          "sha256": "19d6cafc3456e9a26c402448b4154450279a802d562ad2542aa9752a9da1e687"
         }
       ],
       "captureMode": "public_reachable",
       "capturedAt": "2026-10-30T17:21:32.328Z",
       "httpStatus": 200,
-      "id": "snap:a59b2828c958",
+      "id": "snap:a777dc9a2500",
       "method": "headless",
       "notes": "Public-boundary capture: no credentials used, no form values entered, no challenge solved.",
       "resolvedUrl": "https://portal.311.nyc.gov/article/?kanumber=KA-01808",
-      "sha256": "a59b2828c95852032905d3362a3808194e1ee3be567e24b7c0abda64427d4529",
+      "sha256": "a777dc9a2500e9fec9d8f0afdb1f688bb65c7a5e3fc88988bd7aa890a1036ccc",
       "stoppedAt": "none",
-      "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01808"
-    },
-    {
-      "capturedAt": "2026-10-30",
-      "httpStatus": 200,
-      "id": "snap:a68fd0c754fe",
-      "method": "http_fetch",
-      "notes": "public-boundary capture; no authentication",
-      "sha256": "a68fd0c754fef1f4e473e0d694f961e5be31f5d611e43005b25c4ccb487cdb99",
-      "storagePath": "python/tests/fixtures/pdfs/pw1.pdf",
-      "url": "https://www.nyc.gov/assets/buildings/pdf/pw1.pdf"
-    },
-    {
-      "capturedAt": "2026-10-30",
-      "id": "snap:a6ebac73fe97",
-      "method": "manual",
-      "notes": "Evidence record for a research-session capture (city-hall build spec (art_RVpFZFo1) representative GovernmentService record, research-verified 2026-10-30). sha256 hashes this committed evidence record's bytes; the live page was not re-fetched.",
-      "sha256": "a6ebac73fe975bb879e326d8b5bbada0399a35567aa4fa27abccec3a19fde73e",
-      "storagePath": "data/catalog/seed/evidence/ev-hic-hardship.json",
       "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01808"
     },
     {
@@ -23977,15 +23991,6 @@
       "sha256": "e515d15e176e1c15ccecef07159e76b4d0b5f3832d3ec9477e71185fb18e10ce",
       "storagePath": "python/tests/fixtures/pdfs/premium-birth.pdf",
       "url": "https://www.nyc.gov/assets/doh/downloads/pdf/vr/premium-birth-certificate-app.pdf"
-    },
-    {
-      "capturedAt": "2026-10-30",
-      "id": "snap:f29b96c047dd",
-      "method": "manual",
-      "notes": "Evidence record for a research-session capture (Committed fixture src/lib/inventory/__fixtures__/nyc311/article-ka-01808.html (snapshot snap:19f5de5b4340) and D3b capture snap:a59b2828c958 of the same page). sha256 hashes this committed evidence record's bytes; the live page was not re-fetched.",
-      "sha256": "f29b96c047dd063d0a17ef54452b879746fb5c807088ded750132d6d5958e541",
-      "storagePath": "data/catalog/seed/evidence/ev-hic-fee.json",
-      "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01808"
     },
     {
       "capturedAt": "2026-10-30",
