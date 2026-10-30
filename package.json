@@ -10,7 +10,9 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "snapshot:build": "tsx scripts/build-inventory-snapshot.ts",
-    "snapshot:diff": "tsx scripts/diff-inventory-snapshots.ts"
+    "snapshot:diff": "tsx scripts/diff-inventory-snapshots.ts",
+    "capture": "tsx scripts/capture-portal.ts",
+    "replay": "tsx scripts/replay-snapshots.ts"
   },
   "engines": {
     "node": ">=20"
@@ -27,9 +29,10 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
+    "playwright": "1.64.1",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5",
-    "tsx": "^4.20.3",
     "vitest": "^4.1.12"
   }
 }

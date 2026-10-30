@@ -45,6 +45,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Playwright chromium
+        run: npx playwright install --with-deps chromium
+
       - name: Verify Postgres + pgvector service
         run: |
           pg_isready -h localhost -p 5432 -U postgres -d cityhall
