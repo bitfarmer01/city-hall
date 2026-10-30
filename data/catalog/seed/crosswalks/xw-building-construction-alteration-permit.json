@@ -1,0 +1,17 @@
+{
+  "id": "xw:building-construction-alteration-permit",
+  "utterances": [
+    "building construction or alteration permit",
+    "building permit",
+    "construction permit",
+    "permit to construct or alter a building",
+    "dob alteration filing"
+  ],
+  "serviceIds": ["svc:buildings:building-construction-alteration-permit"],
+  "excludedServiceIds": [],
+  "testCases": [
+    { "utterance": "I need a construction permit", "expectedServiceIds": ["svc:buildings:building-construction-alteration-permit"] },
+    { "utterance": "alteration permit for my building", "expectedServiceIds": ["svc:buildings:building-construction-alteration-permit"] },
+    { "utterance": "dob permit for construction work", "expectedServiceIds": ["svc:buildings:building-construction-alteration-permit"] }
+  ]
+}

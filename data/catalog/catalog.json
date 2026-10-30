@@ -70,7 +70,323 @@
     }
   ],
   "catalogVersion": "2026-10-30.1",
-  "crosswalks": [],
+  "crosswalks": [
+    {
+      "excludedServiceIds": [],
+      "id": "xw:birth-certificate-order",
+      "serviceIds": [
+        "svc:dohmh:birth-certificate-order"
+      ],
+      "testCases": [
+        {
+          "expectedServiceIds": [
+            "svc:dohmh:birth-certificate-order"
+          ],
+          "utterance": "I need a copy of my birth certificate"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dohmh:birth-certificate-order"
+          ],
+          "utterance": "order birth certificate"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dohmh:birth-certificate-order"
+          ],
+          "utterance": "replace a lost birth certificate"
+        }
+      ],
+      "utterances": [
+        "order a birth certificate",
+        "birth certificate copy",
+        "get a copy of a birth certificate",
+        "replace a lost birth certificate"
+      ]
+    },
+    {
+      "excludedServiceIds": [],
+      "id": "xw:building-construction-alteration-permit",
+      "serviceIds": [
+        "svc:buildings:building-construction-alteration-permit"
+      ],
+      "testCases": [
+        {
+          "expectedServiceIds": [
+            "svc:buildings:building-construction-alteration-permit"
+          ],
+          "utterance": "I need a construction permit"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:buildings:building-construction-alteration-permit"
+          ],
+          "utterance": "alteration permit for my building"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:buildings:building-construction-alteration-permit"
+          ],
+          "utterance": "dob permit for construction work"
+        }
+      ],
+      "utterances": [
+        "building construction or alteration permit",
+        "building permit",
+        "construction permit",
+        "permit to construct or alter a building",
+        "dob alteration filing"
+      ]
+    },
+    {
+      "excludedServiceIds": [],
+      "id": "xw:dog-license",
+      "serviceIds": [
+        "svc:dohmh:dog-license"
+      ],
+      "testCases": [
+        {
+          "expectedServiceIds": [
+            "svc:dohmh:dog-license"
+          ],
+          "utterance": "I want to license my dog"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dohmh:dog-license"
+          ],
+          "utterance": "dog license"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dohmh:dog-license"
+          ],
+          "utterance": "renew my dog's license"
+        }
+      ],
+      "utterances": [
+        "dog license",
+        "license my dog",
+        "dog license renewal",
+        "replace a dog license"
+      ]
+    },
+    {
+      "excludedServiceIds": [],
+      "id": "xw:elevator-escalator-inspection",
+      "serviceIds": [
+        "svc:buildings:elevator-escalator-inspection"
+      ],
+      "testCases": [
+        {
+          "expectedServiceIds": [
+            "svc:buildings:elevator-escalator-inspection"
+          ],
+          "utterance": "get my building's elevator inspected"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:buildings:elevator-escalator-inspection"
+          ],
+          "utterance": "elevator inspection"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:buildings:elevator-escalator-inspection"
+          ],
+          "utterance": "escalator inspector appointment"
+        }
+      ],
+      "utterances": [
+        "elevator or escalator inspection",
+        "elevator inspection appointment",
+        "escalator inspection",
+        "request an elevator inspector appointment"
+      ]
+    },
+    {
+      "excludedServiceIds": [],
+      "id": "xw:food-service-establishment-permit",
+      "serviceIds": [
+        "svc:dohmh:food-service-establishment-permit"
+      ],
+      "testCases": [
+        {
+          "expectedServiceIds": [
+            "svc:dohmh:food-service-establishment-permit"
+          ],
+          "utterance": "I want to open a restaurant"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dohmh:food-service-establishment-permit"
+          ],
+          "utterance": "food establishment permit"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dohmh:food-service-establishment-permit"
+          ],
+          "utterance": "permit to run an eatery"
+        }
+      ],
+      "utterances": [
+        "food service establishment permit",
+        "food establishment permit",
+        "permit to run a restaurant",
+        "open a restaurant"
+      ]
+    },
+    {
+      "excludedServiceIds": [
+        {
+          "reason": "A frequently conflated but distinct filing: the contractor's DCWP license is a credential, while a buildings permit is pulled per job. License goals resolve here; per-job permits resolve to the buildings service.",
+          "serviceId": "svc:buildings:building-construction-alteration-permit"
+        }
+      ],
+      "id": "xw:home-improvement-contractor-license",
+      "serviceIds": [
+        "svc:dcwp:home-improvement-contractor-license"
+      ],
+      "testCases": [
+        {
+          "expectedServiceIds": [
+            "svc:dcwp:home-improvement-contractor-license"
+          ],
+          "utterance": "I want to get a HIC license"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dcwp:home-improvement-contractor-license"
+          ],
+          "utterance": "home improvement contractor registration"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dcwp:home-improvement-contractor-license"
+          ],
+          "utterance": "license for residential construction work"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dcwp:home-improvement-contractor-license"
+          ],
+          "utterance": "renew my home improvement contractor license"
+        }
+      ],
+      "utterances": [
+        "home improvement contractor license",
+        "hic license",
+        "home improvement contractor registration",
+        "license to do construction or repair work at residences"
+      ]
+    },
+    {
+      "excludedServiceIds": [],
+      "id": "xw:home-renovation",
+      "serviceIds": [
+        "svc:dcwp:home-improvement-contractor-license",
+        "svc:buildings:building-construction-alteration-permit"
+      ],
+      "testCases": [
+        {
+          "expectedServiceIds": [
+            "svc:dcwp:home-improvement-contractor-license",
+            "svc:buildings:building-construction-alteration-permit"
+          ],
+          "utterance": "renovate my apartment"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dcwp:home-improvement-contractor-license",
+            "svc:buildings:building-construction-alteration-permit"
+          ],
+          "utterance": "I want to renovate my home"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dcwp:home-improvement-contractor-license",
+            "svc:buildings:building-construction-alteration-permit"
+          ],
+          "utterance": "remodel my storefront"
+        }
+      ],
+      "utterances": [
+        "renovate my apartment",
+        "home renovation",
+        "remodel my home",
+        "renovate a residence"
+      ]
+    },
+    {
+      "excludedServiceIds": [],
+      "id": "xw:noise-from-neighbor",
+      "serviceIds": [
+        "svc:311:noise-from-neighbor"
+      ],
+      "testCases": [
+        {
+          "expectedServiceIds": [
+            "svc:311:noise-from-neighbor"
+          ],
+          "utterance": "my neighbor is too loud"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:311:noise-from-neighbor"
+          ],
+          "utterance": "file a noise complaint against my neighbor"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:311:noise-from-neighbor"
+          ],
+          "utterance": "report noise from neighbor"
+        }
+      ],
+      "utterances": [
+        "noise from neighbor",
+        "report a noisy neighbor",
+        "file a noise complaint",
+        "neighbor noise complaint"
+      ]
+    },
+    {
+      "excludedServiceIds": [],
+      "id": "xw:water-tap-permit",
+      "serviceIds": [
+        "svc:dep:water-tap-permit"
+      ],
+      "testCases": [
+        {
+          "expectedServiceIds": [
+            "svc:dep:water-tap-permit"
+          ],
+          "utterance": "get a sewer pipe map"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dep:water-tap-permit"
+          ],
+          "utterance": "water tap permit"
+        },
+        {
+          "expectedServiceIds": [
+            "svc:dep:water-tap-permit"
+          ],
+          "utterance": "permit to plug a water tap"
+        }
+      ],
+      "utterances": [
+        "water tap permit",
+        "permit to connect a water tap",
+        "water main tap permit",
+        "sewer pipe map",
+        "wet connection permit",
+        "tap into the city water main"
+      ]
+    }
+  ],
   "formFields": [
     {
       "bbox": {

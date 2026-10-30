@@ -1,0 +1,16 @@
+{
+  "id": "xw:noise-from-neighbor",
+  "utterances": [
+    "noise from neighbor",
+    "report a noisy neighbor",
+    "file a noise complaint",
+    "neighbor noise complaint"
+  ],
+  "serviceIds": ["svc:311:noise-from-neighbor"],
+  "excludedServiceIds": [],
+  "testCases": [
+    { "utterance": "my neighbor is too loud", "expectedServiceIds": ["svc:311:noise-from-neighbor"] },
+    { "utterance": "file a noise complaint against my neighbor", "expectedServiceIds": ["svc:311:noise-from-neighbor"] },
+    { "utterance": "report noise from neighbor", "expectedServiceIds": ["svc:311:noise-from-neighbor"] }
+  ]
+}

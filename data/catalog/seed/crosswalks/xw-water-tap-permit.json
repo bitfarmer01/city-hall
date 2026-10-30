@@ -1,0 +1,18 @@
+{
+  "id": "xw:water-tap-permit",
+  "utterances": [
+    "water tap permit",
+    "permit to connect a water tap",
+    "water main tap permit",
+    "sewer pipe map",
+    "wet connection permit",
+    "tap into the city water main"
+  ],
+  "serviceIds": ["svc:dep:water-tap-permit"],
+  "excludedServiceIds": [],
+  "testCases": [
+    { "utterance": "get a sewer pipe map", "expectedServiceIds": ["svc:dep:water-tap-permit"] },
+    { "utterance": "water tap permit", "expectedServiceIds": ["svc:dep:water-tap-permit"] },
+    { "utterance": "permit to plug a water tap", "expectedServiceIds": ["svc:dep:water-tap-permit"] }
+  ]
+}

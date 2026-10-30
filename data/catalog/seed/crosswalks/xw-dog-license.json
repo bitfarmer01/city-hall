@@ -1,0 +1,16 @@
+{
+  "id": "xw:dog-license",
+  "utterances": [
+    "dog license",
+    "license my dog",
+    "dog license renewal",
+    "replace a dog license"
+  ],
+  "serviceIds": ["svc:dohmh:dog-license"],
+  "excludedServiceIds": [],
+  "testCases": [
+    { "utterance": "I want to license my dog", "expectedServiceIds": ["svc:dohmh:dog-license"] },
+    { "utterance": "dog license", "expectedServiceIds": ["svc:dohmh:dog-license"] },
+    { "utterance": "renew my dog's license", "expectedServiceIds": ["svc:dohmh:dog-license"] }
+  ]
+}

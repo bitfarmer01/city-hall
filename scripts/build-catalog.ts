@@ -35,6 +35,7 @@ import type {
   BlueprintStepRecord,
   FormFieldRecord,
   FormRecord,
+  GoalCrosswalkRecord,
   PortalRecord,
   ServiceCatalogMeta,
   ServiceRecord,
@@ -133,6 +134,40 @@ function loadServiceSeeds(): ServiceSeed[] {
         throw new Error(`service ${seed.catalogId}: ka "${seed.ka}" is not a KA-##### number`);
       }
       return { ...seed, ka: seed.ka as KaNumber };
+    });
+}
+
+/**
+ * Crosswalk seeds (D5): curated goal → service mappings with golden test
+ * cases. Structural checks here; ID shapes and service references are the
+ * linker's job, and the seed UTTERANCES resolving to the expected IDs is
+ * golden.test.ts's job.
+ */
+function loadCrosswalkSeeds(): GoalCrosswalkRecord[] {
+  const dir = join(SEED_DIR, "crosswalks");
+  return readdirSync(dir)
+    .filter((name) => name.endsWith(".json"))
+    .map((name) => {
+      const record = JSON.parse(readFileSync(join(dir, name), "utf8")) as GoalCrosswalkRecord;
+      const where = `crosswalk ${name}`;
+      if (typeof record.id !== "string" || !record.id.startsWith("xw:")) {
+        throw new Error(`${where}: id must be an xw: string`);
+      }
+      if (!Array.isArray(record.utterances) || record.utterances.some((u) => typeof u !== "string" || u.length === 0)) {
+        throw new Error(`${where}: utterances must be a non-empty string array`);
+      }
+      if (!Array.isArray(record.serviceIds) || record.serviceIds.length === 0) {
+        throw new Error(`${where}: serviceIds must be a non-empty string array`);
+      }
+      if (!Array.isArray(record.testCases) || record.testCases.length === 0) {
+        throw new Error(`${where}: testCases must be a non-empty array — a crosswalk without goldens is unreviewable`);
+      }
+      for (const testCase of record.testCases) {
+        if (typeof testCase.utterance !== "string" || !Array.isArray(testCase.expectedServiceIds)) {
+          throw new Error(`${where}: every testCase needs an utterance and expectedServiceIds`);
+        }
+      }
+      return record;
     });
 }
 
@@ -279,7 +314,7 @@ async function main(): Promise<void> {
     forms,
     formFields,
     snapshots,
-    crosswalks: [],
+    crosswalks: loadCrosswalkSeeds(),
   };
   const bundle = linkCatalog(input);
 
@@ -287,6 +322,24 @@ async function main(): Promise<void> {
   const missing = ALL_DOMAINS.filter((domain) => !covered.has(domain));
   if (missing.length > 0) {
     throw new Error(`catalog does not cover the required domains: ${missing.join(", ")}`);
+  }
+
+  // Locked decision #12 applies to the crosswalk layer too: the alias/rules
+  // seeds must give every coverage domain a layer-2 path, so the build
+  // fails when a domain has services but no crosswalk-backed goldens.
+  const domainsByService = new Map(services.map((service) => [service.meta.catalogId, service.meta.domain]));
+  const crosswalkCoveredDomains = new Set<string>();
+  for (const crosswalk of bundle.crosswalks) {
+    for (const serviceId of crosswalk.serviceIds) {
+      const domain = domainsByService.get(serviceId);
+      if (domain) {
+        crosswalkCoveredDomains.add(domain);
+      }
+    }
+  }
+  const crosswalkMissing = ALL_DOMAINS.filter((domain) => !crosswalkCoveredDomains.has(domain));
+  if (crosswalkMissing.length > 0) {
+    throw new Error(`crosswalk seeds do not cover the required domains: ${crosswalkMissing.join(", ")}`);
   }
 
   // ---- Output ----------------------------------------------------------------
