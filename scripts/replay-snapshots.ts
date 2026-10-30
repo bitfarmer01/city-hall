@@ -5,13 +5,18 @@
  * the evidence, and integrity (artifact hashes + governance binding) is
  * re-verified for every row before it is classified.
  *
- *   npx tsx scripts/replay-snapshots.ts [--root fixtures/snapshots]
+ *   npx tsx scripts/replay-snapshots.ts [--root fixtures/snapshots] [--strict]
  *
  * Fails closed (non-zero exit) when: the root is unreadable or holds no
  * snapshots (exit 1), a snapshot could not be read (error rows, exit 1), any
- * matched diff has blocking failures (exit 1), or evidence is corrupted
- * (thrown, exit 2). Snapshots without a matching expectation are reported as
- * ungoverned, not failures — expectations grow with the catalog.
+ * matched diff has blocking failures (exit 1), the coverage floor trips —
+ * expectations exist but no governed snapshot matches, or an expectation URL
+ * matches zero governed snapshots (M2, exit 1) — or evidence is corrupted
+ * (thrown, exit 2). --strict additionally fails when the root holds zero
+ * governed snapshots even with no expectations yet (the opt-in arming of the
+ * coverage floor until catalog expectations are committed). Snapshots
+ * without a matching expectation are reported as ungoverned, not failures —
+ * expectations grow with the catalog.
  */
 import { DEFAULT_SNAPSHOT_ROOT, listSnapshotDirs } from "../src/lib/capture/store";
 import { replayRoot } from "../src/lib/capture/replay";
@@ -36,24 +41,28 @@ function parseRoot(argv: string[]): string {
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const root = parseRoot(args);
+  const strict = args.includes("--strict");
 
-  const report = await replayRoot(root);
+  const report = await replayRoot(root, { strict });
 
   const rows = report.rows.map((row) => {
+    // Per-snapshot schema version is always printed (S4 M-3) so a future
+    // mixed-schema root is visible in the report instead of silently uniform.
+    const schema = row.captureSchema === null ? "?" : row.captureSchema;
     switch (row.status) {
       case "skipped_boundary":
-        return `${row.snapshotId}  ${row.stoppedAt?.padEnd(12)}  (skipped: ${row.captureMode})`;
+        return `${row.snapshotId}  [schema ${schema}]  ${row.stoppedAt?.padEnd(12)}  (skipped: ${row.captureMode})`;
       case "ungoverned":
-        return `${row.snapshotId}  public_reachable  (ungoverned: no catalog expectation for ${row.url})`;
+        return `${row.snapshotId}  [schema ${schema}]  public_reachable  (ungoverned: no catalog expectation for ${row.url})`;
       case "fail":
         return [
-          `${row.snapshotId}  FAIL (${row.failures.length} missed required entries)`,
+          `${row.snapshotId}  [schema ${schema}]  FAIL (${row.failures.length} missed required entries)`,
           ...row.failures.map((f) => `         miss  ${f.kind}  ${f.detail}`),
           ...row.warnings.map((w) => `         warn  ${w.kind}  ${w.detail}`),
         ].join("\n");
       case "ok":
         return [
-          `${row.snapshotId}  ok (${row.warnings.length} warnings)`,
+          `${row.snapshotId}  [schema ${schema}]  ok (${row.warnings.length} warnings)`,
           ...row.warnings.map((w) => `         warn  ${w.kind}  ${w.detail}`),
         ].join("\n");
       case "error":
@@ -65,6 +74,11 @@ async function main(): Promise<void> {
     `replay report — app ${APP_VERSION}, capture schema ${CAPTURE_SCHEMA_VERSION}, snapshots ${report.snapshotCount}, blocking failures ${report.blockingFailures}, unreadable ${report.errorCount}\n` +
       rows.join("\n"),
   );
+  if (report.coverageFindings.length > 0) {
+    for (const finding of report.coverageFindings) {
+      console.log(`coverage floor  ${finding}`);
+    }
+  }
   if (report.snapshotCount === 0) {
     const dirs = await listSnapshotDirs(root).catch(() => []);
     console.error(`error: no snapshots found under ${root} (${dirs.length} snap_* entries, none well-formed) — the replay gate fails closed`);

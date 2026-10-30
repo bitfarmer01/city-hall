@@ -24,6 +24,9 @@ export interface ReplayRow {
   captureMode: CaptureMode | null;
   /** null when the page was publicly reachable. */
   stoppedAt: string | null;
+  /** The capture schema the snapshot was written under; null on error rows
+   * (S4 M-3 — the CLI prints this per snapshot so version skew is visible). */
+  captureSchema: string | null;
   status: "skipped_boundary" | "ungoverned" | "ok" | "fail" | "error";
   failures: GoldenFinding[];
   warnings: GoldenFinding[];
@@ -35,8 +38,18 @@ export interface ReplayReport {
   rows: ReplayRow[];
   snapshotCount: number;
   blockingFailures: number;
-  /** Rows that could not be read at all (malformed snapshot directories). */
+  /** Rows that could not be read at all (malformed snapshot directories).
+   * Isolation contract (S1 M-C): per-snapshot failures are isolated into
+   * error rows by design and do NOT throw — a consumer that checks only
+   * blockingFailures will read a run with error rows as clean. Any consumer
+   * deciding pass/fail MUST check errorCount (or use the CLI, which fails
+   * non-zero on error rows). */
   errorCount: number;
+  /** Root-level coverage-floor findings (M2): expectations that matched zero
+   * governed snapshots, an expectations-but-nothing-governed root, or a strict
+   * mode with zero governed rows. Also counted in blockingFailures so the
+   * existing exit-code logic fails closed. */
+  coverageFindings: string[];
 }
 
 /**
@@ -64,7 +77,14 @@ export async function loadExpectations(dir: string): Promise<Map<string, Catalog
   return byUrl;
 }
 
-export async function replayRoot(root: string): Promise<ReplayReport> {
+export interface ReplayOptions {
+  /** Strict mode (M2): also block when the root contains zero governed
+   * snapshots even though no expectations exist yet — the opt-in arming of
+   * the coverage floor until catalog expectations are committed. */
+  strict?: boolean;
+}
+
+export async function replayRoot(root: string, options: ReplayOptions = {}): Promise<ReplayReport> {
   const expectations = await loadExpectations(path.join(root, "expectations"));
   const dirs = await listSnapshotDirs(root);
   if (dirs.length === 0) {
@@ -89,6 +109,7 @@ export async function replayRoot(root: string): Promise<ReplayReport> {
         url: null,
         captureMode: null,
         stoppedAt: null,
+        captureSchema: null,
         status: "error",
         failures: [],
         warnings: [],
@@ -108,6 +129,7 @@ export async function replayRoot(root: string): Promise<ReplayReport> {
         url: meta.url,
         captureMode: meta.captureMode,
         stoppedAt: meta.stoppedAt,
+        captureSchema: meta.captureSchema,
         status: "skipped_boundary",
         failures: [],
         warnings: [],
@@ -121,6 +143,7 @@ export async function replayRoot(root: string): Promise<ReplayReport> {
         url: meta.url,
         captureMode: meta.captureMode,
         stoppedAt: null,
+        captureSchema: meta.captureSchema,
         status: "ungoverned",
         failures: [],
         warnings: [],
@@ -137,11 +160,38 @@ export async function replayRoot(root: string): Promise<ReplayReport> {
       url: meta.url,
       captureMode: meta.captureMode,
       stoppedAt: null,
+      captureSchema: meta.captureSchema,
       status: hasBlockingFailures(diff) ? "fail" : "ok",
       failures: diff.failures,
       warnings: diff.warnings,
     });
   }
 
-  return { rows, snapshotCount: dirs.length - errorCount, blockingFailures, errorCount };
+  // Coverage floor (M2): a gate that passes when expectations match nothing
+  // is a green light for an empty evidence set. These findings are root-level
+  // — they do not belong to any single row — and count as blocking failures.
+  const governedRows = rows.filter((r) => r.status === "ok" || r.status === "fail");
+  const governedUrls = new Set(governedRows.map((r) => r.url));
+  const coverageFindings: string[] = [];
+  if (expectations.size > 0 && governedRows.length === 0) {
+    coverageFindings.push(
+      `coverage floor: ${expectations.size} expectation(s) exist but zero snapshots are governed by them`,
+    );
+  }
+  for (const url of expectations.keys()) {
+    if (!governedUrls.has(url)) {
+      coverageFindings.push(`coverage floor: expectation URL ${url} matches zero governed snapshots`);
+    }
+  }
+  if (options.strict && governedRows.length === 0) {
+    coverageFindings.push("strict mode: this root contains zero governed snapshots");
+  }
+
+  return {
+    rows,
+    snapshotCount: dirs.length - errorCount,
+    blockingFailures: blockingFailures + coverageFindings.length,
+    errorCount,
+    coverageFindings,
+  };
 }

@@ -161,18 +161,18 @@ describe("fail-closed evidence (tamper, governance, junk dirs)", () => {
     await expect(replayRoot(root)).rejects.toThrow(/failed integrity/);
   });
 
-  it("throws when meta.json governance fields no longer match the hashed governance.json (H1)", async () => {
+  it("throws when meta.json provenance no longer matches the hashed meta-bound.json (H1/M1)", async () => {
     const root = await copyFixtureToTemp();
     const snapDir = path.join(root, (await readdir(root)).find((d) => d.startsWith("snap_"))!);
     const metaPath = path.join(snapDir, "meta.json");
     const meta = JSON.parse(await readFile(metaPath, "utf8")) as { captureMode: string; stoppedAt: string };
     // Keep the pair internally consistent so the parser accepts it — the
-    // stale governance.json binding is what must catch the tamper.
+    // stale meta-bound.json binding is what must catch the tamper.
     meta.captureMode = "authenticated_unreachable";
     meta.stoppedAt = "login_wall";
     await writeFile(metaPath, JSON.stringify(meta, null, 2) + "\n");
 
-    await expect(replayRoot(root)).rejects.toThrow(/governance/);
+    await expect(replayRoot(root)).rejects.toThrow(/meta-bound/);
   });
 
   it("isolates a stray snapshot-named directory as an error row and still replays the rest (M5)", async () => {
@@ -197,7 +197,7 @@ describe("committed fixture replay (real capture, zero network)", () => {
   // verifies every row before classification, so a green replay here means
   // the fixture survived verification, not just parsing.
   const FIXTURE_ROOT = "fixtures/snapshots";
-  const FIXTURE_ID = "snap:9ff1f116b526";
+  const FIXTURE_ID = "snap:a777dc9a2500";
 
   it("replays the committed real capture with verified integrity", async () => {
     const report = await replayRoot(FIXTURE_ROOT);
@@ -220,5 +220,57 @@ describe("committed fixture replay (real capture, zero network)", () => {
     expect(dump.fields.some((f) => f.name.includes("EntityFormView"))).toBe(true);
     expect(dump.fields.every((f) => !("value" in f))).toBe(true);
     expect(dump.url).toBe("https://portal.311.nyc.gov/article/?kanumber=KA-01808");
+  });
+});
+
+describe("coverage floor (M2)", () => {
+  function expectationJson(sourceUrl: string): string {
+    return JSON.stringify({
+      serviceId: "svc:x",
+      label: "X",
+      sourceUrl,
+      expectedFields: [],
+      expectedDocuments: [],
+    });
+  }
+
+  it("blocks when expectations exist but no snapshot is governed by them", async () => {
+    const root = await freshRoot();
+    await snapshotWith(root, { url: "https://example.nyc.gov/form", fields: [TEXT_FIELD] });
+    const expectationsDir = path.join(root, "expectations");
+    await mkdir(expectationsDir, { recursive: true });
+    await writeFile(path.join(expectationsDir, "svc-x.json"), expectationJson("https://example.nyc.gov/other"));
+
+    const report = await replayRoot(root);
+    expect(report.coverageFindings).toHaveLength(2);
+    expect(report.coverageFindings[0]).toMatch(/zero snapshots are governed/);
+    expect(report.coverageFindings[1]).toMatch(/matches zero governed snapshots/);
+    expect(report.blockingFailures).toBe(2);
+  });
+
+  it("stays silent when every expectation matches a governed snapshot", async () => {
+    const root = await freshRoot();
+    await snapshotWith(root, { url: "https://example.nyc.gov/form", fields: [TEXT_FIELD] });
+    const expectationsDir = path.join(root, "expectations");
+    await mkdir(expectationsDir, { recursive: true });
+    await writeFile(path.join(expectationsDir, "svc-x.json"), expectationJson("https://example.nyc.gov/form"));
+
+    const report = await replayRoot(root);
+    // The M2 floor is about COVERAGE: the expectation URL has a governed row,
+    // so no coverage finding — even if the golden diff itself had misses
+    // (those surface as row failures, not coverage findings).
+    expect(report.coverageFindings).toEqual([]);
+    expect(report.rows[0]).toMatchObject({ status: expect.stringMatching(/^(ok|fail)$/) });
+  });
+
+  it("strict mode blocks a zero-governed root even before expectations exist", async () => {
+    const root = await freshRoot();
+    await snapshotWith(root, { url: "https://example.nyc.gov/form", fields: [TEXT_FIELD] });
+
+    const relaxed = await replayRoot(root);
+    expect(relaxed.coverageFindings).toEqual([]);
+    const strict = await replayRoot(root, { strict: true });
+    expect(strict.coverageFindings).toEqual(["strict mode: this root contains zero governed snapshots"]);
+    expect(strict.blockingFailures).toBe(1);
   });
 });
