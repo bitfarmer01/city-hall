@@ -1,7 +1,9 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
-import { DOMAIN_TAXONOMY_VERSION, tagCoverageDomain } from "./domain";
-import type { IndexArticleEntry } from "./types";
+import { parseSnapshotJson } from "./build-snapshot";
+import { DOMAIN_TAXONOMY_VERSION, tagCoverageDomain, type CoverageDomain } from "./domain";
+import { SNAPSHOT_SCHEMA_VERSION, type IndexArticleEntry } from "./types";
 
 // Fixture entries are real (KA, title, description) triples from the
 // committed 2026-10-30 inventory snapshot, chosen from the owner-required
@@ -9,6 +11,19 @@ import type { IndexArticleEntry } from "./types";
 // priority order was derived from.
 function entry(ka: string, title: string, description: string): IndexArticleEntry {
   return { id: `nyc311-${ka}`, ka: ka as IndexArticleEntry["ka"], title, description };
+}
+
+// The committed 2026-10-30 snapshot, loaded through the D2a shape guard with
+// the same strict schemaVersion pin as the classifier's corpus loader
+// (panels H2/H5).
+const SNAPSHOT_PATH = "../../../data/snapshots/nyc311-index/2026-10-30.json";
+const snapshot = parseSnapshotJson(
+  readFileSync(new URL(SNAPSHOT_PATH, import.meta.url), "utf8"),
+);
+if (snapshot.schemaVersion !== SNAPSHOT_SCHEMA_VERSION) {
+  throw new Error(
+    `snapshot schemaVersion drift: expected ${SNAPSHOT_SCHEMA_VERSION}, got ${snapshot.schemaVersion}`,
+  );
 }
 
 describe("tagCoverageDomain — the five domains plus other", () => {
@@ -162,5 +177,38 @@ describe("tagCoverageDomain — stamps and determinism", () => {
     for (let run = 0; run < 10; run += 1) {
       expect(JSON.stringify(entries.map(tagCoverageDomain))).toBe(first);
     }
+  });
+});
+
+describe("tagCoverageDomain — full corpus distribution (panel H5)", () => {
+  it("loads the committed snapshot at the pinned schema version", () => {
+    expect(snapshot.schemaVersion).toBe(SNAPSHOT_SCHEMA_VERSION);
+    expect(snapshot.articleCount).toBe(snapshot.articles.length);
+  });
+
+  // The per-domain corpus counts were previously invisible to the suite — a
+  // pattern reorder that reclassified hundreds of articles failed only if it
+  // flipped one hand-picked fixture. Measured over all 2,093 articles;
+  // re-pin when DOMAIN_TAXONOMY_VERSION changes.
+  it("pins the per-domain counts over the whole corpus", () => {
+    const counts: Record<CoverageDomain, number> = {
+      permits: 0,
+      "service-requests": 0,
+      "public-records": 0,
+      licensing: 0,
+      inspections: 0,
+      other: 0,
+    };
+    for (const article of snapshot.articles) {
+      counts[tagCoverageDomain(article).domain] += 1;
+    }
+    expect(counts).toEqual({
+      permits: 112,
+      "service-requests": 623,
+      "public-records": 14,
+      licensing: 111,
+      inspections: 34,
+      other: 1199,
+    });
   });
 });

@@ -11,15 +11,16 @@
 //    dead page, and accordion/portal/form/fee signals are actionability
 //    evidence the index cannot show.
 //
-// Every result records the rule that fired (`ruleId`), a reason code, and the
-// first-matched evidence phrase, so a classification report can be audited
-// line by line.
+// Every result records the rule that fired (`ruleId`), a reason code, and
+// kinded first-match evidence (quoted index text, a captured page accordion
+// title, or a labeled page-signal assertion), so a classification report can
+// be audited line by line.
 
 import { tagCoverageDomain, type DomainTag } from "./domain";
 import type { IndexArticleEntry, KaNumber } from "./types";
 
 /** Version of these classification rules — bump when a rule changes. */
-export const CLASSIFIER_RULES_VERSION = "1.0.0";
+export const CLASSIFIER_RULES_VERSION = "2.0.0";
 
 /**
  * Disposition of one article. Convention chosen (and documented) per the D2b
@@ -60,10 +61,57 @@ export interface ArticlePageFacts {
   hasFeeText: boolean;
 }
 
+/**
+ * Runtime guard for page facts crossing a JSON boundary (the Check A capture
+ * mapper is not built yet — the contract is set blind, so drift arrives as
+ * plain objects). Unknown shapes fail loud here, naming the KA (panel H3):
+ * a mis-keyed facts object used to read as `kaContentPresent: undefined`,
+ * which R001 turned into a verified-dead page.
+ */
+export function validateArticlePageFacts(ka: KaNumber, value: unknown): ArticlePageFacts {
+  const label = `page facts for ${ka}`;
+  if (typeof value !== "object" || value === null) {
+    throw new Error(`Invalid ${label}: expected an object`);
+  }
+  const record = value as Record<string, unknown>;
+  for (const field of [
+    "kaContentPresent",
+    "hasTransactionalPortalLink",
+    "hasPdfFormLink",
+    "hasFeeText",
+  ] as const) {
+    if (typeof record[field] !== "boolean") {
+      throw new Error(`Invalid ${label}: "${field}" must be a boolean`);
+    }
+  }
+  const titles = record.accordionSectionTitles;
+  if (!Array.isArray(titles) || titles.some((title) => typeof title !== "string")) {
+    throw new Error(
+      `Invalid ${label}: "accordionSectionTitles" must be an array of strings`,
+    );
+  }
+  return value as ArticlePageFacts;
+}
+
 export interface ClassifiableArticle {
   entry: IndexArticleEntry;
   /** Facts from the captured article page; absent in index-only mode. */
   pageFacts?: ArticlePageFacts | null;
+}
+
+/**
+ * Provenance of a fired rule's evidence (panel H4). Kinds are machine-
+ * distinguishable so an audit never mistakes an assertion for a quote:
+ *  - "index-text" — `span` is quoted from the inventory title/description.
+ *  - "page-accordion" — `span` is a section title from the captured body.
+ *  - "page-signal" — a boolean page fact was true; `span` is that signal's
+ *    label ("fee-text"), not a source span (a boolean has none).
+ */
+export type EvidenceKind = "index-text" | "page-accordion" | "page-signal";
+
+export interface Evidence {
+  kind: EvidenceKind;
+  span: string;
 }
 
 export interface ArticleClassification {
@@ -77,8 +125,8 @@ export interface ArticleClassification {
   reason: string;
   /** The rule that fired — the layer Check A reports. */
   ruleId: string;
-  /** First-matched text that fired the rule, when one exists. */
-  evidence?: string;
+  /** First-matched evidence that fired the rule, when one exists. */
+  evidence?: Evidence;
   rulesVersion: string;
 }
 
@@ -148,7 +196,7 @@ interface RuleMatch {
   disposition: ArticleDisposition;
   reason: string;
   serviceSubtype?: ServiceSubtype;
-  evidence?: string;
+  evidence?: Evidence;
 }
 
 function matchRule(article: ClassifiableArticle): RuleMatch {
@@ -158,7 +206,10 @@ function matchRule(article: ClassifiableArticle): RuleMatch {
   // R001 — a captured page without ka-content is a dead page, whatever the
   // index fields say. Dead pages never appear in the index, so this rule only
   // fires in page-facts mode (Check A fetches; the index is the live filter).
-  if (pageFacts && !pageFacts.kaContentPresent) {
+  // Strict `=== false` on purpose (panel H3): a partial facts object is
+  // unmeasured, not verified-absent — fail open to the index rules instead of
+  // mass dead-paging on shape drift.
+  if (pageFacts?.kaContentPresent === false) {
     return {
       ruleId: "R001-dead-page",
       disposition: "dead-page",
@@ -173,7 +224,7 @@ function matchRule(article: ClassifiableArticle): RuleMatch {
       ruleId: "R002-emergency-dispatch",
       disposition: "out-of-scope",
       reason: "emergency-dispatch",
-      evidence: emergency[0],
+      evidence: { kind: "index-text", span: emergency[0] },
     };
   }
 
@@ -184,7 +235,7 @@ function matchRule(article: ClassifiableArticle): RuleMatch {
       ruleId: "R003-discontinued",
       disposition: "out-of-scope",
       reason: "discontinued",
-      evidence: discontinued[0],
+      evidence: { kind: "index-text", span: discontinued[0] },
     };
   }
 
@@ -195,7 +246,7 @@ function matchRule(article: ClassifiableArticle): RuleMatch {
       ruleId: "R004-not-offered",
       disposition: "out-of-scope",
       reason: "not-offered-by-city",
-      evidence: notOffered[0],
+      evidence: { kind: "index-text", span: notOffered[0] },
     };
   }
 
@@ -231,7 +282,7 @@ function matchRule(article: ClassifiableArticle): RuleMatch {
 interface SubtypeMatch {
   name: ServiceSubtype;
   reason: string;
-  evidence?: string;
+  evidence?: Evidence;
 }
 
 /**
@@ -247,9 +298,26 @@ function classifyServiceSubtype(article: ClassifiableArticle): SubtypeMatch | nu
   // subtype "informational-with-action"; e.g. "Learn how to report noise").
   if (INFORMATIONAL_LEAD_PATTERN.test(description)) {
     const pageAction = matchPageAction(pageFacts);
-    const verb = firstMatch([EMBEDDED_ACTION_PATTERN], text) ?? pageAction;
-    if (verb) {
-      return { name: "informational-with-action", reason: "embedded-action", evidence: verb };
+    const verbSpan = firstMatch([EMBEDDED_ACTION_PATTERN], text);
+    const verbEvidence: Evidence | undefined = verbSpan
+      ? { kind: "index-text", span: verbSpan }
+      : pageAction;
+    if (verbEvidence) {
+      return {
+        name: "informational-with-action",
+        reason: "embedded-action",
+        evidence: verbEvidence,
+      };
+    }
+    // Title-noun promotion (panel H1): an informational lead hid articles
+    // whose titles carry the action keyword in noun form — "Boiler Permits
+    // and Registration" behind "Learn about required boiler permits...".
+    // Scan the title alone with the family patterns and promote to the
+    // matched family's subtype. Titles without a family keyword (the
+    // protected "NYC311 Content API" case) stay informational.
+    const titleNoun = matchTitleNoun(title);
+    if (titleNoun) {
+      return { name: titleNoun.name, reason: "action:title-noun", evidence: titleNoun.evidence };
     }
     return null;
   }
@@ -258,24 +326,25 @@ function classifyServiceSubtype(article: ClassifiableArticle): SubtypeMatch | nu
     firstMatch([REPORT_FAMILY_PATTERN], text) ??
     matchLead(REPORT_LEAD_PATTERN, description);
   if (report) {
-    return { name: "report", reason: "action:report", evidence: report };
+    return { name: "report", reason: "action:report", evidence: { kind: "index-text", span: report } };
   }
 
   const apply = firstMatch([APPLY_FAMILY_PATTERN], text);
   if (apply) {
-    return { name: "apply", reason: "action:apply", evidence: apply };
+    return { name: "apply", reason: "action:apply", evidence: { kind: "index-text", span: apply } };
   }
 
   const order = firstMatch([ORDER_FAMILY_PATTERN], text);
   if (order) {
-    return { name: "order", reason: "action:order", evidence: order };
+    return { name: "order", reason: "action:order", evidence: { kind: "index-text", span: order } };
   }
 
   // "Get a free crib", "Get a lawyer referral" — obtain-something leads the
-  // corpus treats as fulfillment (231 verified entries), not as prose.
+  // corpus treats as fulfillment, not as prose (208 Get-lead articles reach
+  // this branch on the 2026-10-30 snapshot).
   const get = GET_LEAD_PATTERN.exec(description);
   if (get) {
-    return { name: "order", reason: "action:order", evidence: get[0] };
+    return { name: "order", reason: "action:order", evidence: { kind: "index-text", span: get[0] } };
   }
 
   const pageAction = matchPageAction(pageFacts);
@@ -287,23 +356,59 @@ function classifyServiceSubtype(article: ClassifiableArticle): SubtypeMatch | nu
   return null;
 }
 
-/** First page-facts actionability signal, or undefined. */
-function matchPageAction(pageFacts: ArticlePageFacts | null | undefined): string | undefined {
+/**
+ * Title-only family scan for the informational-lead branch (panel H1). Same
+ * family priority as the main scan (report → apply → order); returns the
+ * family's subtype with the matched title span as index-text evidence.
+ */
+function matchTitleNoun(title: string): { name: ServiceSubtype; evidence: Evidence } | null {
+  const report = REPORT_FAMILY_PATTERN.exec(title);
+  if (report) {
+    return { name: "report", evidence: { kind: "index-text", span: report[0] } };
+  }
+  const apply = APPLY_FAMILY_PATTERN.exec(title);
+  if (apply) {
+    return { name: "apply", evidence: { kind: "index-text", span: apply[0] } };
+  }
+  const order = ORDER_FAMILY_PATTERN.exec(title);
+  if (order) {
+    return { name: "order", evidence: { kind: "index-text", span: order[0] } };
+  }
+  return null;
+}
+
+/**
+ * First page-facts actionability signal, or undefined. Boolean signals carry
+ * `page-signal` labels (a boolean has no source span to quote); a matched
+ * accordion title is quoted as `page-accordion`. The accordion access is
+ * guarded so a partial facts object cannot crash the run (panel H3).
+ */
+function matchPageAction(pageFacts: ArticlePageFacts | null | undefined): Evidence | undefined {
   if (!pageFacts) {
     return undefined;
   }
   if (pageFacts.hasTransactionalPortalLink) {
-    return "transactional-portal-link";
+    return { kind: "page-signal", span: "transactional-portal-link" };
   }
   if (pageFacts.hasPdfFormLink) {
-    return "pdf-form-link";
+    return { kind: "page-signal", span: "pdf-form-link" };
   }
   if (pageFacts.hasFeeText) {
-    return "fee-text";
+    return { kind: "page-signal", span: "fee-text" };
   }
-  return pageFacts.accordionSectionTitles.find((sectionTitle) =>
-    ACTION_SECTION_PATTERN.test(sectionTitle),
-  );
+  // Defensive by design: facts crossing the JSON boundary may be partial
+  // (classifyArticle itself never throws on them — validateArticlePageFacts
+  // is the loud gate for producers).
+  const titles: unknown = pageFacts.accordionSectionTitles;
+  if (!Array.isArray(titles)) {
+    return undefined;
+  }
+  for (const sectionTitle of titles) {
+    if (typeof sectionTitle === "string" && ACTION_SECTION_PATTERN.test(sectionTitle)) {
+      return { kind: "page-accordion", span: sectionTitle };
+    }
+  }
+  return undefined;
 }
 
 function firstMatch(patterns: readonly RegExp[], text: string): string | undefined {
