@@ -103,11 +103,20 @@ export function formatDuration(parts: DurationParts): string {
  */
 export function buildPublishedTimelines(record: ServiceRecord): TimelineEstimate[] {
   const articleId = record.meta.nyc311ArticleId;
-  return record.envelope.availableChannel.flatMap((channel, index) => {
+  const violations: string[] = [];
+  const items = record.envelope.availableChannel.flatMap((channel, index) => {
     if (channel.processingTime === undefined) {
       return [];
     }
     const channelName = channel.name ?? `channel ${index + 1}`;
+    // A published processing time is a captured source fact — it must be
+    // owned by the service's NYC311 article. Without the article id + url
+    // pair the provenance record below would interpolate "undefined" and
+    // fabricate a citation (shakedown S3-H2), so the channel is refused.
+    if (!articleId || !record.meta.nyc311ArticleUrl) {
+      violations.push(`published processing time on ${channelName} has no owning NYC311 article id`);
+      return [];
+    }
     return [
       {
         tier: 2 as const,
@@ -115,10 +124,15 @@ export function buildPublishedTimelines(record: ServiceRecord): TimelineEstimate
         durationText: formatDuration(parseIsoDuration(channel.processingTime)),
         dataset: `NYC311 article ${articleId} (published processing time)`,
         query: `availableChannel[name="${channelName}"].processingTime`,
-        ...(record.meta.nyc311ArticleUrl ? { sourceUrl: record.meta.nyc311ArticleUrl } : {}),
+        sourceUrl: record.meta.nyc311ArticleUrl,
       },
     ];
   });
+
+  if (violations.length > 0) {
+    throw new EstimatesError(violations);
+  }
+  return items;
 }
 
 /** One committed empirical timeline row — the registry schema. */
@@ -227,6 +241,10 @@ export function buildEmpiricalTimeline(row: OpenDataTimelineRow): TimelineEstima
     dataset: `${row.datasetName} (${row.datasetId})`,
     query: row.query,
     sourceUrl: row.datasetUrl,
+    // The canonical TimelineEstimate carries capturedAt for exactly this —
+    // the extract's as-of is when the figure was pulled from the dataset
+    // (shakedown S1-F5). Tier-1 fees already carry it; tier-2 must not lose it.
+    ...(row.asOf ? { capturedAt: row.asOf } : {}),
   };
 }
 

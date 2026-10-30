@@ -33,9 +33,12 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 /**
  * Validate parsed registry JSON. Collects every violation into one
- * EstimatesError; sourceRefs, when present, must resolve in the bundle.
+ * EstimatesError; sourceRefs, when present, must resolve in the snapshot
+ * bundle — the parameter is required (the surcharge-parser precedent).
+ * A caller with no bundle passes an empty map, which still refuses
+ * dangling refs (shakedown S4-F2).
  */
-export function parseHeuristicRows(raw: unknown, snapshots?: SnapshotsById): HeuristicRow[] {
+export function parseHeuristicRows(raw: unknown, snapshots: SnapshotsById): HeuristicRow[] {
   if (!Array.isArray(raw)) {
     throw new EstimatesError(["heuristic registry must be a JSON array"]);
   }
@@ -66,7 +69,7 @@ export function parseHeuristicRows(raw: unknown, snapshots?: SnapshotsById): Heu
     if (sourceRefs !== undefined) {
       if (!Array.isArray(sourceRefs) || sourceRefs.length === 0) {
         violations.push(`${where}.sourceRefs, when present, must be a non-empty array`);
-      } else if (snapshots !== undefined) {
+      } else {
         for (const ref of sourceRefs) {
           if (typeof ref !== "string" || !snapshots.has(ref)) {
             violations.push(`${where}.sourceRefs entry ${JSON.stringify(ref)} resolves to no snapshot in this bundle`);

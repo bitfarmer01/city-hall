@@ -66,6 +66,11 @@ describe("parseIsoDuration", () => {
   it("refuses non-durations and zero-component durations", () => {
     expect(() => parseIsoDuration("21 days")).toThrow(EstimatesError);
     expect(() => parseIsoDuration("P")).toThrow(EstimatesError);
+    // Zero-component durations are refused at the parse layer itself, not
+    // only by the downstream coupling in formatDuration (shakedown S3-M3,
+    // revert gap R8).
+    expect(() => parseIsoDuration("P0D")).toThrow(EstimatesError);
+    expect(() => parseIsoDuration("PT0S")).toThrow(EstimatesError);
   });
 });
 
@@ -96,6 +101,18 @@ describe("buildPublishedTimelines — real catalog", () => {
       if (record.meta.catalogId === "svc:dcwp:home-improvement-contractor-license") continue;
       expect(buildPublishedTimelines(record)).toEqual([]);
     }
+  });
+
+  it("refuses a published processing time with no owning NYC311 article (shakedown S3-H2)", () => {
+    // The runtime catalog load is shallow — a service whose meta lacks the
+    // owning article pair is type-invisible but runtime-real.
+    const orphan = {
+      ...hic,
+      meta: { ...hic.meta, nyc311ArticleId: undefined, nyc311ArticleUrl: undefined },
+    } as unknown as CatalogBundle["services"][number];
+    const build = () => buildPublishedTimelines(orphan);
+    expect(build).toThrow(EstimatesError);
+    expect(build).toThrow(/has no owning NYC311 article id/);
   });
 });
 
@@ -134,7 +151,7 @@ describe("parseOpenDataTimelineRows", () => {
 });
 
 describe("buildEmpiricalTimeline", () => {
-  it("records dataset, query, and sample size with the duration", () => {
+  it("records dataset, query, sample size, and the as-of capturedAt with the duration", () => {
     const row = fixtureRow();
     expect(buildEmpiricalTimeline(row)).toEqual({
       tier: 2,
@@ -143,6 +160,7 @@ describe("buildEmpiricalTimeline", () => {
       dataset: "DOB Permit Issuance (ipu4-2q9a)",
       query: row.query,
       sourceUrl: row.datasetUrl,
+      capturedAt: "2026-10-30",
     });
   });
 });
@@ -166,6 +184,6 @@ describe("buildTimelineEstimates", () => {
   });
 
   it("pairs with the heuristic parser without import cycles", () => {
-    expect(parseHeuristicRows([])).toEqual([]);
+    expect(parseHeuristicRows([], new Map())).toEqual([]);
   });
 });

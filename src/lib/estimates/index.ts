@@ -4,9 +4,10 @@
 // heuristics only from the curated registry, always labeled. Pure and
 // deterministic for a pinned catalog — no clocks, no randomness.
 //
-// Consumers: D5 resolver responses and the core API routes stamp their own
-// version pins around the block (the D4.5 contract's EstimateBlock is
-// exactly { serviceId, tiers }).
+// Consumers: the D7 view layer and the D9 adapters stamp their own version
+// pins around the block (the D4.5 contract's EstimateBlock is exactly
+// { serviceId, tiers }). The D5 resolver stays estimates-free by design —
+// GoalResolution carries serviceIds only (shakedown S1-F7).
 
 import type { ServiceRecord, SourceSnapshotRecord } from "@/lib/catalog/types";
 
