@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+# Makes the pdf_extraction package importable for `pytest python/tests`
+# without any install step; rootdir resolves to python/.
+pythonpath = ["."]
+testpaths = ["tests"]
