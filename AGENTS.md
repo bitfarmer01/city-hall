@@ -31,6 +31,7 @@ NYC Service Estimation Assistant: turns "I want to build X" into cost estimates,
 | Health smoke (server running) | `node scripts/smoke-health.mjs http://localhost:3000/api/health` |
 | Capture a portal page | `npm run capture -- <url> --root fixtures/snapshots` |
 | Replay stored snapshots (offline) | `npm run replay -- --root fixtures/snapshots` |
+| Check A — 100-article coverage sample (live; `--fixture-dir=` replays offline, `--sample-only` verifies the committed sample) | `npm run check:a` |
 | Python deps | `python3 -m venv .venv && .venv/bin/pip install -r python/requirements.txt` |
 | Python tests | `.venv/bin/python -m pytest python/tests -q` |
 

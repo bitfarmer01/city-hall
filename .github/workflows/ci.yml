@@ -62,6 +62,15 @@ jobs:
           # build re-runs the linker's full validation on every PR.
           npm run catalog:build
 
+      - name: Check A committed-sample coherence
+        run: |
+          # The committed 100-article sample must still be what the pinned
+          # seed derives from the stored snapshot — a snapshot refresh that
+          # skips re-committing the sample fails here, before the gate math
+          # can silently compare across incomparable samples. The live fetch
+          # runs on the weekly schedule (workflows/check-a.yml).
+          npm run check:a -- --sample-only
+
       - name: Lint
         run: npm run lint
 
