@@ -1,5 +1,5 @@
 {
-  "id": "snap:a59b2828c958",
+  "id": "snap:9ff1f116b526",
   "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01808",
   "resolvedUrl": "https://portal.311.nyc.gov/article/?kanumber=KA-01808",
   "capturedAt": "2026-10-30T17:21:32.328Z",
@@ -29,7 +29,12 @@
       "name": "network.json",
       "sha256": "56b535c78e4defb1bce18128f74231053d473866a3aee8ebb9a498d24dd4dd83",
       "bytes": 18109
+    },
+    {
+      "name": "governance.json",
+      "sha256": "0a2cf752b6c349f0c87ae1c489c5cbf01644a9dce199301f5ee984ee2d1dfa4e",
+      "bytes": 154
     }
   ],
-  "captureSchema": "0.1.0"
+  "captureSchema": "0.2.0"
 }

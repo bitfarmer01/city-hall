@@ -108,7 +108,12 @@ async function capture(pathname: string) {
   const context = await browser.newContext(); // incognito: no cookies, no storage state
   const page = await context.newPage();
   try {
-    return await capturePage(page, `${baseUrl}${pathname}`, { capturedAt: "2026-10-30T12:00:00.000Z" });
+    const result = await capturePage(page, `${baseUrl}${pathname}`, { capturedAt: "2026-10-30T12:00:00.000Z" });
+    // Public-boundary policy holds for EVERY capture — public or boundary-stopped:
+    // GETs only, and the login form's credential post target is never touched
+    // (M15: shared here so all blocked-route tests inherit the assertion).
+    expect(seen.some((r) => r.method !== "GET" || r.url.includes("credentials-post-target"))).toBe(false);
+    return result;
   } finally {
     await context.close();
   }
@@ -147,10 +152,6 @@ describe("capturePage over mocked portals", { timeout: 120_000 }, () => {
 
     // Dump records attribute data only — never values.
     expect(Object.keys(fields.fields[0])).not.toContain("value");
-
-    // Credential-stop proof: nothing was ever posted, and the form's action
-    // endpoint was never touched.
-    expect(seen.some((r) => r.method !== "GET" || r.url.includes("credentials-post-target"))).toBe(false);
   });
 
   it("stops at a mocked login wall: authenticated_unreachable, no credentials attempted", async () => {
@@ -159,10 +160,6 @@ describe("capturePage over mocked portals", { timeout: 120_000 }, () => {
     expect(snapshot.captureMode).toBe("authenticated_unreachable");
     expect(snapshot.stoppedAt).toBe("login_wall");
     expect(snapshot.boundarySignals).toContain("password_field_present_without_public_form");
-
-    // No credential submission: the server saw only the initial GET.
-    expect(seen.filter((r) => r.method !== "GET")).toEqual([]);
-    expect(seen.some((r) => r.url.includes("credentials-post-target"))).toBe(false);
   });
 
   it("stops on an NYC.ID sign-in page", async () => {

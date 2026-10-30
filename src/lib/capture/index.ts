@@ -7,7 +7,7 @@ export type { CapturePageOptions, CapturePageResult } from "./driver";
 export { EXTRACT_FIELDS_SCRIPT } from "./extract-script";
 export { MAX_FIELD_OPTIONS, parseDumpBody, parseFieldDump } from "./formdump";
 export type { DumpBody } from "./formdump";
-export { bundleSha256, sha256Hex, snapshotDirName, snapshotId, snapshotIdFromDirName } from "./hash";
+export { bundleSha256, sha256Hex, snapshotDirName, snapshotId, snapshotIdFromDirName, SNAPSHOT_DIR_PATTERN, SNAPSHOT_ID_PATTERN } from "./hash";
 export {
   diffLiveMinusCatalog,
   fieldKey,
@@ -25,22 +25,33 @@ export { loadExpectations, replayRoot } from "./replay";
 export type { ReplayReport, ReplayRow } from "./replay";
 export {
   buildSourceSnapshot,
+  DEFAULT_SNAPSHOT_ROOT,
+  governanceArtifactBytes,
+  listSnapshotDirs,
   listSnapshotIds,
+  parseFieldDumpFromContents,
   readFieldDump,
   readSnapshot,
   readSnapshotMeta,
   writeSnapshot,
 } from "./store";
-export type { SnapshotMetaInput } from "./store";
+export type { SnapshotDirEntry, SnapshotMetaInput } from "./store";
 export {
+  ARTIFACT_NAMES,
+  BOUNDARY_KINDS,
+  CAPTURE_METHODS,
+  CAPTURE_MODES,
   CAPTURE_SCHEMA_VERSION,
+  GOVERNANCE_ARTIFACT_NAME,
   PUBLIC_BOUNDARY_NOTE,
 } from "./types";
 export type {
+  ArtifactName,
   BoundaryKind,
   CaptureMode,
   CapturedField,
   FormFieldDump,
+  GovernanceFields,
   SnapshotArtifact,
   SourceSnapshot,
 } from "./types";

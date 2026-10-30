@@ -30,7 +30,7 @@ python3 -m venv .venv
 
 ## Portal capture harness (D3b)
 
-Playwright-based capture of live portal form pages as hashed SourceSnapshots: rendered HTML, full-page screenshot, and a DOM form-field dump (labels, options, required markers, upload slots) as the primary evidence. Every artifact is SHA-256-hashed; the snapshot id (`snap:<sha256-12>`) is derived from the artifacts, so tampering or truncation fails verification loudly.
+Playwright-based capture of live portal form pages as hashed SourceSnapshots: rendered HTML, full-page screenshot, and a DOM form-field dump (labels, options, required markers, upload slots) as the primary evidence. Every artifact — including `governance.json`, a canonical serialization of the fields that decide governance (`url`, `captureMode`, `stoppedAt`, `boundarySignals`) — is SHA-256-hashed, and the snapshot id (`snap:<sha256-12>`) is derived from all of them. Tampering with captured bytes, with the governance record, or with `meta.json` fails verification loudly: editing a governance field in `meta.json` alone breaks the `governance.json` binding, and editing it anywhere else breaks the bundle digest.
 
 Capture policy is public-boundary only: login walls, NYC.ID sign-in pages, anti-bot challenges, and rate-limit responses are **stop conditions** — the capture records `capture_mode: authenticated_unreachable`, the stop reason, and the observed signals, and never submits credentials, never retries, and never bypasses a boundary. A rate-limited response is never re-fetched.
 
@@ -39,7 +39,7 @@ npm run capture -- "https://portal.311.nyc.gov/article/?kanumber=KA-01808" --roo
 npm run replay -- --root fixtures/snapshots   # offline: hash verify + field-dump parse, zero network
 ```
 
-Stored snapshots under `fixtures/snapshots/` drive the golden-diff harness offline (`src/lib/capture/replay.ts` reads them back with hash-verified integrity). Boundary semantics live in `src/lib/capture/boundary.ts` — a pure classifier; when in doubt, stop.
+Stored snapshots under `fixtures/snapshots/` drive the golden-diff harness offline (`src/lib/capture/replay.ts` re-reads every snapshot with full hash and governance verification before classifying it — ungoverned and boundary-stopped rows included). The replay fails closed: an unreadable or empty snapshot root exits non-zero, as does any tampered snapshot, and CI runs `npm run replay` on every PR. Boundary semantics live in `src/lib/capture/boundary.ts` — a pure classifier; when in doubt, stop.
 
 ## CI
 

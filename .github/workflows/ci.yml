@@ -71,6 +71,9 @@ jobs:
       - name: Test
         run: npm test
 
+      - name: Replay snapshot gate
+        run: npm run replay
+
       - name: Build
         run: npm run build
 

@@ -78,7 +78,16 @@ export interface SnapshotArtifact {
 }
 
 /** Canonical artifact filenames of a snapshot bundle. */
-export type ArtifactName = "page.html" | "screenshot.png" | "fields.json" | "network.json";
+export type ArtifactName = "fields.json" | "governance.json" | "network.json" | "page.html" | "screenshot.png";
+
+/** Every artifact filename a snapshot may contain — anything else is rejected at parse and build time. */
+export const ARTIFACT_NAMES: readonly ArtifactName[] = [
+  "fields.json",
+  "governance.json",
+  "network.json",
+  "page.html",
+  "screenshot.png",
+];
 
 /**
  * SourceSnapshot record (build spec data model): every displayed claim in the
@@ -106,8 +115,35 @@ export interface SourceSnapshot {
   artifacts: SnapshotArtifact[];
 }
 
-/** Semantic version of this capture-harness record schema (meta.json + fields.json). */
-export const CAPTURE_SCHEMA_VERSION = "0.1.0";
+/**
+ * Semantic version of this capture-harness record schema (meta.json + fields.json).
+ * 0.2.0: governance fields are bound into the integrity chain — every snapshot
+ * carries a hashed governance.json artifact and the bundle id covers it
+ * (schema 0.1.0 snapshots predate the binding and fail verification closed).
+ */
+export const CAPTURE_SCHEMA_VERSION = "0.2.0";
+
+/** The artifact holding the canonical serialization of the governance fields. */
+export const GOVERNANCE_ARTIFACT_NAME = "governance.json";
+
+/** The meta fields that decide governance — bound into the bundle digest via governance.json. */
+export type GovernanceFields = Pick<SourceSnapshot, "url" | "captureMode" | "stoppedAt" | "boundarySignals">;
+
+/** Closed vocabulary of capture methods. */
+export const CAPTURE_METHODS: readonly CaptureMethod[] = ["headless"];
+
+/** Closed vocabulary of capture modes. */
+export const CAPTURE_MODES: readonly CaptureMode[] = ["public_reachable", "authenticated_unreachable"];
+
+/** Closed vocabulary of boundary kinds. */
+export const BOUNDARY_KINDS: readonly BoundaryKind[] = [
+  "none",
+  "login_wall",
+  "nyc_id",
+  "anti_bot",
+  "rate_limited",
+  "error",
+];
 
 /** Fixed attestation stored on every snapshot this harness produces. */
 export const PUBLIC_BOUNDARY_NOTE =
