@@ -29,6 +29,8 @@ NYC Service Estimation Assistant: turns "I want to build X" into cost estimates,
 | TS tests | `npm test` |
 | Build | `npm run build` |
 | Health smoke (server running) | `node scripts/smoke-health.mjs http://localhost:3000/api/health` |
+| Capture a portal page | `npm run capture -- <url> --root fixtures/snapshots` |
+| Replay stored snapshots (offline) | `npm run replay -- --root fixtures/snapshots` |
 | Python deps | `python3 -m venv .venv && .venv/bin/pip install -r python/requirements.txt` |
 | Python tests | `.venv/bin/python -m pytest python/tests -q` |
 
@@ -41,4 +43,5 @@ Run lint, typecheck, test, and build locally before every push; CI (`.github/wor
 - Every API response carries version stamps (`app.version`, `schema.version`; later `catalog_version`, `crosswalk_version`, `embedding_model_version`) — reproducibility means replaying with pinned versions. See `src/lib/health.ts`.
 - Honesty fields are non-negotiable: no invented data, `requiredStatus` stays a 4-value enum, upload limits carry `sizeLimitVerified`.
 - Python deps: edit `python/requirements.in`, then regenerate `python/requirements.txt` with pip-compile. Never hand-edit the lockfile.
-- Captures of nyc.gov surfaces are public-boundary only; NYC.ID sign-in is never automated.
+- Captures of nyc.gov surfaces are public-boundary only; NYC.ID sign-in is never automated. Login walls, anti-bot challenges, and rate limits are stop conditions — never bypassed, never retried. Replays and tests must work offline from committed fixtures; do not add tests that fetch live nyc.gov pages.
+- The capture driver (`src/lib/capture/driver.ts`) exposes no credential, form-filling, challenge-solving, or retry path by construction; keep that true. Field dumps record attribute data, never entered values.

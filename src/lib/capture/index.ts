@@ -21,6 +21,8 @@ export type {
   GoldenDiff,
   GoldenFinding,
 } from "./golden";
+export { loadExpectations, replayRoot } from "./replay";
+export type { ReplayReport, ReplayRow } from "./replay";
 export {
   buildSourceSnapshot,
   listSnapshotIds,
