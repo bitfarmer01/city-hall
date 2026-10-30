@@ -28,6 +28,19 @@ python3 -m venv .venv
 .venv/bin/python -m pytest python/tests -q
 ```
 
+## Portal capture harness (D3b)
+
+Playwright-based capture of live portal form pages as hashed SourceSnapshots: rendered HTML, full-page screenshot, and a DOM form-field dump (labels, options, required markers, upload slots) as the primary evidence. Every artifact is SHA-256-hashed; the snapshot id (`snap:<sha256-12>`) is derived from the artifacts, so tampering or truncation fails verification loudly.
+
+Capture policy is public-boundary only: login walls, NYC.ID sign-in pages, anti-bot challenges, and rate-limit responses are **stop conditions** — the capture records `capture_mode: authenticated_unreachable`, the stop reason, and the observed signals, and never submits credentials, never retries, and never bypasses a boundary. A rate-limited response is never re-fetched.
+
+```bash
+npm run capture -- "https://portal.311.nyc.gov/article/?kanumber=KA-01808" --root fixtures/snapshots
+npm run replay -- --root fixtures/snapshots   # offline: hash verify + field-dump parse, zero network
+```
+
+Stored snapshots under `fixtures/snapshots/` drive the golden-diff harness offline (`src/lib/capture/replay.ts` reads them back with hash-verified integrity). Boundary semantics live in `src/lib/capture/boundary.ts` — a pure classifier; when in doubt, stop.
+
 ## CI
 
 `.github/workflows/ci.yml` runs on every PR and pushes to `main`:
