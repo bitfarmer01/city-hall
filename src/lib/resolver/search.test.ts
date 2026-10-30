@@ -57,4 +57,20 @@ describe("searchCatalog", () => {
     const tokens = canonicalize("dog license").tokens;
     expect(searchCatalog(tokens, index, { k: 3 })).toEqual(searchCatalog(tokens, index, { k: 3 }));
   });
+
+  // S4 finding F2/H3 — a corpus-absent token (df = 0) carries idf 0, never
+  // Infinity: it cannot zero every coverage share and no-match a query the
+  // layer otherwise resolves.
+  it("a corpus-absent junk token does not change the hits or scores", () => {
+    const clean = searchCatalog(canonicalize("map").tokens, index, { k: 3 });
+    const withJunk = searchCatalog(canonicalize("map zqvwk").tokens, index, { k: 3 });
+
+    expect(withJunk).toEqual(clean);
+    expect(clean[0]?.serviceId).toBe("svc:dep:water-tap-permit");
+    expect(clean).toHaveLength(1);
+  });
+
+  it("a query of only corpus-absent tokens still resolves to no hits", () => {
+    expect(searchCatalog(canonicalize("zqvwk qzxj").tokens, index, { k: 3 })).toEqual([]);
+  });
 });

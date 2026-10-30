@@ -69,6 +69,34 @@ describe("crosswalk goldens", () => {
     );
     expect(total).toBeGreaterThanOrEqual(20);
   });
+
+  // S3 finding M1 — the corpus must exercise every deterministic layer,
+  // not only alias-rules. The census is pinned EXACTLY: adding corpus
+  // cases updates this pin in the same diff, and that review friction is
+  // the point — the census IS the layer-coverage statement.
+  it("the golden layer census routes through layers 1, 2, 3, and 4", async () => {
+    const census: Record<string, number> = {};
+    let total = 0;
+    for (const crosswalk of bundle.crosswalks as GoalCrosswalkRecord[]) {
+      for (const utterance of crosswalk.utterances) {
+        const layer = (await resolver.resolve(utterance)).resolutionLayer;
+        census[layer] = (census[layer] ?? 0) + 1;
+        total += 1;
+      }
+      for (const testCase of crosswalk.testCases) {
+        const layer = (await resolver.resolve(testCase.utterance)).resolutionLayer;
+        census[layer] = (census[layer] ?? 0) + 1;
+        total += 1;
+      }
+    }
+    expect(census).toEqual({
+      "exact-id": 1,
+      "alias-rules": 67,
+      "semantic-retrieval": 1,
+      "search-fallback": 1,
+    });
+    expect(total).toBe(70);
+  });
 });
 
 describe("coverage-domain goldens", () => {

@@ -71,7 +71,15 @@ export function searchCatalog(
       df.set(token, (df.get(token) ?? 0) + 1);
     }
   }
-  const idf = (token: string): number => Math.log(index.length / (df.get(token) ?? 0) + 1);
+  // Corpus-absent tokens (df = 0) carry no idf mass: no document can ever
+  // cover them, and an unbounded weight — log(N/0 + 1) = Infinity — would
+  // zero every coverage share, letting one junk token no-match an
+  // otherwise-resolvable query (S4 finding F2/H3). Weight 0 keeps the
+  // scores identical to the same query without the junk token.
+  const idf = (token: string): number => {
+    const documentFrequency = df.get(token) ?? 0;
+    return documentFrequency === 0 ? 0 : Math.log(index.length / documentFrequency + 1);
+  };
 
   const queryWeights = new Map<string, number>();
   let totalWeight = 0;
