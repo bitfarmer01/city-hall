@@ -1,0 +1,7 @@
+# Obvious repository policy — city-hall
+# Auto-detected from GitHub repo settings.
+branch:
+  default: main
+merge:
+  method: squash
+  requireHumanMerge: true
