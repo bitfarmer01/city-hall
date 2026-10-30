@@ -22,6 +22,8 @@ import { z } from "zod";
 import { EstimateBlockSchema } from "./estimate";
 import { GoalResolutionSchema } from "./resolution";
 import {
+  CatalogSnapshotVersionSchema,
+  EmbeddingModelVersionSchema,
   SemverVersionSchema,
   ServiceIdSchema,
 } from "./primitives";
@@ -83,15 +85,34 @@ export const API_ERROR_CODES = [
 export const ApiErrorCodeSchema = z.enum(API_ERROR_CODES);
 export type ApiErrorCode = z.infer<typeof ApiErrorCodeSchema>;
 
-/** Response version stamps: data stamps (D5) + app/schema (AGENTS.md rule). Semver-pinned (panel S4-S2). */
+/**
+ * Response version stamps: data stamps (D5) + app/schema (AGENTS.md rule).
+ * Each stamp validates against its own producer's format (panel N1): the
+ * catalog stamp is the bundle's date-stamp, the retriever stamp is a
+ * lowercase token, app/schema/crosswalk are semver. The D5 names map
+ * `catalog` ↔ `catalog_version`, `crosswalk` ↔ `crosswalk_version`,
+ * `embeddingModel` ↔ `embedding_model_version`.
+ */
 export const ResponseVersionsSchema = z.strictObject({
   app: SemverVersionSchema,
   schema: SemverVersionSchema,
-  catalog: SemverVersionSchema,
+  catalog: CatalogSnapshotVersionSchema,
   crosswalk: SemverVersionSchema,
-  embeddingModel: SemverVersionSchema,
+  embeddingModel: EmbeddingModelVersionSchema,
 });
 export type ResponseVersions = z.infer<typeof ResponseVersionsSchema>;
+
+/**
+ * Control-character and ANSI-escape stripping at the contract boundary
+ * (panel S4): error text is echoed to surfaces and logs, so terminal escape
+ * sequences and C0 control chars never ride through. CSI sequences are
+ * removed whole; any remaining C0/C1 DEL byte is removed individually.
+ */
+const stripControlAndAnsi = (text: string): string =>
+  text.replace(/\u001B\[[0-9;]*[A-Za-z]|[\u0000-\u001F\u007F]/g, "");
+
+const ErrorTextSchema = (max: number) =>
+  z.string().transform(stripControlAndAnsi).pipe(z.string().min(1).max(max));
 
 /**
  * Failure envelope. `code` routes recovery; `message` is human-readable.
@@ -104,8 +125,8 @@ export const ApiErrorEnvelopeSchema = z.strictObject({
   versions: ResponseVersionsSchema,
   error: z.strictObject({
     code: ApiErrorCodeSchema,
-    message: z.string().min(1),
-    detail: z.string().optional(),
+    message: ErrorTextSchema(2000),
+    detail: ErrorTextSchema(4000).optional(),
   }),
 });
 export type ApiErrorEnvelope = z.infer<typeof ApiErrorEnvelopeSchema>;

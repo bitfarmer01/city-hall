@@ -15,7 +15,7 @@ import { z } from "zod";
 import { AGENCY_ID_PATTERN, FEE_ID_PATTERN, STEP_ID_PATTERN } from "../catalog/ids";
 import type { FulfillmentMethod as CatalogFulfillmentMethod } from "../catalog/types";
 
-import { AgencyRefSchema, AssertCovers, HttpsUrlSchema, SnapshotRefSchema } from "./primitives";
+import { AgencyRefSchema, AssertCovers, HttpsUrlSchema, ServiceIdSchema, SnapshotRefSchema } from "./primitives";
 
 export const FULFILLMENT_METHODS = [
   "site_visit",
@@ -84,6 +84,10 @@ export const StepInstructionSchema = z
   .strictObject({
     /** `stp:{serviceId}:{seq3}` — pattern owned by catalog/ids. */
     id: z.string().regex(STEP_ID_PATTERN, "step id must match stp:{serviceId}:{seq3}"),
+    /** The owning service's catalog ID — D4 persists it on every step as the
+     * referential anchor for the DB load (panel S3-M: the strict schema
+     * rejected every real step without it). */
+    serviceId: ServiceIdSchema,
     sequence: z.number().int().positive(),
     phase: z.string().min(1).optional(),
     requirement: z.string().min(1),
@@ -98,6 +102,9 @@ export const StepInstructionSchema = z
      */
     fulfillmentNote: z.string().min(1).optional(),
     upload: UploadSpecSchema.optional(),
+    /** Free-text step notes — D4 persists them on most steps (10 of the 11
+     * seeded records carry one), so they stay optional here too (panel S3-M). */
+    notes: z.string().min(1).optional(),
     responsibleJurisdiction: ResponsibleJurisdictionSchema.default("nyc"),
     /** Why the step is a dependency, when jurisdiction is not "nyc". */
     dependencyNote: z.string().min(1).optional(),

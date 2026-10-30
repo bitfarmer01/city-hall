@@ -5,6 +5,8 @@
 
 import { z } from "zod";
 
+import type { ResolutionLayer as ResolverResolutionLayer } from "../resolver/types";
+
 import { ServiceIdSchema, VersionStampsSchema } from "./primitives";
 
 /**
@@ -22,7 +24,7 @@ export const RESOLUTION_LAYERS = [
   "semantic-retrieval",
   "search-fallback",
   "llm_assist",
-] as const;
+] as const satisfies readonly ResolverResolutionLayer[];
 export const ResolutionLayerSchema = z.enum(RESOLUTION_LAYERS);
 export type ResolutionLayer = z.infer<typeof ResolutionLayerSchema>;
 

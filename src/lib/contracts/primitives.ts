@@ -51,10 +51,37 @@ export const SnapshotRefSchema = z
   .string()
   .regex(/^snap:[a-z0-9][a-z0-9-]*$/i, "snapshot ref must match snap:{id}");
 
-/** Semver version stamp (`0.1.0`, `0.0.0-fixture`). */
+/**
+ * REAL-capture snapshot ref — the catalog's strict `snap:` + 12-hex form,
+ * exported for conformance tests over real records (panel S4). Fixtures use
+ * `SnapshotRefSchema` (which admits `snap:fixture-*`); a fixture ref must
+ * never pass this one.
+ */
+export const RealSnapshotRefSchema = z
+  .string()
+  .regex(/^snap:[a-f0-9]{12}$/, "real snapshot ref must be snap: + 12 hex chars");
+
+/** Semver version stamp (`0.1.0`, `1.0.0`, `0.0.0-fixture`). */
 export const SemverVersionSchema = z
   .string()
   .regex(/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/, "version must be semver (major.minor.patch[-prerelease])");
+
+/**
+ * Catalog snapshot version — the catalog bundle's own date-stamp format
+ * (panel N1): `meta.json` emits `2026-10-30.1`, not semver. Mirrors the
+ * producer instead of forcing one shape across all three stamps.
+ */
+export const CatalogSnapshotVersionSchema = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}(?:\.\d+)?$/, "catalog version must match YYYY-MM-DD[.N] (the catalog bundle's date-stamp)");
+
+/**
+ * Embedding/retriever model version — the retrieval pipeline's lowercase
+ * token format (panel N1): `EMBEDDING_MODEL_VERSION` emits `lexical-hash-v1`.
+ */
+export const EmbeddingModelVersionSchema = z
+  .string()
+  .regex(/^[a-z0-9][a-z0-9.-]*$/, "embedding model version must be a lowercase dot/hyphen token (e.g. lexical-hash-v1)");
 
 /**
  * Coverage domains — locked decision #12: permits, 311 service requests,
@@ -128,12 +155,18 @@ export const ServiceSubtypeSchema = z.enum(SERVICE_SUBTYPES);
 
 /**
  * The three data-version stamps every deterministic answer carries (spec D5:
- * `catalog_version`, `crosswalk_version`, `embedding_model_version`) — catalog
- * snapshot, ruleset, and model/retriever versions. Semver-pinned (panel S4-S2).
+ * `catalog_version`, `crosswalk_version`, `embedding_model_version`). Each
+ * stamp validates against its OWN producer's format (panel N1 — one semver
+ * shape rejected two of the three real producers):
+ *
+ * - `catalogVersion` — the bundle's date-stamp (`2026-10-30.1`, meta.json)
+ * - `crosswalkVersion` — ruleset semver (`1.0.0`, CROSSWALK_RULES_VERSION)
+ * - `embeddingModelVersion` — retriever token (`lexical-hash-v1`,
+ *   EMBEDDING_MODEL_VERSION)
  */
 export const VersionStampsSchema = z.strictObject({
-  catalogVersion: SemverVersionSchema,
+  catalogVersion: CatalogSnapshotVersionSchema,
   crosswalkVersion: SemverVersionSchema,
-  embeddingModelVersion: SemverVersionSchema,
+  embeddingModelVersion: EmbeddingModelVersionSchema,
 });
 export type VersionStamps = z.infer<typeof VersionStampsSchema>;
