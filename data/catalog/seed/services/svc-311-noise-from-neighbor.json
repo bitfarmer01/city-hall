@@ -1,0 +1,25 @@
+{
+  "catalogId": "svc:311:noise-from-neighbor",
+  "ka": "KA-01017",
+  "domain": "service-requests",
+  "serviceType": "Service request",
+  "alternateNames": [],
+  "channels": [
+    { "@type": "ServiceChannel", "name": "Online or phone (NYC311)" }
+  ],
+  "fees": [],
+  "formIds": [],
+  "steps": [
+    {
+      "id": "stp:svc:311:noise-from-neighbor:010",
+      "serviceId": "svc:311:noise-from-neighbor",
+      "sequence": 1,
+      "phase": "reporting",
+      "requirement": "Report a noisy neighbor",
+      "fulfillmentMethod": "online_submission",
+      "responsibleAgency": { "id": "nyc-311", "name": "NYC311" },
+      "notes": "NYC311 service request; intake channels (web, phone, app) per the NYC311 article.",
+      "sourceRefs": ["snap:63aff11a928c"]
+    }
+  ]
+}

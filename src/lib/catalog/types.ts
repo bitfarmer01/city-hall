@@ -331,24 +331,35 @@ export interface GoalCrosswalkRecord {
 // The versioned bundle
 // ---------------------------------------------------------------------------
 
-/** Classification provenance merged into every service record. */
+/**
+ * Classification provenance merged into every service record.
+ *
+ * Per the PR #6 panel review: NO classifier ruleIds or evidence spans are
+ * persisted here — the evidence field shape ({kind, span}) will change in
+ * the classifier-fidelity PR, and rule IDs churn with rule edits. What is
+ * persisted: the disposition assertion (a coverage-domain tag is only
+ * coverage-meaningful for disposition === "service" — the tagger stamps
+ * domains on out-of-scope articles too) and the pinned versions that
+ * produced it.
+ */
 export interface ServiceCatalogMeta {
   catalogId: string;
   nyc311ArticleId: string;
   nyc311ArticleUrl: string;
   domain: string;
-  domainPatternId: string;
-  domainMatchedBy: "title" | "description" | "none";
   serviceSubtype: string;
-  classificationReason: string;
-  classifierRuleId: string;
+  /** Always "service" — out-of-scope articles never enter the catalog. */
+  classifiedDisposition: "service";
   classifierRulesVersion: string;
+  domainTaxonomyVersion: string;
 }
 
 export interface ServiceRecord {
   envelope: ServiceEnvelope;
   meta: ServiceCatalogMeta;
   steps: BlueprintStepRecord[];
+  /** Forms required by this service — linked by stable Form IDs. */
+  formIds: string[];
 }
 
 export interface CatalogBundle {

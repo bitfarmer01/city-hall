@@ -1,0 +1,66 @@
+{
+  "catalogId": "svc:dep:water-tap-permit",
+  "ka": "KA-02076",
+  "domain": "permits",
+  "serviceType": "Permit",
+  "alternateNames": [],
+  "serviceOutputName": "Water tap or wet connection permit",
+  "channels": [
+    {
+      "@type": "ServiceChannel",
+      "name": "Online (PARIS)",
+      "serviceUrl": "https://www.nyc.gov/site/dep/about/permit-and-review-information-system.page"
+    }
+  ],
+  "fees": [],
+  "formIds": [],
+  "steps": [
+    {
+      "id": "stp:svc:dep:water-tap-permit:010",
+      "serviceId": "svc:dep:water-tap-permit",
+      "sequence": 1,
+      "phase": "application",
+      "requirement": "Application filed by a licensed master plumber",
+      "fulfillmentMethod": "in_person_appearance",
+      "responsibleAgency": { "id": "nyc-dep", "name": "Department of Environmental Protection" },
+      "notes": "Plumbers must visit a DEP permitting application office to apply; only licensed plumbers may request water/sewer permits.",
+      "sourceRefs": ["snap:cef96bd9a435", "snap:63aff11a928c"]
+    },
+    {
+      "id": "stp:svc:dep:water-tap-permit:020",
+      "serviceId": "svc:dep:water-tap-permit",
+      "sequence": 2,
+      "phase": "application",
+      "requirement": "DOB-approved site plan, plumbing riser diagram, Schedule B",
+      "fulfillmentMethod": "document_upload",
+      "responsibleAgency": { "id": "nyc-dep", "name": "Department of Environmental Protection" },
+      "upload": {
+        "portalId": "portal:dep:paris",
+        "portalUrl": "https://www.nyc.gov/site/dep/about/permit-and-review-information-system.page",
+        "acceptedFormats": ["pdf"],
+        "maxSizeBytes": null,
+        "sizeLimitVerified": false,
+        "multipleAllowed": true
+      },
+      "dependencies": [
+        {
+          "agencyId": "nyc-buildings",
+          "label": "DOB-approved site plan",
+          "note": "The site plan must be DOB-approved before it accompanies the tap application."
+        }
+      ],
+      "sourceRefs": ["snap:16714397d300"]
+    },
+    {
+      "id": "stp:svc:dep:water-tap-permit:030",
+      "serviceId": "svc:dep:water-tap-permit",
+      "sequence": 3,
+      "phase": "application",
+      "requirement": "Notarized affidavit from the property owner (plugging a tap)",
+      "fulfillmentMethod": "notarized_wet_signature",
+      "responsibleAgency": { "id": "nyc-dep", "name": "Department of Environmental Protection" },
+      "notes": "Original notarized affidavit accompanies the application; upload not applicable.",
+      "sourceRefs": ["snap:f91ca32cf832"]
+    }
+  ]
+}

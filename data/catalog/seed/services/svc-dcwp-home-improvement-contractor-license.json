@@ -1,0 +1,57 @@
+{
+  "catalogId": "svc:dcwp:home-improvement-contractor-license",
+  "ka": "KA-01808",
+  "domain": "licensing",
+  "serviceType": "License",
+  "alternateNames": ["HIC license", "home improvement contractor registration"],
+  "serviceOutputName": "Home Improvement Contractor license",
+  "channels": [
+    {
+      "@type": "ServiceChannel",
+      "name": "Online",
+      "serviceUrl": "https://a866-dcwpbp.nyc.gov/account/services",
+      "processingTime": "P21D"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "In-person (hardship appointments only)",
+      "servicePostalAddress": "42 Broadway, New York NY"
+    }
+  ],
+  "fees": [
+    {
+      "identifier": "fee:dcwp:home-improvement-contractor-license:two-year-term",
+      "price": 200,
+      "priceCurrency": "USD",
+      "description": "Two-year license term. Source: NYC311 KA-01808, captured 2026-10-30.",
+      "sourceRefs": ["snap:f29b96c047dd", "snap:19f5de5b4340", "snap:a59b2828c958"],
+      "capturedAt": "2026-10-30"
+    }
+  ],
+  "formIds": [],
+  "steps": [
+    {
+      "id": "stp:svc:dcwp:home-improvement-contractor-license:010",
+      "serviceId": "svc:dcwp:home-improvement-contractor-license",
+      "sequence": 1,
+      "phase": "application",
+      "requirement": "Apply for or renew the Home Improvement Contractor license online",
+      "fulfillmentMethod": "online_submission",
+      "responsibleAgency": { "id": "nyc-dcwp", "name": "Department of Consumer and Worker Protection" },
+      "feeRef": "fee:dcwp:home-improvement-contractor-license:two-year-term",
+      "notes": "Apply through the DCWP Licensing Center's online licensing system.",
+      "sourceRefs": ["snap:f51cd03e49ee", "snap:f29b96c047dd", "snap:19f5de5b4340", "snap:a59b2828c958"]
+    },
+    {
+      "id": "stp:svc:dcwp:home-improvement-contractor-license:020",
+      "serviceId": "svc:dcwp:home-improvement-contractor-license",
+      "sequence": 2,
+      "phase": "application",
+      "requirement": "Attend an in-person appointment (hardship cases only)",
+      "fulfillmentMethod": "in_person_appearance",
+      "responsibleAgency": { "id": "nyc-dcwp", "name": "Department of Consumer and Worker Protection" },
+      "notes": "In-person (hardship appointments only) at 42 Broadway, New York NY.",
+      "sourceRefs": ["snap:a6ebac73fe97"]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "catalogId": "svc:dohmh:food-service-establishment-permit",
+  "ka": "KA-01878",
+  "domain": "permits",
+  "serviceType": "Permit",
+  "alternateNames": [],
+  "serviceOutputName": "Food Service Establishment Permit",
+  "channels": [
+    {
+      "@type": "ServiceChannel",
+      "name": "Online (DCWP Licensing Center)",
+      "serviceUrl": "https://a866-dcwpbp.nyc.gov/account/services"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "In-person (hardship appointments only)",
+      "servicePostalAddress": "42 Broadway, New York NY"
+    }
+  ],
+  "fees": [
+    {
+      "identifier": "fee:dohmh:food-service-establishment-permit:annual",
+      "price": 280,
+      "priceCurrency": "USD",
+      "description": "Annual fee; renewal $280/yr; permit expires after 1 year on staggered dates. Source: NYC311 KA-01878, captured 2026-10-30.",
+      "sourceRefs": ["snap:983e1e1cbf5e"],
+      "capturedAt": "2026-10-30"
+    }
+  ],
+  "formIds": [],
+  "steps": [
+    {
+      "id": "stp:svc:dohmh:food-service-establishment-permit:010",
+      "serviceId": "svc:dohmh:food-service-establishment-permit",
+      "sequence": 1,
+      "phase": "application",
+      "requirement": "Apply for or renew the Food Service Establishment Permit",
+      "fulfillmentMethod": "online_submission",
+      "responsibleAgency": { "id": "nyc-dohmh", "name": "Department of Health and Mental Hygiene" },
+      "administeredBy": { "id": "nyc-dcwp", "name": "Department of Consumer and Worker Protection" },
+      "feeRef": "fee:dohmh:food-service-establishment-permit:annual",
+      "dependencies": [
+        {
+          "label": "Food Protection Course - register for and complete before applying",
+          "note": "Course fulfillment channel is not stated in the captured source; verify during D7 research."
+        },
+        {
+          "label": "Frozen Dessert Manufacturer Permit - required if a frozen-dessert machine is present",
+          "note": "Separate DOHMH permit; the build spec's verified example of a conditional requirement."
+        }
+      ],
+      "notes": "The DOHMH permit application is accepted through DCWP's Licensing Center; hardship-only in-person appointments are scheduled through DCWP's Licensing Appointment Line.",
+      "sourceRefs": ["snap:7ae07aecc970", "snap:ca66ce0f2869", "snap:a44adbe526f1", "snap:983e1e1cbf5e"]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "portal:buildings:dob-now",
+    "agencyId": "nyc-buildings",
+    "name": "DOB NOW",
+    "url": "https://www.nyc.gov/site/buildings/dob/use-dob-now.page",
+    "auth": "nyc_id",
+    "capturePolicy": "headless",
+    "notes": "Entry-point page verified in art_mcM1Ssao §3.1 [N4] (fetched 2026-10-30); the DOB NOW application itself was not fetched (U4). auth=nyc_id per 'You need an NYC.ID account to log in to DOB NOW'."
+  },
+  {
+    "id": "portal:dep:paris",
+    "agencyId": "nyc-dep",
+    "name": "PARIS (Permit and Review Information System)",
+    "url": "https://www.nyc.gov/site/dep/about/permit-and-review-information-system.page",
+    "auth": "unknown",
+    "capturePolicy": "headless",
+    "notes": "Information-page URL from art_mcM1Ssao §4.2; the portal's own login boundary was not verified this session, so auth stays unknown."
+  }
+]

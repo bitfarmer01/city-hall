@@ -1,0 +1,29 @@
+{
+  "catalogId": "svc:buildings:elevator-escalator-inspection",
+  "ka": "KA-02012",
+  "domain": "inspections",
+  "serviceType": "Inspection",
+  "alternateNames": [],
+  "channels": [
+    {
+      "@type": "ServiceChannel",
+      "name": "Online (DOB NOW)",
+      "serviceUrl": "https://www.nyc.gov/site/buildings/dob/use-dob-now.page"
+    }
+  ],
+  "fees": [],
+  "formIds": [],
+  "steps": [
+    {
+      "id": "stp:svc:buildings:elevator-escalator-inspection:010",
+      "serviceId": "svc:buildings:elevator-escalator-inspection",
+      "sequence": 1,
+      "phase": "scheduling",
+      "requirement": "Request an appointment online with an elevator or escalator inspector",
+      "fulfillmentMethod": "online_submission",
+      "responsibleAgency": { "id": "nyc-buildings", "name": "Department of Buildings" },
+      "notes": "DOB NOW requires an NYC.ID account to log in (see portal record).",
+      "sourceRefs": ["snap:63aff11a928c", "snap:bcb86abc6f58"]
+    }
+  ]
+}

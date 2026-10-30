@@ -11,6 +11,7 @@
     "test": "vitest run",
     "snapshot:build": "tsx scripts/build-inventory-snapshot.ts",
     "snapshot:diff": "tsx scripts/diff-inventory-snapshots.ts",
+    "catalog:build": "tsx scripts/build-catalog.ts",
     "capture": "tsx scripts/capture-portal.ts",
     "replay": "tsx scripts/replay-snapshots.ts"
   },

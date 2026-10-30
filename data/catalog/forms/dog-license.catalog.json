@@ -1,0 +1,5825 @@
+{
+  "schemaVersion": "d3a.1",
+  "generatedAt": "2026-10-30T17:46:17Z",
+  "form": {
+    "id": "form:dohmh:unnumbered-77c43258",
+    "agency": "dohmh",
+    "formNumber": null,
+    "title": "dog-license",
+    "sourceUrl": "https://www.nyc.gov/assets/doh/downloads/pdf/vet/vet-doglicense-form.pdf",
+    "sha256": "77c432585a0c80d0e648876858891eef6e538d63f36c132c0cdecbcbcccde834",
+    "pages": 4,
+    "fillableClass": "flattened",
+    "snapshotId": "snap:77c432585a0c"
+  },
+  "fields": [
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:007297b7",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "License and Other Fees",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 456.8,
+        "w": 224.5,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:1a161b7a",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Spayed or Neutered, Any Age Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 479.3,
+        "w": 224.5,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:9d37accc",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Over 4 Months Old Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 501.8,
+        "w": 224.5,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4f077ead",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Under 4 Months Old First year only",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 524.3,
+        "w": 224.5,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:b693ad25",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Late Fee (Expired Licenses) For each year license was not renewed",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 546.8,
+        "w": 224.5,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:290529ed",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 434.3,
+        "w": 558.0,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:d2c43d6a",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Replacement Tag",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 578.3,
+        "w": 558.0,
+        "h": 112.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:6a6b9c90",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 698.3,
+        "w": 558.0,
+        "h": 48.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:0f376dcd",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "License and Other Fees",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 456.8,
+        "w": 224.5,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:1b32e38e",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Spayed or Neutered, Any Age Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 479.3,
+        "w": 224.5,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:92082886",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Over 4 Months Old Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 501.8,
+        "w": 224.5,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:72cd23db",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Under 4 Months Old First year only",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 524.3,
+        "w": 224.5,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:9b82f0cf",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Late Fee (Expired Licenses) For each year license was not renewed",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 16.0,
+        "y": 546.8,
+        "w": 224.5,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:fb72129a",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "PO Box 22136",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 120.2,
+        "y": 364.8,
+        "w": 46.5,
+        "h": 10.9
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:26f690d8",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "License and Other Fees",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 240.5,
+        "y": 456.8,
+        "w": 88.2,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:2c461d0e",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Spayed or Neutered, Any Age Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 240.5,
+        "y": 479.3,
+        "w": 88.2,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:d8604b64",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Over 4 Months Old Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 240.5,
+        "y": 501.8,
+        "w": 88.2,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:bda868de",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Under 4 Months Old First year only",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 240.5,
+        "y": 524.3,
+        "w": 88.2,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:0de93bdf",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Late Fee (Expired Licenses) For each year license was not renewed",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 240.5,
+        "y": 546.8,
+        "w": 88.2,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:b13500aa",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "License and Other Fees",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 240.5,
+        "y": 456.8,
+        "w": 88.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:76d38ab6",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Spayed or Neutered, Any Age Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 240.5,
+        "y": 479.3,
+        "w": 88.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:2b7c8c61",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Over 4 Months Old Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 240.5,
+        "y": 501.8,
+        "w": 88.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:7c4c220e",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Under 4 Months Old First year only",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 240.5,
+        "y": 524.3,
+        "w": 88.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:e9cb53da",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Late Fee (Expired Licenses) For each year license was not renewed",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 240.5,
+        "y": 546.8,
+        "w": 88.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:18335d69",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "License and Other Fees",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 328.7,
+        "y": 456.8,
+        "w": 245.3,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:b657f267",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Spayed or Neutered, Any Age Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 328.7,
+        "y": 479.3,
+        "w": 245.3,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:a080fc7b",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Over 4 Months Old Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 328.7,
+        "y": 501.8,
+        "w": 245.3,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4b8c9f60",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Under 4 Months Old First year only",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 328.7,
+        "y": 524.3,
+        "w": 245.3,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4f150bc2",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Late Fee (Expired Licenses) For each year license was not renewed",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 328.7,
+        "y": 546.8,
+        "w": 245.3,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:e160db15",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "License and Other Fees",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 328.7,
+        "y": 456.8,
+        "w": 245.3,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:22f5341f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Spayed or Neutered, Any Age Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 328.7,
+        "y": 479.3,
+        "w": 245.3,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:b9a3cf7f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Over 4 Months Old Per year, up to 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 328.7,
+        "y": 501.8,
+        "w": 245.3,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4bb4a68a",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Non-Spayed or Neutered, Under 4 Months Old First year only",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 328.7,
+        "y": 524.3,
+        "w": 245.3,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:471d5fa6",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Late Fee (Expired Licenses) For each year license was not renewed",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 328.7,
+        "y": 546.8,
+        "w": 245.3,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:f383a0fb",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Yes No Only fill out if your dog’s rabies vaccine information has changed.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.0,
+        "y": 620.7,
+        "w": 52.5,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:c46aa38f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Zip Code",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.0,
+        "y": 764.7,
+        "w": 52.5,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:35998624",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Health Code §161.04 requires that dogs have a license tag attached to the collar when out in public.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.0,
+        "y": 72.2,
+        "w": 558.0,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:37c0a6c8",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "New Renewal Replacement Tag",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.0,
+        "y": 117.2,
+        "w": 558.0,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:0376b1d6",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 575.7,
+        "w": 52.3,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:7b7cc19f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Did your dog receive rabies vaccine?",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 598.2,
+        "w": 52.3,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:1d0b713f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Yes No Only fill out if your dog’s rabies vaccine information has changed.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 620.7,
+        "w": 69.8,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:00c87f98",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Date of Vaccine ❑1 ❑3",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 649.5,
+        "w": 69.8,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:612b73e5",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Veterinarian’s Name",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 678.3,
+        "w": 69.8,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4d938843",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Address",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 707.1,
+        "w": 69.8,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:9fd2faff",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "City State",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 735.9,
+        "w": 69.8,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:b601b57b",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Health Code §161.04 requires that dogs have a license tag attached to the collar when out in public.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 72.2,
+        "w": 557.6,
+        "h": 22.6
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:77face29",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Type of Application",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 94.8,
+        "w": 557.6,
+        "h": 22.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:2cc0b942",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 575.7,
+        "w": 558.3,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:7b0a52de",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Dog’s information",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.4,
+        "y": 374.7,
+        "w": 69.7,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:7e00f2c4",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Tag #",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.4,
+        "y": 564.0,
+        "w": 69.7,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:c3bc3961",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.4,
+        "y": 129.1,
+        "w": 69.9,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:5fe9c3e3",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "E-mail",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.4,
+        "y": 340.6,
+        "w": 69.9,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:0c81fedf",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.4,
+        "y": 352.2,
+        "w": 69.9,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:92c9d8ad",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Dog Owner’s information",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.4,
+        "y": 151.6,
+        "w": 70.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:ae8128dc",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Date of Vaccine ❑1 ❑3",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.5,
+        "y": 649.5,
+        "w": 52.0,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:404d3d45",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Veterinarian’s Name",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.5,
+        "y": 678.3,
+        "w": 52.0,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:94174c28",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Address",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.5,
+        "y": 707.1,
+        "w": 52.0,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:23428275",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.5,
+        "y": 735.9,
+        "w": 52.0,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:b4e211eb",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Dog Owner’s information",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 151.6,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:0af0a2e0",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "First Name",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 178.6,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:16b2a26f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Last Name",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 205.6,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:be7f949c",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Address 1",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 232.6,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:baed0cdb",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Address 2",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 259.6,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:de023132",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Borough Zip Code –",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 286.6,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:be73dfe1",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Phone #",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 313.6,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:64562f02",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Dog’s information",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 374.7,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:1513a08f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Dog’s Name Month and Year of Birth",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 401.7,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:a7a502c6",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Primary Breed",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 428.7,
+        "w": 69.7,
+        "h": 27.3
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:9004f02f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Primary Color",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 456.0,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:0a5e7771",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Secondary Color",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 483.0,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:ea4b68ae",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Third Color",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 510.0,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:c998bc57",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Gender",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 537.0,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:650faf12",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 352.2,
+        "w": 557.0,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:8a492065",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.6,
+        "y": 129.1,
+        "w": 557.5,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:af5eb116",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Dog’s Name Month and Year of Birth",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 401.7,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:eb163292",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Primary Breed",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 428.7,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:6cd8aca8",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Primary Color",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 456.0,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:97509e8b",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Secondary Color",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 483.0,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:124c22d1",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Third Color",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 510.0,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:dca715d9",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Gender",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 537.0,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:c846daba",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "First Name",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 178.6,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:ab61ea12",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Last Name",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 205.6,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:9cc7d46c",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Address 1",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 232.6,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:950ef0e2",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Address 2",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 259.6,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:9dad7f96",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Borough Zip Code –",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 286.6,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:9cadd216",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Phone #",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.9,
+        "y": 313.6,
+        "w": 69.2,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:76bd5208",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Did your dog receive rabies vaccine?",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 79.5,
+        "y": 598.2,
+        "w": 52.4,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:7ff0855c",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Yes No Only fill out if your dog’s rabies vaccine information has changed.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 97.0,
+        "y": 620.7,
+        "w": 87.2,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:a515b4e8",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 114.8,
+        "y": 510.0,
+        "w": 34.2,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:ba18d7ca",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Did your dog receive rabies vaccine?",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 131.9,
+        "y": 598.2,
+        "w": 453.6,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:040f1ec0",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 166.5,
+        "y": 510.0,
+        "w": 52.2,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:84bc946e",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Yes No Only fill out if your dog’s rabies vaccine information has changed.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 184.2,
+        "y": 620.7,
+        "w": 87.2,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:dfe4c1cd",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 218.7,
+        "y": 510.0,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:3c5f22bd",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "City State",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 271.4,
+        "y": 735.9,
+        "w": 34.9,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:3eac2824",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Yes No Only fill out if your dog’s rabies vaccine information has changed.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 271.4,
+        "y": 620.7,
+        "w": 157.1,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:c881d3a6",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 288.4,
+        "y": 510.0,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:35c54801",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 358.7,
+        "y": 259.6,
+        "w": 52.2,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:a18f854e",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Yes No Only fill out if your dog’s rabies vaccine information has changed.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 428.5,
+        "y": 620.7,
+        "w": 52.3,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:ed27330d",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Dog’s Name Month and Year of Birth",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 462.6,
+        "y": 401.7,
+        "w": 52.3,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:6d88b4c9",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 462.6,
+        "y": 374.7,
+        "w": 122.0,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:790452a3",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Yes No Only fill out if your dog’s rabies vaccine information has changed.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 480.8,
+        "y": 620.7,
+        "w": 52.4,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:9008f112",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Dog’s Name Month and Year of Birth",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.9,
+        "y": 401.7,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:b53b9516",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 515.7,
+        "y": 707.1,
+        "w": 34.9,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:988db852",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Yes No Only fill out if your dog’s rabies vaccine information has changed.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 533.2,
+        "y": 620.7,
+        "w": 52.3,
+        "h": 28.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:cc78049e",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.0,
+        "y": 26.8,
+        "w": 52.5,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:54d2438f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "❑ Yes ❑ No",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.0,
+        "y": 71.8,
+        "w": 52.5,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:f2ef94f9",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Zip Code",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.0,
+        "y": 206.8,
+        "w": 52.5,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:2fd5bbc5",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.0,
+        "y": 311.8,
+        "w": 52.5,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:8404cbf7",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "is your dog spayed or neutered?",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 49.2,
+        "w": 52.3,
+        "h": 22.6
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:b2cdc279",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "❑ Yes ❑ No",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 71.8,
+        "w": 69.8,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4a19d5b6",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Date of Surgery",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 98.8,
+        "w": 69.8,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:9f26d64f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Veterinarian’s Name",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 125.8,
+        "w": 69.8,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:fe1a1cbd",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Address",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 152.8,
+        "w": 69.8,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:ff71fab0",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "City",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 179.8,
+        "w": 69.8,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:6f55a8a7",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "and the late fee and/or replacement tag, if applicable.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 357.0,
+        "w": 204.6,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:04b33da2",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 702.0,
+        "w": 557.6,
+        "h": 44.8
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:5f9a8c43",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 26.8,
+        "w": 558.3,
+        "h": 22.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:842f5a33",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "– Phone #",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 206.8,
+        "w": 558.3,
+        "h": 48.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:8b84a1f0",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "me to civil and criminal fines and penalties, and invalidation of any license issued.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.2,
+        "y": 254.8,
+        "w": 558.3,
+        "h": 57.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:cf9bfebd",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Date of Surgery",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.5,
+        "y": 98.8,
+        "w": 52.0,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:3bdc68cb",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Veterinarian’s Name",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.5,
+        "y": 125.8,
+        "w": 52.0,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:25c34a8f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Address",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.5,
+        "y": 152.8,
+        "w": 52.0,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:da64a97f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 27.5,
+        "y": 179.8,
+        "w": 52.0,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:c86f05bc",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "me to civil and criminal fines and penalties, and invalidation of any license issued.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 33.1,
+        "y": 264.0,
+        "w": 269.4,
+        "h": 38.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:5cee5122",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "and the late fee and/or replacement tag, if applicable.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 357.0,
+        "w": 181.4,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:3a2fadeb",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 379.5,
+        "w": 181.4,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:86f80bdc",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 379.5,
+        "w": 181.4,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:67bceeee",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 429.0,
+        "w": 181.4,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:ae29621d",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Over 4 Months",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 478.5,
+        "w": 181.4,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:60257d66",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Under 4 Months Old",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 528.0,
+        "w": 181.4,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:652a1d05",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Under 4 Months Old",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 528.0,
+        "w": 181.4,
+        "h": 54.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4d76e199",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 582.0,
+        "w": 181.4,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:3c2ffe77",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 582.0,
+        "w": 181.4,
+        "h": 54.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:df118971",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 636.0,
+        "w": 181.4,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:fc0d9dde",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 636.0,
+        "w": 181.4,
+        "h": 54.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:e81bb911",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 50.4,
+        "y": 690.0,
+        "w": 181.4,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:9371c5a4",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 51.4,
+        "y": 429.0,
+        "w": 180.4,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:6505f4d3",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Over 4 Months",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 51.4,
+        "y": 478.5,
+        "w": 180.4,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:1321e3f7",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "is your dog spayed or neutered?",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 79.5,
+        "y": 49.2,
+        "w": 52.4,
+        "h": 22.6
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:bef66261",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "❑ Yes ❑ No",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 97.0,
+        "y": 71.8,
+        "w": 69.8,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:f4477425",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "is your dog spayed or neutered?",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 131.9,
+        "y": 49.2,
+        "w": 453.6,
+        "h": 22.6
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:3dc7e302",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Only fill out if you have not provided proof of surgery to the Health Department in the past.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 166.8,
+        "y": 71.8,
+        "w": 69.7,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:3b77c7df",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "and the late fee and/or replacement tag, if applicable.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 357.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4c0be01f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "and the late fee and/or replacement tag, if applicable.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 357.0,
+        "w": 70.6,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:382db639",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 379.5,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:efa4ed4f",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 379.5,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:9821fc48",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 429.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:f42baed8",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 429.0,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:e5522c42",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 478.5,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:3c2ce535",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 478.5,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:f2c2e56b",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 528.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:0ff90d48",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 528.0,
+        "w": 70.6,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:ff96bb7b",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Not Applicable",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 582.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:abaa8ac4",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Not Applicable",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 636.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:eb2c8502",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Not Applicable",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 690.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:0e1d19d9",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Not Applicable",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 636.0,
+        "w": 141.2,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:ba41e91e",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "$",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 663.0,
+        "w": 141.2,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:cd596998",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Not Applicable",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 582.0,
+        "w": 211.8,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:0ff074e3",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "$ 1.00",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 609.0,
+        "w": 211.8,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:97805bfb",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "$ 2.00 x Each Year Not Renewed = $ ____________",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 231.8,
+        "y": 555.0,
+        "w": 353.0,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4b88641d",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Only fill out if you have not provided proof of surgery to the Health Department in the past.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 236.5,
+        "y": 71.8,
+        "w": 139.6,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:3955dd42",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 271.4,
+        "y": 179.8,
+        "w": 34.9,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:71a8c9c4",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "and the late fee and/or replacement tag, if applicable.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 357.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:f056dbb2",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "and the late fee and/or replacement tag, if applicable.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 357.0,
+        "w": 70.6,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:ba07f728",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 379.5,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:27689d73",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 379.5,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:230e3535",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 429.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:09cc3190",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 429.0,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:1ff47a2c",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 478.5,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4ec7b7e1",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 478.5,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:5dc3bbf1",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 528.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:6f6cc612",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Not Applicable",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 582.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:47bab6a6",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Not Applicable",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 636.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:7ec3590b",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Not Applicable",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 690.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:34064049",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 302.4,
+        "y": 528.0,
+        "w": 282.4,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:8bc13bdb",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "me to civil and criminal fines and penalties, and invalidation of any license issued.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 309.2,
+        "y": 264.0,
+        "w": 270.6,
+        "h": 38.4
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:d6444a38",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "and the late fee and/or replacement tag, if applicable.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 357.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:861998a4",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "and the late fee and/or replacement tag, if applicable.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 357.0,
+        "w": 70.6,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:b9d3d66d",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 379.5,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:265ccb22",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 379.5,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:b6773a62",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 429.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:a3800404",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 429.0,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:25aed27a",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 478.5,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:6138de52",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 478.5,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:58156cf7",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 528.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:534748b4",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 582.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:c1acc201",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 636.0,
+        "w": 70.6,
+        "h": 54.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:45edd391",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 690.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:d139e177",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 373.0,
+        "y": 636.0,
+        "w": 70.8,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:43524daa",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Only fill out if you have not provided proof of surgery to the Health Department in the past.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 376.1,
+        "y": 71.8,
+        "w": 209.4,
+        "h": 27.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:44491f25",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "and the late fee and/or replacement tag, if applicable.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 357.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:e8debde8",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "and the late fee and/or replacement tag, if applicable.",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "conditionally_required",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 357.0,
+        "w": 70.6,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:87325a06",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 379.5,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:086cb4da",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 379.5,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:739a3788",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 429.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:03a0e170",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 429.0,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:5e5f665c",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 478.5,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:dcbb5e5a",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 478.5,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:fdd2a07c",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 528.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:70017d20",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 582.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:58bdd9e4",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 690.0,
+        "w": 70.6,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:8feb89f4",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 443.6,
+        "y": 582.0,
+        "w": 141.2,
+        "h": 108.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:c0cd643c",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.2,
+        "y": 379.5,
+        "w": 70.3,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4d0731d8",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.2,
+        "y": 429.0,
+        "w": 70.3,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4634658a",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.2,
+        "y": 478.5,
+        "w": 70.3,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:e7f2e9ea",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.2,
+        "y": 357.0,
+        "w": 70.6,
+        "h": 22.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:a55115ae",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": "Fees 1 year 2 years 3 years 4 years 5 years",
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "labelProvenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "visible label associated by nearest-text geometry"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.2,
+        "y": 379.5,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:062d3bdd",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.2,
+        "y": 429.0,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:4a0cd500",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.2,
+        "y": 478.5,
+        "w": 70.6,
+        "h": 49.5
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:fddba1c9",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.2,
+        "y": 357.0,
+        "w": 70.8,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:d9c02d6d",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.2,
+        "y": 528.0,
+        "w": 70.8,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:dc65fba8",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.2,
+        "y": 582.0,
+        "w": 70.8,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:c5869917",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 514.2,
+        "y": 690.0,
+        "w": 70.8,
+        "h": 3.0
+      }
+    },
+    {
+      "id": "fld:form:dohmh:unnumbered-77c43258:7b2646e0",
+      "formId": "form:dohmh:unnumbered-77c43258",
+      "nativeName": null,
+      "visibleLabel": null,
+      "fieldType": "text",
+      "requiredStatus": "unknown",
+      "requirementLevel": "unknown",
+      "provenance": {
+        "sourceLayer": "layout_geometry",
+        "tool": "pdfplumber==0.11.10",
+        "confidence": 0.6,
+        "note": "flattened form: labels and boxes recovered from page geometry; no author metadata exists"
+      },
+      "bbox": {
+        "unit": "pt",
+        "coordSystem": "top-left",
+        "x": 515.7,
+        "y": 152.8,
+        "w": 34.9,
+        "h": 27.0
+      }
+    }
+  ],
+  "snapshot": {
+    "id": "snap:77c432585a0c",
+    "url": "https://www.nyc.gov/assets/doh/downloads/pdf/vet/vet-doglicense-form.pdf",
+    "capturedAt": "2026-10-30",
+    "method": "http_fetch",
+    "sha256": "77c432585a0c80d0e648876858891eef6e538d63f36c132c0cdecbcbcccde834",
+    "httpStatus": 200,
+    "storagePath": "python/tests/fixtures/pdfs/dog-license.pdf",
+    "notes": "public-boundary capture; no authentication"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "catalogId": "svc:dohmh:dog-license",
+  "ka": "KA-01890",
+  "domain": "licensing",
+  "serviceType": "License",
+  "alternateNames": [],
+  "serviceOutputName": "Dog license",
+  "channels": [
+    { "@type": "ServiceChannel", "name": "Mail" }
+  ],
+  "fees": [],
+  "formIds": ["form:dohmh:unnumbered-77c43258"],
+  "steps": [
+    {
+      "id": "stp:svc:dohmh:dog-license:010",
+      "serviceId": "svc:dohmh:dog-license",
+      "sequence": 1,
+      "phase": "application",
+      "requirement": "Apply for, renew, update, or replace a dog license",
+      "fulfillmentMethod": "mail_in",
+      "responsibleAgency": { "id": "nyc-dohmh", "name": "Department of Health and Mental Hygiene" },
+      "notes": "The committed dog-license form includes a mail application; an online channel was not verified this session.",
+      "sourceRefs": ["snap:77c432585a0c", "snap:63aff11a928c"]
+    }
+  ]
+}

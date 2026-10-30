@@ -1,0 +1,37 @@
+{
+  "catalogId": "svc:buildings:building-construction-alteration-permit",
+  "ka": "KA-02104",
+  "domain": "permits",
+  "serviceType": "Permit",
+  "alternateNames": [],
+  "serviceOutputName": "Building construction or alteration permit",
+  "channels": [
+    {
+      "@type": "ServiceChannel",
+      "name": "Online (DOB NOW)",
+      "serviceUrl": "https://www.nyc.gov/site/buildings/dob/use-dob-now.page"
+    }
+  ],
+  "fees": [],
+  "formIds": ["form:buildings:pw1"],
+  "steps": [
+    {
+      "id": "stp:svc:buildings:building-construction-alteration-permit:010",
+      "serviceId": "svc:buildings:building-construction-alteration-permit",
+      "sequence": 1,
+      "phase": "application",
+      "requirement": "File the PW1 Plan/Work Application",
+      "fulfillmentMethod": "document_upload",
+      "responsibleAgency": { "id": "nyc-buildings", "name": "Department of Buildings" },
+      "upload": {
+        "portalId": "portal:buildings:dob-now",
+        "portalUrl": "https://www.nyc.gov/site/buildings/dob/use-dob-now.page",
+        "acceptedFormats": ["pdf"],
+        "maxSizeBytes": null,
+        "sizeLimitVerified": false
+      },
+      "notes": "DOB NOW is where Owners/PEs/RAs submit applications, pay fees, upload documents, and pull permits; an NYC.ID account is required to log in (see portal record). PW1 form extracted field-by-field as form:buildings:pw1.",
+      "sourceRefs": ["snap:a68fd0c754fe", "snap:b9a1a4d1178c", "snap:bcb86abc6f58"]
+    }
+  ]
+}

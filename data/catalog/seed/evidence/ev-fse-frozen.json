@@ -1,0 +1,8 @@
+{
+  "id": "ev-fse-frozen",
+  "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01878",
+  "quote": "separate Frozen Dessert Manufacturer Permit if a frozen-dessert machine is present",
+  "capturedAt": "2026-10-30",
+  "capturedBy": "Research - Data model and form extraction (art_mcM1Ssao §5.1, [N1] fetched 2026-10-30)",
+  "note": "The build spec's verified example of a conditional requirement, carried as a dependency."
+}
