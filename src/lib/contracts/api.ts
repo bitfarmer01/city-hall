@@ -26,6 +26,7 @@ import {
   EmbeddingModelVersionSchema,
   SemverVersionSchema,
   ServiceIdSchema,
+  Sha256Schema,
 } from "./primitives";
 import { RequiredDocumentSchema } from "./required-document";
 import { ServiceSummarySchema } from "./service-summary";
@@ -91,7 +92,10 @@ export type ApiErrorCode = z.infer<typeof ApiErrorCodeSchema>;
  * catalog stamp is the bundle's date-stamp, the retriever stamp is a
  * lowercase token, app/schema/crosswalk are semver. The D5 names map
  * `catalog` ↔ `catalog_version`, `crosswalk` ↔ `crosswalk_version`,
- * `embeddingModel` ↔ `embedding_model_version`.
+ * `embeddingModel` ↔ `embedding_model_version`. `catalogBundleSha256`
+ * (optional until producers emit it) is the bundle's content hash — the
+ * mechanical pin behind the human catalog label (S1-High-2 / S3-M3: the
+ * label did not rotate across PR #13's content change).
  */
 export const ResponseVersionsSchema = z.strictObject({
   app: SemverVersionSchema,
@@ -99,6 +103,7 @@ export const ResponseVersionsSchema = z.strictObject({
   catalog: CatalogSnapshotVersionSchema,
   crosswalk: SemverVersionSchema,
   embeddingModel: EmbeddingModelVersionSchema,
+  catalogBundleSha256: Sha256Schema.optional(),
 });
 export type ResponseVersions = z.infer<typeof ResponseVersionsSchema>;
 

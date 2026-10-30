@@ -26,8 +26,16 @@ import {
   ApiResponseSchema,
   ResolveServicesRequestSchema,
   ResolveServicesResultSchema,
+  ResponseVersionsSchema,
 } from "./api";
-import { RealSnapshotRefSchema } from "./primitives";
+import {
+  CatalogSnapshotVersionSchema,
+  EmbeddingModelVersionSchema,
+  RealSnapshotRefSchema,
+  SemverVersionSchema,
+  Sha256Schema,
+  VersionStampsSchema,
+} from "./primitives";
 import { GovernmentServiceSchema } from "./government-service";
 import { GoalResolutionSchema } from "./resolution";
 import { RequiredDocumentSchema } from "./required-document";
@@ -43,6 +51,7 @@ const RESPONSE_VERSIONS = {
   catalog: "0000-01-01.0",
   crosswalk: "0.0.0-fixture",
   embeddingModel: "0.0.0-fixture",
+  catalogBundleSha256: "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
 };
 
 /** Parse → JSON round-trip → parse must yield the same value. */
@@ -95,11 +104,40 @@ describe("contracts", () => {
         catalogVersion: "0000-01-01.0",
         crosswalkVersion: "0.0.0-fixture",
         embeddingModelVersion: "0.0.0-fixture",
+        catalogBundleSha256: "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
       });
     });
   });
 
   describe("schema rejections", () => {
+    it("rejects malformed bundle sha pins on both version-stamp schemas", () => {
+      const badShas = [
+        "NOT-A-HASH",
+        "F6E11C77802131C3BFC82FA7461DF971F4ABBA18476DCD144B920B166FA7943A", // uppercase
+        "f6e11c77", // 12-hex snapshot prefix, not a bundle sha
+        "f6e11c77802131c3bfc82fa7461df971f4abba18476dcd144b920b166fa7943", // 63 chars
+      ];
+      for (const sha of badShas) {
+        expect(Sha256Schema.safeParse(sha).success).toBe(false);
+        const labels = {
+          catalogVersion: "2026-10-30.1",
+          crosswalkVersion: "1.0.0",
+          embeddingModelVersion: "lexical-hash-v1",
+        };
+        expect(VersionStampsSchema.safeParse({ ...labels, catalogBundleSha256: sha }).success).toBe(false);
+        expect(
+          ResponseVersionsSchema.safeParse({
+            app: "0.1.0",
+            schema: "0.1.0",
+            catalog: "2026-10-30.1",
+            crosswalk: "1.0.0",
+            embeddingModel: "lexical-hash-v1",
+            catalogBundleSha256: sha,
+          }).success,
+        ).toBe(false);
+      }
+    });
+
     it("throws with a path when a required field is missing", () => {
       const rest: Record<string, unknown> = { ...hic.summary };
       delete rest.title;
@@ -661,6 +699,33 @@ describe("real producer conformance (panel N1/S3-M)", () => {
       crosswalkVersion: CROSSWALK_RULES_VERSION,
       embeddingModelVersion: EMBEDDING_MODEL_VERSION,
     });
+    // S1-High-1 pinned per-path: these two producer stamps are exactly the
+    // paths whose 90/90 real-output failures started the per-kind split —
+    // each real value must pass its own kind's validator, not just the
+    // aggregate schema.
+    expect(CatalogSnapshotVersionSchema.safeParse(bundle.catalogVersion).success).toBe(true);
+    expect(SemverVersionSchema.safeParse(CROSSWALK_RULES_VERSION).success).toBe(true);
+    expect(EmbeddingModelVersionSchema.safeParse(EMBEDDING_MODEL_VERSION).success).toBe(true);
+  });
+
+  it("separates bundles the label stamps cannot — the S1-High-2/S3-M3 content pin", () => {
+    // PR #13's regen changed bundle bytes (f6e11c77… → 323ad0e4…) under the
+    // same catalogVersion. The labels alone are not a replay pin; the bundle
+    // sha is. Two stamp sets sharing every label but the sha must both parse
+    // and must not be equal.
+    const labels = {
+      catalogVersion: bundle.catalogVersion,
+      crosswalkVersion: CROSSWALK_RULES_VERSION,
+      embeddingModelVersion: EMBEDDING_MODEL_VERSION,
+    };
+    const shaA = "f6e11c77802131c3bfc82fa7461df971f4abba18476dcd144b920b166fa7943a";
+    const shaB = "323ad0e442cb9697e64b226ee57af1d07ffc382e841b3122f88839cf6089e48a";
+    const stampedA = VersionStampsSchema.parse({ ...labels, catalogBundleSha256: shaA });
+    const stampedB = VersionStampsSchema.parse({ ...labels, catalogBundleSha256: shaB });
+    expect(stampedA).not.toEqual(stampedB);
+    // The labels-only form still parses (producers do not emit the sha yet)
+    // but is exactly the ambiguity this field closes.
+    expect(VersionStampsSchema.parse(labels).catalogBundleSha256).toBeUndefined();
   });
 
   it("parses every real built catalog record — envelopes, steps, snapshot refs", () => {

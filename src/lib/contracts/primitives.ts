@@ -156,6 +156,18 @@ void _subtypesCoversAll;
 export const ServiceSubtypeSchema = z.enum(SERVICE_SUBTYPES);
 
 /**
+ * Bundle content pin — lowercase 64-hex sha256, the exact format of the
+ * build pipeline's own `data/catalog/catalog.sha256` (PR #10 integrity
+ * chain). Carried on VersionStamps/ResponseVersions so a response
+ * self-identifies its content address (S1-High-2 / S3-M3).
+ */
+export const Sha256Schema = z
+  .string()
+  .regex(/^[a-f0-9]{64}$/, "catalog bundle sha must be lowercase hex sha256 (64 chars)");
+
+export type Sha256 = z.infer<typeof Sha256Schema>;
+
+/**
  * The three data-version stamps every deterministic answer carries (spec D5:
  * `catalog_version`, `crosswalk_version`, `embedding_model_version`). Each
  * stamp validates against its OWN producer's format (panel N1 — one semver
@@ -170,5 +182,16 @@ export const VersionStampsSchema = z.strictObject({
   catalogVersion: CatalogSnapshotVersionSchema,
   crosswalkVersion: SemverVersionSchema,
   embeddingModelVersion: EmbeddingModelVersionSchema,
+  /**
+   * Bundle content pin — the build pipeline's own `catalog.sha256` (PR #10
+   * integrity chain). S1-High-2 / S3-M3: `catalogVersion` is a human release
+   * label and did not rotate across PR #13's content change (sha f6e11c77… →
+   * 323ad0e4… under the same `2026-10-30.1`), so label stamps alone cannot
+   * distinguish two bundles and the replay-pin guarantee weakens. The hash
+   * makes a response self-identify its content address. Optional until
+   * producers emit it (tracked D5 follow-up: catalog-source reads the
+   * sibling sha file); required-in-practice once that lands.
+   */
+  catalogBundleSha256: Sha256Schema.optional(),
 });
 export type VersionStamps = z.infer<typeof VersionStampsSchema>;

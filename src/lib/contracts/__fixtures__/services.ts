@@ -24,11 +24,13 @@ import type {
 
 /** Stamp fixtures carry so they can never masquerade as a real catalog.
  * Each stamp matches its producer-kind schema (panel N1) while remaining
- * unmistakably fake — year 0000, `0.0.0-fixture` prerelease. */
+ * unmistakably fake — year 0000, `0.0.0-fixture` prerelease, `deadbeef`×8
+ * sha. */
 export const FIXTURE_VERSIONS: VersionStamps = {
   catalogVersion: "0000-01-01.0",
   crosswalkVersion: "0.0.0-fixture",
   embeddingModelVersion: "0.0.0-fixture",
+  catalogBundleSha256: "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
 };
 
 /** Provenance stamps fixtures carry — semver-shaped, unmistakably fake. */
