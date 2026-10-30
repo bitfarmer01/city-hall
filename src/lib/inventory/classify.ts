@@ -15,6 +15,7 @@
 // first-matched evidence phrase, so a classification report can be audited
 // line by line.
 
+import { tagCoverageDomain, type DomainTag } from "./domain";
 import type { IndexArticleEntry, KaNumber } from "./types";
 
 /** Version of these classification rules — bump when a rule changes. */
@@ -83,6 +84,8 @@ export interface ArticleClassification {
 
 export interface ClassificationResult {
   classification: ArticleClassification;
+  /** Coverage-domain tag (locked decision #12) for the same article. */
+  domain: DomainTag;
 }
 
 // ---------------------------------------------------------------------------
@@ -317,7 +320,7 @@ function matchLead(pattern: RegExp, text: string): string | undefined {
   return pattern.exec(text)?.[0];
 }
 
-/** Classify one article into a disposition with its recorded reason. */
+/** Classify one article into a disposition and coverage domain. */
 export function classifyArticle(article: ClassifiableArticle): ClassificationResult {
   const match = matchRule(article);
   const classification: ArticleClassification = {
@@ -331,5 +334,5 @@ export function classifyArticle(article: ClassifiableArticle): ClassificationRes
     ...(match.serviceSubtype ? { serviceSubtype: match.serviceSubtype } : {}),
     ...(match.evidence !== undefined ? { evidence: match.evidence } : {}),
   };
-  return { classification };
+  return { classification, domain: tagCoverageDomain(article.entry) };
 }
