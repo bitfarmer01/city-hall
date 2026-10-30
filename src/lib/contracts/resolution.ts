@@ -27,8 +27,9 @@ export const ResolutionLayerSchema = z.enum(RESOLUTION_LAYERS);
 export type ResolutionLayer = z.infer<typeof ResolutionLayerSchema>;
 
 export const GoalResolutionSchema = z.strictObject({
-  /** Ordered resolved service IDs; highest-confidence first. */
-  serviceIds: z.array(ServiceIdSchema),
+  /** Ordered resolved service IDs; highest-confidence first. Defensive cap
+   * (panel S4-S3): a goal resolving to more than this is a crosswalk bug. */
+  serviceIds: z.array(ServiceIdSchema).max(100),
   /** Empty array is the explicit no-match state (spec D7) — not an error. */
   resolutionLayer: ResolutionLayerSchema,
   versions: VersionStampsSchema,

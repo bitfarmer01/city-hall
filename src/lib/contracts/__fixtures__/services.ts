@@ -1,11 +1,17 @@
 // MOCK FIXTURES — full-depth example services for the four parallel builds
-// to code against while the D4 catalog is in flight (task todo_O2keBBqw).
+// to code against (task todo_O2keBBqw).
 //
-// These are fixtures, NOT captured data. Both derive from the build spec's
-// worked examples (the verified $200 HIC fee, the DEP water-tap steps); step
-// requirements for HIC and every document entry are placeholder shapes
-// marked FIXTURE. Nothing here was fetched from nyc.gov by this module; do
-// not ship these values to users.
+// These are fixtures, NOT captured data. Identities follow the real catalog
+// seeds (HIC KA-01808; the DEP water-tap record is svc:dep:water-tap-permit /
+// KA-02076, panel S3-F3), and provenance shapes follow the real classifier
+// output (ruleId "R006-service-action" pattern; evidence span = the matched
+// action-verb text, not the article title — panel S1-M7/S3-F7). Values that
+// are placeholder or deliberately differ from any real record are marked
+// FIXTURE. Every snapshot ref is snap:fixture-* (panel S4-M5) so a fixture
+// can never masquerade as a real capture. Nothing here was fetched from
+// nyc.gov by this module; do not ship these values to users.
+
+import { CATALOG_SCHEMA_VERSION } from "../../catalog/types";
 
 import type {
   EstimateBlock,
@@ -23,6 +29,10 @@ export const FIXTURE_VERSIONS: VersionStamps = {
   embeddingModelVersion: "0.0.0-fixture",
 };
 
+/** Provenance stamps fixtures carry — semver-shaped, unmistakably fake. */
+export const FIXTURE_CLASSIFIER_RULES_VERSION = "0.0.0-fixture";
+export const FIXTURE_DOMAIN_TAXONOMY_VERSION = "0.0.0-fixture";
+
 export interface ServiceFixture {
   service: GovernmentService;
   summary: ServiceSummary;
@@ -35,8 +45,10 @@ const hicFixture: ServiceFixture = {
   service: {
     "@context": "https://schema.org",
     "@type": "GovernmentService",
-    identifier: "svc:dcwp:home-improvement-contractor-license",
+    // D4's ServiceEnvelope tuple identifier (panel B1) — locked decision #1.
+    identifier: ["svc:dcwp:home-improvement-contractor-license", "nyc311-KA-01808"],
     name: "Home Improvement Contractor License",
+    description: "FIXTURE description — apply for or renew a home improvement contractor license.",
     alternateName: ["HIC license", "home improvement contractor registration"],
     serviceType: "License",
     provider: {
@@ -49,6 +61,7 @@ const hicFixture: ServiceFixture = {
     availableChannel: [
       {
         "@type": "ServiceChannel",
+        name: "Online",
         serviceUrl: "https://a866-dcwpbp.nyc.gov/account/services",
         processingTime: "P21D",
       },
@@ -61,18 +74,20 @@ const hicFixture: ServiceFixture = {
     offers: [
       {
         "@type": "Offer",
+        identifier: "fee:dcwp:home-improvement-contractor-license:two-year-term",
         price: 200,
         priceCurrency: "USD",
         description: "Two-year license term. Source: NYC311 KA-01808, captured 2026-10-30.",
+        "x:sourceRefs": ["snap:fixture-dcwp-hic-001"],
+        "x:capturedAt": "2026-10-30",
       },
     ],
     subjectOf: [
-      {
-        "@type": "CreativeWork",
-        url: "/catalog/svc:dcwp:home-improvement-contractor-license/blueprint.json",
-      },
       { "@type": "CreativeWork", url: "https://portal.311.nyc.gov/article/?kanumber=KA-01808" },
     ],
+    "x:coverageDomain": "licensing",
+    "x:domainTaxonomyVersion": FIXTURE_DOMAIN_TAXONOMY_VERSION,
+    schemaVersion: CATALOG_SCHEMA_VERSION,
   },
   summary: {
     id: "svc:dcwp:home-improvement-contractor-license",
@@ -81,13 +96,17 @@ const hicFixture: ServiceFixture = {
     domain: "licensing",
     domainSource: "keyword",
     domainAppliesToCatalog: true,
+    domainTaxonomyVersion: FIXTURE_DOMAIN_TAXONOMY_VERSION,
     disposition: {
       disposition: "service",
-      subtype: "apply",
+      serviceSubtype: "apply",
       reason: "action:apply",
-      ruleId: "verb-apply",
-      classifierVersion: "fixture",
-      evidence: { kind: "index-text", span: "Home Improvement Contractor License" },
+      ruleId: "R006-service-action",
+      classifierRulesVersion: FIXTURE_CLASSIFIER_RULES_VERSION,
+      evidence: {
+        kind: "index-text",
+        span: "Apply for a Home Improvement Contractor License",
+      },
     },
   },
   estimate: {
@@ -102,6 +121,17 @@ const hicFixture: ServiceFixture = {
         sourceCitation: "NYC311 KA-01808, captured 2026-10-30 (two-year license term)",
         sourceUrl: "https://portal.311.nyc.gov/article/?kanumber=KA-01808",
         capturedAt: "2026-10-30",
+      },
+      {
+        // Tier-2 fixture row (panel S3-F4) — empirical timeline with the
+        // dataset + query recorded; capturedAt deliberately omitted (the
+        // optional pin, panel S1-S1).
+        tier: 2,
+        label: "Typical processing time",
+        durationText: "about 3 weeks",
+        dataset: "nyc-dcwp-license-application-processing",
+        query: "FIXTURE query — median days from application to issuance, FY2026",
+        sourceUrl: "https://data.cityofnewyork.us/",
       },
       {
         tier: 3,
@@ -120,11 +150,14 @@ const hicFixture: ServiceFixture = {
       fulfillmentMethod: "document_upload",
       upload: {
         portalId: "portal:dcwp:licensing",
+        portalUrl: "https://a866-dcwpbp.nyc.gov/account/services",
         acceptedFormats: ["pdf"],
         maxSizeBytes: null,
         sizeLimitVerified: false,
+        multipleAllowed: true,
       },
       responsibleJurisdiction: "nyc",
+      feeRef: "fee:dcwp:home-improvement-contractor-license:two-year-term",
       feeNotes: ["FIXTURE note — credit-card surcharge renders here, never in the headline"],
       sourceRefs: ["snap:fixture-dcwp-hic-001"],
     },
@@ -153,8 +186,10 @@ const depFixture: ServiceFixture = {
   service: {
     "@context": "https://schema.org",
     "@type": "GovernmentService",
-    identifier: "svc:dep:water-tap-plug",
-    name: "Water Tap Plug or Disconnect",
+    // Real catalog identity (panel S3-F3): svc:dep:water-tap-permit, KA-02076.
+    identifier: ["svc:dep:water-tap-permit", "nyc311-KA-02076"],
+    name: "Water Tap Permit",
+    description: "FIXTURE description — permit to install, plug, or disconnect a water tap.",
     serviceType: "Permit",
     provider: {
       "@type": "GovernmentOrganization",
@@ -165,33 +200,42 @@ const depFixture: ServiceFixture = {
     availableChannel: [
       {
         "@type": "ServiceChannel",
-        name: "DEP permitting application office",
-        servicePostalAddress: "59-17 Junction Blvd, Flushing NY",
+        name: "Online (PARIS)",
+        serviceUrl: "https://www.nyc.gov/site/dep/about/permit-and-review-information-system.page",
       },
     ],
+    // Empty offers is the honest state — the catalog hasn't verified a fee
+    // schedule for this service (D4's DEP seed carries fees: []).
+    offers: [],
     subjectOf: [
-      { "@type": "CreativeWork", url: "/catalog/svc:dep:water-tap-plug/blueprint.json" },
-      { "@type": "CreativeWork", url: "https://portal.311.nyc.gov/article/?kanumber=KA-01203" },
+      { "@type": "CreativeWork", url: "https://portal.311.nyc.gov/article/?kanumber=KA-02076" },
     ],
+    "x:coverageDomain": "permits",
+    "x:domainTaxonomyVersion": FIXTURE_DOMAIN_TAXONOMY_VERSION,
+    schemaVersion: CATALOG_SCHEMA_VERSION,
   },
   summary: {
-    id: "svc:dep:water-tap-plug",
-    title: "Water Tap Plug or Disconnect",
+    id: "svc:dep:water-tap-permit",
+    title: "Water Tap Permit",
     agency: { id: "nyc-dep", name: "Department of Environmental Protection" },
     domain: "permits",
     domainSource: "keyword",
     domainAppliesToCatalog: true,
+    domainTaxonomyVersion: FIXTURE_DOMAIN_TAXONOMY_VERSION,
     disposition: {
       disposition: "service",
-      subtype: "apply",
+      serviceSubtype: "apply",
       reason: "action:apply",
-      ruleId: "verb-apply",
-      classifierVersion: "fixture",
-      evidence: { kind: "page-accordion", span: "Plug or cap a water tap" },
+      ruleId: "R006-service-action",
+      classifierRulesVersion: FIXTURE_CLASSIFIER_RULES_VERSION,
+      evidence: {
+        kind: "page-accordion",
+        span: "Apply to plug or cap a water tap",
+      },
     },
   },
   estimate: {
-    serviceId: "svc:dep:water-tap-plug",
+    serviceId: "svc:dep:water-tap-permit",
     tiers: [
       {
         tier: 3,
@@ -203,50 +247,53 @@ const depFixture: ServiceFixture = {
     ],
   },
   // Steps verbatim from the build spec's BlueprintStep example (three
-  // fulfillment methods), including the honest unverified upload size limit.
+  // fulfillment methods), including the honest unverified upload size limit —
+  // re-keyed to the real record identity (panel S3-F3).
   steps: [
     {
-      id: "stp:svc:dep:water-tap-plug:010",
+      id: "stp:svc:dep:water-tap-permit:010",
       sequence: 1,
       requirement: "Application filed by a licensed master plumber",
       responsibleAgency: { id: "nyc-dep", name: "Department of Environmental Protection" },
       fulfillmentMethod: "in_person_appearance",
       responsibleJurisdiction: "nyc",
-      sourceRefs: ["snap:3f9c2a71b4d0"],
+      sourceRefs: ["snap:fixture-dep-001"],
     },
     {
-      id: "stp:svc:dep:water-tap-plug:020",
+      id: "stp:svc:dep:water-tap-permit:020",
       sequence: 2,
       requirement: "DOB-approved site plan, plumbing riser diagram, Schedule B",
       responsibleAgency: { id: "nyc-dep", name: "Department of Environmental Protection" },
       fulfillmentMethod: "document_upload",
       upload: {
         portalId: "portal:dep:paris",
+        portalUrl: "https://www.nyc.gov/site/dep/about/permit-and-review-information-system.page",
         acceptedFormats: ["pdf"],
         maxSizeBytes: null,
         sizeLimitVerified: false,
+        multipleAllowed: true,
       },
       responsibleJurisdiction: "nyc",
-      sourceRefs: ["snap:8b12e0f6c3aa"],
+      sourceRefs: ["snap:fixture-dep-002"],
     },
     {
-      id: "stp:svc:dep:water-tap-plug:030",
+      id: "stp:svc:dep:water-tap-permit:030",
       sequence: 3,
       requirement: "Notarized affidavit from the property owner (plugging a tap)",
       responsibleAgency: { id: "nyc-dep", name: "Department of Environmental Protection" },
       fulfillmentMethod: "notarized_wet_signature",
       responsibleJurisdiction: "nyc",
-      sourceRefs: ["snap:8b12e0f6c3aa"],
+      sourceRefs: ["snap:fixture-dep-002"],
     },
   ],
   documents: [
     {
       id: "form:dep:schedule-b",
-      serviceId: "svc:dep:water-tap-plug",
+      serviceId: "svc:dep:water-tap-permit",
       name: "Schedule B — plumbing fixtures",
       formNumber: "DEP Schedule B",
       description: "FIXTURE entry — filed with the tap application",
-      sourceRefs: ["snap:8b12e0f6c3aa"],
+      sourceRefs: ["snap:fixture-dep-002"],
     },
   ],
 };

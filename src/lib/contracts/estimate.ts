@@ -10,7 +10,7 @@
 
 import { z } from "zod";
 
-import { ServiceIdSchema } from "./primitives";
+import { HttpsUrlSchema, ServiceIdSchema } from "./primitives";
 
 /** Tier 1 — a published fee, verbatim. `amountText` is the source's words. */
 export const FeeEstimateSchema = z.strictObject({
@@ -18,9 +18,9 @@ export const FeeEstimateSchema = z.strictObject({
   label: z.string().min(1),
   amountText: z.string().min(1),
   amountValue: z.number().positive().optional(),
-  currency: z.string().length(3),
+  currency: z.string().regex(/^[A-Z]{3}$/, "currency must be a 3-letter ISO 4217 code"),
   sourceCitation: z.string().min(1),
-  sourceUrl: z.url(),
+  sourceUrl: HttpsUrlSchema,
   /** Capture date, ISO yyyy-mm-dd — the as-of the D6 check requires. */
   capturedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "capturedAt must be an ISO date (yyyy-mm-dd)"),
 });
@@ -33,7 +33,10 @@ export const TimelineEstimateSchema = z.strictObject({
   durationText: z.string().min(1),
   dataset: z.string().min(1),
   query: z.string().min(1),
-  sourceUrl: z.url().optional(),
+  /** Only when the dataset has a canonical landing page. Optional — the dataset + query are the provenance (panel S1-S1 pins this). */
+  sourceUrl: HttpsUrlSchema.optional(),
+  /** When the timeline figure was extracted from the dataset, when known. */
+  capturedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "capturedAt must be an ISO date (yyyy-mm-dd)").optional(),
 });
 export type TimelineEstimate = z.infer<typeof TimelineEstimateSchema>;
 
