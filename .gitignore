@@ -15,6 +15,8 @@
 
 # python
 .venv/
+__pycache__/
+*.pyc
 
 # next.js
 /.next/
