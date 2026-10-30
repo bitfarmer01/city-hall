@@ -24,7 +24,7 @@
       "price": 200,
       "priceCurrency": "USD",
       "description": "Two-year license term. Source: NYC311 KA-01808, captured 2026-10-30.",
-      "sourceRefs": ["snap:f29b96c047dd", "snap:19f5de5b4340", "snap:a59b2828c958"],
+      "sourceRefs": ["snap:2da42de60504", "snap:19f5de5b4340", "snap:9ff1f116b526"],
       "capturedAt": "2026-10-30"
     }
   ],
@@ -40,7 +40,7 @@
       "responsibleAgency": { "id": "nyc-dcwp", "name": "Department of Consumer and Worker Protection" },
       "feeRef": "fee:dcwp:home-improvement-contractor-license:two-year-term",
       "notes": "Apply through the DCWP Licensing Center's online licensing system.",
-      "sourceRefs": ["snap:f51cd03e49ee", "snap:f29b96c047dd", "snap:19f5de5b4340", "snap:a59b2828c958"]
+      "sourceRefs": ["snap:f51cd03e49ee", "snap:2da42de60504", "snap:19f5de5b4340", "snap:9ff1f116b526"]
     },
     {
       "id": "stp:svc:dcwp:home-improvement-contractor-license:020",
