@@ -104,9 +104,9 @@ describe("capture CLI (spawned, boundary-stop route, M14)", () => {
       artifacts: Array<{ name: string }>;
     };
     expect(meta.id).toBe(report.snapshotId);
-    expect(meta.artifacts.map((a) => a.name)).toContain("governance.json");
+    expect(meta.artifacts.map((a) => a.name)).toContain("meta-bound.json");
     const files = await readdir(path.join(root, dirname));
-    expect(files).toContain("governance.json");
+    expect(files).toContain("meta-bound.json");
     expect(files).toContain("screenshot.png");
   });
 });

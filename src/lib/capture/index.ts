@@ -26,9 +26,9 @@ export type { ReplayReport, ReplayRow } from "./replay";
 export {
   buildSourceSnapshot,
   DEFAULT_SNAPSHOT_ROOT,
-  governanceArtifactBytes,
   listSnapshotDirs,
   listSnapshotIds,
+  metaBoundBytes,
   parseFieldDumpFromContents,
   readFieldDump,
   readSnapshot,
@@ -42,7 +42,7 @@ export {
   CAPTURE_METHODS,
   CAPTURE_MODES,
   CAPTURE_SCHEMA_VERSION,
-  GOVERNANCE_ARTIFACT_NAME,
+  META_BOUND_ARTIFACT_NAME,
   PUBLIC_BOUNDARY_NOTE,
 } from "./types";
 export type {
@@ -51,7 +51,6 @@ export type {
   CaptureMode,
   CapturedField,
   FormFieldDump,
-  GovernanceFields,
   SnapshotArtifact,
   SourceSnapshot,
 } from "./types";

@@ -1,13 +1,14 @@
 import { chmod, copyFile, mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { describe, expect, it } from "vitest";
 
 import { snapshotIdFromDirName } from "./hash";
 import {
   buildSourceSnapshot,
-  governanceArtifactBytes,
+  metaBoundBytes,
   listSnapshotDirs,
   listSnapshotIds,
   parseFieldDumpFromContents,
@@ -17,7 +18,7 @@ import {
   readSnapshotMeta,
   writeSnapshot,
 } from "./store";
-import { CAPTURE_SCHEMA_VERSION, GOVERNANCE_ARTIFACT_NAME } from "./types";
+import { CAPTURE_SCHEMA_VERSION, META_BOUND_ARTIFACT_NAME } from "./types";
 
 // Each test gets its own temp root: the tamper test deliberately corrupts a
 // snapshot directory, and isolation keeps that from leaking into other cases.
@@ -60,11 +61,12 @@ function metaForParse(overrides: Record<string, unknown> = {}) {
     stoppedAt: "none",
     boundarySignals: [],
     notes: null,
+    captureSchema: CAPTURE_SCHEMA_VERSION,
     artifacts: [
       { name: "page.html", sha256: HEX64, bytes: 1 },
       { name: "screenshot.png", sha256: HEX64, bytes: 1 },
       { name: "fields.json", sha256: HEX64, bytes: 1 },
-      { name: "governance.json", sha256: HEX64, bytes: 1 },
+      { name: "meta-bound.json", sha256: HEX64, bytes: 1 },
     ],
     ...overrides,
   };
@@ -109,18 +111,44 @@ describe("buildSourceSnapshot", () => {
     expect(modified.snapshot.id).not.toBe(built().snapshot.id);
   });
 
-  it("synthesizes a governance.json artifact from the meta (H1)", () => {
+  it("synthesizes a meta-bound.json artifact covering every meta field except id and artifacts (H1/M1)", () => {
     const result = built();
-    const governance = result.contents.get(GOVERNANCE_ARTIFACT_NAME);
-    expect(governance).toBeDefined();
-    expect(JSON.parse(governance!.toString("utf8"))).toEqual({
-      url: "https://example.nyc.gov/form",
-      captureMode: "public_reachable",
-      stoppedAt: "none",
-      boundarySignals: [],
-    });
-    expect(governance!.equals(governanceArtifactBytes(result.snapshot))).toBe(true);
-    expect(result.snapshot.artifacts.find((a) => a.name === GOVERNANCE_ARTIFACT_NAME)).toBeDefined();
+    const bound = result.contents.get(META_BOUND_ARTIFACT_NAME);
+    expect(bound).toBeDefined();
+    const { id, artifacts, ...provenance } = result.snapshot;
+    expect(id).toBeDefined();
+    expect(artifacts.length).toBeGreaterThan(0);
+    expect(JSON.parse(bound!.toString("utf8"))).toEqual(provenance);
+    expect(bound!.equals(metaBoundBytes(result.snapshot))).toBe(true);
+    expect(result.snapshot.artifacts.find((a) => a.name === META_BOUND_ARTIFACT_NAME)).toBeDefined();
+  });
+
+  it("keeps non-empty boundarySignals intact in the meta-bound record", () => {
+    // Regression: key sorting must not use the JSON.stringify replacer-array
+    // form, which filters nested keys and would silently empty the signals
+    // array inside the bound record.
+    const result = buildSourceSnapshot(
+      {
+        url: "https://example.nyc.gov/form",
+        resolvedUrl: "https://example.nyc.gov/form",
+        capturedAt: "2026-10-30T12:00:00.000Z",
+        method: "headless",
+        httpStatus: 200,
+        captureMode: "authenticated_unreachable",
+        stoppedAt: "login_wall",
+        boundarySignals: ["nyc_id_marker_with_password_field"],
+        notes: null,
+      },
+      [
+        { name: "page.html", bytes: Buffer.from("x") },
+        { name: "screenshot.png", bytes: Buffer.from("x") },
+        { name: "fields.json", bytes: Buffer.from("{}") },
+      ],
+    );
+    const bound = JSON.parse(result.contents.get(META_BOUND_ARTIFACT_NAME)!.toString("utf8")) as {
+      boundarySignals: string[];
+    };
+    expect(bound.boundarySignals).toEqual(["nyc_id_marker_with_password_field"]);
   });
 
   it("changes the id when a governance field changes, with identical captured bytes (H1)", () => {
@@ -168,9 +196,9 @@ describe("buildSourceSnapshot", () => {
         { name: "page.html", bytes: Buffer.from("x") },
         { name: "screenshot.png", bytes: Buffer.from("x") },
         { name: "fields.json", bytes: Buffer.from("{}") },
-        { name: GOVERNANCE_ARTIFACT_NAME, bytes: Buffer.from("{}") },
+        { name: META_BOUND_ARTIFACT_NAME, bytes: Buffer.from("{}") },
       ]),
-    ).toThrow(/governance\.json is derived/);
+    ).toThrow(/meta-bound\.json is derived/);
   });
 });
 
@@ -249,8 +277,8 @@ describe("write/read round trip", () => {
   });
 });
 
-describe("governance binding (H1)", () => {
-  it("rejects a snapshot whose meta governance fields were flipped but governance.json is stale", async () => {
+describe("meta-bound binding (H1/M1)", () => {
+  it("rejects a snapshot whose meta governance fields were flipped but meta-bound.json is stale", async () => {
     const dir = await freshRoot();
     const result = built();
     const out = await writeSnapshot(dir, result);
@@ -262,16 +290,43 @@ describe("governance binding (H1)", () => {
     raw.stoppedAt = "login_wall";
     await writeFile(path.join(out, "meta.json"), JSON.stringify(raw, null, 2) + "\n");
 
-    await expect(readSnapshot(dir, result.snapshot.id)).rejects.toThrow(/governance/);
+    await expect(readSnapshot(dir, result.snapshot.id)).rejects.toThrow(/meta-bound/);
   });
 
-  it("rejects a snapshot whose governance.json artifact was edited in place", async () => {
+  it("rejects a snapshot whose meta-bound.json artifact was edited in place", async () => {
     const dir = await freshRoot();
     const result = built();
     const out = await writeSnapshot(dir, result);
-    await writeFile(path.join(out, GOVERNANCE_ARTIFACT_NAME), Buffer.from("{}"));
+    await writeFile(path.join(out, META_BOUND_ARTIFACT_NAME), Buffer.from("{}"));
 
-    await expect(readSnapshot(dir, result.snapshot.id)).rejects.toThrow(/governance/);
+    await expect(readSnapshot(dir, result.snapshot.id)).rejects.toThrow(/meta-bound/);
+  });
+
+  // Probe-C attack class (panel M1): every non-artifact meta field is
+  // provenance. Flipping ANY of them in meta.json — keeping meta-bound.json
+  // stale — must fail verification, not silently parse.
+  it.each([
+    ["capturedAt", (m: Record<string, unknown>) => {
+      m.capturedAt = "2030-01-01T00:00:00.000Z";
+    }],
+    ["resolvedUrl", (m: Record<string, unknown>) => {
+      m.resolvedUrl = "https://example.nyc.gov/tampered";
+    }],
+    ["httpStatus", (m: Record<string, unknown>) => {
+      m.httpStatus = 404;
+    }],
+    ["notes", (m: Record<string, unknown>) => {
+      m.notes = "Tampered attestation";
+    }],
+  ])("rejects a tampered %s in meta.json with a stale meta-bound.json (probe-C)", async (_field, mutate) => {
+    const dir = await freshRoot();
+    const result = built();
+    const out = await writeSnapshot(dir, result);
+    const raw = JSON.parse(await readFile(path.join(out, "meta.json"), "utf8")) as Record<string, unknown>;
+    mutate(raw);
+    await writeFile(path.join(out, "meta.json"), JSON.stringify(raw, null, 2) + "\n");
+
+    await expect(readSnapshot(dir, result.snapshot.id)).rejects.toThrow(/meta-bound/);
   });
 });
 
@@ -339,6 +394,24 @@ describe("parseSnapshotMeta (strict provenance, M1)", () => {
     expect(() => parseSnapshotMeta(metaForParse({ boundarySignals: [42] }))).toThrow(/boundarySignals entry/);
   });
 
+  it("rejects unknown top-level meta fields instead of silently ignoring them (M3)", () => {
+    // A typo'd field name must be an error, not a silently-dropped field —
+    // the same doctrine as the enum garbage tests above.
+    expect(() => parseSnapshotMeta(metaForParse({ bogusField: 1 }))).toThrow(/unknown meta.json field "bogusField"/);
+    expect(() => parseSnapshotMeta(metaForParse({ captureShema: "0.3.0" }))).toThrow(
+      /unknown meta.json field "captureShema"/,
+    );
+  });
+
+  it("rejects a missing or mismatched captureSchema (M3)", () => {
+    expect(() => parseSnapshotMeta(withoutKey(metaForParse(), "captureSchema"))).toThrow(
+      /captureSchema must be a string/,
+    );
+    expect(() => parseSnapshotMeta(metaForParse({ captureSchema: "0.2.0" }))).toThrow(
+      /not supported by this verifier/,
+    );
+  });
+
   it("rejects artifact names outside the canonical enum, including traversal (M4)", () => {
     expect(() =>
       parseSnapshotMeta(
@@ -363,5 +436,19 @@ describe("parseSnapshotMeta (strict provenance, M1)", () => {
 describe("parseFieldDumpFromContents", () => {
   it("throws the designed error when fields.json is absent", () => {
     expect(() => parseFieldDumpFromContents(new Map())).toThrow(/missing the required artifact fields\.json/);
+  });
+});
+
+describe("committed fixture schema pin (M3)", () => {
+  it("was migrated to the current capture schema and parses under it", async () => {
+    const fixtureRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../fixtures/snapshots");
+    const ids = await listSnapshotIds(fixtureRoot);
+    expect(ids).toHaveLength(1);
+    const meta = await readSnapshotMeta(fixtureRoot, ids[0]!);
+    expect(meta.captureSchema).toBe(CAPTURE_SCHEMA_VERSION);
+    // The pin that keeps this test (and the catalog pipeline) honest when the
+    // fixture drifts: id ↔ directory ↔ bundle must agree.
+    expect(ids[0]).toBe(`snap:${meta.id.slice(5)}`);
+    expect(meta.id).toBe("snap:a777dc9a2500");
   });
 });

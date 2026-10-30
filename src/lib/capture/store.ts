@@ -17,7 +17,6 @@ import type {
   CaptureMethod,
   CaptureMode,
   FormFieldDump,
-  GovernanceFields,
   SnapshotArtifact,
   SourceSnapshot,
 } from "./types";
@@ -27,7 +26,7 @@ import {
   CAPTURE_METHODS,
   CAPTURE_MODES,
   CAPTURE_SCHEMA_VERSION,
-  GOVERNANCE_ARTIFACT_NAME,
+  META_BOUND_ARTIFACT_NAME,
 } from "./types";
 
 /**
@@ -38,28 +37,53 @@ import {
  *   <rootDir>/snap_<hex12>/screenshot.png   — full-page screenshot
  *   <rootDir>/snap_<hex12>/fields.json      — DOM form-field dump
  *   <rootDir>/snap_<hex12>/network.json     — bounded request log
- *   <rootDir>/snap_<hex12>/governance.json  — canonical serialization of the
- *                                             governance fields, hashed like
- *                                             any other artifact
+ *   <rootDir>/snap_<hex12>/meta-bound.json  — canonical serialization of every
+ *                                             meta field except id and
+ *                                             artifacts, hashed like any
+ *                                             other artifact
  *
- * The id is derived from the artifact bytes INCLUDING governance.json, so the
- * fields that decide governance (url, captureMode, stoppedAt, boundarySignals)
- * sit inside the SHA-256 chain: flipping one changes the id. Reads re-verify
- * every hash plus the governance binding, so a tampered or truncated snapshot
+ * The id is derived from the artifact bytes INCLUDING meta-bound.json, so the
+ * provenance and governance fields (url, resolvedUrl, capturedAt, method,
+ * httpStatus, captureMode, stoppedAt, boundarySignals, notes) all sit inside
+ * the SHA-256 chain: flipping one changes the id. Reads re-verify every hash
+ * plus the meta-bound binding, so a tampered or truncated snapshot
  * fails loudly instead of poisoning the golden-diff harness.
  */
 
 /** Default snapshot root for the capture/replay CLIs — the two must agree. */
 export const DEFAULT_SNAPSHOT_ROOT = "fixtures/snapshots";
 
-// Canonical artifact set every snapshot must carry (governance.json is
+// Canonical artifact set every snapshot must carry (meta-bound.json is
 // synthesized by buildSourceSnapshot, so it is required of the OUTPUT set,
 // never accepted as build input).
+// Single-consumer exception (S2 S-1): REQUIRED_ARTIFACTS is private to this
+// module — the only place that both builds and verifies snapshots. Promote
+// it to types.ts if a second module ever needs the contract.
 const REQUIRED_ARTIFACTS: readonly ArtifactName[] = [
   "fields.json",
-  "governance.json",
+  "meta-bound.json",
   "page.html",
   "screenshot.png",
+];
+
+/**
+ * The complete top-level meta.json contract. Any other key is a field-naming
+ * error (a typo, a rename, a smuggled extra field) and is rejected at parse
+ * time rather than silently ignored (S4 M-3).
+ */
+const KNOWN_META_KEYS: readonly string[] = [
+  "id",
+  "url",
+  "resolvedUrl",
+  "capturedAt",
+  "method",
+  "httpStatus",
+  "captureMode",
+  "stoppedAt",
+  "boundarySignals",
+  "notes",
+  "captureSchema",
+  "artifacts",
 ];
 
 export interface SnapshotMetaInput {
@@ -89,9 +113,9 @@ export function buildSourceSnapshot(
   const names = new Set<string>();
   for (const a of artifacts) {
     assertArtifactName(a.name);
-    if (a.name === GOVERNANCE_ARTIFACT_NAME) {
+    if (a.name === META_BOUND_ARTIFACT_NAME) {
       throw new Error(
-        `${GOVERNANCE_ARTIFACT_NAME} is derived from the meta — pass the governance fields instead`,
+        `${META_BOUND_ARTIFACT_NAME} is derived from the meta — pass the governance fields instead`,
       );
     }
     if (names.has(a.name)) {
@@ -102,57 +126,72 @@ export function buildSourceSnapshot(
   // Enforce the canonical set at build time (M6): a snapshot that would fail
   // verification later must never be written.
   for (const name of REQUIRED_ARTIFACTS) {
-    if (name !== GOVERNANCE_ARTIFACT_NAME && !names.has(name)) {
+    if (name !== META_BOUND_ARTIFACT_NAME && !names.has(name)) {
       throw new Error(`snapshot is missing required artifact ${name}`);
     }
   }
-  // governance.json is synthesized from the meta itself, so the bundle digest
-  // covers exactly the fields the governance gate acts on (H1).
-  const governanceBytes = governanceArtifactBytes(meta);
+  // meta-bound.json is synthesized from the meta itself, so the bundle digest
+  // covers every meta field except the self-hashing artifacts (M1) — the
+  // governance gate's inputs AND the provenance fields are all in the chain.
+  // The bound record is computed from the STAMPED meta — captureSchema is
+  // provenance of the format and belongs in the integrity chain — so the
+  // build-time record is byte-identical to what verifyIntegrity recomputes
+  // from the parsed meta.
+  const bound = metaBoundBytes({ ...meta, captureSchema: CAPTURE_SCHEMA_VERSION });
   const hashed: SnapshotArtifact[] = [
     ...artifacts.map((a) => ({
       name: a.name,
       sha256: sha256Hex(a.bytes),
       bytes: a.bytes.length,
     })),
-    { name: GOVERNANCE_ARTIFACT_NAME, sha256: sha256Hex(governanceBytes), bytes: governanceBytes.length },
+    { name: META_BOUND_ARTIFACT_NAME, sha256: sha256Hex(bound), bytes: bound.length },
   ];
   const bundle = bundleSha256(hashed);
   const snapshot: SourceSnapshot = {
     id: `snap:${bundle.slice(0, 12)}`,
     ...meta,
+    captureSchema: CAPTURE_SCHEMA_VERSION,
     artifacts: hashed,
   };
   return {
     snapshot,
     contents: new Map([
       ...artifacts.map((a) => [a.name, a.bytes] as const),
-      [GOVERNANCE_ARTIFACT_NAME, governanceBytes],
+      [META_BOUND_ARTIFACT_NAME, bound],
     ]),
   };
 }
 
 /**
- * Canonical serialization of the governance fields — the exact bytes stored
- * as governance.json and hashed into the bundle digest. Verification compares
- * the stored artifact against these bytes, binding the fields that decide
- * governance into the chain: editing them in meta.json alone fails the
- * binding, editing them in both places fails the digest.
+ * Canonical serialization of every meta field except artifacts (self-hashing)
+ * and id (derived from the bundle itself — including it here would be
+ * circular; the bundle↔id check binds it separately). These are the exact
+ * bytes stored as meta-bound.json and hashed into the bundle digest.
+ * Verification compares the stored artifact against them, binding ALL meta
+ * provenance into the chain: editing a field in meta.json alone fails the
+ * binding, editing it in both places fails the digest.
  */
-export function governanceArtifactBytes(meta: GovernanceFields): Buffer {
-  return Buffer.from(
-    JSON.stringify(
-      {
-        boundarySignals: meta.boundarySignals,
-        captureMode: meta.captureMode,
-        stoppedAt: meta.stoppedAt,
-        url: meta.url,
-      },
-      null,
-      2,
-    ) + "\n",
-    "utf8",
-  );
+export function metaBoundBytes(meta: Omit<SourceSnapshot, "id" | "artifacts">): Buffer {
+  // Structural completeness: every non-id, non-artifacts field of
+  // SourceSnapshot lands in the record automatically. Explicit field lists
+  // rot — a field added to the meta contract but not to this list would
+  // silently escape the integrity chain (the class of bug this binding
+  // exists to prevent).
+  const record: Record<string, unknown> = { ...meta };
+  // verifyIntegrity passes a full parsed SourceSnapshot, and the Omit above
+  // is type-level only: strip id/artifacts at runtime too (artifacts are
+  // self-hashing; id is derived from a bundle that includes this record —
+  // circular).
+  delete (record as { id?: unknown }).id;
+  delete (record as { artifacts?: unknown }).artifacts;
+  // Keys are sorted into a fresh object (NOT via the JSON.stringify
+  // replacer-array form, which filters nested object keys too and would
+  // drop boundarySignals entries).
+  const sorted: Record<string, unknown> = {};
+  for (const key of Object.keys(record).sort()) {
+    sorted[key] = record[key];
+  }
+  return Buffer.from(JSON.stringify(sorted, null, 2) + "\n", "utf8");
 }
 
 function assertArtifactName(name: string): void {
@@ -305,15 +344,16 @@ function verifyIntegrity(meta: SourceSnapshot, contents: Map<string, Buffer>): v
       );
     }
   }
-  // Governance binding (H1): the meta fields that decide governance must be
-  // byte-identical to the hashed governance.json artifact. Flipping them in
-  // meta.json alone fails here; flipping them in both places fails the
-  // bundle-digest check below, because both hashes are in the chain.
-  const storedGovernance = contents.get(GOVERNANCE_ARTIFACT_NAME);
-  const expectedGovernance = governanceArtifactBytes(meta);
-  if (storedGovernance === undefined || !storedGovernance.equals(expectedGovernance)) {
+  // Meta-bound binding (M1): EVERY meta field except artifacts must be
+  // byte-identical to the hashed meta-bound.json artifact. Flipping any
+  // field (governance OR provenance — capturedAt, resolvedUrl, httpStatus,
+  // notes, …) in meta.json alone fails here; flipping it in both places
+  // fails the bundle-digest check below, because both hashes are in the chain.
+  const storedMetaBound = contents.get(META_BOUND_ARTIFACT_NAME);
+  const expectedMetaBound = metaBoundBytes(meta);
+  if (storedMetaBound === undefined || !storedMetaBound.equals(expectedMetaBound)) {
     throw new Error(
-      `snapshot ${meta.id} governance fields do not match its ${GOVERNANCE_ARTIFACT_NAME} artifact — the record that decides governance was tampered with or predates capture schema 0.2.0`,
+      `snapshot ${meta.id} meta does not match its ${META_BOUND_ARTIFACT_NAME} artifact — the record's provenance was tampered with or predates capture schema 0.3.0`,
     );
   }
   const recomputed = bundleSha256(meta.artifacts);
@@ -327,6 +367,28 @@ export function parseSnapshotMeta(raw: unknown): SourceSnapshot {
     throw new Error(`snapshot meta must be an object, got ${typeof raw}`);
   }
   const m = raw as Record<string, unknown>;
+  // Field-naming doctrine: a typo'd or renamed meta field is an evidence
+  // error, not a silently-defaulted one (S4 M-3). This list is the complete
+  // meta contract; anything else is rejected.
+  for (const key of Object.keys(m)) {
+    if (!KNOWN_META_KEYS.includes(key)) {
+      throw new Error(
+        `unknown meta.json field ${JSON.stringify(key)} — expected one of ${KNOWN_META_KEYS.join(", ")}`,
+      );
+    }
+  }
+  // Schema pin: a snapshot written under a different capture schema must not
+  // be parsed by rules it was not written under (S4 M-3).
+  if (typeof m.captureSchema !== "string") {
+    throw new Error(
+      `meta.captureSchema must be a string, got ${typeof m.captureSchema} — pre-0.2.0 snapshots predate schema pinning`,
+    );
+  }
+  if (m.captureSchema !== CAPTURE_SCHEMA_VERSION) {
+    throw new Error(
+      `meta.captureSchema ${m.captureSchema} is not supported by this verifier (${CAPTURE_SCHEMA_VERSION}) — re-capture or migrate the snapshot`,
+    );
+  }
   const artifacts = m.artifacts;
   if (!Array.isArray(artifacts) || artifacts.length === 0) {
     throw new Error("snapshot meta has no artifacts");
@@ -368,6 +430,7 @@ export function parseSnapshotMeta(raw: unknown): SourceSnapshot {
     stoppedAt,
     boundarySignals: m.boundarySignals.map((s) => requireString(s, "meta.boundarySignals entry")),
     notes: typeof m.notes === "string" ? m.notes : null,
+    captureSchema: m.captureSchema as string,
     artifacts: artifacts.map((a) => {
       if (typeof a !== "object" || a === null) {
         throw new Error(`artifact must be an object, got ${typeof a}`);
@@ -407,6 +470,3 @@ function requireString(value: unknown, what: string): string {
   }
   return value;
 }
-
-// Public alias of the canonical artifact set (see REQUIRED_ARTIFACTS above).
-export const REQUIRED_ARTIFACT_NAMES: readonly ArtifactName[] = REQUIRED_ARTIFACTS;
