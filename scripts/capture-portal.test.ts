@@ -110,3 +110,28 @@ describe("capture CLI (spawned, boundary-stop route, M14)", () => {
     expect(files).toContain("screenshot.png");
   });
 });
+
+describe("capture CLI (default-root notice)", () => {
+  const CORPUS_WARNING = /committed evidence corpus/;
+  const listCorpus = async (): Promise<string[]> =>
+    (await readdir("fixtures/snapshots")).filter((d) => d.startsWith("snap_")).sort();
+
+  it("prints a loud warning when no --root is given — the default lands in the committed evidence corpus", async () => {
+    const before = await listCorpus();
+    // Unreachable target: the capture fails before anything is written, so
+    // the run cannot pollute the committed corpus it is warning about.
+    const result = await runCapture(["http://127.0.0.1:1/unreachable"], 120_000);
+
+    expect(result.status).not.toBe(0);
+    expect(result.stderr).toMatch(CORPUS_WARNING);
+    expect(await listCorpus()).toEqual(before);
+  });
+
+  it("stays silent about the corpus when --root is passed explicitly", async () => {
+    const root = await mkdtemp(path.join(tmpdir(), "cityhall-capture-cli-rooted-"));
+    const result = await runCapture(["http://127.0.0.1:1/unreachable", "--root", root], 120_000);
+
+    expect(result.status).not.toBe(0);
+    expect(result.stderr).not.toMatch(CORPUS_WARNING);
+  });
+});

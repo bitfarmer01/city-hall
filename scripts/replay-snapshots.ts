@@ -19,6 +19,7 @@
  * expectations grow with the catalog.
  */
 import { DEFAULT_SNAPSHOT_ROOT, listSnapshotDirs } from "../src/lib/capture/store";
+import { sanitizeForLog } from "../src/lib/capture/sanitize";
 import { replayRoot } from "../src/lib/capture/replay";
 import { APP_VERSION } from "../src/lib/health";
 import { CAPTURE_SCHEMA_VERSION } from "../src/lib/capture/types";
@@ -46,27 +47,31 @@ async function main(): Promise<void> {
   const report = await replayRoot(root, { strict });
 
   const rows = report.rows.map((row) => {
+    // Print-layer defense (the parse layer already escaped filesystem- and
+    // meta-sourced strings; sanitizeForLog is idempotent): nothing sourced
+    // from disk or JSON reaches the log with a control character intact.
+    const id = sanitizeForLog(row.snapshotId);
     // Per-snapshot schema version is always printed (S4 M-3) so a future
     // mixed-schema root is visible in the report instead of silently uniform.
     const schema = row.captureSchema === null ? "?" : row.captureSchema;
     switch (row.status) {
       case "skipped_boundary":
-        return `${row.snapshotId}  [schema ${schema}]  ${row.stoppedAt?.padEnd(12)}  (skipped: ${row.captureMode})`;
+        return `${id}  [schema ${schema}]  ${row.stoppedAt?.padEnd(12)}  (skipped: ${row.captureMode})`;
       case "ungoverned":
-        return `${row.snapshotId}  [schema ${schema}]  public_reachable  (ungoverned: no catalog expectation for ${row.url})`;
+        return `${id}  [schema ${schema}]  public_reachable  (ungoverned: no catalog expectation for ${sanitizeForLog(row.url ?? "unknown url")})`;
       case "fail":
         return [
-          `${row.snapshotId}  [schema ${schema}]  FAIL (${row.failures.length} missed required entries)`,
-          ...row.failures.map((f) => `         miss  ${f.kind}  ${f.detail}`),
-          ...row.warnings.map((w) => `         warn  ${w.kind}  ${w.detail}`),
+          `${id}  [schema ${schema}]  FAIL (${row.failures.length} missed required entries)`,
+          ...row.failures.map((f) => `         miss  ${f.kind}  ${sanitizeForLog(f.detail)}`),
+          ...row.warnings.map((w) => `         warn  ${w.kind}  ${sanitizeForLog(w.detail)}`),
         ].join("\n");
       case "ok":
         return [
-          `${row.snapshotId}  [schema ${schema}]  ok (${row.warnings.length} warnings)`,
-          ...row.warnings.map((w) => `         warn  ${w.kind}  ${w.detail}`),
+          `${id}  [schema ${schema}]  ok (${row.warnings.length} warnings)`,
+          ...row.warnings.map((w) => `         warn  ${w.kind}  ${sanitizeForLog(w.detail)}`),
         ].join("\n");
       case "error":
-        return `${row.snapshotId}  ERROR  ${row.error ?? "could not be read"}`;
+        return `${id}  ERROR  ${sanitizeForLog(row.error ?? "could not be read")}`;
     }
   });
 
@@ -76,7 +81,9 @@ async function main(): Promise<void> {
   );
   if (report.coverageFindings.length > 0) {
     for (const finding of report.coverageFindings) {
-      console.log(`coverage floor  ${finding}`);
+      // Expectation URLs are parsed JSON — sanitized like every other
+      // attacker-shaped string on this path.
+      console.log(`coverage floor  ${sanitizeForLog(finding)}`);
     }
   }
   if (report.snapshotCount === 0) {

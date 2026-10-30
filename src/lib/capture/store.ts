@@ -11,6 +11,7 @@ import {
   SNAPSHOT_DIR_PATTERN,
   SNAPSHOT_ID_PATTERN,
 } from "./hash";
+import { sanitizeForLog } from "./sanitize";
 import type {
   ArtifactName,
   BoundaryKind,
@@ -282,6 +283,8 @@ export interface SnapshotDirEntry {
   dirName: string;
   /** null when the directory name is not a well-formed snapshot id — surfaced as an error row, never silently dropped. */
   id: string | null;
+  /** false when the snap_-prefixed entry is a FILE, not a directory — also surfaced as an error row, never silently dropped. */
+  isDirectory: boolean;
 }
 
 /**
@@ -300,17 +303,20 @@ export async function listSnapshotDirs(rootDir: string): Promise<SnapshotDirEntr
     throw err;
   }
   return entries
-    .filter((e) => e.isDirectory() && e.name.startsWith("snap_"))
+    // snap_-prefixed FILES ride along too: a file cannot hold a snapshot,
+    // and silently dropping it would hide evidence loss (the entry surfaces
+    // as an error row instead). Everything else — the expectations dir,
+    // unrelated files — is not snapshot-shaped and stays out.
+    .filter((e) => e.name.startsWith("snap_") && (e.isDirectory() || e.isFile()))
     .map((e) => ({
       dirName: e.name,
-      id: SNAPSHOT_DIR_PATTERN.test(e.name) ? snapshotIdFromDirName(e.name) : null,
+      isDirectory: e.isDirectory(),
+      id:
+        e.isDirectory() && SNAPSHOT_DIR_PATTERN.test(e.name)
+          ? snapshotIdFromDirName(e.name)
+          : null,
     }))
     .sort((a, b) => (a.dirName < b.dirName ? -1 : a.dirName > b.dirName ? 1 : 0));
-}
-
-export async function listSnapshotIds(rootDir: string): Promise<string[]> {
-  const dirs = await listSnapshotDirs(rootDir);
-  return dirs.flatMap((d) => (d.id === null ? [] : [d.id]));
 }
 
 /** Defense-in-depth: resolve an artifact path and refuse anything leaving the snapshot dir. */
@@ -395,7 +401,9 @@ export function parseSnapshotMeta(raw: unknown): SourceSnapshot {
   }
   const id = requireString(m.id, "meta.id");
   if (!SNAPSHOT_ID_PATTERN.test(id)) {
-    throw new Error(`meta.id is not a snapshot id (expected snap:<12 hex>): ${id}`);
+    // The id came from attacker-shaped meta.json — escape it before it
+    // reaches a log line (log-injection hardening).
+    throw new Error(`meta.id is not a snapshot id (expected snap:<12 hex>): ${sanitizeForLog(id)}`);
   }
   const method = requireEnum(m.method, "meta.method", CAPTURE_METHODS);
   const captureMode = requireEnum(m.captureMode, "meta.captureMode", CAPTURE_MODES);

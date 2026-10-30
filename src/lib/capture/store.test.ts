@@ -10,7 +10,6 @@ import {
   buildSourceSnapshot,
   metaBoundBytes,
   listSnapshotDirs,
-  listSnapshotIds,
   parseFieldDumpFromContents,
   parseSnapshotMeta,
   readFieldDump,
@@ -25,6 +24,10 @@ import { CAPTURE_SCHEMA_VERSION, META_BOUND_ARTIFACT_NAME } from "./types";
 async function freshRoot(): Promise<string> {
   return mkdtemp(path.join(tmpdir(), "cityhall-store-"));
 }
+
+/** Well-formed snapshot ids under a root, via the surviving listing primitive. */
+const idsIn = async (root: string): Promise<string[]> =>
+  (await listSnapshotDirs(root)).flatMap((d) => (d.id === null ? [] : [d.id]));
 
 function built() {
   return buildSourceSnapshot(
@@ -209,7 +212,7 @@ describe("write/read round trip", () => {
     const out = await writeSnapshot(dir, result);
     expect(out).toMatch(/snap_[0-9a-f]{12}$/);
 
-    expect(await listSnapshotIds(dir)).toEqual([result.snapshot.id]);
+    expect(await idsIn(dir)).toEqual([result.snapshot.id]);
 
     const read = await readSnapshot(dir, result.snapshot.id);
     expect(read.snapshot).toEqual(result.snapshot);
@@ -355,16 +358,33 @@ describe("listing (M5, H3)", () => {
     await writeSnapshot(dir, result);
     await mkdir(path.join(dir, "snap_backup"), { recursive: true });
 
-    expect(await listSnapshotIds(dir)).toEqual([result.snapshot.id]);
+    expect(await idsIn(dir)).toEqual([result.snapshot.id]);
     const dirs = await listSnapshotDirs(dir);
-    expect(dirs.find((d) => d.dirName === "snap_backup")).toEqual({ dirName: "snap_backup", id: null });
+    expect(dirs.find((d) => d.dirName === "snap_backup")).toEqual({ dirName: "snap_backup", id: null, isDirectory: true });
+  });
+
+  it("includes snap_-prefixed files as never-dropped entries with a null id", async () => {
+    const dir = await freshRoot();
+    const result = built();
+    await writeSnapshot(dir, result);
+    // A snap_-named FILE (even one wearing a well-formed id) cannot hold a
+    // snapshot — it must surface, never silently drop.
+    await writeFile(path.join(dir, "snap_0123456789ab"), Buffer.from("stray bytes"));
+
+    const dirs = await listSnapshotDirs(dir);
+    expect(dirs.find((d) => d.dirName === "snap_0123456789ab")).toEqual({
+      dirName: "snap_0123456789ab",
+      id: null,
+      isDirectory: false,
+    });
+    expect(await idsIn(dir)).toEqual([result.snapshot.id]);
   });
 
   it("propagates readdir failures other than ENOENT (fail closed)", async () => {
     const dir = await freshRoot();
     await chmod(dir, 0o000);
     try {
-      await expect(listSnapshotIds(dir)).rejects.toThrow();
+      await expect(listSnapshotDirs(dir)).rejects.toThrow();
     } finally {
       await chmod(dir, 0o755);
     }
@@ -442,7 +462,7 @@ describe("parseFieldDumpFromContents", () => {
 describe("committed fixture schema pin (M3)", () => {
   it("was migrated to the current capture schema and parses under it", async () => {
     const fixtureRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../fixtures/snapshots");
-    const ids = await listSnapshotIds(fixtureRoot);
+    const ids = await idsIn(fixtureRoot);
     expect(ids).toHaveLength(1);
     const meta = await readSnapshotMeta(fixtureRoot, ids[0]!);
     expect(meta.captureSchema).toBe(CAPTURE_SCHEMA_VERSION);

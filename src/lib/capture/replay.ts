@@ -5,6 +5,7 @@ import { diffLiveMinusCatalog, hasBlockingFailures, parseExpectation } from "./g
 import type { CatalogExpectation, GoldenFinding } from "./golden";
 import { SNAPSHOT_DIR_PATTERN } from "./hash";
 import { listSnapshotDirs, parseFieldDumpFromContents, readSnapshot } from "./store";
+import { sanitizeForLog } from "./sanitize";
 import type { CaptureMode } from "./types";
 
 /**
@@ -105,7 +106,10 @@ export async function replayRoot(root: string, options: ReplayOptions = {}): Pro
     if (entry.id === null) {
       errorCount++;
       rows.push({
-        snapshotId: entry.dirName,
+        // The name came from the filesystem, not the codebase — escape it
+        // before it lands in a row that the CLI prints (log-injection
+        // hardening; the CLI re-sanitizes on print, idempotently).
+        snapshotId: sanitizeForLog(entry.dirName),
         url: null,
         captureMode: null,
         stoppedAt: null,
@@ -113,7 +117,9 @@ export async function replayRoot(root: string, options: ReplayOptions = {}): Pro
         status: "error",
         failures: [],
         warnings: [],
-        error: `not a valid snapshot directory name (expected ${SNAPSHOT_DIR_PATTERN})`,
+        error: entry.isDirectory
+          ? `not a valid snapshot directory name (expected ${SNAPSHOT_DIR_PATTERN})`
+          : `snap_-prefixed entry is a file, not a snapshot directory`,
       });
       continue;
     }

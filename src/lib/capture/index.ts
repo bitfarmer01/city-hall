@@ -23,11 +23,11 @@ export type {
 } from "./golden";
 export { loadExpectations, replayRoot } from "./replay";
 export type { ReplayReport, ReplayRow } from "./replay";
+export { sanitizeForLog } from "./sanitize";
 export {
   buildSourceSnapshot,
   DEFAULT_SNAPSHOT_ROOT,
   listSnapshotDirs,
-  listSnapshotIds,
   metaBoundBytes,
   parseFieldDumpFromContents,
   readFieldDump,
