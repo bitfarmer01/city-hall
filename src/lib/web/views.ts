@@ -225,7 +225,20 @@ export interface ChannelView {
   url?: string;
   phone?: string;
   address?: string;
+  /** Display-formatted duration ("21 days"), or the raw string if unparseable. */
   processingTime?: string;
+}
+
+function formatChannelProcessingTime(iso: string): string {
+  try {
+    return formatDuration(parseIsoDuration(iso));
+  } catch (error) {
+    // Surface, never silently swallow: the catalog build should have
+    // rejected a non-ISO duration, so reaching this means catalog data
+    // is malformed. Render the raw value rather than breaking the page.
+    console.error("malformed processingTime in catalog", iso, error);
+    return iso;
+  }
 }
 
 export interface ServiceView {
@@ -293,7 +306,9 @@ export function buildServiceView(record: ServiceRecord, deps: ServiceViewDeps): 
     ...(channel.serviceUrl !== undefined ? { url: channel.serviceUrl } : {}),
     ...(channel.servicePhone !== undefined ? { phone: channel.servicePhone } : {}),
     ...(channel.servicePostalAddress !== undefined ? { address: channel.servicePostalAddress } : {}),
-    ...(channel.processingTime !== undefined ? { processingTime: channel.processingTime } : {}),
+    // Display-formatted ("21 days"), never raw ISO-8601; an unparseable
+    // value falls back to the raw string rather than breaking the page.
+    ...(channel.processingTime !== undefined ? { processingTime: formatChannelProcessingTime(channel.processingTime) } : {}),
   }));
 
   return {
@@ -326,6 +341,7 @@ export interface BrowseCardView {
   domainLabel: string;
   agencyName: string;
   articleUrl: string;
+  href: string;
   /** "From $200.00" when the service carries any published fee. */
   feeFromText?: string;
   /** Shortest published processing time, display-formatted. */
@@ -351,6 +367,33 @@ function shortestPublishedTime(envelope: ServiceEnvelope): string | undefined {
   return formatDuration(shortest);
 }
 
+export interface ResultItemView {
+  catalogId: string;
+  name: string;
+  description: string;
+  domain: string;
+  domainLabel: string;
+  agencyName: string;
+  href: string;
+  /** Human phrase for the resolver layer that fired, e.g. "known-goal match". */
+  layerPhrase: string;
+}
+
+/** Result cards for the goal→results page, in resolver order. */
+export function buildResultViews(records: readonly ServiceRecord[], layer: string): ResultItemView[] {
+  const layerPhrase = resolutionLayerPhrase(layer);
+  return records.map((record) => ({
+    catalogId: record.meta.catalogId,
+    name: record.envelope.name,
+    description: record.envelope.description,
+    domain: record.meta.domain,
+    domainLabel: domainLabel(record.meta.domain),
+    agencyName: record.envelope.provider.name,
+    href: `/services/${encodeURIComponent(record.meta.catalogId)}`,
+    layerPhrase,
+  }));
+}
+
 export function buildBrowseCards(services: readonly ServiceRecord[]): BrowseCardView[] {
   return services.map((service) => {
     const envelope = service.envelope;
@@ -365,6 +408,7 @@ export function buildBrowseCards(services: readonly ServiceRecord[]): BrowseCard
       domainLabel: domainLabel(service.meta.domain),
       agencyName: envelope.provider.name,
       articleUrl: service.meta.nyc311ArticleUrl,
+      href: `/services/${encodeURIComponent(service.meta.catalogId)}`,
       ...(minPrice !== undefined ? { feeFromText: `From ${formatUsd(minPrice)}` } : {}),
       ...(processingTimeText !== undefined ? { processingTimeText } : {}),
       stepsCount: service.steps.length,

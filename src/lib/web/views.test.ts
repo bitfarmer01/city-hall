@@ -17,7 +17,8 @@ import {
   surchargeNotesByStepId,
   type EstimateContext,
 } from "@/lib/estimates";
-import { loadCatalogBundle, type CatalogBundle } from "@/lib/resolver/catalog-source";
+import { loadCatalogBundle } from "@/lib/resolver/catalog-source";
+import type { CatalogBundle } from "@/lib/catalog/types";
 
 import { formatBytes, uploadLimitText, FULFILLMENT_LABELS } from "./display";
 import {
