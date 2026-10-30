@@ -1,0 +1,1404 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US" data-lang="en-US" crm-lang="en-US" dir="ltr" crm-lcid="1033"
+	same-site-mode="None">
+<head>
+		
+		<meta charset="utf-8" /><meta name="viewport" content="width=device-width,&#32;initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<script type="text/javascript" >
+				
+        </script>
+	<title>
+	
+		
+		&nbsp;· NYC311
+</title>
+		
+		<script src="/_portal/d78574f9-20c3-4dcc-8d8d-85cf5b7ac141/Resources/ResourceManager?lang=en-US"></script>
+	
+	<script type="text/javascript">
+        // Refresh all powerBI Iframes on Login in one Iframe
+        window.addEventListener('message', function (event) {
+            if (event && event.data && event.data == 'refreshPowerBI') {
+                $("iframe.powerbi").each(function () {
+                    this.src = this.src;
+                });
+            }
+        });
+
+        // Fix for incorrect viewport width setting in IE 10 on Windows Phone 8.
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            msViewportStyle.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}"));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+		
+	
+		
+		<link href="/bootstrap.min.css?1560906719000" rel="stylesheet" />
+
+		<link href="https://content.powerapps.com/resource/powerappsportal/dist/font-awesome.bundle-3d8a58a48f.css" onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;link&#32;=&#32;document.createElement(&#39;link&#39;);&#32;link.crossOrigin&#32;=&#32;target.crossOrigin;&#32;link.href&#32;=&#32;&#39;/dist/font-awesome.bundle-3d8a58a48f.css&#39;;&#32;link.rel&#32;=&#32;&#39;stylesheet&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,link);" rel="stylesheet" />
+
+				<link href="https://content.powerapps.com/resource/powerappsportal/dist/preform.bundle-5c3163ff0f.css" onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;link&#32;=&#32;document.createElement(&#39;link&#39;);&#32;link.crossOrigin&#32;=&#32;target.crossOrigin;&#32;link.href&#32;=&#32;&#39;/dist/preform.bundle-5c3163ff0f.css&#39;;&#32;link.rel&#32;=&#32;&#39;stylesheet&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,link);" rel="stylesheet" />
+
+
+		
+			
+
+
+		
+		<link href="/v4-shims.min.css?1682007276000" rel="stylesheet" />
+<link href="/311header-and-footer-v2.css?1682007274000" rel="stylesheet" />
+<link href="/about-311.css?1674759502000" rel="stylesheet" />
+<link href="/jquery-ui.min-custom.css?1560906718000" rel="stylesheet" />
+<link href="/jquery-ui.css?1560906719000" rel="stylesheet" />
+<link href="/theme.css?1664478696000" rel="stylesheet" />
+<link href="/site.min.css?1614288238000" rel="stylesheet" />
+<link href="/module.css?1560906717000" rel="stylesheet" />
+<link href="/nyc311headerfooter.css?1560906712000" rel="stylesheet" />
+
+		
+		
+		
+		
+		
+	
+		
+		<link href="https://content.powerapps.com/resource/powerappsportal/dist/pwa-style.bundle-55718a4c0d.css" onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;link&#32;=&#32;document.createElement(&#39;link&#39;);&#32;link.crossOrigin&#32;=&#32;target.crossOrigin;&#32;link.href&#32;=&#32;&#39;/dist/pwa-style.bundle-55718a4c0d.css&#39;;&#32;link.rel&#32;=&#32;&#39;stylesheet&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,link);" rel="stylesheet" />
+
+		</head>
+<body data-sitemap-state="/article/:/"
+	data-dateformat="M/d/yyyy"
+	data-timeformat="h:mm tt"
+	data-datetimeformat="M/d/yyyy h:mm tt"
+	data-app-path="/"
+	data-ckeditor-basepath="/js/BaseHtmlContentDesigner/Libs/msdyncrm_/libs/ckeditor/"
+	data-case-deflection-url="/_services/search/d78574f9-20c3-4dcc-8d8d-85cf5b7ac141">
+
+
+	
+		<link href="https://content.powerapps.com/resource/powerappsportal/dist/pcf-style.bundle-373a0f4982.css" onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;link&#32;=&#32;document.createElement(&#39;link&#39;);&#32;link.crossOrigin&#32;=&#32;target.crossOrigin;&#32;link.href&#32;=&#32;&#39;/dist/pcf-style.bundle-373a0f4982.css&#39;;&#32;link.rel&#32;=&#32;&#39;stylesheet&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,link);" rel="stylesheet" />
+
+			
+	
+		
+
+	<div id="offlineNotificationBar" class="displayNone">
+		<img alt="web" id="web" onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;img&#32;=&#32;document.createElement(&#39;img&#39;);&#32;img.src&#32;=&#32;&#39;/css/images/web.png&#39;;&#32;img.alt&#32;=&#32;&#39;web&#39;;&#32;img.id&#32;=&#32;&#39;web&#39;&#32;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,img);&#32;target.remove();" src="https://content.powerapps.com/resource/powerappsportal/img/web.png" />
+		<div id="message">You&#8217;re offline. This is a read only version of the page.</div>
+		<div id="close" onclick="this.parentElement.style.display='none';"><img alt="close" onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;img&#32;=&#32;document.createElement(&#39;img&#39;);&#32;img.src&#32;=&#32;&#39;/css/images/close.png&#39;;&#32;img.alt&#32;=&#32;&#39;close&#39;;&#32;img.id&#32;=&#32;&#39;&#39;&#32;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,img);&#32;target.remove();" src="https://content.powerapps.com/resource/powerappsportal/img/close.png" /></div>
+	</div>
+
+	
+
+	<script type="text/javascript">
+        window.DisableCkEditor = window.DisableCkEditor || {};
+		DisableCkEditor.Value = 'False';
+    </script>
+
+	<script type="text/javascript">
+        var enableOmniChannelWidgetWithSiteCopilot = 'False';
+        if (enableOmniChannelWidgetWithSiteCopilot === "True" || enableOmniChannelWidgetWithSiteCopilot === "true") {
+            const authUrl = window.location.origin + "/_services/auth/portalusertoken";
+            const fetchWithRetries = async (url, options, retries) => {
+                try {
+                    const authResponse = await fetch(url, options);
+                    const token = await authResponse.text();
+                    sessionStorage['c2Token'] = token;
+                } catch (err) {
+                    if (retries === 1) throw err;
+                    return await fetchWithRetries(url, options, retries - 1);
+                }
+            };
+            fetchWithRetries(authUrl, { method: "POST" }, 4);
+
+            // Enable/disable Omnichannel session refresh on auth state change
+            // When enabled, closeChat() is called when user logs in/out to start a fresh session
+            var enableOmniChannelSessionRefreshSetting = 'True';
+            window.enableOmniChannelSessionRefresh = enableOmniChannelSessionRefreshSetting === 'True' || enableOmniChannelSessionRefreshSetting === 'true';
+        }
+    </script>
+
+	<script type="text/javascript">
+		var isPvaBotAuthenticated = sessionStorage['isPvaBotAuthenticated'];
+		var isPortalUserLoggedIn = 'False';
+
+        if ((isPvaBotAuthenticated != null || isPvaBotAuthenticated != undefined) && isPvaBotAuthenticated != isPortalUserLoggedIn) {
+			sessionStorage['triggerPvaBotSignOut'] = true;
+			sessionStorage.removeItem('c2Token');
+            sessionStorage.removeItem('directLinetoken');
+            sessionStorage.removeItem('conversation_Id');
+
+			sessionStorage.removeItem('bot_c2Token');
+			sessionStorage.removeItem('botdirectLinetoken');
+            sessionStorage.removeItem('botconversation_Id');
+		}
+		sessionStorage['isPvaBotAuthenticated'] = isPortalUserLoggedIn;
+    </script>
+
+	<script type="text/javascript">
+		window["CSPSettings"] = window["CSPSettings"] || {};
+		window["CSPSettings"].nonce = '';
+        window["FabricConfig"] = window["FabricConfig"] || {};
+        window["FabricConfig"].mergeStyles = window["FabricConfig"].mergeStyles || {};
+		window["FabricConfig"].mergeStyles.cspSettings = window["CSPSettings"];
+        window["Microsoft"] = window["Microsoft"] || {};
+		window["Microsoft"].Dynamic365 = {
+			Portal: {
+				
+				User: {
+					userName: '',
+					firstName: '',
+					lastName: '',
+					email: '',
+					contactId: '',
+					userRoles: [],
+				},
+				
+				version: '9.8.7.10',
+				type: 'CommunityPortal',
+				id: '6deb2669-474f-4b83-92ed-ad9b4fe16aae', 
+				geo: 'NAM', 
+				tenant: '73d61799-c284-4022-8d41-54cc4f1929ef', 
+				correlationId: '7c253568-8be6-4175-9931-580b2f9cc8de',
+                orgEnvironmentId: 'bd43eb4e-133c-4807-bbf7-0ffb27d44a01',
+                orgId: '79502040-9ff2-443b-83a4-2da64ded6326',
+                portalProductionOrTrialType: 'Production',
+                isTelemetryEnabled: 'True',
+                InstrumentationSettings: {
+                    instrumentationKey: '197418c5cb8c4426b201f9db2e87b914-87887378-2790-49b0-9295-51f43b6204b1-7172',
+                    collectorEndpoint: 'https://us-mobile.events.data.microsoft.com/OneCollector/1.0/'
+                },
+                timerProfileForBatching: 'NEAR_REAL_TIME',
+                activeLanguages: ["en-US"],
+                isClientApiEnabled: 'True',
+                isSpaSite: 'False'
+            }
+        };
+
+		window["Microsoft"].PowerPages = window["Microsoft"].PowerPages || {};
+		window["Microsoft"].PowerPages.onPagesClientApiReady = (callback) => {
+			return new Promise((resolve, reject) => {
+				let isComplete = false;
+				let timeoutId;
+				const timeoutInterval = 10000;
+		
+				function handleReady() {
+					if (!isComplete && window.$pages) {
+						isComplete = true;
+						clearTimeout(timeoutId);
+						try {
+							if (typeof callback === "function") {
+								callback(window.$pages);
+							}
+						} catch (e) {
+							console.error("onPagesClientApiReady callback error:", e);
+						}
+						resolve(window.$pages); // should we reject if callback throws an error
+					}
+				}
+		
+				if (window.$pages) {
+					handleReady();
+					return;
+				}
+		
+				function sdkListener() {
+					handleReady();
+					window.removeEventListener('pagesSDKInitialized', sdkListener);
+				}
+		
+				window.addEventListener('pagesSDKInitialized', sdkListener);
+		
+				timeoutId = setTimeout(() => {
+					if (!isComplete) {
+						window.removeEventListener('pagesSDKInitialized', sdkListener);
+						if (window.$pages) {
+							handleReady();
+						} else {
+							isComplete = true;
+							reject(new Error('window.$pages not available.'));
+						}
+					}
+				}, timeoutInterval);
+			});
+		};
+
+		// Deprecated alias: Microsoft.Dynamic365.Portal.onPagesClientApiReady.
+		// Remove once telemetry shows no callers remain.
+		(function () {
+			var _impl = window["Microsoft"].PowerPages.onPagesClientApiReady;
+			var _logged = false;
+
+			window["Microsoft"].Dynamic365.Portal.onPagesClientApiReady = function (callback) {
+				if (!_logged) {
+					_logged = true;
+					try {
+						if (window.clientLogWrapper && typeof window.clientLogWrapper.traceWarning === "function") {
+							window.clientLogWrapper.traceWarning(
+								"Microsoft.Dynamic365.Portal.onPagesClientApiReady invoked (deprecated)",
+								"DeprecatedApi",
+								"ClientApiReady",
+								"Invoke",
+								"DeprecationTracker"
+							);
+						}
+						if (typeof console !== "undefined" && console.warn) {
+							console.warn(
+								"[DEPRECATED] Microsoft.Dynamic365.Portal.onPagesClientApiReady is deprecated " +
+								"and will be removed in a future release. Use Microsoft.PowerPages.onPagesClientApiReady instead."
+							);
+						}
+					} catch (_) { /* never break the caller */ }
+				}
+
+				return _impl(callback);
+			};
+		})();
+
+        // Mark request not cacheable if Dynamics365PortalAnalytics cookie is being refreshed by the server or if the cookie in request header is invalid
+		
+
+        // For client side telemetry intializing Dynamics365PortalAnalytics cookie object
+		
+        window["Microsoft"].Dynamic365.Portal.dynamics365PortalAnalytics = '9fsWlISK7Qbj-r8lvFXph8rmUlMoG04JOocLVkRa6_EfY3QUFtgHN7DsqE2-Gdr1AMNoGhpN-Or017QC4rR03EDhGpta_I5E1sFDstcsLwloiIpQg-Go3swXfpXTGhA0n_LvXTRPHbE_ET04RyT_KQ2'; // CodeQL [SM00430] False Positive: only alphanumeric chars allowed, for non-alphanumeric char it will return INVALID_CHARACTERS_IN_COOKIE 
+        localStorage.setItem("Dynamics365PortalAnalytics", window["Microsoft"].Dynamic365.Portal.dynamics365PortalAnalytics);
+			
+
+	</script>
+	
+	<script type="text/javascript">
+
+		
+    </script>
+
+	
+		
+<!--
+<div class="" role="navigation" style="text-align:center;background-color: red;font-weight: bold;color:white;">
+NYC311 service request forms are currently unavailable. 
+We’re working to get them back up soon. Please try again later.
+</div> 
+ Due to technical issues, service requests are currently unavailable on 311 Online.  If you are unable to submit a service request, please try again later. You can also call 311 or 212-NEW-YORK (212-639-9675) for assistance by phone. -->
+
+<div class="navbar navbar-static-top" role="navigation">
+
+
+ <div class="xrm-editable-html&#32;xrm-attribute"><div class="xrm-attribute-value">
+
+<meta name="google-translate-customization" content="4707bd7f535893a0-45bca7b6a97e5a2d-g609df9381571b349-c"/>
+  
+<script src="https://www.nyc.gov/assets/home/js/google/gtm-311.js" type="text/javascript"></script>
+
+<!-- GLOBAL STYLES -->
+
+<link href="https://www1.nyc.gov/assets/home/css/pages/311/311header-and-footer-v2.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/v4-shims.min.css"  media="screen" rel="stylesheet" type="text/css" />
+
+
+
+
+ <!-- Expanding Nav parent div is inner-wrap --> 
+  <div id="inner-wrap">
+							<!--googleoff: all-->
+							<!-- 311 Header Start -->
+                              <div role="banner" class="main-header header-nyc">
+                                <div class="block"> 
+                                  <!-- Header Top Start -->
+                                  <!-- <div class="row first-visit-alert-row" style="background-color: #1771b7;">
+                                    <div class="container">
+                                      <div class="module module-first-visit-alert" style="background-color: #1771b7; background-image: url(https://www.nyc.gov/assets/home/images/content/home/nycgo_statue_crown.png);"><strong>Visiting NYC? </strong>Find events, attractions, deals, and more at <a href="https://www.nyctourism.com/" title="" class="arrow-link white-link small" style="font-size: 15px"><strong>nyctourism.com</strong></a> <a href="#" title="close" class="close-button white"></a> </div>
+                                    </div>
+                                  </div> -->
+                                  <a href="#main" class="sr-only sr-only-focusable">Skip Main Navigation</a>
+                                  <div class="header-top-nyc">
+                                    <div class="container">
+                                      <div class="header-inner">
+                                        <div class="header-buttons header-buttons-mobile">
+                                          <div>
+                                           <button aria-label="Show Main Menu" aria-expanded="false" aria-controls="nav" class="header-collapsed" id="nav-open-btn" type="button"><span class="fas fa-bars fa-lg" id="nav-open-ham"></span><span class="menu-text">Menu</span></button>
+                                          </div>
+                                        </div>
+                                        <div class="slogan">The Official Website of the City of New York
+										                    </div>
+                                        <div class="logo">
+                                          <div class="nyc-logo"><a href="/" aria-label="311 home"><img class="logo-three-one-one visible-desktop" alt="NYC 311" src="https://www.nyc.gov/assets/home/images/global/ico-311-51x51.png"></a></div>
+                                        </div>
+                                        <div class="header-buttons right">
+                                          <div class="translate1">
+                                            <button aria-label="Toggle Language Translation" aria-expanded="false" aria-controls="global-language-selection" class="header-collapsed" id="global-language" type="button"><span class="fas fa-language fa-2x"></span></button>
+                                          </div>
+                                          <div class="search2">
+                                            <button aria-label="Show Search" aria-expanded="false" aria-controls="header-search-collapse" class="header-collapsed" id="search-collapse-button" type="button"><span class="fas fa-search fa-lg"></span></button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!-- Translate -->
+                                  <div id="global-language-selection" class="row translate-container header-tool">
+                                    <div class="container">
+                                      <div id="google_translate_element"></div>
+                                    </div>
+                                  </div>
+                                  <!-- Translate End --> 
+                                  <!-- Expand and collapse search for Tablet and Mobile -->
+                                  <div id="header-search-collapse" class="row search-collapse header-tool">
+                                    <div class="container">
+                                      <form role="search" class="control-form" method="GET" action="https://www.nyc.gov/assets/home/html/search-redirect.html">
+                                        <div class="control-group control-group-nowrap">
+                                          <label class="control-label" for="header-search-input"><span class="sr-only">Search</span>
+                                            <input id="header-search-input" name="search-terms" placeholder="Search" class="header-search-input" type="text">
+                                          </label><input type="hidden" name="sitesearch" value="portal.311.nyc.gov">
+                                          <button class="btn header-search-btn" type="submit"><span class="sr-only">Search</span><span class="fa fa-search"></span></button>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                  <!-- Expand and collapse search for Tablet and Mobile End --> 
+                                  <!-- Header Top End --> 
+                                  <!-- Header Nav Start -->
+                                  <div class="container nav-outer"> 
+                                    <!-- Visible Header Nav Start -->
+                                    <nav role="navigation" class="nav-mobile" id="nav" tabindex="-1">
+                                      <div class="block">
+                                        <!-- <h2 class="block-title visible-phone">The official website of NYC </h2> -->
+                                        <ul>
+                                          <li class="nav-home hidden-phone"> <a href="/">Home</a> </li>
+                                          <li> <a href="/resources/">Browse Topics</a> </li>
+                                          <li> <a href="/report-problems/">Report Problems</a> </li>
+                                          <li> <a href="/check-status/">Look Up Service Requests</a> </li>
+                                          <li> <a href="/about-nyc-311/">About 311</a> </li>
+                                        </ul>
+                                      </div>
+                                    </nav>
+                                    <!-- Visible Header Nav End -->
+                                    <div class="global-input-search global-input-search-v2">
+                                      <form id="global-search-form1" class="hidden hidden-phone" name="filter-search-form" method="GET" action="https://www.nyc.gov/assets/home/html/search-redirect.html">
+                                        <div class="field-search">
+                                          <div class="input-padding">
+                                            <input type="text" name="search-terms" placeholder="Search" id="search-terms" class="input-search input-black filter-item">
+                                            <input type="hidden" name="sitesearch" value="portal.311.nyc.gov">
+                                            <input type="submit" class="ico-search btn-filter-search" value="">
+                                          </div>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                  <!-- Header Nav End --> 
+                                </div>
+                              </div>
+							  <!-- 311 Header End -->
+							  <!--googleon: all--> 
+  </div>
+
+
+
+</div></div>
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+"use strict";
+  function setHeight(){
+    var windowHeight = window.innerHeight - 140;
+    var navbar = document.getElementById("navbar");
+    if (navbar) {
+      navbar.style.maxHeight = windowHeight + "px";
+    }
+  }
+  window.addEventListener('resize', function (event) {
+    setHeight();
+  });
+</script>
+
+<script type="text/javascript">
+"use strict";
+    (function updateDates() {
+        setTimeout(function() {
+            var times = $('time');
+            times.each(function(index){
+              $(this).html(moment($(this)[0].dateTime).fromNow());             
+            });
+        }, 3000);  
+        
+  })();    
+</script>
+
+<script type="text/javascript">
+"use strict";
+(function getSetBroadcastCookies() {
+
+  function updateStyles() {
+      var alerts = $('.alert').not(".first-visit-alert-row");
+      $(alerts[0]).css('border-radius','4px 4px 0 0');
+      $(alerts[0]).css('margin-top','1rem');
+      $(alerts[alerts.length-1]).css('border-radius','0 0 4px 4px');
+      $(alerts[alerts.length-1]).css('margin-bottom','1rem'); 
+    }; 
+
+  setTimeout(function(){ 
+    var expires = "";
+    var date = new Date();
+    var broadcastcookievalue = "";
+    
+    function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+        return null;
+    }
+    
+    $('.alert-broadcast').each(function(i) {
+      var id = this.id;
+      
+      //check if a cookie for alert already exists and hide it if so
+      broadcastcookievalue = readCookie('broadcast_cookie_' + id);
+      $('#' + id).css('display', 'block');
+      //if (broadcastcookievalue != "" && broadcastcookievalue == 'closed') $('#' + id).css('display', 'none');
+      if (broadcastcookievalue != "" && broadcastcookievalue == 'closed') $('#' + id).remove();
+    
+      //add a 24 hour cookie for each alert closed
+      $('#' + id).bind('closed.bs.alert', function () {
+        date.setTime(date.getTime() + (24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+        document.cookie = 'broadcast_cookie_' + id + "=" + ('closed' || "")  + expires + "; path=/";
+        updateStyles(); 
+      });
+    });
+    
+    updateStyles(); 
+    
+  }, 1000);
+
+ })();
+</script>
+
+
+<script>
+"use strict";
+  //If this page is the OOB article page, redirect the user to our new custom article page.
+  if(window.location.pathname.indexOf("/knowledgebase/article/") >= 0)
+    window.location = "http://" + window.location.host + "/article/?kanumber=" + window.location.pathname.replace("/knowledgebase/article/", "");
+</script>
+	
+
+	<!-- add anti-forgery token-->
+	<div id="antiforgerytoken" data-url="/_layout/tokenhtml"></div>
+
+	
+			<!-- Client Telemetry init if telemetry enabled-->
+			<script onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;script&#32;=&#32;document.createElement(&#39;script&#39;);&#32;script.crossOrigin&#32;=&#32;target.crossOrigin;&#32;script.src&#32;=&#32;&#39;/dist/client-telemetry.bundle-d490766e4f.js&#39;;&#32;script.type&#32;=&#32;&#39;text/javascript&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,script);" src="https://content.powerapps.com/resource/powerappsportal/dist/client-telemetry.bundle-d490766e4f.js" type="text/javascript"></script>
+
+		
+	
+		<!-- Client Telemetry Wrapper init -->
+		<script onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;script&#32;=&#32;document.createElement(&#39;script&#39;);&#32;script.crossOrigin&#32;=&#32;target.crossOrigin;&#32;script.src&#32;=&#32;&#39;/dist/client-telemetry-wrapper.bundle-633e70f51b.js&#39;;&#32;script.type&#32;=&#32;&#39;text/javascript&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,script);" src="https://content.powerapps.com/resource/powerappsportal/dist/client-telemetry-wrapper.bundle-633e70f51b.js" type="text/javascript"></script>
+
+		<script>
+			window.clientLogWrapper = new ClientLogWrapper();
+		</script>
+		<script onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;script&#32;=&#32;document.createElement(&#39;script&#39;);&#32;script.crossOrigin&#32;=&#32;target.crossOrigin;&#32;script.src&#32;=&#32;&#39;/dist/preform.moment_2_29_4.bundle-b78b47dd25.js&#39;;&#32;script.type&#32;=&#32;&#39;text/javascript&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,script);" src="https://content.powerapps.com/resource/powerappsportal/dist/preform.moment_2_29_4.bundle-b78b47dd25.js" type="text/javascript"></script>
+
+		
+
+		<script onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;script&#32;=&#32;document.createElement(&#39;script&#39;);&#32;script.crossOrigin&#32;=&#32;target.crossOrigin;&#32;script.src&#32;=&#32;&#39;/dist/pcf-dependency.bundle-805a1661b7.js&#39;;&#32;script.type&#32;=&#32;&#39;text/javascript&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,script);" src="https://content.powerapps.com/resource/powerappsportal/dist/pcf-dependency.bundle-805a1661b7.js" type="text/javascript"></script>
+
+							   <script onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;script&#32;=&#32;document.createElement(&#39;script&#39;);&#32;script.crossOrigin&#32;=&#32;target.crossOrigin;&#32;script.src&#32;=&#32;&#39;/dist/pcf.bundle-60440c37cb.js&#39;;&#32;script.type&#32;=&#32;&#39;text/javascript&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,script);" src="https://content.powerapps.com/resource/powerappsportal/dist/pcf.bundle-60440c37cb.js" type="text/javascript"></script>
+
+							   <script onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;script&#32;=&#32;document.createElement(&#39;script&#39;);&#32;script.crossOrigin&#32;=&#32;target.crossOrigin;&#32;script.src&#32;=&#32;&#39;/dist/pcf-extended.bundle-b0e01b5622.js&#39;;&#32;script.type&#32;=&#32;&#39;text/javascript&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,script);" src="https://content.powerapps.com/resource/powerappsportal/dist/pcf-extended.bundle-b0e01b5622.js" type="text/javascript"></script>
+
+						
+	
+
+
+
+
+
+
+
+  
+    
+      
+      
+    
+    
+  
+  
+
+<iframe id="logoutFrame" style="display:none;"></iframe>
+<script>
+  function logoutIdP(event) {
+      
+    event.preventDefault();
+    const finalRedirectUrl = event.target.href ; 
+    const iframe = document.getElementById("logoutFrame");
+
+    iframe.src = "https://www1.nyc.gov/account/idpLogout.htm?x-frames-allow-from=https://portal.311.nyc.gov";
+    iframe.onload = function (e) {
+        var overlay = document.createElement("div");
+        overlay.style.position = "fixed";
+        overlay.style.top = "0";
+        overlay.style.left = "0";
+        overlay.style.width = "100vw";
+        overlay.style.height = "100vh";
+        overlay.style.background = "rgba(255,255,255,0.7)";
+        overlay.style.display = "flex";
+        overlay.style.flexDirection = "column";
+        overlay.style.justifyContent = "center";
+        overlay.style.alignItems = "center";
+        overlay.style.zIndex = "9999";
+
+        var spinner = document.createElement("i");
+        spinner.className = "fa fa-spinner fa-spin";
+        spinner.style.fontSize = "60px";
+        spinner.style.color = "black";
+
+        var msg = document.createElement("div");
+        msg.innerText = "Logging out...";
+        msg.style.color = "black";
+        msg.style.fontSize = "22px";
+        msg.style.marginTop = "15px";
+
+        overlay.appendChild(spinner);
+        overlay.appendChild(msg);
+        document.body.appendChild(overlay);
+
+        setTimeout(() => {
+            console.log("Redirecting now...");
+            window.location.href = finalRedirectUrl;
+        }, 2500);
+    };
+    
+  }
+</script>
+
+<div class="container-fluid page-header">
+ <div class="container">
+  <div class="row">
+   <h1 class="entry-title page-title"></h1>
+  </div>
+ </div>
+</div>
+<div class="container-fluid" id="signin-links">
+ <div class="container">
+  <div class="row pull-right">
+   <div class="login-area">
+   
+     <a href="/SignIn?returnUrl=%2Farticle%2F%3Fkanumber%3DKA-01044">Sign In</a> | <a href="/SignIn?returnUrl=%2Farticle%2F%3Fkanumber%3DKA-01044">Sign Up</a>
+     
+   </div>
+  </div>
+ </div>
+</div>
+  
+
+
+  
+   
+ <script>
+   $(document).ready(function(){
+      var KAParam = "KA-01044";
+      var KASetting ="KA-03299:KA-03325;KA-03303:KA-03325";
+      if(typeof KASetting !=='undefined' || KASetting!=null) 
+      {
+      console.log(KASetting.split(";"));
+      var KAList = KASetting.split(";"); 
+      KAList.forEach(function(item){
+      if(KAParam == item.split(":")[0].trim() && item.split(":")[1].trim()!=item.split(":")[0].trim())
+       {
+          window.location.replace("/article/?kanumber=" + item.split(":")[1]);
+       }      
+    });
+  }
+ });
+</script>
+
+
+<div class="container" id="page-wrapper">
+  
+<div class="row">
+  <div id="page-side-panel" class="col-md-4">
+    <script>"use strict";$(function() {    $("input#q").keypress(function (e) {      if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {        $(this).closest("form").submit();        return false;      }      else {        return true;      }    });});</script><form id="search-form" method="GET" action="/search/" role="search" class="form-search" onkeypress="return event.keyCode != 13">  <div class="input-group">        <label for="q" class="sr-only">      Search NYC311    </label>    <div id="page-side-panel-mobile-toggle" class="input-group-btn">      <button class="btn btn-default"          title="Toggle the mobile side panel."          aria-label="Toggle the mobile side panel.">        <span class="fa fa-bars" aria-hidden="true"></span>      </button>    </div>    <input type="text" class="form-control" id="q" name="q"        placeholder="Search"        value=""        title="Search">    <div class="input-group-btn">      <button type="submit" class="btn btn-default"          title="Search"          aria-label="Search">        <span class="fa fa-search" aria-hidden="true"></span>      </button>    </div>  </div></form><script>$(function () {  $("#page-side-panel-mobile-toggle").click(function () {    $("#page-side-links").slideToggle("fast");    return false;  });});</script>
+    <div id="page-side-links">
+      
+
+	
+	
+		<div class="panel panel-default ">
+			<div class="panel-heading">
+				<div class="panel-title"><span class="fa fa-bars" aria-hidden="true" style="font-size: 14px;"></span>&nbsp; Related links</div>
+			</div>
+			<div class="weblinks list-group">
+				
+				<a class="weblink list-group-item" href="/" title="NYC311 Home">
+					
+					NYC311 Home
+				</a>
+				
+				<a class="weblink list-group-item" href="/report-problems/" title="Report Problems">
+					
+					Report Problems
+				</a>
+				
+				<a class="weblink list-group-item" href="/check-status/" title="Look Up Service Requests">
+					
+					Look Up Service Requests
+				</a>
+				
+				<a class="weblink list-group-item" href="/resources/" title="Browse Topics">
+					
+					Browse Topics
+				</a>
+				
+			</div>
+			
+		</div>
+	
+
+
+        <div class="wrap-social">  <a href="http://twitter.com/home?status= https://portal.311.nyc.gov/article/?kanumber=KA-01044" aria-label="Share on twitter" rel="noopener noreferrer" target="_blank"><i class="fa fa-twitter p-2" aria-hidden="true"></i></a>  <a href="https://www.facebook.com/sharer/sharer.php?u=https://portal.311.nyc.gov/article/?kanumber=KA-01044" aria-label="Share on facebook" rel="noopener noreferrer" target="_blank"><i class="fa fa-facebook-f p-2" aria-hidden="true"></i></a>  <!--<a href="https://www.instagram.com/nyc311/" aria-label="Share on instagram"><i class="fa fa-instagram p-2" aria-hidden="true"></i></a>-->  <a href="http://www.tumblr.com/share/link?url=https://portal.311.nyc.gov/article/?kanumber=KA-01044&description=via NYC.gov" aria-label="Share on tumblr" rel="noopener noreferrer" target="_blank"><i class="fa fa-tumblr p-2" aria-hidden="true"></i></a>  <a href="mailto:?subject=&body=https://portal.311.nyc.gov/article/?kanumber=KA-01044" aria-label="Share in email"><i class="fa fa-envelope p-2" aria-hidden="true"></i></a></div>
+    </div>
+  </div> 
+<script>
+"use strict";
+  $(function() {
+    $('#page-side-panel .input-group').wrap('<form method="GET" action="/search/" role="search" class="form-search"></form>');
+  });
+</script>
+
+
+  
+  
+  
+
+  <div id="knowledgearticle" class="col-md-8">
+  
+  
+  <button aria-label="Top" onclick="topFunction()" id="scrollBtn" title="Go to top"><em class="fa fa-arrow-up"></em></button>
+    
+
+
+
+
+  
+
+
+
+  No Knowledge Article Found.
+
+            
+<style>
+    #popup-widget {
+         position:fixed;
+         width:500px;
+         left:50%;
+         margin-left:-250px;
+         /*bottom:25px;*/
+         border:1px solid #000;
+         background:#fff;
+         padding:20px;
+         z-index:100;
+         border-radius:7px;
+        top: 50%;
+        width:30em;
+    }
+    @media only screen and (max-width:767px) {
+     #popup-widget {
+          width:calc(100% - 50px);
+          left:25px;
+          margin-left:0;
+     }
+    }
+    .popup-widget-content {
+         padding-bottom:15px;
+         text-align:center;
+    }
+    .hide {
+        display:none;
+    }
+    .btn-close{
+        margin-left: 20px;
+        color:#fff;
+        font-weight:bold;
+        font-size:14px;
+        border-color:#000;
+        background-color:#000;
+    }
+    .btn:focus { 
+        background-color: #000;
+        color: #fff;
+        outline:none;
+    }
+</style>
+<script>
+$(function(){
+    $(".popup-close-button, .survey-cancel-button").click(function () {
+      $("#popup-widget").fadeOut(200);
+    });
+});
+
+</script>
+
+
+
+<div id="popup-widget" style="display:none" role="dialog">
+    <button aria-label="Close" title="Close" class="form-close survey-cancel-button" type="button"><span aria-hidden="true">×</span></button>
+    <div class="popup-widget-content" tabindex="0">
+      <h3 title="Disclaimer" aria-label="Disclaimer">Disclaimer:</h3>
+<p title="The City intends to use the data collected from this survey to generally add and improve City services. Survey participation is voluntary. Participants in this survey will not receive further communication from the City with regards to this survey." aria-label="The City intends to use the data collected from this survey to generally add and improve City services. Survey participation is voluntary. Participants in this survey will not receive further communication from the City with regards to this survey.">The City intends to use the data collected from this survey to generally add and improve City services. Survey participation is voluntary. Participants in this survey will not receive further communication from the City with regards to this survey.</p> 
+
+    </div>
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4"><input type="button" value="Close" title="Close" class="btn popup-close-button btn-close"></div>
+    <div class="col-xs-4"></div>
+</div>
+
+
+ 
+
+ 
+   
+
+
+
+
+
+<style>
+#ka-feedback-text {
+    border-color: #767676;
+    color: #333;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+</style>
+
+<div class="ka-feedback" id="ka-feedback">
+    <h3>
+        <a href="javascript:openPopupWidget()" id="ka-disclosure" aria-label="Feedback Disclaimer link" title="Feedback Disclaimer link">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+        <span id="ka-provide-feedback-label" title="Was this information helpful?" aria-label="Was this information helpful?">&nbsp;Was this information helpful?&nbsp;&nbsp;</span>
+        <a href="javascript:submitKAFeedbackRating(true)" id="ka-helpful" aria-label="Yes, the content was helpful.">
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i> Yes
+        </a>&nbsp;&nbsp;
+        <a href="javascript:submitKAFeedbackRating(false)" id="ka-nothelpful" aria-label="No, the content was not helpful.">
+            <i class="fa fa-thumbs-down" aria-hidden="true"></i> No
+        </a>
+    </h3>
+    <div id="ka-feedback-message" style="display:none">
+        <div style="margin-top:25px; margin-bottom:25px;"><span class="small">We will use your feedback to improve NYC311. Please do not include personal information or expect a response. For a complete list of problems you can report using NYC311, please visit our <a href="/report-problems/">Report Problems</a> page.</span> </div>
+    </div>
+    <div id="ka-feedback-detail" style="display:none;">
+        <div id="ka-feedback-error" class="alert alert-danger" style="display:none; margin-top:10px;" role="alert">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+            <span id="ka-feedback-error-text"></span>
+        </div>
+        <label for="ka-feedback-text"><strong>How can we improve this page?</strong></label>
+        <textarea id="ka-feedback-text" class="form-control" rows="5" maxlength="4000"></textarea>
+        <div class="actions" style="margin-top:15px;">
+            <button type="button" id="ka-feedback-submit" class="btn btn-primary button">Submit</button>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://www.google.com/recaptcha/enterprise.js?render=6Le_5u4tAAAAAN7sdvSn0j32slCebaTPU-du_MbR"></script>
+
+
+<script>
+"use strict";
+var kaFeedbackCaptchaEnabled = true;
+var kaFeedbackCaptchaSiteKey = "6Le_5u4tAAAAAN7sdvSn0j32slCebaTPU-du_MbR";
+var kaFeedbackSubmitting = false;
+
+function openPopupWidget() {
+    $("#popup-widget").fadeIn(200);
+}
+
+function getKaFeedbackRedirectUrl(wasHelpful) {
+    var url = "/article/";
+    
+    url += "?kanumber=KA-01044&washelpful=" + (wasHelpful ? "True" : "False");
+    
+    return url;
+}
+
+function getKaFeedbackPortalEnv() {
+ if (window.location.origin.indexOf("localhost") >= 0) {
+   return "dev1";
+ }
+ if (window.location.origin.indexOf("-") > 0) {
+   return window.location.origin
+     .substring(
+       window.location.origin.indexOf("-") + 1,
+       window.location.origin.indexOf(".")
+     )
+     .toLowerCase();
+ }
+ return "prd";
+}
+
+function getKaFeedbackApimUrl() {
+ var portal = getKaFeedbackPortalEnv();
+ var apimUrl = "https://api.nyc.gov/survey/create?api-version=v1&env-name=prd";
+
+ if (portal !== "prod") {
+   apimUrl = apimUrl.replace("{0}", portal);
+ }
+ return apimUrl;
+}
+
+function disableKaFeedbackLink(wasHelpful) {
+ if (wasHelpful) {
+   $("#ka-nothelpful")
+     .addClass("disabled")
+     .css("opacity", ".3")
+     .removeAttr("href");
+   $("#ka-helpful").removeAttr("href"); 
+ } else {
+   $("#ka-helpful")
+     .addClass("disabled")
+     .css("opacity", ".3")
+     .removeAttr("href");
+   $("#ka-nothelpful").removeAttr("href"); 
+ }
+}
+
+function showKaFeedbackError(message) {
+    $("#ka-feedback-error-text").text(message);
+    $("#ka-feedback-error").show();
+    $("#ka-feedback-submit").prop("disabled", false);
+    kaFeedbackSubmitting = false;
+}
+
+function getKaFeedbackCaptchaToken(callback) {
+    if (!kaFeedbackCaptchaEnabled) {
+        callback("");
+        return;
+    }
+    grecaptcha.enterprise.ready(function () {
+        grecaptcha.enterprise.execute(kaFeedbackCaptchaSiteKey, { action: "submit" })
+        .then(callback)
+        .catch(function () {
+            showKaFeedbackError("CAPTCHA failed. Please try again.");
+        });
+    });
+}
+
+function submitKAFeedbackToApim(wasHelpful, feedbackText) {
+    if (kaFeedbackSubmitting) {
+        return;
+    }
+    kaFeedbackSubmitting = true;
+    $("#ka-feedback-error").hide();
+    $("#ka-feedback-submit").prop("disabled", true);
+    getKaFeedbackCaptchaToken(function (token) {
+        var apimUrl = getKaFeedbackApimUrl();
+        var payload = {
+            "n311_KnowledgeArticle@odata.bind": "/knowledgearticles()",
+            "n311_wasthishelpful": wasHelpful,
+            "n311_surveytype": 614110002,
+            "statuscode": 614110000,
+            "n311_ipaddress": "35.230.49.80:55566"
+            
+        };
+        if (feedbackText) {
+            payload.n311_howcanweimprovethispage = feedbackText;
+        }
+        var headers = {
+        "Ocp-Apim-Subscription-Key": "070dc37b62044db0a219cea49c84e078",
+        "Content-Type": "application/json"
+        };
+        if (kaFeedbackCaptchaEnabled && token) {
+            headers["X-Recaptcha-Token"] = token;
+            headers["X-Recaptcha-SiteKey"] = kaFeedbackCaptchaSiteKey;
+        }
+        $.ajax({
+            type: "POST",
+            url: apimUrl,
+            contentType: "application/json",
+            headers: headers,
+            data: JSON.stringify(payload),
+            success: function () {
+                window.location.replace(getKaFeedbackRedirectUrl(wasHelpful));
+            },
+            error: function () {
+                showKaFeedbackError("Unable to submit feedback. Please try again.");
+            }
+        });
+    });
+}
+
+function submitKAFeedbackRating(helpful) {
+    if (helpful) {
+        disableKaFeedbackLink(true);
+        submitKAFeedbackToApim(true, "");
+    } else {
+        $("#ka-feedback-message").show();
+        $("#ka-feedback-detail").show();
+        disableKaFeedbackLink(false);
+    }
+}
+
+$(function () {
+    $("#ka-feedback-submit").click(function () {
+        var feedbackText = $.trim($("#ka-feedback-text").val());
+        var feedbackRegex = /^[a-zA-Z0-9\s.,!?'"()_\-\n\r]*$/;
+        $("#ka-feedback-error").hide();
+        $("#ka-feedback-error-text").text("");
+        // if (!feedbackText) {
+        //     $("#ka-feedback-error-text").text("Please tell us how we can improve this page.").show();
+        //     $("#ka-feedback-error").show();
+        //     return;
+        // }
+        if (!feedbackRegex.test(feedbackText)) {
+            $("#ka-feedback-error-text").text("Invalid input").show();
+            $("#ka-feedback-error").show();
+            return;
+        }
+        submitKAFeedbackToApim(false, feedbackText);
+    });
+});
+//@ sourceURL=kaFeedbackForm.js
+</script>
+ 
+
+
+  </div>
+</div>
+
+  
+</div>
+
+
+
+<script>
+"use strict";
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+
+  // US112923 - Language Need and Additional information fields
+  if ($("#n311_languageneed").val() == "") 
+    hideField('n311_languageneed');
+
+  if ($("#n311_writtencommunicationpreference").val() == "") 
+    hideField('n311_writtencommunicationpreference');
+
+  if ($("#n311_specifyotherlanguage").val() == "") 
+    hideField('n311_specifyotherlanguage');  
+  
+});
+</script>
+
+
+	<script onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;script&#32;=&#32;document.createElement(&#39;script&#39;);&#32;script.crossOrigin&#32;=&#32;target.crossOrigin;&#32;script.src&#32;=&#32;&#39;/dist/pcf-loader.bundle-f4a0e619b8.js&#39;;&#32;script.type&#32;=&#32;&#39;text/javascript&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,script);" src="https://content.powerapps.com/resource/powerappsportal/dist/pcf-loader.bundle-f4a0e619b8.js" type="text/javascript"></script>
+
+		
+		
+	
+
+	
+		<div id="pp-native-controls-react-root"></div>
+<script>window._nativeControlConfig = { "publicPath":"https://content.powerapps.com/resource/powerappsportal/controls", "versions": {"pcf_loader":"0.0.47","pcf_controls":"3.24.0","mf_shared":"0.2.28","host":"0.14.6","data_grid":"1.11.17","controls_fluent_v9":"0.0.50"}, "pvaEmbedded": { "defaultWidgetMode": "normal" } }</script>
+<script defer="defer" src="https://content.powerapps.com/resource/powerappsportal/controls/host/main.beaea55bb6.chunk.js"></script>
+		
+	
+	
+		
+
+
+
+  
+
+
+<style>
+#nyc311Footer .wrap-social a {
+  color: #fff;
+  display: inline-block;
+}
+
+#nyc311Footer .wrap-social a:hover {
+  color: #fff200;
+  text-decoration: none;
+}
+
+#nyc311Footer .wrap-social svg {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  transition: color 0.15s ease;
+}
+</style>
+
+<div class="wrapper" id="nyc311Footer">
+ <div class="container">
+    <div class="row">
+      <div id="custom_html-15" class="widget_text widelinks-widget widget_custom_html widget-count-4 col-md-4 nyc311FooterText">
+        <div class="textwidget custom-html-widget">
+          <!--<div class="wrap-social">
+            <a href="https://twitter.com/NYC311" aria-label="NYC311 twitter" rel="noopener noreferrer" target="_blank"><i class="fa fa-lg fa-twitter pr-2" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/NYC311/" aria-label="NYC311 facebook" rel="noopener noreferrer" target="_blank"><i class="fa fa-lg fa-facebook p-2" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/nyc311/#" aria-label="NYC311 instagram" rel="noopener noreferrer" target="_blank"><i class="fa fa-lg fa-instagram p-2" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com/user/NYC311" aria-label="NYC311 YouTube" rel="noopener noreferrer" target="_blank"><i class="fa fa-lg fa-youtube p-2" aria-hidden="true"></i></a>
+          </div>-->
+          <div class="wrap-social">
+            <a href="https://x.com/NYC311" aria-label="NYC311 on X" rel="noopener noreferrer" target="_blank" class="p-2">
+              <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>X</title>
+              <path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/NYC311/" aria-label="NYC311 facebook" rel="noopener noreferrer" target="_blank" class="p-2">
+              <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/nyc311/#" aria-label="NYC311 instagram" rel="noopener noreferrer" target="_blank" class="p-2">
+              <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+            </a>
+            <a href="https://www.youtube.com/user/NYC311" aria-label="NYC311 YouTube" rel="noopener noreferrer" target="_blank" class="p-2">
+              <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+          <strong>Follow NYC311</strong>
+        </div>
+      </div><!-- .widelinks-widget -->
+      <div id="mobileAppLinks" class="widget_text widelinks-widget widget_custom_html widget-count-4 col-md-4 col-md-offset-4">
+        <div class="textwidget custom-html-widget">
+          <div class="wrap-mobile">
+            <a href="https://itunes.apple.com/us/app/nyc-311/id324897619?mt=8" aria-label="Download mobile app for iPhone or iPad" rel="noopener noreferrer" target="_blank"><i class="fa fa-apple pr-2" aria-hidden="true"></i></a>
+            <a href="https://play.google.com/store/apps/details?id=gov.nyc.doitt.ThreeOneOne" aria-label="Download mobile app for Android" rel="noopener noreferrer" target="_blank"><i class="fa fa-android p-2" aria-hidden="true"></i></a>
+            <br>
+            <strong>Download the NYC311 Mobile App</strong>
+          </div>
+        </div>
+      </div><!-- .widelinks-widget -->
+    </div>
+    <br />
+    <div class="row">
+      <div id="custom_html-15" class="widget_text widelinks-widget widget_custom_html widget-count-4 col-md-4 nyc311FooterText nyc311FooterLinks">
+          <a href="/about-nyc-311/">About NYC311</a>
+          <a href="/article/?id=4485b076-e4f6-f011-8406-6045bdd38eb4">Send Feedback</a>
+          <a href="https://www.nyc.gov/html/misc/html/NYC311-privacy-policy.html" target="_blank">NYC311 Privacy Policy</a>
+      </div><!-- .widelinks-widget -->
+      <div id="nyc311logo" class="widget_text widelinks-widget widget_custom_html widget-count-4 col-md-4 col-md-offset-4">
+        <img src="/nyc311-logo.png" alt="NYC 311 Logo" style="width:3.3rem;" class="mb-2">
+      </div><!-- .widelinks-widget -->
+    </div>
+  </div>
+</div>
+ 
+ <script>
+ "use strict";
+ $('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">');
+ </script>
+
+
+
+       <!-- Global Footer 311 Modified Start -->
+
+                        <footer aria-labelledby="nyc-footer" role="contentinfo"> <span id="nyc-footer" class="sr-only">NYC.gov footer</span>
+                          <div class="container footerwrap">
+                            <h2 class="sr-only">More on NYC.gov</h2>
+                            <ul class="footerLinks">
+                              <li><a href="https://www.nyc.gov/main">nyc.gov home</a></li>
+                              <li><a href="https://portal.311.nyc.gov/">311</a></li>
+                              <li><a href="https://www.nyc.gov/main/forms/website-feedback">Website feedback</a></li>
+                              <li><a href="https://www.nyc.gov/main/services">Services</a></li>
+                              <li><a href="https://www.nyc.gov/main/your-government/contact-nyc-government">Contact NYC government</a></li>
+                              <li><a href="https://www.nyc.gov/site/mopd/resources/digital-accessibility.page">Accessibility resources</a></li>
+                              <li><a href="https://www.nyc.gov/main/events/?">Events</a></li>
+                              <li><a href="https://www.nycvotes.org/">Register to vote</a></li>
+                              <li><a href="https://www.nyc.gov/main/nyc-gov-privacy-policy">Privacy Policy </a></li>
+                              <li><a href="https://www.nyc.gov/main/your-government">Your government</a></li>
+                              <li><a href="https://a858-nycnotify.nyc.gov/notifynyc/">Emergency alerts </a></li>
+                              <li><a href="https://www.nyc.gov/main/terms-of-use">Terms of Use</a></li>
+                              <li><a href="https://cityjobs.nyc.gov/">Careers </a></li>
+                              <li><a href="https://www.nyc.gov/main/about-our-content">About nyc.gov content</a></li>
+                            </ul>
+                            <!-- <h2 class="sr-only">Translation for NYC.gov</h2>
+                            <ul class="footerLang">
+                              <li><a lang="ar" href="javascript:setLanguage('ar')">العربية</a></li>
+                              <li><a lang="bn" href="javascript:setLanguage('bn')">বাঙালি</a></li>
+                              <li><a lang="zh" href="javascript:setLanguage('zh-CN')">中文</a></li>
+                              <li><a lang="ht" href="javascript:setLanguage('ht')">Krey&ograve;l Ayisyen</a></li>
+                              <li><a lang="pl" href="javascript:setLanguage('pl')">Polskie</a></li>
+                              <li><a lang="es" href="javascript:setLanguage('es')">Espa&ntilde;ol</a></li>
+                              <li><a lang="ru" href="javascript:setLanguage('ru')">Русский</a></li>
+                              <li><a lang="fr" href="javascript:setLanguage('fr')">Fran&ccedil;ais</a></li>
+                              <li><a lang="ko" href="javascript:setLanguage('ko')">한국어</a></li>
+                              <li><a lang="ur" href="javascript:setLanguage('ur')">اُردُو</a></li>
+                              <li><a lang="ur" href="javascript:setLanguage('en')">English</a></li>
+                            </ul>-->
+                            <div class="footerSearch"><a href="https://www.nyc.gov"><img src="https://www1.nyc.gov/assets/home/images/global/nyc_white@x2.png" alt="NYC Logo" /></a></div>
+                            <div class="footerLegal">
+                              <div>&copy; City of New York. 2026 All Rights Reserved,<br />
+                                NYC is a trademark and service mark of the City of New York.</div>
+                              <div><a href="https://www1.nyc.gov/home/privacy-policy.page">Privacy Policy.</a>&nbsp;&nbsp;<a href="https://www1.nyc.gov/home/terms-of-use.page">Terms of Use.</a> <a href="https://www.nyc.gov/digitalaccess"><span class="sr-only">Learn more about Digital Accessibility from the Mayor's Office for People with Disabilities.</span> <span class="fab fa-2x fa-accessible-icon" aria-hidden="true"></span></a></div>
+                            </div>
+                          </div>
+                        </footer>
+
+                     <!--<script src="https://www1.nyc.gov/assets/home/js/webtrends/webtrends.311-load.js" type="text/javascript"></script>-->
+
+
+      <!-- GLOBAL JAVASCRIPT INCLUDES (/js/_global.js.html.erb) -->
+       <script src="https://www1.nyc.gov/assets/home/js/libs/modernizr-2.6.2.min.js" type="text/javascript"></script> 
+<!--   <script src="https://www1.nyc.gov/assets/home/js/libs/jquery-1.9.1.js" type="text/javascript"></script>-->
+      <script src="https://www1.nyc.gov/assets/home/js/utils.js" type="text/javascript"></script>
+      <script src="https://www1.nyc.gov/assets/home/js/libs/class.js" type="text/javascript"></script>
+      <script src="https://www1.nyc.gov/assets/home/js/pages/311/header-footer/classes/NYC.MainNav.js" type="text/javascript"></script>
+      <script src="https://www1.nyc.gov/assets/home/js/pages/311/header-footer/classes/NYC.311-portal.js" type="text/javascript"></script>
+
+
+<!-- Google Translate Plugin -->
+<script type="text/javascript">    
+	function googleTranslateElementInit() { 
+		new google.translate.TranslateElement({        pageLanguage: 'en'      }, 'google_translate_element');    }  
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+		
+<!-- Global Footer 311 Modified End -->			
+
+
+<!-- Text Size Modal -->
+<div class="modal fade" id="textSizeModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="richtext">
+                    <div class="xrm-editable-html&#32;xrm-attribute"><div class="xrm-attribute-value"><p>To change the text size on NYC.gov you can use your web browser's settings. Most browsers include functionality to let you increase or decrease the text on a web page. For example, to increase text size using:</p><h4>Chrome</h4><p>In the menu to the right of the address bar, select and set Zoom level. Menu > Zoom > +</p><h4>Firefox</h4><p>In the View menu, select Zoom. View > Zoom > Zoom In</p><h4>Internet Explorer</h4><p>In the View menu, select Text Size. View > Text Size > Largest</p><h4>Safari</h4><p>In the View menu, select Zoom In. View > Zoom In<br />Macintosh Shortcut: Command+</p><h4>No Web Browser Endorsement</h4><p>Common browsers are included in this page; mention of a specific browser does not imply endorsement or recommendation.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+
+
+    footer .footer-bottom {
+        background-color: #000;
+    }
+
+        footer .footer-bottom p {
+            margin: 0;
+        }
+
+    footer .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        font-weight: bold;
+        float: left;
+        margin-right: 2.12766%;
+        padding: 5px 0;
+    }
+
+    footer .logo-nyc {
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 93px;
+        height: 31px;
+        display: block;
+        background-image: url('/nyc_white.png');
+        background-size: 93px 31px;
+        float: left;
+        margin-right: 10px;
+        color: #ffffff;
+    }
+
+    footer .form-search .input-search {
+        width: 70px;
+        height: 30px;
+        padding: 4px 6px;
+        outline: none;
+        font-size: 14px;
+        border-radius: 4px 0 0 4px;
+        float: left;
+        border-left: 2px solid #727272;
+        border-top: 2px solid #727272;
+        border-right: none;
+        border-bottom: 2px solid #727272;
+        color: #fff;
+        background-color: #616161;
+        font-weight: bold;
+        margin-right: -1px;
+    }
+
+    footer .form-search .ico-search {
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        background: url('/sprite-ico-search.png') no-repeat #616161 center -8px;
+        padding: 0;
+        display: block;
+        width: 24px;
+        height: 30px;
+        border-radius: 0 4px 4px 0;
+        border-right: 2px solid #727272;
+        border-top: 2px solid #727272;
+        border-bottom: 2px solid #727272;
+        border-left: none;
+        cursor: pointer;
+        color: #ffffff;
+    }
+
+    footer .copyright {
+        color: #fff;
+        font-size: 10px;
+    }
+
+        footer .copyright a {
+            color: #fff;
+        }
+
+    footer input::placeholder {
+        color: #fff;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    footer .span3 {
+        margin-left: 15px;
+    }
+
+    footer ul {
+        margin-bottom: 20px !important;
+    }
+</style>
+
+	
+
+	<script type="text/javascript">
+
+		function trackCopilotCustomUsage(botSchema) {
+			const request = {
+				botSchemaName: botSchema
+			}
+			var json = JSON.stringify(request);
+			shell.ajaxSafePost({
+				type: "POST",
+				contentType: "application/json",
+				url: "/_services/copilot/TrackUsage",
+				data: json
+			}).done(function () {
+			}).fail(function (jqXhr) {
+			});
+		}
+
+		function findAndLogCustomCopilotUsage() {
+			const pageSource = document.documentElement.outerHTML;
+			const customPvaBotWebchatRegex = /api\.(preprod\.|test\.)?powerplatform\.(com|us|cn|appsplatform\.us)\/powervirtualagents\/botsbyschema\/([^/]+)\/directline\/token/;
+			const customPvaBotIframeRegex = /powerva\.microsoft\.com\/environments\/([0-9a-fA-F\-]+)\/bots\/([^/]+)\/webchat/;
+			const omniChannelRegex = /livechatwidget\/scripts\/LiveChatBootstrapper\.js/;
+
+			const matchPvaBotWebchat = pageSource.match(customPvaBotWebchatRegex);
+			if (matchPvaBotWebchat && matchPvaBotWebchat[3]) {
+				trackCopilotCustomUsage(matchPvaBotWebchat[3]);
+			}
+
+			const matchPvaBotIframe = pageSource.match(customPvaBotIframeRegex);
+			if (matchPvaBotIframe && matchPvaBotIframe[2]) {
+				trackCopilotCustomUsage(matchPvaBotIframe[2]);
+			}
+
+			const matchOmniChannel = pageSource.match(omniChannelRegex);
+			if (matchOmniChannel && matchOmniChannel[0]) {
+				trackCopilotCustomUsage("omnichannelWidget");
+			}
+		}
+
+		window.addEventListener("load", function () {
+			findAndLogCustomCopilotUsage();
+		});
+	</script>
+
+		
+			
+			
+			
+			
+		
+	<script onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;script&#32;=&#32;document.createElement(&#39;script&#39;);&#32;script.crossOrigin&#32;=&#32;target.crossOrigin;&#32;script.src&#32;=&#32;&#39;/dist/bootstrap.bundle-105a4995b8.js&#39;;&#32;script.type&#32;=&#32;&#39;text/javascript&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,script);" src="https://content.powerapps.com/resource/powerappsportal/dist/bootstrap.bundle-105a4995b8.js" type="text/javascript"></script>
+
+	<script onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;script&#32;=&#32;document.createElement(&#39;script&#39;);&#32;script.crossOrigin&#32;=&#32;target.crossOrigin;&#32;script.src&#32;=&#32;&#39;/dist/postpreform.bundle-4687dda8df.js&#39;;&#32;script.type&#32;=&#32;&#39;text/javascript&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,script);" src="https://content.powerapps.com/resource/powerappsportal/dist/postpreform.bundle-4687dda8df.js" type="text/javascript"></script>
+
+	<script onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;script&#32;=&#32;document.createElement(&#39;script&#39;);&#32;script.crossOrigin&#32;=&#32;target.crossOrigin;&#32;script.src&#32;=&#32;&#39;/dist/app.bundle-6a4b9a2a34.js&#39;;&#32;script.type&#32;=&#32;&#39;text/javascript&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,script);" src="https://content.powerapps.com/resource/powerappsportal/dist/app.bundle-6a4b9a2a34.js" type="text/javascript"></script>
+
+	<script onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;script&#32;=&#32;document.createElement(&#39;script&#39;);&#32;script.crossOrigin&#32;=&#32;target.crossOrigin;&#32;script.src&#32;=&#32;&#39;/dist/default-1033.moment_2_29_4.bundle-eda4e638fd.js&#39;;&#32;script.type&#32;=&#32;&#39;text/javascript&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,script);" src="https://content.powerapps.com/resource/powerappsportal/dist/default-1033.moment_2_29_4.bundle-eda4e638fd.js" type="text/javascript"></script>
+
+	
+
+	
+	
+	<script type="text/javascript">
+     var appInsights=window.appInsights||function(a){
+         function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+     }({
+         instrumentationKey: "f0fbe3a3-5020-461f-a3b5-7c517b094831"
+     });
+
+     window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script>
+	<script>
+        //this event will update the title of the page based on active breadcrumb
+        $('.breadcrumb').ready(function () {
+            if ($('.breadcrumb').is(':visible')) {
+                document.querySelector('title').innerHTML = ($('.breadcrumb > li.active').text() + "&nbsp;· NYC311");
+            }
+        });
+
+        function GoToNewEditor() {
+            var editCmsUrlSegment = "EditInCms";
+            var currentUrl = window.location.href;
+            if (currentUrl.indexOf('?') > -1) {
+                var urlSegments = currentUrl.split("?");
+                window.location.href = window.location.origin + '/' + editCmsUrlSegment + window.location.pathname + '?' + urlSegments[1];
+            }
+            else {
+                window.location.href = window.location.origin + '/' + editCmsUrlSegment + window.location.pathname;
+            }
+        }
+    </script>
+	
+		
+		
+	
+		
+				<script>
+					if ('serviceWorker' in navigator) {
+						navigator.serviceWorker.getRegistrations().then(function (registrations) {
+							for (let registration of registrations) {
+								registration.unregister();
+							}
+						}).catch(function (err) {
+							console.log('Service Worker unregister action failed: ', err);
+						});
+					}
+				</script>
+			
+	
+		
+	<!--Start Show Session Expire Warning Popup here -->
+    
+		
+</body>
+</html>
+<!-- Generated at 10/30/2026 5:11:53 PM -->
+<!-- Page OK -->
