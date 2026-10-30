@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "seededAt": "2026-10-30T18:38:45.760Z",
+  "seededAt": "2026-10-30T19:02:16.340Z",
   "inventorySnapshot": {
     "path": "data/snapshots/nyc311-index/2026-10-30.json",
     "sha256": "74fa20d420094f73ff4b31654a39f9119468dd0561807d7abbe77a15198356aa",
@@ -26,7 +26,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-02104",
-          "snapshotId": "snap:11a8f0183281",
+          "snapshotId": "snap:57f6914b6660",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/svc-buildings-building-construction-alteration-permit--article.json"
@@ -35,7 +35,7 @@
           "id": "portal-dob-now",
           "kind": "portal_form",
           "url": "https://www.nyc.gov/site/buildings/dob/use-dob-now.page",
-          "snapshotId": "snap:f1695fab24c3",
+          "snapshotId": "snap:0286c150b774",
           "captureMode": "authenticated_unreachable",
           "boundary": "anti_bot",
           "expectationFile": "data/golden/expectations/svc-buildings-building-construction-alteration-permit--portal-dob-now.json"
@@ -64,7 +64,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-02076",
-          "snapshotId": "snap:85db9269381e",
+          "snapshotId": "snap:312c4310a60c",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/svc-dep-water-tap-permit--article.json"
@@ -73,7 +73,7 @@
           "id": "portal-paris",
           "kind": "portal_form",
           "url": "https://www.nyc.gov/site/dep/about/permit-and-review-information-system.page",
-          "snapshotId": "snap:093a465f1c4b",
+          "snapshotId": "snap:5e98f723f285",
           "captureMode": "authenticated_unreachable",
           "boundary": "anti_bot",
           "expectationFile": "data/golden/expectations/svc-dep-water-tap-permit--portal-paris.json"
@@ -92,7 +92,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01878",
-          "snapshotId": "snap:c1b58ca09a4c",
+          "snapshotId": "snap:45f07db5e015",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/svc-dohmh-food-service-establishment-permit--article.json"
@@ -111,7 +111,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01786",
-          "snapshotId": "snap:63f030806f3b",
+          "snapshotId": "snap:1d69c0bc567f",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-01786--article.json"
@@ -130,7 +130,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01808",
-          "snapshotId": "snap:9fcf35848764",
+          "snapshotId": "snap:61618a851521",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/svc-dcwp-home-improvement-contractor-license--article.json"
@@ -139,7 +139,7 @@
           "id": "portal-dcwp-apply",
           "kind": "portal_form",
           "url": "https://www.nyc.gov/site/dca/businesses/licenses-apply.page",
-          "snapshotId": "snap:fa7f0c1b94c0",
+          "snapshotId": "snap:1bb4ef95dc3b",
           "captureMode": "authenticated_unreachable",
           "boundary": "anti_bot",
           "expectationFile": "data/golden/expectations/svc-dcwp-home-improvement-contractor-license--portal-dcwp-apply.json"
@@ -158,7 +158,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01890",
-          "snapshotId": "snap:99aab5506c6b",
+          "snapshotId": "snap:a7acf42bb1a3",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/svc-dohmh-dog-license--article.json"
@@ -187,7 +187,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01739",
-          "snapshotId": "snap:7be3e990ed05",
+          "snapshotId": "snap:e93dc99643c0",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-01739--article.json"
@@ -206,7 +206,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01833",
-          "snapshotId": "snap:3abf57f9412f",
+          "snapshotId": "snap:6654e8ac5d40",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-01833--article.json"
@@ -225,7 +225,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-02012",
-          "snapshotId": "snap:2eed6dcbe965",
+          "snapshotId": "snap:e0a96a4973f3",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/svc-buildings-elevator-escalator-inspection--article.json"
@@ -244,7 +244,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01782",
-          "snapshotId": "snap:e363475211ad",
+          "snapshotId": "snap:a619d50ae815",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-01782--article.json"
@@ -263,7 +263,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-02591",
-          "snapshotId": "snap:08ad10bf81df",
+          "snapshotId": "snap:3878799f2264",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-02591--article.json"
@@ -282,7 +282,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-02955",
-          "snapshotId": "snap:3a193639c280",
+          "snapshotId": "snap:64b376065cef",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-02955--article.json"
@@ -301,7 +301,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01012",
-          "snapshotId": "snap:f875266e9a89",
+          "snapshotId": "snap:803efcacdb35",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/svc-dohmh-birth-certificate-order--article.json"
@@ -340,7 +340,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01028",
-          "snapshotId": "snap:356f3dee01b1",
+          "snapshotId": "snap:a26883156b8b",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-01028--article.json"
@@ -359,7 +359,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01021",
-          "snapshotId": "snap:0833f9a4582b",
+          "snapshotId": "snap:9058df6712bd",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-01021--article.json"
@@ -378,7 +378,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01665",
-          "snapshotId": "snap:7cbc5d4abe80",
+          "snapshotId": "snap:5c0eed267ea7",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-01665--article.json"
@@ -397,7 +397,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01017",
-          "snapshotId": "snap:049d8c649bc2",
+          "snapshotId": "snap:10091881f258",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/svc-311-noise-from-neighbor--article.json"
@@ -416,7 +416,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01107",
-          "snapshotId": "snap:d19cf2f283b9",
+          "snapshotId": "snap:b4e58e549359",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-01107--article.json"
@@ -435,7 +435,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01036",
-          "snapshotId": "snap:8e45a94b167c",
+          "snapshotId": "snap:f18b5715f267",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-01036--article.json"
@@ -454,7 +454,7 @@
           "id": "article",
           "kind": "article_page",
           "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01095",
-          "snapshotId": "snap:6a38b1fb87ec",
+          "snapshotId": "snap:88ea8512cd24",
           "captureMode": "public_reachable",
           "boundary": "none",
           "expectationFile": "data/golden/expectations/nyc311-ka-01095--article.json"

@@ -1,0 +1,42 @@
+{
+  "id": "snap:1bb4ef95dc3b",
+  "url": "https://www.nyc.gov/site/dca/businesses/licenses-apply.page",
+  "resolvedUrl": "https://www.nyc.gov/site/dca/businesses/licenses-apply.page",
+  "capturedAt": "2026-10-30T19:01:30.561Z",
+  "method": "headless",
+  "httpStatus": 403,
+  "captureMode": "authenticated_unreachable",
+  "stoppedAt": "anti_bot",
+  "boundarySignals": [
+    "challenge_title"
+  ],
+  "notes": "Public-boundary capture: no credentials used, no form values entered, no challenge solved.",
+  "captureSchema": "0.3.0",
+  "artifacts": [
+    {
+      "name": "page.html",
+      "sha256": "751923b2aa1278122b8ae914df3ab42241fef7f6d32a7b451ea48dc02063e913",
+      "bytes": 326
+    },
+    {
+      "name": "screenshot.png",
+      "sha256": "387cc637f56e1f37c4a9123aa477a3dcf278acc467df5bf3fe05df42f86828ef",
+      "bytes": 23765
+    },
+    {
+      "name": "fields.json",
+      "sha256": "63dc5a78b84429bb7cad8b47b48c34e2459df0cff0b94040f757c19d9f9b7f5b",
+      "bytes": 158
+    },
+    {
+      "name": "network.json",
+      "sha256": "59782d5916c5f8fb6d2eb1dac197af2596f341cc4083e5b6d344c3f55f93684d",
+      "bytes": 210
+    },
+    {
+      "name": "meta-bound.json",
+      "sha256": "b97b57bf9962e9da416ef3a7501fca1378b72ccc29dfbc200d2ac40c54e45799",
+      "bytes": 500
+    }
+  ]
+}

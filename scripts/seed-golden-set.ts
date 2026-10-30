@@ -34,7 +34,7 @@ import { parseGoldenSet } from "../src/lib/golden/manifest";
 import { GOLDEN_DOMAINS } from "../src/lib/golden/types";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
-const SNAPSHOTS_ROOT = path.join(ROOT, "fixtures", "snapshots");
+const SNAPSHOTS_ROOT = path.join(ROOT, "data", "golden", "captures");
 const GOLDEN_DIR = path.join(ROOT, "data", "golden");
 const EXPECTATIONS_DIR = path.join(GOLDEN_DIR, "expectations");
 const INVENTORY_PATH = "data/snapshots/nyc311-index/2026-10-30.json";

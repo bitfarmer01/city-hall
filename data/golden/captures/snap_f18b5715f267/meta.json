@@ -1,0 +1,40 @@
+{
+  "id": "snap:f18b5715f267",
+  "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01036",
+  "resolvedUrl": "https://portal.311.nyc.gov/article/?kanumber=KA-01036",
+  "capturedAt": "2026-10-30T19:02:10.484Z",
+  "method": "headless",
+  "httpStatus": 200,
+  "captureMode": "public_reachable",
+  "stoppedAt": "none",
+  "boundarySignals": [],
+  "notes": "Public-boundary capture: no credentials used, no form values entered, no challenge solved.",
+  "captureSchema": "0.3.0",
+  "artifacts": [
+    {
+      "name": "page.html",
+      "sha256": "3d5ea1e298cfb61bda8cb00a9f568f6a6d6d5913ec8e54dd74c68501f40738e8",
+      "bytes": 229947
+    },
+    {
+      "name": "screenshot.png",
+      "sha256": "b3ea753acd1efe1bc05a3c7b6c92d1841cc43f367df19165248ca3cfe873e120",
+      "bytes": 257698
+    },
+    {
+      "name": "fields.json",
+      "sha256": "6619e99b8719b3c8bf2a571d26c13ce144acb006e0ffe4b091db0760ab94dbcc",
+      "bytes": 9179
+    },
+    {
+      "name": "network.json",
+      "sha256": "85b5071ef36b77932fb84adcc0290fa0e4e516838c9bc50a93d4d2056692cf5b",
+      "bytes": 17398
+    },
+    {
+      "name": "meta-bound.json",
+      "sha256": "409e1f9ca8497481a3260d16e7b2b4187824cdbadf4bc0e46219e489c0604f74",
+      "bytes": 450
+    }
+  ]
+}

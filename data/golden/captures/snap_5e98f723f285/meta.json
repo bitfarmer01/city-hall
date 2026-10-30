@@ -1,0 +1,42 @@
+{
+  "id": "snap:5e98f723f285",
+  "url": "https://www.nyc.gov/site/dep/about/permit-and-review-information-system.page",
+  "resolvedUrl": "https://www.nyc.gov/site/dep/about/permit-and-review-information-system.page",
+  "capturedAt": "2026-10-30T19:01:19.939Z",
+  "method": "headless",
+  "httpStatus": 403,
+  "captureMode": "authenticated_unreachable",
+  "stoppedAt": "anti_bot",
+  "boundarySignals": [
+    "challenge_title"
+  ],
+  "notes": "Public-boundary capture: no credentials used, no form values entered, no challenge solved.",
+  "captureSchema": "0.3.0",
+  "artifacts": [
+    {
+      "name": "page.html",
+      "sha256": "d3b23fa176d1a93cd982cd7f6af1853551323d89236a6f254ba302ea98543a65",
+      "bytes": 343
+    },
+    {
+      "name": "screenshot.png",
+      "sha256": "c458f4d03073ee966fd985a631ba6e1fa9d77e509ebae7a1d59368fa5c8ee9c1",
+      "bytes": 24559
+    },
+    {
+      "name": "fields.json",
+      "sha256": "69d927728148924305d69f9a6c2bc3e08a6e6fae2f640c34b1bc239a0de1eb9e",
+      "bytes": 175
+    },
+    {
+      "name": "network.json",
+      "sha256": "d0b572a116a38050b552dc1e486ca6a8a7702b6e02ce3c71c0c967439a8e0516",
+      "bytes": 227
+    },
+    {
+      "name": "meta-bound.json",
+      "sha256": "e677e500890adbef54912418c3683c7623393e65532118aefeb9af7ca858a0e4",
+      "bytes": 534
+    }
+  ]
+}

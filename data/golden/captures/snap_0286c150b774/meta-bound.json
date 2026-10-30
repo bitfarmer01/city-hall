@@ -1,0 +1,14 @@
+{
+  "boundarySignals": [
+    "challenge_title"
+  ],
+  "captureMode": "authenticated_unreachable",
+  "captureSchema": "0.3.0",
+  "capturedAt": "2026-10-30T19:01:15.201Z",
+  "httpStatus": 403,
+  "method": "headless",
+  "notes": "Public-boundary capture: no credentials used, no form values entered, no challenge solved.",
+  "resolvedUrl": "https://www.nyc.gov/site/buildings/dob/use-dob-now.page",
+  "stoppedAt": "anti_bot",
+  "url": "https://www.nyc.gov/site/buildings/dob/use-dob-now.page"
+}

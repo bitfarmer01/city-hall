@@ -14,7 +14,7 @@ import { loadGoldenSet } from "../src/lib/golden/manifest";
 import type { CheckBReport } from "../src/lib/golden/types";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
-const SNAPSHOTS_ROOT = path.join(ROOT, "fixtures", "snapshots");
+const SNAPSHOTS_ROOT = path.join(ROOT, "data", "golden", "captures");
 const CATALOG_PATH = path.join(ROOT, "data/catalog/catalog.json");
 
 export async function runOfflineCheck(): Promise<{ report: CheckBReport; passed: boolean }> {

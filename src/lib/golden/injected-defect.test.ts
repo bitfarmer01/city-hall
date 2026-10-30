@@ -23,7 +23,7 @@ import type { FormFieldDump } from "../capture/types";
  */
 
 const REPO_ROOT = path.resolve(import.meta.dirname, "..", "..", "..");
-const SNAPSHOTS_ROOT = path.join(REPO_ROOT, "fixtures", "snapshots");
+const SNAPSHOTS_ROOT = path.join(REPO_ROOT, "data", "golden", "captures");
 const CATALOG_PATH = path.join(REPO_ROOT, "data", "catalog", "catalog.json");
 
 const PW1_EXPECTATION = "data/golden/expectations/svc-buildings-building-construction-alteration-permit--pdf-pw1.json";
